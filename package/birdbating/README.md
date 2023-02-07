@@ -1,6 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 你的快門殺了牠：台灣鳥類籠拍誘拍場調查實錄
+- 此專案為 2023 / 02 靜態專題（mirrormedia / projects）。
+- 此專案使用 Next13 搭配 styled-component。
+- 上線網址：[prod](https://www.mirrormedia.mg/projects/birdbating/index.html)
+
+
+## Project Directory Explanation (專案目錄結構說明)
+```
+/                       - 根目錄
+  /components           - React 元件
+    /icons              - SVG icon 類型的 React 元件
+    /layout             - 頁面布局元件
+    /*                  - 單一頁面與其相關的元件，會放置在以頁面為名稱的子資料夾底下
+    *                   - 共用類型的元件會放在 components/ 底下
+  /pages                - 頁面檔
+  /constants            - 常數、設定
+  /styles               - Global-Style 與 Theme 檔案
+  /types                - TypeScript 使用的型別定義
+  /utils                - 工具類 function
+  /assets               - SVG、靜態檔案
+  /public               - 公開資源
+```
+
+- - -
 
 ## Getting Started
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, run the development server:
 
@@ -8,19 +33,12 @@ First, run the development server:
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
 
@@ -31,8 +49,4 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- - -
