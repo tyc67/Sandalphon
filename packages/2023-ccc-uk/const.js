@@ -1,1 +1,1 @@
-export const environment = 'dev' // 'dev | prod'
+export const environment = 'prod' // 'dev | prod'

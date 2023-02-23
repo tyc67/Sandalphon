@@ -207,6 +207,8 @@ export default function Ending({ id, image }) {
         </ProfileImageWrapper>
         <Second>
           <Independent lang={lang}>{t(`${id}.text.second.first`)}</Independent>
+          <Header lang={lang}>{t(`${id}.text.second.pairs.0.head`)}</Header>
+          <Text lang={lang}>{t(`${id}.text.second.pairs.0.body`)}</Text>
         </Second>
         <Credit>
           <CreditDetail>
