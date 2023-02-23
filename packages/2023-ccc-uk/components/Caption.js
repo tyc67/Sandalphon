@@ -117,7 +117,7 @@ const Text = styled.p`
       : `
     font-size: 14px;
     line-height: 21px;
-    text-align center;
+    text-align left;
   `}
 
   @media (max-width: 930px) {
