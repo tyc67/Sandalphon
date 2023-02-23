@@ -1,10 +1,11 @@
 # Sandalphon
-Monorepo for mirror-media-projects-next
+This is a monorepo for `Mirror Weelky` projects powered by React or Next.js.
 
+## Packages
+- [你的快門殺了牠：台灣鳥類籠拍誘拍場調查實錄](https://www.mirrormedia.mg/projects/birdbating/index.html): see [packages/birdbating](./packages/birdbating)
+- [](): see [packages/2023-ccc-uk](./packages//2023-ccc-uk)
 
 ### Monorepo setup
-This is a monorepo containing sub-packages:
-- [@mirror-media/birdbating](./packages/birdbating/): see `packages/birdbating`
 
 This monorepo adopts `husky`, `lerna`, and `yarn workspaces`.
 `husky` and `lerna` will
