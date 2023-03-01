@@ -38,7 +38,7 @@ const Title = styled.div`
 
 const Description = styled.div`
   margin-top: 37px;
-  width: 645px;
+  width: 705px;
   text-align: center;
   font-size: 16px;
   line-height: 24px;

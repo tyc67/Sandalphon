@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import DonateButton from './DonateButton'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -19,37 +20,36 @@ const Wrapper = styled.div`
 
 const ArticleWrapper = styled.div`
   position: relative;
-  padding: 136px 0 300px 0;
+  padding: 136px 0 0 0;
   margin: 0 auto;
   width: 640px;
 
   @media (max-width: 930px) {
-    padding: 60px 166px 250px 166px;
+    padding: 60px 166px 0 166px;
     width: 100%;
   }
   @media (max-width: 568px) {
-    padding: 80px 44px 250px 44px;
+    padding: 80px 44px 0 44px;
   }
 `
 
 const Credit = styled.div`
-  position: absolute;
-  left: calc((100% - 640px) / 2);
-  bottom: 40px;
-  width: 640px;
   text-align: center;
   white-space: pre-wrap;
-
+  margin-top: 160px;
   @media (max-width: 930px) {
-    width: unset;
-    left: 166px;
-    right: 166px;
+    margin-top: 124px;
   }
+
   @media (max-width: 568px) {
-    width: unset;
-    left: 44px;
-    right: 44px;
+    margin-top: 80px;
   }
+`
+
+const CreditDetail = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 const ProfileImageWrapper = styled.div`
@@ -105,6 +105,13 @@ const IG = styled.a`
     width: 100%;
     height: 100%;
   }
+  ${({ small }) =>
+    small &&
+    `
+    display: inline-flex;
+    width: 12px;
+    height: 12px;
+  `}
 `
 
 const Second = styled.div`
@@ -154,6 +161,12 @@ const Text = styled.div`
       : ``}
 `
 
+const DonateWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 36px 0;
+`
+
 export default function Ending({ id, image }) {
   const {
     t,
@@ -197,7 +210,20 @@ export default function Ending({ id, image }) {
           <Header lang={lang}>{t(`${id}.text.second.pairs.0.head`)}</Header>
           <Text lang={lang}>{t(`${id}.text.second.pairs.0.body`)}</Text>
         </Second>
-        <Credit>{t(`${id}.text.credit`)}</Credit>
+        <Credit>
+          <CreditDetail>
+            <span>{t(`${id}.text.credit.pairs.0`)}</span>
+            <IG small href={t(`${id}.text.first.ig`)} target="_blank">
+              <img src="images/ig.svg" alt="instagram link" />
+            </IG>
+          </CreditDetail>
+          <CreditDetail>{t(`${id}.text.credit.pairs.1`)}</CreditDetail>
+          <CreditDetail>{t(`${id}.text.credit.pairs.2`)}</CreditDetail>
+          <CreditDetail>{t(`${id}.text.credit.pairs.3`)}</CreditDetail>
+        </Credit>
+        <DonateWrapper>
+          <DonateButton />
+        </DonateWrapper>
       </ArticleWrapper>
     )
   } else {
@@ -242,7 +268,20 @@ export default function Ending({ id, image }) {
           <Text lang={lang}>{t(`${id}.text.second.pairs.4.body`)}</Text>
           <Text lang={lang}>{t(`${id}.text.second.pairs.5.body`)}</Text>
         </Second>
-        <Credit>{t(`${id}.text.credit`)}</Credit>
+        <Credit>
+          <CreditDetail>
+            <span>{t(`${id}.text.credit.pairs.0`)}</span>
+            <IG href={t(`${id}.text.first.ig`)} target="_blank">
+              <img src="images/ig.svg" alt="instagram link" />
+            </IG>
+          </CreditDetail>
+          <CreditDetail>{t(`${id}.text.credit.pairs.1`)}</CreditDetail>
+          <CreditDetail>{t(`${id}.text.credit.pairs.2`)}</CreditDetail>
+          <CreditDetail>{t(`${id}.text.credit.pairs.3`)}</CreditDetail>
+        </Credit>
+        <DonateWrapper>
+          <DonateButton />
+        </DonateWrapper>
       </ArticleWrapper>
     )
   }
