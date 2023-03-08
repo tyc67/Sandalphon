@@ -10,6 +10,8 @@ ReactGA.initialize(environment === 'dev' ? 'UA-83609754-2' : 'UA-83609754-1')
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     ReactGA.pageview(window.location.pathname)
+
+    document.addEventListener('contextmenu', (event) => event.preventDefault())
   }, [])
   return (
     <>
