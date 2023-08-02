@@ -1,3 +1,10 @@
+import Layout from '../components/shared/layout'
 export default function Home() {
-  return <div>Home</div>
+  return (
+    <>
+      <Layout>
+        <main>Home</main>
+      </Layout>
+    </>
+  )
 }
