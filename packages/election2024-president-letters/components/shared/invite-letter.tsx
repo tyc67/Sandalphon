@@ -98,7 +98,6 @@ export default function InviteLetter({
   description,
   image,
 }: InviteLetterProp): JSX.Element {
-  console.log(candidates[id as keyof typeof candidates])
   return (
     <Wrapper>
       <Top>
