@@ -1,16 +1,32 @@
 import styled from 'styled-components'
 
 import Image from 'next/image'
-const Picture = styled.picture`
+
+import { css } from 'styled-components'
+
+const pictureCoverCSS = css`
   position: relative;
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   padding-top: 75%; //fallback for aspect-ratio
 `
+const Picture = styled.picture<{ type: 'cover' | 'content' }>`
+  ${({ type }) => {
+    switch (type) {
+      case 'cover':
+        return pictureCoverCSS
+      case 'content':
+        return null //todo
+      default:
+        return null //todo
+    }
+  }}
+`
 
 type CoverImageProps = {
   name: string
+  type?: 'cover' | 'content'
   imagesSrc: {
     desktop: string
     tablet: string
@@ -21,12 +37,13 @@ type CoverImageProps = {
   }
 }
 
-export default function CoverImage({
+export default function ArticleImage({
   name,
+  type = 'content',
   imagesSrc,
 }: CoverImageProps): JSX.Element {
   return (
-    <Picture>
+    <Picture type={type}>
       <source
         srcSet={imagesSrc.desktopWebP}
         media="(min-width: 1200px)"

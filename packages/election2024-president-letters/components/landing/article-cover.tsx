@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import CoverImage from '../shared/cover-image'
+import CoverImage from '../shared/article-image'
 import { font, color } from '../../styles/theme'
 import { CANDIDATES } from '../../constants'
 const { h2, body2 } = font
@@ -47,7 +47,11 @@ const Description = styled.p`
 export default function ArticleCover() {
   return (
     <>
-      <CoverImage name="姚人多" imagesSrc={YAO_JAO_TO_COVER_IMAGE} />
+      <CoverImage
+        type="cover"
+        name="姚人多"
+        imagesSrc={YAO_JAO_TO_COVER_IMAGE}
+      />
       <Bottom>
         <Title>
           <span>盡力明白身邊的年輕人</span>
