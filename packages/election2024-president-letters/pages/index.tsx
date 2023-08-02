@@ -3,7 +3,7 @@ import Layout from '../components/shared/layout'
 import { color } from '../styles/theme'
 const { background } = color
 import InviteLetter from '../components/shared/invite-letter'
-
+import ArticleYaoJeoTo from '../components/landing/article-yao-jen-to'
 import { CANDIDATES_LETTER } from '../constants'
 
 const Main = styled.main``
@@ -30,6 +30,7 @@ export default function Home() {
               ></InviteLetter>
             ))}
           </Wrapper>
+          <ArticleYaoJeoTo />
         </Main>
       </Layout>
     </>
