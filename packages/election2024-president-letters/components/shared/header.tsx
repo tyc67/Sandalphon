@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import MirrorMediaIcon from '../../public/icon/mirror-media.svg'
 const HeaderWrapper = styled.header`
-  background-color: rgba(239, 239, 239, 1);
+  background-color: white;
   display: flex;
   padding: 8px 12px;
 `
