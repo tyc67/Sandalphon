@@ -9,12 +9,12 @@ import { css } from 'styled-components'
 const pictureCoverCSS = css`
   position: relative;
   display: block;
-  width: 100vw;
+  width: 100%;
   height: 42.25vh;
 
   img {
     width: 100%;
-    height: 100%;
+
     /* height: calc(100vh - 254px); */
 
     object-fit: cover;
@@ -22,6 +22,10 @@ const pictureCoverCSS = css`
   ${breakpoint.xl} {
     width: 600px;
     height: 450px;
+  }
+  ${breakpoint.xxl} {
+    width: 720px;
+    height: 540px;
   }
   /* max-height: 512px; */
 `
@@ -31,6 +35,7 @@ const pictureContentCSS = css<{
 }>`
   position: relative;
   display: block;
+  margin: 0 auto;
   img {
     width: 100%;
     height: ${({ shouldRespectImageWightAndHeight, isFullSizeImage }) => {
@@ -113,7 +118,7 @@ export default function ArticleImage({
   shouldRespectImageWightAndHeight = false,
   imageCaption = '',
 }: CoverImageProps): JSX.Element {
-  const hasImageCaption = !!imageCaption
+  const hasImageCaption = false
   return (
     <Figure type={type}>
       <Picture
