@@ -38,18 +38,18 @@ const Picture = styled.picture<{
     }
   }}
 `
-
+export type ImagesSrc = {
+  desktop: string
+  tablet: string
+  mobile: string
+  desktopWebP: string
+  tabletWebP: string
+  mobileWebP: string
+}
 type CoverImageProps = {
   name: string
   type?: 'cover' | 'content'
-  imagesSrc: {
-    desktop: string
-    tablet: string
-    mobile: string
-    desktopWebP: string
-    tabletWebP: string
-    mobileWebP: string
-  }
+  imagesSrc: ImagesSrc
   imageDirection?: 'horizontal' | 'vertical'
 }
 
