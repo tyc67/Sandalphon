@@ -23,6 +23,11 @@ const bodyFont = css`
   line-height: ${body.lineHeight};
   font-weight: ${body.weight};
 `
+const MaxWidth = css`
+  max-width: 640px; //todo: after implement like/dislike, should adjust this value
+  margin-left: auto;
+  margin-right: auto;
+`
 
 const Wrapper = styled.section`
   background-color: ${background.gray};
@@ -37,11 +42,13 @@ const Text = styled.p`
   ${bodyFont};
   ${defaultMargin};
   ${defaultPadding};
+  ${MaxWidth}
 `
 
 const Intro = styled.section`
   ${defaultMargin};
   ${defaultPadding};
+  ${MaxWidth}
   padding-top: 8px;
   padding-bottom: 20px;
   margin-right: 20px;
@@ -73,6 +80,7 @@ const SecondText = styled(Text)`
 `
 const Subtitle = styled.h2<{ candidateId: string }>`
   ${defaultPadding};
+  ${MaxWidth}
   font-size: ${h3.size};
   line-height: ${h3.lineHeight};
   font-weight: ${h3.weight};

@@ -70,6 +70,9 @@ const Picture = styled.picture<{
 `
 const Figure = styled.figure<{ type: 'cover' | 'content' }>`
   margin-bottom: ${({ type }) => (type === 'content' ? '24px' : 'unset')};
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 `
 const Figcaption = styled.figcaption`
   padding: 4px 20px;
