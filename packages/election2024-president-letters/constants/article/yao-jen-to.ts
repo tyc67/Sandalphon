@@ -24,6 +24,11 @@ const content: ArticleContent = [
   {
     type: 'image',
     value: 'yao-jen-to/2',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '得到年輕人喜歡、支持的參選人通常在選戰中處於攻勢，也有優勢。（資料照片）',
+    },
   },
   {
     type: 'text',
@@ -48,6 +53,10 @@ const content: ArticleContent = [
   {
     type: 'image',
     value: 'yao-jen-to/3',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption: '年輕人的投票意向，對大選整體趨勢有重要影響。（資料照片）',
+    },
   },
   {
     type: 'text',

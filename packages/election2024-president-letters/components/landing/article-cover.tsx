@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import CoverImage from '../shared/article-image'
-import { font, color } from '../../styles/theme'
+import { font, color, breakpoint } from '../../styles/theme'
 import { CANDIDATES } from '../../constants'
 const { h2, body2 } = font
 const { text, candidates } = color
@@ -12,16 +12,41 @@ const YAO_JAO_TO_COVER_IMAGE = {
   tabletWebP: '/images/article/yao-jen-to/1-tablet.webp',
   mobileWebP: '/images/article/yao-jen-to/1-mobile.webp',
 }
-
+const Wrapper = styled.section`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  ${breakpoint.xl} {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+`
 const Bottom = styled.section`
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: white;
   padding: 40px 20px;
+  position: relative;
+  min-height: 254px;
+  ${breakpoint.xl} {
+    height: 450px;
+    padding: 40px;
+    justify-content: end;
+  }
+  ${breakpoint.xxl} {
+    padding: 40px 120px;
+  }
 `
 const Title = styled.h2`
   color: ${text.important};
   font-size: ${h2.size};
   line-height: ${h2.lineHeight};
   font-weight: ${h2.weight};
+  ${breakpoint.xl} {
+    margin-bottom: 80px;
+  }
 `
 const CandidatesName = styled.span<{ candidateId: string }>`
   margin-right: 8px;
@@ -32,7 +57,6 @@ const CandidatesName = styled.span<{ candidateId: string }>`
 `
 
 const Description = styled.p`
-  margin-top: 73px;
   .author {
     font-size: ${body2.size};
     line-height: ${body2.lineHeight};
@@ -46,11 +70,12 @@ const Description = styled.p`
 
 export default function ArticleCover() {
   return (
-    <>
+    <Wrapper>
       <CoverImage
         type="cover"
         name="姚人多"
         imagesSrc={YAO_JAO_TO_COVER_IMAGE}
+        isFullSizeImage={true}
       />
       <Bottom>
         <Title>
@@ -76,6 +101,6 @@ export default function ArticleCover() {
           </span>
         </Description>
       </Bottom>
-    </>
+    </Wrapper>
   )
 }

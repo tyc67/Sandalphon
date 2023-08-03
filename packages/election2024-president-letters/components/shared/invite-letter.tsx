@@ -1,17 +1,29 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
-import { color, font } from '../../styles/theme'
+import { color, font, breakpoint } from '../../styles/theme'
 import LeftArrowSvg from '../../public/icon/left-arrow.svg'
 const { h5, body2 } = font
 const { border, text, candidates } = color
 
+const CANDIDATES_ID_PATH_MAPPING = {
+  LaiChingTe: 'lai-ching-te',
+  HouYuIh: 'hou-yu-ih',
+  KoWenJe: 'ko-wen-je',
+}
 const Wrapper = styled.section`
   padding: 16px 16px 4px 16px;
   border: 1px ${border} solid;
   background-color: white;
-  margin-bottom: 8px;
+
   border-radius: 12px;
+  max-width: 280px;
+  margin: 0 auto 8px auto;
+  ${breakpoint.xl} {
+    max-width: 280px;
+    min-width: 280px;
+    margin: 0 0 0 0;
+  }
 `
 const Top = styled.div`
   display: flex;
@@ -77,12 +89,25 @@ const Bottom = styled.button<{ textColor: string }>`
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  svg {
-    margin-left: 6px;
-    path {
-      fill: ${(props) => props.textColor};
+
+    svg {
+      margin-left: 6px;
+      path {
+        fill: ${(props) => props.textColor};
+      }
     }
+    &:hover {
+      color: ${text.important};
+      svg {
+        path {
+          fill: ${text.important};
+        }
+      }
+    }
+  }
+
+  &:hover {
+    color: ${text.important};
   }
 `
 type InviteLetterProp = {
@@ -98,6 +123,10 @@ export default function InviteLetter({
   description,
   image,
 }: InviteLetterProp): JSX.Element {
+  const href = `/article/${
+    CANDIDATES_ID_PATH_MAPPING[id as keyof typeof CANDIDATES_ID_PATH_MAPPING]
+  }`
+
   return (
     <Wrapper>
       <Top>
@@ -115,7 +144,7 @@ export default function InviteLetter({
         </Detail>
       </Top>
       <Bottom textColor={candidates[id as keyof typeof candidates].text}>
-        <Link href="https://www.mirrormedia.mg/">
+        <Link href={href}>
           <span>開啟信件</span>
           <LeftArrowSvg />
         </Link>

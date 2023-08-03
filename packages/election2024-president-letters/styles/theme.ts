@@ -4,6 +4,7 @@ const mediaSize = {
   md: 768,
   lg: 992,
   xl: 1200,
+  xxl: 1440,
 }
 
 const breakpoint = {
@@ -12,6 +13,7 @@ const breakpoint = {
   md: `@media (min-width: ${mediaSize.md}px)`,
   lg: `@media (min-width: ${mediaSize.lg}px)`,
   xl: `@media (min-width: ${mediaSize.xl}px)`,
+  xxl: `@media (min-width: ${mediaSize.xxl}px)`,
 }
 
 const color = {
@@ -55,6 +57,7 @@ const font = {
   body: { size: '16px', lineHeight: 1.8, weight: '400' },
   body2: { size: '14px', lineHeight: 1.5, weight: '400' },
   tiny: { size: '12px', lineHeight: 2.0, weight: '400' },
+  tiny2: { size: '12px', lineHeight: 1.5, weight: '400' },
 }
 const theme = {
   breakpoint: breakpoint,
