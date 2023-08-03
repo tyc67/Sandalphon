@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import CoverImage from '../shared/article-image'
-import { font, color } from '../../styles/theme'
+import { font, color, breakpoint } from '../../styles/theme'
 import { CANDIDATES } from '../../constants'
 const { h2, body2 } = font
 const { text, candidates } = color
@@ -16,6 +16,10 @@ const Wrapper = styled.section`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  ${breakpoint.xl} {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
 `
 const Bottom = styled.section`
   display: flex;
@@ -26,12 +30,19 @@ const Bottom = styled.section`
   padding: 40px 20px;
   position: relative;
   min-height: 254px;
+  ${breakpoint.xl} {
+    height: 450px;
+    justify-content: end;
+  }
 `
 const Title = styled.h2`
   color: ${text.important};
   font-size: ${h2.size};
   line-height: ${h2.lineHeight};
   font-weight: ${h2.weight};
+  ${breakpoint.xl} {
+    margin-bottom: 80px;
+  }
 `
 const CandidatesName = styled.span<{ candidateId: string }>`
   margin-right: 8px;

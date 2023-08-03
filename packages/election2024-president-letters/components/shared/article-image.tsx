@@ -19,6 +19,10 @@ const pictureCoverCSS = css`
 
     object-fit: cover;
   }
+  ${breakpoint.xl} {
+    width: 600px;
+    height: 450px;
+  }
   /* max-height: 512px; */
 `
 const pictureContentCSS = css<{

@@ -1,6 +1,6 @@
 import ArticleImage, { ImagesSrc } from '../shared/article-image'
 import styled from 'styled-components'
-import { font, color } from '../../styles/theme'
+import { font, color, breakpoint } from '../../styles/theme'
 import SvgOpenLetterGreen from '../../public/icon/mail-open-green.svg'
 import SvgOpenLetterBlue from '../../public/icon/mail-open-blue.svg'
 import SvgOpenLetterWhite from '../../public/icon/mail-open-white.svg'
@@ -17,6 +17,10 @@ const Wrapper = styled.section`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  ${breakpoint.xl} {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
 `
 const Bottom = styled.section`
   display: flex;
@@ -33,6 +37,16 @@ const Bottom = styled.section`
     bottom: -16px;
     right: 0;
     transform: rotate(25deg) translate(-50%, -50%);
+  }
+  ${breakpoint.xl} {
+    height: 450px;
+    justify-content: end;
+    svg {
+      bottom: 0;
+      top: 35%;
+      left: 50px;
+      transform: rotate(0deg) translate(-50%, -50%);
+    }
   }
 `
 const Title = styled.h1<{ candidateId: string }>`
@@ -52,6 +66,9 @@ const Title = styled.h1<{ candidateId: string }>`
       candidates[props.candidateId as keyof typeof candidates].text};
     background-color: ${(props) =>
       candidates[props.candidateId as keyof typeof candidates].background};
+  }
+  ${breakpoint.xl} {
+    margin-bottom: 80px;
   }
 `
 const Desc = styled.div`
