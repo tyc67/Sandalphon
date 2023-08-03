@@ -6,7 +6,7 @@ export default function ArticleYaoJeoTo() {
   return (
     <article>
       <ArticleCover></ArticleCover>
-      <ArticleContent content={content} name="姚人多"></ArticleContent>
+      <ArticleContent content={content} name="姚人多" id=""></ArticleContent>
     </article>
   )
 }

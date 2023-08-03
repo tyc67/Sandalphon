@@ -24,6 +24,7 @@ export default function ArticleHoYouIh() {
         />
         <ArticleContent
           content={content}
+          id={HOU_YU_IH_LETTER.id}
           name={HOU_YU_IH_LETTER.name}
         ></ArticleContent>
       </article>

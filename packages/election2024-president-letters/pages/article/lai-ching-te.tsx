@@ -24,6 +24,7 @@ export default function ArticleLaiChingTe() {
         <ArticleContent
           content={content}
           name={LAI_CHING_TE_LETTER.name}
+          id={LAI_CHING_TE_LETTER.id}
         ></ArticleContent>
       </article>
     </main>

@@ -2,8 +2,9 @@ import ArticleImage from './article-image'
 
 import styled, { css } from 'styled-components'
 import { font, color } from '../../styles/theme'
-const { background, text } = color
-const { body } = font
+const { background, text, border, candidates } = color
+const { body, h3, h5 } = font
+
 import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
@@ -37,11 +38,50 @@ const Text = styled.p`
   ${defaultMargin};
   ${defaultPadding};
 `
+
+const Intro = styled.section`
+  ${defaultMargin};
+  ${defaultPadding};
+  padding-top: 8px;
+  padding-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: white;
+  border: 1px solid ${border};
+  border-radius: 12px;
+  font-size: ${h5.size};
+  line-height: ${h5.lineHeight};
+  font-weight: ${h5.weight};
+  color: ${text.secondary};
+  p {
+    margin-top: 12px;
+    background: linear-gradient(
+      0deg,
+      ${border} 1px,
+      rgba(0, 0, 0, 0) 1px,
+      rgba(0, 0, 0, 0) 100%
+    );
+    background-size: ${`100% calc(${h5.size} * ${h5.lineHeight})`};
+  }
+`
+
 const MainText = styled(Text)`
   color: ${text.important};
 `
 const SecondText = styled(Text)`
   color: ${text.secondary};
+`
+const Subtitle = styled.h2<{ candidateId: string }>`
+  ${defaultPadding};
+  font-size: ${h3.size};
+  line-height: ${h3.lineHeight};
+  font-weight: ${h3.weight};
+  margin-bottom: 20px;
+  color: ${(props) =>
+    candidates[props.candidateId as keyof typeof candidates].text};
+  span {
+    display: block;
+  }
 `
 const formatImagePath = (value: string): any => {
   const device = {
@@ -69,9 +109,30 @@ const formatImagePath = (value: string): any => {
   }, {} as Record<string, string>)
   return imageSrc
 }
-const parseArticleContent = (content: ArticleContentType, name: string) => {
+
+const parseArticleContent = (
+  content: ArticleContentType,
+  name: string,
+  id: string
+) => {
   const renderItem = (item: ArticleContentItem) => {
     switch (item.type) {
+      case 'intro':
+        return (
+          <Intro>
+            {item.value.map((i, index) => (
+              <p key={index}>{i}</p>
+            ))}
+          </Intro>
+        )
+      case 'subtitle':
+        return (
+          <Subtitle candidateId={id}>
+            {item.value.map((i, index) => (
+              <span key={index}>{i}</span>
+            ))}
+          </Subtitle>
+        )
       case 'text':
         return <MainText>{item.value}</MainText>
       case 'second-text':
@@ -96,12 +157,14 @@ const parseArticleContent = (content: ArticleContentType, name: string) => {
 type ArticleContentProps = {
   content: ArticleContentType
   name: string
+  id: string
 }
 
 export default function ArticleContent({
   content,
   name = '',
+  id,
 }: ArticleContentProps): JSX.Element {
-  const contentJsx = parseArticleContent(content, name)
+  const contentJsx = parseArticleContent(content, name, id)
   return <Wrapper>{contentJsx}</Wrapper>
 }

@@ -8,11 +8,22 @@ const pictureCoverCSS = css`
   position: relative;
   display: block;
   width: 100%;
-  height: fit-content;
+  height: auto;
+  max-height: calc(100vh - 254px);
+  img {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 254px); //minus height of bottom
+
+    object-fit: cover;
+  }
+  /* max-height: 512px; */
 `
 const pictureContentCSS = css<{ isFullSizeImage: boolean }>`
   position: relative;
   display: block;
+  margin-bottom: 24px;
   img {
     width: 100%;
     height: fit-content;
