@@ -113,6 +113,7 @@ export default function ArticleImage({
   shouldRespectImageWightAndHeight = false,
   imageCaption = '',
 }: CoverImageProps): JSX.Element {
+  const hasImageCaption = !!imageCaption
   return (
     <Figure type={type}>
       <Picture
@@ -142,9 +143,12 @@ export default function ArticleImage({
         />
         <source srcSet={imagesSrc.mobileWebP} type="image/webP" />
 
-        <img alt={name} src={imagesSrc.mobile}></img>
+        <img
+          alt={hasImageCaption ? imageCaption : name}
+          src={imagesSrc.mobile}
+        ></img>
       </Picture>
-      <Figcaption>{imageCaption}</Figcaption>
+      {hasImageCaption && <Figcaption>{imageCaption}</Figcaption>}
     </Figure>
   )
 }
