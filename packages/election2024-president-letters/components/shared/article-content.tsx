@@ -36,6 +36,7 @@ const Wrapper = styled.section`
   *:last-child {
     margin-bottom: 0px;
   }
+  overflow-x: hidden;
 `
 
 const Text = styled.p`
