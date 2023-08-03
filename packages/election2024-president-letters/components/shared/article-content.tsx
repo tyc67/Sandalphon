@@ -83,6 +83,7 @@ const parseArticleContent = (content: ArticleContentType, name: string) => {
             name={name}
             type="content"
             imagesSrc={imagesSrc}
+            isFullSizeImage={item.imageOption?.isFullSizeImage}
           ></ArticleImage>
         )
       default:

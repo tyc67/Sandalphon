@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import Image from 'next/image'
+// import Image from 'next/image'
 
 import { css } from 'styled-components'
 
@@ -8,24 +8,24 @@ const pictureCoverCSS = css`
   position: relative;
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  padding-top: 75%; //fallback for aspect-ratio
+  height: fit-content;
 `
-const pictureContentCSS = css<{ shouldObjectFitContain: boolean }>`
+const pictureContentCSS = css<{ isFullSizeImage: boolean }>`
   position: relative;
   display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  padding-top: 75%; //fallback for aspect-ratio
   img {
-    object-fit: ${({ shouldObjectFitContain }) =>
-      shouldObjectFitContain ? 'contain' : 'initial'};
+    width: 100%;
+    height: fit-content;
+    object-fit: ${({ isFullSizeImage }) =>
+      isFullSizeImage ? 'initial' : 'cover'};
+    max-width: ${({ isFullSizeImage }) =>
+      isFullSizeImage ? 'initial' : '600px'};
+    margin: 0 auto;
   }
 `
 const Picture = styled.picture<{
   type: 'cover' | 'content'
-  shouldObjectFitContain: boolean
+  isFullSizeImage: boolean
 }>`
   ${({ type }) => {
     switch (type) {
@@ -50,19 +50,18 @@ type CoverImageProps = {
   name: string
   type?: 'cover' | 'content'
   imagesSrc: ImagesSrc
-  imageDirection?: 'horizontal' | 'vertical'
+  isFullSizeImage?: boolean
 }
 
 export default function ArticleImage({
   name,
   type = 'content',
   imagesSrc,
-  imageDirection = 'horizontal',
+  isFullSizeImage = true,
 }: CoverImageProps): JSX.Element {
-  const shouldObjectFitContain = imageDirection === 'horizontal'
   return (
     <>
-      <Picture type={type} shouldObjectFitContain={shouldObjectFitContain}>
+      <Picture type={type} isFullSizeImage={isFullSizeImage}>
         <source
           srcSet={imagesSrc.desktopWebP}
           media="(min-width: 1200px)"
@@ -85,7 +84,7 @@ export default function ArticleImage({
         />
         <source srcSet={imagesSrc.mobileWebP} type="image/webP" />
 
-        <Image alt={name} src={imagesSrc.mobile} fill></Image>
+        <img alt={name} src={imagesSrc.mobile}></img>
       </Picture>
     </>
   )
