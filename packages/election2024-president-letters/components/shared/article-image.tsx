@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import { breakpoint } from '../../styles/theme'
-
+import { breakpoint, color, font } from '../../styles/theme'
+const { tiny2 } = font
+const { text } = color
 // import Image from 'next/image'
 
 import { css } from 'styled-components'
@@ -26,7 +27,6 @@ const pictureContentCSS = css<{
 }>`
   position: relative;
   display: block;
-  margin-bottom: 24px;
   img {
     width: 100%;
     height: ${({ shouldRespectImageWightAndHeight, isFullSizeImage }) => {
@@ -68,6 +68,19 @@ const Picture = styled.picture<{
     }
   }}
 `
+const Figure = styled.figure<{ type: 'cover' | 'content' }>`
+  margin-bottom: ${({ type }) => (type === 'content' ? '24px' : 'unset')};
+`
+const Figcaption = styled.figcaption`
+  padding: 4px 20px;
+  background-color: white;
+  color: ${text.secondary};
+  font-size: ${tiny2.size};
+  line-height: ${tiny2.lineHeight};
+  font-weight: ${tiny2.weight};
+  text-align: center;
+`
+
 export type ImagesSrc = {
   desktop: string
   tablet: string
@@ -82,6 +95,7 @@ type CoverImageProps = {
   imagesSrc: ImagesSrc
   isFullSizeImage?: boolean
   shouldRespectImageWightAndHeight?: boolean
+  imageCaption?: string
 }
 
 export default function ArticleImage({
@@ -90,9 +104,10 @@ export default function ArticleImage({
   imagesSrc,
   isFullSizeImage = true,
   shouldRespectImageWightAndHeight = false,
+  imageCaption = '',
 }: CoverImageProps): JSX.Element {
   return (
-    <>
+    <Figure type={type}>
       <Picture
         type={type}
         isFullSizeImage={isFullSizeImage}
@@ -122,6 +137,7 @@ export default function ArticleImage({
 
         <img alt={name} src={imagesSrc.mobile}></img>
       </Picture>
-    </>
+      <Figcaption>{imageCaption}</Figcaption>
+    </Figure>
   )
 }

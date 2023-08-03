@@ -4,7 +4,7 @@ type SubtitleValue = string[]
 type OtherValue = string
 export type ImageOption = {
   isFullSizeImage: boolean
-  imageCaption: string
+  imageCaption?: string
   shouldRespectImageWightAndHeight?: boolean
 }
 export type ArticleContentItem =

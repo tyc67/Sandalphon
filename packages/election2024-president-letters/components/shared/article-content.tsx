@@ -77,12 +77,14 @@ const Subtitle = styled.h2<{ candidateId: string }>`
   line-height: ${h3.lineHeight};
   font-weight: ${h3.weight};
   margin-bottom: 20px;
+  margin-top: 40px;
   color: ${(props) =>
     candidates[props.candidateId as keyof typeof candidates].text};
   span {
     display: block;
   }
 `
+
 const formatImagePath = (value: string): any => {
   const device = {
     mobile: 'mobile',
@@ -144,6 +146,7 @@ const parseArticleContent = (
             name={name}
             type="content"
             imagesSrc={imagesSrc}
+            imageCaption={item.imageOption?.imageCaption}
             isFullSizeImage={item.imageOption.isFullSizeImage}
             shouldRespectImageWightAndHeight={
               item.imageOption?.shouldRespectImageWightAndHeight
