@@ -54,7 +54,12 @@ export const content: ArticleContent = [
   },
   {
     type: 'image',
-    value: '3',
+    value: 'hou-yu-ih/2',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '侯友宜父親當年在菜市場賣豬，用來載豬肉的腳踏車。（侯友宜競選辦公室提供）',
+    },
   },
   {
     type: 'text',
@@ -92,7 +97,12 @@ export const content: ArticleContent = [
   },
   {
     type: 'image',
-    value: '4',
+    value: 'hou-yu-ih/3',
+    imageOption: {
+      isFullSizeImage: false,
+      imageCaption:
+        '侯友宜於中央警官學校就讀時的警官學校制服照。（侯友宜競選辦公室提供）',
+    },
   },
   {
     type: 'text',
@@ -160,7 +170,12 @@ export const content: ArticleContent = [
   },
   {
     type: 'image',
-    value: '4/5',
+    value: 'hou-yu-ih/4',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '侯友宜就讀中央警官學校，參加學生旅遊時的照片。（侯友宜競選辦公室提供）',
+    },
   },
   {
     type: 'subtitle',

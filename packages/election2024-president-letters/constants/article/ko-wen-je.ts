@@ -18,6 +18,11 @@ export const content: ArticleContent = [
   {
     type: 'image',
     value: 'ko-wen-je/2',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '我想和所有台灣年輕人說的是 Nothing is impossible，你的人生只有你自己能走完，無論多少白眼、多少訕笑，唯有跨出舒適圈，才可能成長，才能改變現狀。（柯文哲競選辦公室提供）',
+    },
   },
   {
     type: 'text',
@@ -55,6 +60,11 @@ export const content: ArticleContent = [
   {
     type: 'image',
     value: 'ko-wen-je/3',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '政府拿美化過的數字對人民宣傳，看不見正直誠信的價值與勇於改正的勇氣，難怪年輕人無力，這絕對是台灣的危機。（柯文哲競選辦公室提供）',
+    },
   },
   {
     type: 'text',
@@ -91,6 +101,11 @@ export const content: ArticleContent = [
   {
     type: 'image',
     value: 'ko-wen-je/4',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '64 歲的阿北還堅持著他的理念，「你有勇氣和我一起前進嗎？」（柯文哲競選辦公室提供）',
+    },
   },
   {
     type: 'text',
@@ -118,6 +133,11 @@ export const content: ArticleContent = [
   {
     type: 'image',
     value: 'ko-wen-je/5',
+    imageOption: {
+      isFullSizeImage: false,
+      imageCaption:
+        '一日雙塔的價值，不是挑戰自我體能極限，而是相信 Nothing is impossible。（柯文哲競選辦公室提供）',
+    },
   },
   {
     type: 'text',

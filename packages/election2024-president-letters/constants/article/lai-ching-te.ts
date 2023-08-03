@@ -31,6 +31,10 @@ const content: ArticleContent = [
   {
     type: 'image',
     value: 'lai-ching-te/2',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption: '賴清德在親子餐廳。（民進黨提供）',
+    },
   },
   {
     type: 'text',
@@ -90,6 +94,11 @@ const content: ArticleContent = [
   {
     type: 'image',
     value: 'lai-ching-te/3',
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '民進黨執政團隊推出照顧通勤族荷包的TPASS區域通勤月票。（民進黨提供）',
+    },
   },
   {
     type: 'subtitle',
@@ -149,7 +158,12 @@ const content: ArticleContent = [
   {
     type: 'image',
     value: 'lai-ching-te/6',
-    imageOption: { isFullSizeImage: true },
+    imageOption: {
+      isFullSizeImage: true,
+      imageCaption:
+        '政府歲入歲出賸餘（2005-2022）、台灣與主要國家政府債務比較（民進黨提供）',
+      shouldRespectImageWightAndHeight: true,
+    },
   },
   { type: 'subtitle', value: ['台灣前途：一個民主和平的國家'] },
   {
