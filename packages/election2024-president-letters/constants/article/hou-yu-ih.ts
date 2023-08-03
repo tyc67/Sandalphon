@@ -3,11 +3,14 @@ export type { ArticleContent as ArticleContent }
 
 export const content: ArticleContent = [
   {
-    type: 'subtitle',
-    value: ['給年輕人的一封信', '讓改變看得見'],
+    type: 'intro',
+    value: [
+      '嗨，年輕朋友，我是侯友宜，很高興能和你在此聊天。',
+      '也許你對成人的關心與理解不再抱有期望，也許你對選舉時刻參選人的承諾與吹噓更是嗤之以鼻，但是我很珍惜你關注我的這短暫時刻，希望把握機會，跟你談談我一直想跟年輕朋友聊的東西。',
+    ],
   },
   {
-    type: 'intro',
+    type: 'subtitle',
     value: ['虛心傾聽', '是了解年輕人的途徑'],
   },
   {

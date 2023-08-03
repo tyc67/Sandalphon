@@ -116,7 +116,7 @@ export const content: ArticleContent = [
     value: '這封信到尾聲了，我要再跟大家說一個故事。',
   },
   {
-    type: 'text',
+    type: 'image',
     value: 'ko-wen-je/5',
   },
   {
