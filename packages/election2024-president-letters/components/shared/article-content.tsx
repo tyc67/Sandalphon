@@ -144,7 +144,10 @@ const parseArticleContent = (
             name={name}
             type="content"
             imagesSrc={imagesSrc}
-            isFullSizeImage={item.imageOption?.isFullSizeImage}
+            isFullSizeImage={item.imageOption.isFullSizeImage}
+            shouldRespectImageWightAndHeight={
+              item.imageOption?.shouldRespectImageWightAndHeight
+            }
           ></ArticleImage>
         )
       default:

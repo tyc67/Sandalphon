@@ -26,6 +26,8 @@ const Bottom = styled.section`
   background-color: white;
   padding: 40px 20px;
   position: relative;
+  min-height: 340px;
+
   svg {
     position: absolute;
     bottom: -16px;
@@ -88,6 +90,7 @@ export default function ArticleCover({
         name={name}
         type="cover"
         imagesSrc={imagesSrc}
+        isFullSizeImage={true}
       ></ArticleImage>
       <Bottom>
         <Title candidateId={id}>
