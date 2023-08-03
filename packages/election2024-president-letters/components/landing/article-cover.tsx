@@ -5,12 +5,12 @@ import { CANDIDATES } from '../../constants'
 const { h2, body2 } = font
 const { text, candidates } = color
 const YAO_JAO_TO_COVER_IMAGE = {
-  desktop: '/images/article/yao/1-desktop.jpeg',
-  tablet: '/images/article/yao/1-tablet.jpeg',
-  mobile: '/images/article/yao/1-mobile.jpeg',
-  desktopWebP: '/images/article/yao/1-desktop.webp',
-  tabletWebP: '/images/article/yao/1-tablet.webp',
-  mobileWebP: '/images/article/yao/1-mobile.webp',
+  desktop: '/images/article/yao-jen-to/1-desktop.jpeg',
+  tablet: '/images/article/yao-jen-to/1-tablet.jpeg',
+  mobile: '/images/article/yao-jen-to/1-mobile.jpeg',
+  desktopWebP: '/images/article/yao-jen-to/1-desktop.webp',
+  tabletWebP: '/images/article/yao-jen-to/1-tablet.webp',
+  mobileWebP: '/images/article/yao-jen-to/1-mobile.webp',
 }
 
 const Bottom = styled.section`
