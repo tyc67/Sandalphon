@@ -6,6 +6,11 @@ import LeftArrowSvg from '../../public/icon/left-arrow.svg'
 const { h5, body2 } = font
 const { border, text, candidates } = color
 
+const CANDIDATES_ID_PATH_MAPPING = {
+  LaiChingTe: 'lai-ching-te',
+  HouYuIh: 'hou-yu-ih',
+  KoWenJe: 'ko-wen-je',
+}
 const Wrapper = styled.section`
   padding: 16px 16px 4px 16px;
   border: 1px ${border} solid;
@@ -105,6 +110,10 @@ export default function InviteLetter({
   description,
   image,
 }: InviteLetterProp): JSX.Element {
+  const href = `/article/${
+    CANDIDATES_ID_PATH_MAPPING[id as keyof typeof CANDIDATES_ID_PATH_MAPPING]
+  }`
+
   return (
     <Wrapper>
       <Top>
@@ -122,7 +131,7 @@ export default function InviteLetter({
         </Detail>
       </Top>
       <Bottom textColor={candidates[id as keyof typeof candidates].text}>
-        <Link href="https://www.mirrormedia.mg/">
+        <Link href={href}>
           <span>開啟信件</span>
           <LeftArrowSvg />
         </Link>
