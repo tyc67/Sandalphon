@@ -32,7 +32,11 @@ const Bottom = styled.section`
   min-height: 254px;
   ${breakpoint.xl} {
     height: 450px;
+    padding: 40px;
     justify-content: end;
+  }
+  ${breakpoint.xxl} {
+    padding: 40px 120px;
   }
 `
 const Title = styled.h2`

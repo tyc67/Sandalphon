@@ -40,12 +40,19 @@ const Bottom = styled.section`
   }
   ${breakpoint.xl} {
     height: 450px;
+    padding: 40px;
     justify-content: end;
     svg {
       bottom: 0;
-      top: 35%;
-      left: 50px;
+      top: 25%;
+      left: 60px;
       transform: rotate(0deg) translate(-50%, -50%);
+    }
+  }
+  ${breakpoint.xxl} {
+    padding: 40px 120px;
+    svg {
+      left: 140px;
     }
   }
 `
@@ -68,6 +75,8 @@ const Title = styled.h1<{ candidateId: string }>`
       candidates[props.candidateId as keyof typeof candidates].background};
   }
   ${breakpoint.xl} {
+    height: 152px;
+    margin-top: 116px;
     margin-bottom: 80px;
   }
 `

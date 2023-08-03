@@ -48,7 +48,7 @@ const Text = styled.p`
 const Intro = styled.section`
   ${defaultMargin};
   ${defaultPadding};
-  ${MaxWidth}
+  ${MaxWidth};
   padding-top: 8px;
   padding-bottom: 20px;
   margin-right: 20px;
