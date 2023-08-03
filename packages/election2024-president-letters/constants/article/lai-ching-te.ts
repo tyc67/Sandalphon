@@ -3,8 +3,9 @@ export type { ArticleContent as ArticleContent }
 const content: ArticleContent = [
   {
     type: 'intro',
-    value:
+    value: [
       '每個時代的青年，都在承擔那個時代發展的結果，雖然有承擔，但也帶來改變與希望。',
+    ],
   },
   { type: 'subtitle', value: ['自我期許：希望年輕人', '都有公平發展的機會'] },
   {
@@ -29,7 +30,7 @@ const content: ArticleContent = [
   },
   {
     type: 'image',
-    value: '2',
+    value: 'lai-ching-te/2',
   },
   {
     type: 'text',
@@ -88,7 +89,7 @@ const content: ArticleContent = [
   },
   {
     type: 'image',
-    value: '3',
+    value: 'lai-ching-te/3',
   },
   {
     type: 'subtitle',
@@ -144,13 +145,11 @@ const content: ArticleContent = [
     value:
       '我們一定要投資年輕人的教育，投資年輕人的生活支持體系，例如居住、托育、交通、性別、文化。生活品質好，年輕人才會留下來，社會支持足夠，家庭才有餘裕去投資自己和下一代。',
   },
+
   {
     type: 'image',
-    value: '4',
-  },
-  {
-    type: 'image',
-    value: '5',
+    value: 'lai-ching-te/6',
+    imageOption: { isFullSizeImage: true },
   },
   { type: 'subtitle', value: ['台灣前途：一個民主和平的國家'] },
   {

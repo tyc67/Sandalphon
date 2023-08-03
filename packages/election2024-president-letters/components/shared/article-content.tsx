@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components'
 import { font, color } from '../../styles/theme'
 const { background, text } = color
 const { body } = font
-import { content } from '../../constants/article/yao-jen-to'
 import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
@@ -70,7 +69,7 @@ const formatImagePath = (value: string): any => {
   }, {} as Record<string, string>)
   return imageSrc
 }
-const parseArticleContent = (content: ArticleContentType) => {
+const parseArticleContent = (content: ArticleContentType, name: string) => {
   const renderItem = (item: ArticleContentItem) => {
     switch (item.type) {
       case 'text':
@@ -81,7 +80,7 @@ const parseArticleContent = (content: ArticleContentType) => {
         const imagesSrc = formatImagePath(item.value)
         return (
           <ArticleImage
-            name="姚人多"
+            name={name}
             type="content"
             imagesSrc={imagesSrc}
           ></ArticleImage>
@@ -93,7 +92,15 @@ const parseArticleContent = (content: ArticleContentType) => {
   return content.map((contentItem) => renderItem(contentItem))
 }
 
-export default function ArticleContent() {
-  const contentJsx = parseArticleContent(content)
+type ArticleContentProps = {
+  content: ArticleContentType
+  name: string
+}
+
+export default function ArticleContent({
+  content,
+  name = '',
+}: ArticleContentProps): JSX.Element {
+  const contentJsx = parseArticleContent(content, name)
   return <Wrapper>{contentJsx}</Wrapper>
 }

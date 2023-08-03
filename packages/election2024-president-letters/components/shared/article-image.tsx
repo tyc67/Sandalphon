@@ -59,7 +59,7 @@ export default function ArticleImage({
   imagesSrc,
   imageDirection = 'horizontal',
 }: CoverImageProps): JSX.Element {
-  const shouldObjectFitContain = imageDirection === 'vertical'
+  const shouldObjectFitContain = imageDirection === 'horizontal'
   return (
     <>
       <Picture type={type} shouldObjectFitContain={shouldObjectFitContain}>
