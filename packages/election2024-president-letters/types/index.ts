@@ -10,5 +10,8 @@ export type ArticleContentItem =
   | { type: 'subtitle'; value: SubtitleValue }
   | { type: 'intro'; value: SubtitleValue }
   | { type: 'image'; value: OtherValue; imageOption?: ImageOption }
-  | { type: Exclude<ItemType, 'subtitle' | 'image'>; value: OtherValue }
+  | {
+      type: Exclude<ItemType, 'subtitle' | 'image' | 'intro'>
+      value: OtherValue
+    }
 export type ArticleContent = ArticleContentItem[]
