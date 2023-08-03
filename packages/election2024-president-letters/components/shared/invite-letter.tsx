@@ -89,12 +89,25 @@ const Bottom = styled.button<{ textColor: string }>`
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  svg {
-    margin-left: 6px;
-    path {
-      fill: ${(props) => props.textColor};
+
+    svg {
+      margin-left: 6px;
+      path {
+        fill: ${(props) => props.textColor};
+      }
     }
+    &:hover {
+      color: ${text.important};
+      svg {
+        path {
+          fill: ${text.important};
+        }
+      }
+    }
+  }
+
+  &:hover {
+    color: ${text.important};
   }
 `
 type InviteLetterProp = {
