@@ -73,7 +73,7 @@ export default function ArticleCover({
     switch (id) {
       case 'LaiChingTe':
         return <SvgOpenLetterGreen />
-      case 'HoYuIh':
+      case 'HouYuIh':
         return <SvgOpenLetterBlue />
       case 'KoWenJe':
         return <SvgOpenLetterWhite />
