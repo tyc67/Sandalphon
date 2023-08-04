@@ -1,5 +1,5 @@
 import ArticleImage from './article-image'
-
+import { imagePrefix } from '../../config'
 import styled, { css } from 'styled-components'
 import { font, color } from '../../styles/theme'
 const { background, text, border, candidates } = color
@@ -49,11 +49,16 @@ const Text = styled.p`
 const Intro = styled.section`
   ${defaultMargin};
   ${defaultPadding};
-  ${MaxWidth};
+
   padding-top: 8px;
   padding-bottom: 20px;
   margin-right: 20px;
   margin-left: 20px;
+
+  @media (min-width: 640px) {
+    max-width: 600px;
+    margin: 0 auto;
+  }
   background-color: white;
   border: 1px solid ${border};
   border-radius: 12px;
@@ -109,7 +114,9 @@ const formatImagePath = (value: string): any => {
   const arrayWithWebP = arr.concat(arrWebP)
   arrayWithWebP.map((item) => {
     const isWebP = item[0].includes('WebP')
-    item[1] = `/images/article/${value}-${item[1]}.${isWebP ? 'webp' : 'jpeg'}`
+    item[1] = `${imagePrefix}/images/article/${value}-${item[1]}.${
+      isWebP ? 'webp' : 'jpeg'
+    }`
 
     return item
   })

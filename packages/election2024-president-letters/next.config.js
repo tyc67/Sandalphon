@@ -1,5 +1,44 @@
 /** @type {import('next').NextConfig} */
+
+let assetPrefixPath = ''
+switch (process.env.NEXT_PUBLIC_ENV) {
+  case 'prod':
+    assetPrefixPath = `https://www.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    break
+  case 'staging':
+    assetPrefixPath = `https://staging.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    break
+  case 'dev':
+    assetPrefixPath = `https://dev.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    break
+  default:
+    assetPrefixPath = 'http://localhost:3000'
+    break
+}
+
+let basePath = ''
+
+switch (process.env.NEXT_PUBLIC_ENV) {
+  case 'prod':
+    basePath = `/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    break
+  case 'staging':
+    basePath = `/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    break
+  case 'dev':
+    basePath = `/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    break
+  default:
+    basePath = ''
+    break
+}
 const nextConfig = {
+  assetPrefix: assetPrefixPath,
+  images: {
+    loader: 'custom',
+    loaderFile: './loader.ts',
+  },
+  basePath: basePath,
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
@@ -7,6 +46,15 @@ const nextConfig = {
       displayName: true,
       ssr: true,
     },
+  },
+
+  exportPathMap: async function () {
+    return {
+      '/article/lai-ching-te/index': { page: '/article/lai-ching-te' },
+      '/article/hou-yu-ih/index': { page: '/article/hou-yu-ih' },
+      '/article/ko-wen-je/index': { page: '/article/ko-wen-je' },
+      '/': { page: '/' },
+    }
   },
   webpack(config) {
     config.module.rules.push(
