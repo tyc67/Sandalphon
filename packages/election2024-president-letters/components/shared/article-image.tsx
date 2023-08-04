@@ -10,16 +10,15 @@ const pictureCoverCSS = css`
   position: relative;
   display: block;
   width: 100%;
-  height: 42.25vh;
-
+  overflow: hidden;
+  max-height: 60vh;
   img {
     width: 100%;
-
-    /* height: calc(100vh - 254px); */
 
     object-fit: cover;
   }
   ${breakpoint.xl} {
+    max-height: 450px;
     width: 600px;
     height: 450px;
   }
@@ -82,6 +81,9 @@ const Figure = styled.figure<{ type: 'cover' | 'content' }>`
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
+  ${breakpoint.xl} {
+    margin-right: 0;
+  }
 `
 const Figcaption = styled.figcaption`
   padding: 4px 20px;
@@ -118,7 +120,7 @@ export default function ArticleImage({
   shouldRespectImageWightAndHeight = false,
   imageCaption = '',
 }: CoverImageProps): JSX.Element {
-  const hasImageCaption = false
+  const hasImageCaption = !!imageCaption
   return (
     <Figure type={type}>
       <Picture
