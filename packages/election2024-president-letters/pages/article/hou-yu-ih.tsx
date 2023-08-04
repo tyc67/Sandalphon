@@ -3,7 +3,6 @@ import ArticleContent from '../../components/shared/article-content'
 import { content } from '../../constants/article/hou-yu-ih'
 import { imagePrefix } from '../../config'
 import { HOU_YU_IH_LETTER } from '../../constants/index'
-import ArticleWrapper from '../../components/article/article-wrapper'
 
 const HOU_YU_IH_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/hou-yu-ih/1-desktop.jpeg`,
@@ -16,7 +15,7 @@ const HOU_YU_IH_COVER_IMAGE = {
 export default function ArticleHoYouIh() {
   return (
     <main>
-      <ArticleWrapper>
+      <article>
         <ArticleCover
           name={HOU_YU_IH_LETTER.name}
           id={HOU_YU_IH_LETTER.id}
@@ -28,7 +27,7 @@ export default function ArticleHoYouIh() {
           id={HOU_YU_IH_LETTER.id}
           name={HOU_YU_IH_LETTER.name}
         ></ArticleContent>
-      </ArticleWrapper>
+      </article>
     </main>
   )
 }
