@@ -24,14 +24,13 @@ const Wrapper = styled.section`
 `
 const Bottom = styled.section`
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   justify-content: space-between;
   background-color: white;
   padding: 40px 20px;
   position: relative;
-  min-height: 340px;
-
+  height: 60vh;
+  overflow: hidden;
   svg {
     position: absolute;
     bottom: -16px;

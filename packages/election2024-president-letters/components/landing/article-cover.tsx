@@ -24,13 +24,15 @@ const Wrapper = styled.section`
 `
 const Bottom = styled.section`
   display: flex;
-  flex-grow: 1;
+
   flex-direction: column;
   justify-content: space-between;
   background-color: white;
   padding: 40px 20px;
   position: relative;
-  min-height: 254px;
+
+  height: 60vh;
+  overflow: hidden;
   ${breakpoint.xl} {
     height: 450px;
     padding: 40px;
