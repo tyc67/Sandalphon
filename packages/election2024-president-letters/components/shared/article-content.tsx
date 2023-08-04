@@ -37,6 +37,9 @@ const Wrapper = styled.section`
     margin-bottom: 0px;
   }
   overflow-x: hidden;
+  //for scroll-snap
+  scroll-snap-align: start;
+  white-space: initial;
 `
 
 const Text = styled.p`

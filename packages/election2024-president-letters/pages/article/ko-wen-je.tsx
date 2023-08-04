@@ -3,6 +3,8 @@ import ArticleCover from '../../components/article/article-cover'
 import ArticleContent from '../../components/shared/article-content'
 import { KO_WEN_JE_LETTER } from '../../constants/index'
 import { content } from '../../constants/article/ko-wen-je'
+import ArticleWrapper from '../../components/article/article-wrapper'
+
 import { imagePrefix } from '../../config'
 const KO_WEN_JE__COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/ko-wen-je/1-desktop.jpeg`,
@@ -15,7 +17,7 @@ const KO_WEN_JE__COVER_IMAGE = {
 export default function ArticleKoWenJe() {
   return (
     <main>
-      <article>
+      <ArticleWrapper>
         <ArticleCover
           name={KO_WEN_JE_LETTER.name}
           id={KO_WEN_JE_LETTER.id}
@@ -27,7 +29,7 @@ export default function ArticleKoWenJe() {
           name={KO_WEN_JE_LETTER.name}
           id={KO_WEN_JE_LETTER.id}
         ></ArticleContent>
-      </article>
+      </ArticleWrapper>
     </main>
   )
 }
