@@ -14,6 +14,7 @@ type ArticleCoverProps = {
   imagesSrc: ImagesSrc
 }
 const Wrapper = styled.section`
+  /* scroll-snap-align: start; */
   height: 100vh;
   display: flex;
   flex-direction: column;
