@@ -4,6 +4,7 @@ import ArticleContent from '../../components/shared/article-content'
 import { imagePrefix } from '../../config'
 import { LAI_CHING_TE_LETTER } from '../../constants/index'
 import { content } from '../../constants/article/lai-ching-te'
+import FeedbackFormWrapper from '../../components/article/feedback-form-wrapper'
 const LAI_CHING_TE_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/lai-ching-te/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/lai-ching-te/1-tablet.jpeg`,
@@ -28,6 +29,11 @@ export default function ArticleLaiChingTe() {
           id={LAI_CHING_TE_LETTER.id}
         ></ArticleContent>
       </article>
+      <FeedbackFormWrapper
+        identifier="election24-president-letters-lai-ching-te"
+        candidate="賴清德"
+        nameColor="#6F8F46"
+      />
     </main>
   )
 }
