@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { font, color } from '../../styles/theme'
 const { background, text, border, candidates } = color
 const { body, h3, h5 } = font
-
+import ArticleMainText from '../article/article-main-text'
 import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
@@ -78,9 +78,6 @@ const Intro = styled.section`
   }
 `
 
-const MainText = styled(Text)`
-  color: ${text.important};
-`
 const SecondText = styled(Text)`
   color: ${text.secondary};
 `
@@ -152,7 +149,7 @@ const parseArticleContent = (
           </Subtitle>
         )
       case 'text':
-        return <MainText>{item.value}</MainText>
+        return <ArticleMainText value={item.value}></ArticleMainText>
       case 'second-text':
         return <SecondText>{item.value}</SecondText>
       case 'image':
