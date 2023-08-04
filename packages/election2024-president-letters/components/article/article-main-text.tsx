@@ -3,7 +3,7 @@ import FeedBackForm from '@readr-media/react-feedback'
 import { Form } from '@readr-media/react-feedback/dist/typedef'
 import styled, { css } from 'styled-components'
 import { font, color, breakpoint } from '../../styles/theme'
-import { feedBackFormIds } from '../../config'
+import { feedbackFormId, emotionFieldId } from '../../config'
 import SVGAddEmojiSmall from '../../public/icon/add-emoji-small.svg'
 import SVGAddEmojiLarge from '../../public/icon/add-emoji-large.svg'
 
@@ -14,14 +14,14 @@ type Forms = { forms: Form[] }
 const feedBackFormSetting: Forms = {
   forms: [
     {
-      id: feedBackFormIds.formId,
+      id: feedbackFormId,
       name: 'feedback-like',
       type: 'form',
       active: true,
       fieldsCount: 1,
       fields: [
         {
-          id: feedBackFormIds.fieldId.emoji,
+          id: emotionFieldId,
           name: '按讚訂閱留言開啟小鈴鐺',
           type: 'single',
           status: 'published',
