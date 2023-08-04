@@ -10,12 +10,10 @@ const pictureCoverCSS = css`
   position: relative;
   display: block;
   width: 100%;
-  height: 42.25vh;
-
+  overflow: hidden;
+  height: 60vh;
   img {
     width: 100%;
-
-    /* height: calc(100vh - 254px); */
 
     object-fit: cover;
   }
