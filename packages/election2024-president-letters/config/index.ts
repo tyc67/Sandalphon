@@ -1,6 +1,9 @@
 const env: string = String(process.env.NEXT_PUBLIC_ENV)
 const projectName: string = String(process.env.NEXT_PUBLIC_PROJECT_NAME)
 
+let feedbackFormId = process.env.NEXT_PUBLIC_FEEDBACK_FORM_ID ?? ''
+let emotionFieldId = process.env.NEXT_PUBLIC_EMOTION_FIELD_ID ?? ''
+let textFieldId = process.env.NEXT_PUBLIC_TEXT_FIELD_ID ?? ''
 let staticFileDestination: string
 let protocol = 'http'
 let host = 'localhost'
@@ -29,11 +32,17 @@ switch (env) {
     break
   }
   default: {
-    staticFileDestination = `${protocol}://${host}:3000`
+    staticFileDestination = `${protocol}://${host}:8080`
     imagePrefix = ''
 
     break
   }
 }
 
-export { staticFileDestination, imagePrefix }
+export {
+  staticFileDestination,
+  imagePrefix,
+  feedbackFormId,
+  emotionFieldId,
+  textFieldId,
+}
