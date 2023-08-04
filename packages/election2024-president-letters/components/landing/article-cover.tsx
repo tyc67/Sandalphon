@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 import CoverImage from '../shared/article-image'
 import { font, color, breakpoint } from '../../styles/theme'
+import { imagePrefix } from '../../config'
 import { CANDIDATES } from '../../constants'
 const { h2, body2 } = font
 const { text, candidates } = color
 const YAO_JAO_TO_COVER_IMAGE = {
-  desktop: '/images/article/yao-jen-to/1-desktop.jpeg',
-  tablet: '/images/article/yao-jen-to/1-tablet.jpeg',
-  mobile: '/images/article/yao-jen-to/1-mobile.jpeg',
-  desktopWebP: '/images/article/yao-jen-to/1-desktop.webp',
-  tabletWebP: '/images/article/yao-jen-to/1-tablet.webp',
-  mobileWebP: '/images/article/yao-jen-to/1-mobile.webp',
+  desktop: `${imagePrefix}/images/article/yao-jen-to/1-desktop.jpeg`,
+  tablet: `${imagePrefix}/images/article/yao-jen-to/1-tablet.jpeg`,
+  mobile: `${imagePrefix}/images/article/yao-jen-to/1-mobile.jpeg`,
+  desktopWebP: `${imagePrefix}/images/article/yao-jen-to/1-desktop.webp`,
+  tabletWebP: `${imagePrefix}/images/article/yao-jen-to/1-tablet.webp`,
+  mobileWebP: `${imagePrefix}/images/article/yao-jen-to/1-mobile.webp`,
 }
 const Wrapper = styled.section`
   height: 100vh;

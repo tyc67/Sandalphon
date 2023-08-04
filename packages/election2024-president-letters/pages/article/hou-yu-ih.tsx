@@ -1,16 +1,16 @@
 import ArticleCover from '../../components/article/article-cover'
 import ArticleContent from '../../components/shared/article-content'
 import { content } from '../../constants/article/hou-yu-ih'
-
+import { imagePrefix } from '../../config'
 import { HOU_YU_IH_LETTER } from '../../constants/index'
 
 const HOU_YU_IH_COVER_IMAGE = {
-  desktop: '/images/article/hou-yu-ih/1-desktop.jpeg',
-  tablet: '/images/article/hou-yu-ih/1-tablet.jpeg',
-  mobile: '/images/article/hou-yu-ih/1-mobile.jpeg',
-  desktopWebP: '/images/article/hou-yu-ih/1-desktop.webp',
-  tabletWebP: '/images/article/hou-yu-ih/1-tablet.webp',
-  mobileWebP: '/images/article/hou-yu-ih/1-mobile.webp',
+  desktop: `${imagePrefix}/images/article/hou-yu-ih/1-desktop.jpeg`,
+  tablet: `${imagePrefix}/images/article/hou-yu-ih/1-tablet.jpeg`,
+  mobile: `${imagePrefix}/images/article/hou-yu-ih/1-mobile.jpeg`,
+  desktopWebP: `${imagePrefix}/images/article/hou-yu-ih/1-desktop.webp`,
+  tabletWebP: `${imagePrefix}/images/article/hou-yu-ih/1-tablet.webp`,
+  mobileWebP: `${imagePrefix}/images/article/hou-yu-ih/1-mobile.webp`,
 }
 export default function ArticleHoYouIh() {
   return (

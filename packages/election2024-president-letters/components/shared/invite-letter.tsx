@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Image from 'next/image'
 import Link from 'next/link'
 import { color, font, breakpoint } from '../../styles/theme'
 import LeftArrowSvg from '../../public/icon/left-arrow.svg'
@@ -132,7 +131,7 @@ export default function InviteLetter({
       <Top>
         <AvatarImage>
           <source srcSet={image.webP}></source>
-          <Image src={image.jpg} fill alt={name}></Image>
+          <img src={image.jpg} alt={name}></img>
         </AvatarImage>
         <Detail>
           <p className="name">{name}</p>

@@ -1,3 +1,5 @@
+import { imagePrefix } from '../config'
+
 const CANDIDATES = [
   { id: 'LaiChingTe', name: '賴清德' },
   { id: 'HouYuIh', name: '侯友宜' },
@@ -9,8 +11,8 @@ const LAI_CHING_TE_LETTER = {
   name: '賴清德',
   letterDescription: ['關於台灣年輕人的未來', '我的觀察與主張'],
   letterAvatar: {
-    jpg: '/images/profile/LaiChingTe.jpg',
-    webP: '/images/profile/LaiChingTe.webP',
+    jpg: `${imagePrefix}/images/profile/LaiChingTe.jpg`,
+    webP: `${imagePrefix}/images/profile/LaiChingTe.webp`,
   },
 }
 const HOU_YU_IH_LETTER = {
@@ -18,8 +20,8 @@ const HOU_YU_IH_LETTER = {
   name: '侯友宜',
   letterDescription: ['讓改變看得見'],
   letterAvatar: {
-    jpg: '/images/profile/HouYuIh.jpg',
-    webP: '/images/profile/HouYuIh.webP',
+    jpg: `${imagePrefix}/images/profile/HouYuIh.jpg`,
+    webP: `${imagePrefix}/images/profile/HouYuIh.webp`,
   },
 }
 
@@ -28,8 +30,8 @@ const KO_WEN_JE_LETTER = {
   name: '柯文哲',
   letterDescription: ['追求卓越 創造價值', '打造更好的台灣'],
   letterAvatar: {
-    jpg: '/images/profile/KoWenJe.jpg',
-    webP: '/images/profile/KoWenJe.webP',
+    jpg: `${imagePrefix}/images/profile/KoWenJe.jpg`,
+    webP: `${imagePrefix}/images/profile/KoWenJe.webp`,
   },
 }
 const CANDIDATES_LETTER = [
