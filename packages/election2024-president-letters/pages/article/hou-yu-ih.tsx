@@ -3,6 +3,7 @@ import ArticleContent from '../../components/shared/article-content'
 import { content } from '../../constants/article/hou-yu-ih'
 import { imagePrefix } from '../../config'
 import { HOU_YU_IH_LETTER } from '../../constants/index'
+import FeedbackFormWrapper from '../../components/article/feedback-form-wrapper'
 
 const HOU_YU_IH_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/hou-yu-ih/1-desktop.jpeg`,
@@ -28,6 +29,11 @@ export default function ArticleHoYouIh() {
           name={HOU_YU_IH_LETTER.name}
         ></ArticleContent>
       </article>
+      <FeedbackFormWrapper
+        identifier="election24-president-letters-hou-yu-ih"
+        candidate="侯友宜"
+        nameColor="#5A6FB8"
+      />
     </main>
   )
 }
