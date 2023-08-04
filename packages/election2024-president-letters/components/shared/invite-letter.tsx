@@ -95,7 +95,8 @@ const Bottom = styled.button<{ textColor: string }>`
         fill: ${(props) => props.textColor};
       }
     }
-    &:hover {
+    &:hover,
+    &:visited {
       color: ${text.important};
       svg {
         path {

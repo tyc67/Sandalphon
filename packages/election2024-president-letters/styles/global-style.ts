@@ -591,4 +591,11 @@ video {
   max-width: 100%;
   height: auto;
 }
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
  `
