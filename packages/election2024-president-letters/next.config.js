@@ -12,7 +12,7 @@ switch (process.env.NEXT_PUBLIC_ENV) {
     assetPrefixPath = `https://dev.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
     break
   default:
-    assetPrefixPath = 'http://localhost:3000'
+    assetPrefixPath = ''
     break
 }
 
