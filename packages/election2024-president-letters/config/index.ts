@@ -1,10 +1,16 @@
 const env: string = String(process.env.NEXT_PUBLIC_ENV)
 const projectName: string = String(process.env.NEXT_PUBLIC_PROJECT_NAME)
-
+const nodeEnv: string = String(process.env.NODE_ENV)
 let staticFileDestination: string
 let protocol = 'http'
 let host = 'localhost'
 let imagePrefix: string
+let feedBackFormIds = {
+  formId: '10',
+  fieldId: {
+    emoji: '15',
+  },
+}
 switch (env) {
   case 'dev':
     protocol = 'https'
@@ -35,5 +41,17 @@ switch (env) {
     break
   }
 }
+switch (nodeEnv) {
+  case 'production':
+    break
+  default:
+    feedBackFormIds = {
+      formId: '10',
+      fieldId: {
+        emoji: '15',
+      },
+    }
+    break
+}
 
-export { staticFileDestination, imagePrefix }
+export { staticFileDestination, imagePrefix, feedBackFormIds }
