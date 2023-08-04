@@ -6,8 +6,14 @@ import InviteLetter from '../components/shared/invite-letter'
 import ArticleYaoJeoTo from '../components/landing/article-yao-jen-to'
 import { CANDIDATES_LETTER } from '../constants'
 
-const Main = styled.main``
+const Main = styled.main`
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+`
 const Wrapper = styled.section`
+  scroll-snap-align: start;
   background-color: ${background.gray};
   padding: 40px 20px;
   margin: 0 auto;
