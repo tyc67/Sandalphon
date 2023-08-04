@@ -120,7 +120,7 @@ export default function ArticleImage({
   shouldRespectImageWightAndHeight = false,
   imageCaption = '',
 }: CoverImageProps): JSX.Element {
-  const hasImageCaption = false
+  const hasImageCaption = !!imageCaption
   return (
     <Figure type={type}>
       <Picture
