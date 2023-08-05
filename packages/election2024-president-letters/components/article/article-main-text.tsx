@@ -8,7 +8,7 @@ import SVGAddEmojiSmall from '../../public/icon/add-emoji-small.svg'
 import SVGAddEmojiLarge from '../../public/icon/add-emoji-large.svg'
 
 const { text } = color
-const { body, tiny } = font
+const { body, body2, tiny } = font
 
 type Forms = { forms: Form[] }
 const feedBackFormSetting: Forms = {
@@ -153,6 +153,10 @@ const Emoji = styled.div`
 `
 const EmojiDesktop = styled(Emoji)`
   display: none;
+  font-size: ${body2.size};
+  line-height: ${body2.lineHeight};
+  font-weight: ${body2.weight};
+  text-align: end;
   ${breakpoint.xl} {
     display: block;
     margin-right: 12px;
