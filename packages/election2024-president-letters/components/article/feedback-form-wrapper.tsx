@@ -65,25 +65,11 @@ const FormTitle = styled.p`
   line-height: 150%;
   padding-top: 20px;
   margin-bottom: 12px;
-  margin-left: 20px;
-  margin-right: 20px;
   text-align: center;
 
   ${breakpoint.md} {
-    width: 280px;
     font-size: 24px;
     padding-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-  }
-
-  ${breakpoint.xl} {
-    width: 600px;
-  }
-
-  ${breakpoint.xxl} {
-    width: 280px;
   }
 `
 
