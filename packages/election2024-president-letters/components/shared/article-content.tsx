@@ -1,7 +1,7 @@
 import ArticleImage from './article-image'
 import { imagePrefix } from '../../config'
 import styled, { css } from 'styled-components'
-import { font, color } from '../../styles/theme'
+import { font, color, breakpoint } from '../../styles/theme'
 const { background, text, border, candidates } = color
 const { body, h3, h5 } = font
 import ArticleMainText from '../article/article-main-text'
@@ -75,6 +75,18 @@ const Intro = styled.section`
       rgba(0, 0, 0, 0) 100%
     );
     background-size: ${`100% calc(${h5.size} * ${h5.lineHeight})`};
+  }
+  ${breakpoint.md} {
+    padding-top: 28px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: ${h3.size};
+    line-height: ${h3.lineHeight};
+    font-weight: ${h3.weight};
+    p {
+      background-size: ${`100% calc(${h3.size} * ${h3.lineHeight})`};
+    }
   }
 `
 
