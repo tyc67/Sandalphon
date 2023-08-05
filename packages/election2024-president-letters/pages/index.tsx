@@ -5,13 +5,8 @@ const { background } = color
 import InviteLetter from '../components/shared/invite-letter'
 import ArticleYaoJeoTo from '../components/landing/article-yao-jen-to'
 import { CANDIDATES_LETTER } from '../constants'
-
-const Main = styled.main`
-  overflow: auto;
-  width: 100vw;
-  height: 100vh;
-  scroll-snap-type: y mandatory;
-`
+import Main from '../components/shared/main-wrapper'
+import Detector from '../components/shared/detector'
 const Wrapper = styled.section`
   scroll-snap-align: start;
   background-color: ${background.gray};
@@ -26,10 +21,11 @@ const Wrapper = styled.section`
   }
 `
 export default function Home() {
+  const { state, component } = Detector()
   return (
     <>
       <Layout>
-        <Main>
+        <Main shouldScrollSnap={state}>
           <Wrapper>
             {CANDIDATES_LETTER.map((person) => (
               <InviteLetter
@@ -41,7 +37,7 @@ export default function Home() {
               ></InviteLetter>
             ))}
           </Wrapper>
-          <ArticleYaoJeoTo />
+          <ArticleYaoJeoTo detector={component} />
         </Main>
       </Layout>
     </>
