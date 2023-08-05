@@ -14,7 +14,8 @@ type ArticleCoverProps = {
   imagesSrc: ImagesSrc
 }
 const Wrapper = styled.section`
-  /* scroll-snap-align: start; */
+  position: relative;
+  scroll-snap-align: start;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -118,6 +119,7 @@ export default function ArticleCover({
         imagesSrc={imagesSrc}
         isFullSizeImage={true}
       ></ArticleImage>
+
       <Bottom>
         <Title candidateId={id}>
           <span className="subtitle">給年輕人的一封信</span>

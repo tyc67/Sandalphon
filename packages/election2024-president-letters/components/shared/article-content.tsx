@@ -30,6 +30,7 @@ const MaxWidth = css`
 `
 
 const Wrapper = styled.section`
+  position: relative;
   background-color: ${background.gray};
   padding-top: 20px;
   padding-bottom: 20px;
@@ -37,6 +38,9 @@ const Wrapper = styled.section`
     margin-bottom: 0px;
   }
   overflow-x: hidden;
+  //for scroll-snap
+  scroll-snap-align: start;
+  white-space: initial;
 `
 
 const Text = styled.p`
@@ -189,13 +193,20 @@ type ArticleContentProps = {
   content: ArticleContentType
   name: string
   id: string
+  children: React.ReactNode
 }
 
 export default function ArticleContent({
   content,
   name = '',
   id,
+  children,
 }: ArticleContentProps): JSX.Element {
   const contentJsx = parseArticleContent(content, name, id)
-  return <Wrapper>{contentJsx}</Wrapper>
+  return (
+    <Wrapper>
+      {children}
+      {contentJsx}
+    </Wrapper>
+  )
 }

@@ -14,6 +14,8 @@ const YAO_JAO_TO_COVER_IMAGE = {
   mobileWebP: `${imagePrefix}/images/article/yao-jen-to/1-mobile.webp`,
 }
 const Wrapper = styled.section`
+  position: relative;
+  scroll-snap-align: start;
   height: 100vh;
   display: flex;
   flex-direction: column;

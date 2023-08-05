@@ -1,4 +1,4 @@
-import Header from './header'
+// import Header from './header'
 
 type DefaultLayoutProps = {
   children: React.ReactNode
@@ -7,7 +7,7 @@ type DefaultLayoutProps = {
 export default function Layout({ children }: DefaultLayoutProps) {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {children}
     </>
   )
