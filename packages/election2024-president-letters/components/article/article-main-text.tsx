@@ -69,19 +69,37 @@ const MainText = styled(Text)`
 `
 
 const FeedBackFormWrapperDesktop = styled.div`
-  position: relative;
-
-  .form-feedback {
+  display: none;
+  ${breakpoint.xl} {
     display: block;
-    &::after {
-      content: '';
-      border: 6px solid transparent;
+    position: relative;
+
+    .form-feedback {
+      display: none;
       position: absolute;
-      border-bottom-color: white;
-      border-top: 0;
-      top: -6px;
+      top: 40px;
       left: 50%;
-      margin-left: -6px;
+      transform: translateX(-50%);
+      background-color: white;
+      z-index: 1;
+      padding: 16px 32px 8px 32px;
+      border-radius: 100px;
+      width: 344px;
+      height: 89px;
+      //title
+      .fnOpuD {
+        display: none;
+      }
+      &::after {
+        content: '';
+        border: 6px solid transparent;
+        position: absolute;
+        border-bottom-color: white;
+        border-top: 0;
+        top: -6px;
+        left: 50%;
+        margin-left: -6px;
+      }
     }
   }
 `
@@ -99,25 +117,12 @@ const Wrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-    ${FeedBackFormWrapperDesktop} {
-      .form-feedback {
-        display: none;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%); //title
-        background-color: white;
-        z-index: 1;
-        padding: 16px 32px 8px 32px;
-        border-radius: 100px;
-        width: 344px;
-        height: 89px;
-        .fnOpuD {
-          display: none;
-        }
-      }
-    }
+
     &:hover {
       ${FeedBackFormWrapperDesktop} {
+        .form-feedback {
+          display: block;
+        }
         button {
           color: ${text.important};
           .large {
@@ -125,9 +130,6 @@ const Wrapper = styled.div`
               fill: ${text.important};
             }
           }
-        }
-        .form-feedback {
-          display: block;
         }
       }
     }
