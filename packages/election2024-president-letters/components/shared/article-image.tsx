@@ -39,20 +39,24 @@ const pictureContentCSS = css<{
     width: 100%;
     height: ${({ shouldRespectImageWightAndHeight, isFullSizeImage }) => {
       if (!isFullSizeImage || shouldRespectImageWightAndHeight) {
-        return 'fit-content'
+        return 'auto'
       }
       return '75vw'
     }};
-    height: fit-content;
     object-fit: cover;
-    max-width: ${({ isFullSizeImage }) =>
-      isFullSizeImage ? 'initial' : '480px'};
+    max-width: ${({ isFullSizeImage }) => (isFullSizeImage ? '100%' : '480px')};
+
     margin: 0 auto;
     ${breakpoint.xl} {
-      width: 100vw;
+      width: ${({ shouldRespectImageWightAndHeight, isFullSizeImage }) => {
+        if (!isFullSizeImage || shouldRespectImageWightAndHeight) {
+          return 'auto'
+        }
+        return '100vw'
+      }};
       height: ${({ shouldRespectImageWightAndHeight, isFullSizeImage }) => {
         if (!isFullSizeImage || shouldRespectImageWightAndHeight) {
-          return 'fit-content'
+          return 'auto'
         }
         return '60vw'
       }};
@@ -82,7 +86,7 @@ const Figure = styled.figure<{ type: 'cover' | 'content' }>`
   margin-left: auto;
   margin-right: auto;
   ${breakpoint.xl} {
-    margin-right: 0;
+    margin-right: ${({ type }) => (type === 'content' ? 'auto' : '0')};
   }
 `
 const Figcaption = styled.figcaption`
