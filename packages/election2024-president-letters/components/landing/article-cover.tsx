@@ -28,7 +28,7 @@ const Bottom = styled.section`
   display: flex;
 
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   background-color: white;
   padding: 40px 20px;
   position: relative;
@@ -62,6 +62,7 @@ const CandidatesName = styled.span<{ candidateId: string }>`
 `
 
 const Description = styled.p`
+  margin-top: 20px;
   .author {
     font-size: ${body2.size};
     line-height: ${body2.lineHeight};
@@ -70,6 +71,9 @@ const Description = styled.p`
     &--second-color {
       color: ${text.secondary};
     }
+  }
+  ${breakpoint.xl} {
+    margin-top: unset;
   }
 `
 

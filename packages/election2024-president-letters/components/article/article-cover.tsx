@@ -27,7 +27,7 @@ const Wrapper = styled.section`
 const Bottom = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   background-color: white;
   padding: 40px 20px;
   position: relative;
@@ -82,6 +82,8 @@ const Title = styled.h1<{ candidateId: string }>`
   }
 `
 const Desc = styled.div`
+  margin-top: 20px;
+
   p {
     font-size: ${body2.size};
     line-height: ${body2.lineHeight};
@@ -90,6 +92,9 @@ const Desc = styled.div`
     span {
       color: ${text.important};
     }
+  }
+  ${breakpoint.xl} {
+    margin-top: unset;
   }
 `
 export default function ArticleCover({
