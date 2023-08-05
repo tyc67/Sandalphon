@@ -36,7 +36,7 @@ const defaultPadding = css`
   padding-left: 20px;
   padding-right: 20px;
 `
-const defaultMargin = css`
+const defaultMarginBottom = css`
   margin-bottom: 24px;
 `
 
@@ -53,8 +53,6 @@ const tinyFont = css`
 `
 const MaxWidth = css`
   max-width: 640px; //todo: after implement like/dislike, should adjust this value
-  margin-left: auto;
-  margin-right: auto;
 `
 
 const Text = styled.p`
@@ -63,18 +61,85 @@ const Text = styled.p`
 
 const MainText = styled(Text)`
   color: ${text.important};
+  max-width: 600px;
+
+  ${breakpoint.xl} {
+    width: 600px;
+  }
 `
+
+const FeedBackFormWrapperDesktop = styled.div`
+  position: relative;
+
+  .form-feedback {
+    display: block;
+    &::after {
+      content: '';
+      border: 6px solid transparent;
+      position: absolute;
+      border-bottom-color: white;
+      border-top: 0;
+      top: -6px;
+      left: 50%;
+      margin-left: -6px;
+    }
+  }
+`
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
   ${MaxWidth};
   ${defaultPadding};
-  ${defaultMargin};
+  ${defaultMarginBottom};
+  ${breakpoint.xl} {
+    max-width: inherit;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    ${FeedBackFormWrapperDesktop} {
+      .form-feedback {
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%); //title
+        background-color: white;
+        z-index: 1;
+        padding: 16px 32px 8px 32px;
+        border-radius: 100px;
+        width: 344px;
+        height: 89px;
+        .fnOpuD {
+          display: none;
+        }
+      }
+    }
+    &:hover {
+      ${FeedBackFormWrapperDesktop} {
+        button {
+          color: ${text.important};
+          .large {
+            path {
+              fill: ${text.important};
+            }
+          }
+        }
+        .form-feedback {
+          display: block;
+        }
+      }
+    }
+  }
 `
 const EmojiWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  ${breakpoint.xl} {
+    display: none;
+  }
 `
 
 const Emoji = styled.div`
@@ -82,6 +147,13 @@ const Emoji = styled.div`
   color: ${text.secondary};
   &:focus {
     color: ${text.important};
+  }
+`
+const EmojiDesktop = styled(Emoji)`
+  display: none;
+  ${breakpoint.xl} {
+    display: block;
+    margin-right: 12px;
   }
 `
 
@@ -92,7 +164,9 @@ const AddEmojiButton = styled.button`
   padding: 4px;
   justify-content: space-between;
   color: ${text.secondary};
-  svg {
+
+  .small,
+  .large {
     margin-right: 4px;
     path {
       fill: ${text.secondary};
@@ -100,7 +174,8 @@ const AddEmojiButton = styled.button`
   }
   &:focus {
     color: ${text.important};
-    svg {
+    .small,
+    .large {
       path {
         fill: ${text.important};
       }
@@ -123,6 +198,13 @@ const AddEmojiButton = styled.button`
   }
 `
 
+const AddEmojiButtonDesktop = styled(AddEmojiButton)`
+  display: none;
+  ${breakpoint.xl} {
+    display: flex;
+    margin-left: 0px;
+  }
+`
 const FeedBackFormWrapper = styled.div<{ shouldShowFeedBack: boolean }>`
   position: fixed;
   display: flex;
@@ -188,22 +270,40 @@ export default function ArticleMainText({
   }
   return (
     <Wrapper>
+      {shouldShowEmojiFeature && <EmojiDesktop>心情123456</EmojiDesktop>}
       <MainText>{value}</MainText>
-      <EmojiWrapper>
-        <Emoji>心情123456</Emoji>
-        <AddEmojiButton onClick={handleOpen}>
-          <SVGAddEmojiSmall className="small" />
-          <SVGAddEmojiLarge className="large" />
-          <span>加入心情</span>
-        </AddEmojiButton>
-      </EmojiWrapper>
+      {shouldShowEmojiFeature && (
+        <FeedBackFormWrapperDesktop>
+          <AddEmojiButtonDesktop>
+            <SVGAddEmojiLarge className="large" />
+            <span>加入心情</span>
+          </AddEmojiButtonDesktop>
+
+          <FeedBackForm
+            shouldUseRecaptcha={false}
+            {...feedBackFormSetting}
+          ></FeedBackForm>
+        </FeedBackFormWrapperDesktop>
+      )}
+      {shouldShowEmojiFeature && (
+        <EmojiWrapper>
+          <Emoji>心情123456</Emoji>
+          <AddEmojiButton onClick={handleOpen}>
+            <SVGAddEmojiSmall className="small" />
+            <span>加入心情</span>
+          </AddEmojiButton>
+        </EmojiWrapper>
+      )}
       {shouldShowEmojiFeature && (
         <FeedBackFormWrapper
           shouldShowFeedBack={shouldShowFeedBack}
           className="epl-feed-back-form-wrapper"
           onClick={handleClose}
         >
-          <FeedBackForm {...feedBackFormSetting}></FeedBackForm>
+          <FeedBackForm
+            shouldUseRecaptcha={false}
+            {...feedBackFormSetting}
+          ></FeedBackForm>
         </FeedBackFormWrapper>
       )}
     </Wrapper>
