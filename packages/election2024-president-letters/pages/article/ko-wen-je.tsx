@@ -4,7 +4,8 @@ import ArticleContent from '../../components/shared/article-content'
 import { KO_WEN_JE_LETTER } from '../../constants/index'
 import { content } from '../../constants/article/ko-wen-je'
 import ArticleWrapper from '../../components/article/article-wrapper'
-
+import Main from '../../components/shared/main-wrapper'
+import Detector from '../../components/shared/detector'
 import { imagePrefix } from '../../config'
 import FeedbackFormWrapper from '../../components/article/feedback-form-wrapper'
 
@@ -17,26 +18,30 @@ const KO_WEN_JE__COVER_IMAGE = {
   mobileWebP: `${imagePrefix}/images/article/ko-wen-je/1-mobile.webp`,
 }
 export default function ArticleKoWenJe() {
+  const { state, component } = Detector()
+
   return (
-    <main>
+    <Main shouldScrollSnap={state}>
       <ArticleWrapper>
         <ArticleCover
           name={KO_WEN_JE_LETTER.name}
           id={KO_WEN_JE_LETTER.id}
           title={KO_WEN_JE_LETTER.letterDescription}
           imagesSrc={KO_WEN_JE__COVER_IMAGE}
-        />
+        ></ArticleCover>
         <ArticleContent
           content={content}
           name={KO_WEN_JE_LETTER.name}
           id={KO_WEN_JE_LETTER.id}
-        ></ArticleContent>
+        >
+          {component}
+        </ArticleContent>
       </ArticleWrapper>
       <FeedbackFormWrapper
         identifier="election24-president-letters-ko-wen-je"
         candidate="柯文哲"
         nameColor="#3F8C88"
       />
-    </main>
+    </Main>
   )
 }
