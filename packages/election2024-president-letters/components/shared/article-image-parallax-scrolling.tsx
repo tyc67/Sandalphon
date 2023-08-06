@@ -29,6 +29,9 @@ const Div = styled.div<{
     width: 100%;
     height: 60vw;
   }
+  @media only screen {
+    background-attachment: scroll;
+  }
 `
 export type ImagesSrc = {
   desktop: string
