@@ -5,6 +5,7 @@ import { font, color, breakpoint } from '../../styles/theme'
 const { background, text, border, candidates } = color
 const { body, h3, h5 } = font
 import ArticleMainText from '../article/article-main-text'
+import ArticleImageParallaxScrolling from './article-image-parallax-scrolling'
 import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
@@ -169,19 +170,44 @@ const parseArticleContent = (
       case 'second-text':
         return <SecondText>{item.value}</SecondText>
       case 'image':
-        const imagesSrc = formatImagePath(item.value)
+        const { value, imageOption } = item
+        const imagesSrc = formatImagePath(value)
+        const shouldParallaxScrolling =
+          imageOption.isFullSizeImage &&
+          !imageOption?.shouldRespectImageWightAndHeight
         return (
-          <ArticleImage
-            name={name}
-            type="content"
-            imagesSrc={imagesSrc}
-            imageCaption={item.imageOption?.imageCaption}
-            isFullSizeImage={item.imageOption.isFullSizeImage}
-            shouldRespectImageWightAndHeight={
-              item.imageOption?.shouldRespectImageWightAndHeight
-            }
-          ></ArticleImage>
+          <>
+            {shouldParallaxScrolling ? (
+              <ArticleImageParallaxScrolling
+                imagesSrc={imagesSrc}
+                imageCaption={imageOption?.imageCaption}
+              ></ArticleImageParallaxScrolling>
+            ) : (
+              <ArticleImage
+                name={name}
+                type="content"
+                imagesSrc={imagesSrc}
+                imageCaption={imageOption?.imageCaption}
+                isFullSizeImage={imageOption.isFullSizeImage}
+                shouldRespectImageWightAndHeight={
+                  imageOption?.shouldRespectImageWightAndHeight
+                }
+              ></ArticleImage>
+            )}
+          </>
         )
+      // return (
+      //   <ArticleImage
+      //     name={name}
+      //     type="content"
+      //     imagesSrc={imagesSrc}
+      //     imageCaption={item.imageOption?.imageCaption}
+      //     isFullSizeImage={item.imageOption.isFullSizeImage}
+      //     shouldRespectImageWightAndHeight={
+      //       item.imageOption?.shouldRespectImageWightAndHeight
+      //     }
+      //   ></ArticleImage>
+      // )
       default:
         return null
     }

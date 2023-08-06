@@ -1,9 +1,8 @@
 import styled from 'styled-components'
-import { breakpoint, color, font } from '../../styles/theme'
-const { tiny2 } = font
-const { text } = color
-// import Image from 'next/image'
+import { breakpoint } from '../../styles/theme'
 
+// import Image from 'next/image'
+import ImageCaption from './image-caption'
 import { css } from 'styled-components'
 
 const pictureCoverCSS = css`
@@ -89,15 +88,6 @@ const Figure = styled.figure<{ type: 'cover' | 'content' }>`
     margin-right: ${({ type }) => (type === 'content' ? 'auto' : '0')};
   }
 `
-const Figcaption = styled.figcaption`
-  padding: 4px 20px;
-  background-color: white;
-  color: ${text.secondary};
-  font-size: ${tiny2.size};
-  line-height: ${tiny2.lineHeight};
-  font-weight: ${tiny2.weight};
-  text-align: center;
-`
 
 export type ImagesSrc = {
   desktop: string
@@ -159,7 +149,7 @@ export default function ArticleImage({
           src={imagesSrc.mobile}
         ></img>
       </Picture>
-      {hasImageCaption && <Figcaption>{imageCaption}</Figcaption>}
+      {hasImageCaption && <ImageCaption>{imageCaption}</ImageCaption>}
     </Figure>
   )
 }
