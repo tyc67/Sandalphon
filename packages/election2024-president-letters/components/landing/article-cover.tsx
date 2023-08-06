@@ -3,6 +3,7 @@ import CoverImage from '../shared/article-image'
 import { font, color, breakpoint } from '../../styles/theme'
 import { imagePrefix } from '../../config'
 import { CANDIDATES } from '../../constants'
+import { zIndex } from '../../styles/z-index'
 const { h2, body2 } = font
 const { text, candidates } = color
 const YAO_JAO_TO_COVER_IMAGE = {
@@ -16,6 +17,8 @@ const YAO_JAO_TO_COVER_IMAGE = {
 const Wrapper = styled.section`
   position: relative;
   scroll-snap-align: start;
+  background-color: #fff;
+  z-index: ${zIndex.overHeader};
   height: 100vh;
   display: flex;
   flex-direction: column;

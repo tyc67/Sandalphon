@@ -10,7 +10,7 @@ import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
 } from '../../types/index'
-
+import { headerHeight } from '../../styles/shared-style'
 const defaultPadding = css`
   padding-left: 20px;
   padding-right: 20px;
@@ -33,7 +33,7 @@ const MaxWidth = css`
 const Wrapper = styled.section`
   position: relative;
   background-color: ${background.gray};
-  padding-top: 20px;
+  padding-top: calc(${headerHeight} + 20px);
   padding-bottom: 20px;
   *:last-child {
     margin-bottom: 0px;
