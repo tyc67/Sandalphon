@@ -19,21 +19,12 @@ const Div = styled.div<{
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: image-set(
-    ${({ imagesSrc }) =>
-      `url(${imagesSrc.mobileWebP}) type('image/webp'), url(${imagesSrc.mobile}) type('image/jpeg')`}
-  );
+  background-image: ${({ imagesSrc }) => `url(${imagesSrc.mobile})`};
   ${breakpoint.md} {
-    background-image: image-set(
-      ${({ imagesSrc }) =>
-        `url(${imagesSrc.tabletWebP}) type('image/webp'), url(${imagesSrc.tablet}) type('image/jpeg')`}
-    );
+    background-image: ${({ imagesSrc }) => `url(${imagesSrc.tablet})`};
   }
   ${breakpoint.xl} {
-    background-image: image-set(
-      ${({ imagesSrc }) =>
-        `url(${imagesSrc.desktopWebP}) type('image/webp'), url(${imagesSrc.desktop}) type('image/jpeg')`}
-    );
+    background-image: ${({ imagesSrc }) => `url(${imagesSrc.desktop})`};
 
     width: 100%;
     height: 60vw;
