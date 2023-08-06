@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { breakpoint } from '../../styles/theme'
-
+import { zIndex } from '../../styles/z-index'
 const Figure = styled.figure`
   margin-bottom: 24px;
 `
@@ -12,7 +12,7 @@ const Div = styled.div<{
 }>`
   margin: 0 auto;
   width: 100%;
-
+  /* z-index: ${zIndex.overHeader}; */
   height: 75vw;
   position: relative;
   background-attachment: fixed;
