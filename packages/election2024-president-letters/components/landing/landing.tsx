@@ -1,7 +1,9 @@
 // import Lottie from 'lottie-react'
 import styled from 'styled-components'
 import { imagePrefix } from '../../config'
+import { headerHeight } from '../../styles/shared-style'
 const Wrapper = styled.div`
+  padding-top: ${headerHeight};
   width: 100vw;
   height: 100vh;
   overflow: hidden;
