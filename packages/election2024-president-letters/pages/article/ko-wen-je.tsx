@@ -33,6 +33,7 @@ export default function ArticleKoWenJe() {
           content={content}
           name={KO_WEN_JE_LETTER.name}
           id={KO_WEN_JE_LETTER.id}
+          shouldActiveParallaxScrolling={!state}
         >
           {component}
         </ArticleContent>

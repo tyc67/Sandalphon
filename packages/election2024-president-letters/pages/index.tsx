@@ -35,7 +35,10 @@ export default function Home() {
           ></InviteLetter>
         ))}
       </Wrapper>
-      <ArticleYaoJeoTo detector={component} />
+      <ArticleYaoJeoTo
+        detector={component}
+        shouldActiveParallaxScrolling={!state}
+      />
     </Main>
   )
 }

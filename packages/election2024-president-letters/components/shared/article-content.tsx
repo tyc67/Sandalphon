@@ -145,7 +145,8 @@ const formatImagePath = (value: string): any => {
 const parseArticleContent = (
   content: ArticleContentType,
   name: string,
-  id: string
+  id: string,
+  shouldActiveParallaxScrolling: boolean
 ) => {
   const renderItem = (item: ArticleContentItem) => {
     switch (item.type) {
@@ -181,6 +182,7 @@ const parseArticleContent = (
               <ArticleImageParallaxScrolling
                 imagesSrc={imagesSrc}
                 imageCaption={imageOption?.imageCaption}
+                shouldActiveParallaxScrolling={shouldActiveParallaxScrolling}
               ></ArticleImageParallaxScrolling>
             ) : (
               <ArticleImage
@@ -219,6 +221,7 @@ type ArticleContentProps = {
   content: ArticleContentType
   name: string
   id: string
+  shouldActiveParallaxScrolling?: boolean
   children: React.ReactNode
 }
 
@@ -226,9 +229,15 @@ export default function ArticleContent({
   content,
   name = '',
   id,
+  shouldActiveParallaxScrolling = false,
   children,
 }: ArticleContentProps): JSX.Element {
-  const contentJsx = parseArticleContent(content, name, id)
+  const contentJsx = parseArticleContent(
+    content,
+    name,
+    id,
+    shouldActiveParallaxScrolling
+  )
   return (
     <Wrapper>
       {children}

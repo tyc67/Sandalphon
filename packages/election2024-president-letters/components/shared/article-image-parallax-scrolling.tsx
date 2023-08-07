@@ -4,18 +4,25 @@ import { breakpoint } from '../../styles/theme'
 import { zIndex } from '../../styles/z-index'
 const Figure = styled.figure`
   margin-bottom: 24px;
+  div {
+    @media screen and (max-device-width: 1199px) {
+      background-attachment: scroll;
+    }
+  }
 `
 import ImageCaption from './image-caption'
 
 const Div = styled.div<{
   imagesSrc: ImagesSrc
+  shouldActiveParallaxScrolling: boolean
 }>`
   margin: 0 auto;
   width: 100%;
   /* z-index: ${zIndex.overHeader}; */
   height: 75vw;
   position: relative;
-  background-attachment: fixed;
+  background-attachment: ${({ shouldActiveParallaxScrolling }) =>
+    shouldActiveParallaxScrolling ? 'fixed' : 'scroll'};
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -29,7 +36,7 @@ const Div = styled.div<{
     width: 100%;
     height: 60vw;
   }
-  @media only screen {
+  @media only screen and (max-device-width: 1199px) {
     background-attachment: scroll;
   }
 `
@@ -44,16 +51,21 @@ export type ImagesSrc = {
 type Props = {
   imagesSrc: ImagesSrc
   imageCaption?: string
+  shouldActiveParallaxScrolling?: boolean
 }
 
 export default function ArticleImageParallaxScrolling({
   imagesSrc,
   imageCaption = '',
+  shouldActiveParallaxScrolling = false,
 }: Props) {
   const hasImageCaption = !!imageCaption
   return (
     <Figure>
-      <Div imagesSrc={imagesSrc}></Div>
+      <Div
+        imagesSrc={imagesSrc}
+        shouldActiveParallaxScrolling={shouldActiveParallaxScrolling}
+      ></Div>
       {hasImageCaption && <ImageCaption>{imageCaption}</ImageCaption>}
     </Figure>
   )

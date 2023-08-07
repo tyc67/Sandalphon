@@ -4,12 +4,23 @@ import { content } from '../../constants/article/yao-jen-to'
 
 import ArticleWrapper from '../article/article-wrapper'
 
-type Props = { detector: React.ReactNode }
-export default function ArticleYaoJeoTo({ detector }: Props): JSX.Element {
+type Props = {
+  detector: React.ReactNode
+  shouldActiveParallaxScrolling?: boolean
+}
+export default function ArticleYaoJeoTo({
+  detector,
+  shouldActiveParallaxScrolling = false,
+}: Props): JSX.Element {
   return (
     <ArticleWrapper>
       <ArticleCover></ArticleCover>
-      <ArticleContent content={content} name="姚人多" id="">
+      <ArticleContent
+        content={content}
+        shouldActiveParallaxScrolling={shouldActiveParallaxScrolling}
+        name="姚人多"
+        id=""
+      >
         {detector}
       </ArticleContent>
     </ArticleWrapper>
