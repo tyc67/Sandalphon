@@ -225,8 +225,7 @@ const FeedBackFormWrapper = styled.div<{ shouldShowFeedBack: boolean }>`
   line-height: 1.5;
   z-index: 539;
   overflow-y: auto;
-  background-color: ${({ shouldShowFeedBack }) =>
-    shouldShowFeedBack ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
+
   ${({ shouldShowFeedBack }) =>
     shouldShowFeedBack
       ? 'transform: translateY(0%)'
@@ -234,9 +233,19 @@ const FeedBackFormWrapper = styled.div<{ shouldShowFeedBack: boolean }>`
   overflow-x: hidden;
   transition: ${({ shouldShowFeedBack }) =>
     shouldShowFeedBack
-      ? 'transform 0.3s ease-in-out, background-color 0.3s 0.3s ease-in-out'
-      : 'transform 0.3s 0.3s ease-in-out, background-color 0.3s ease-in-out'};
-
+      ? 'transform 0.3s ease-in-out'
+      : 'transform 0.3s 0.3s ease-in-out'};
+  .close-background {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: ${({ shouldShowFeedBack }) =>
+      shouldShowFeedBack ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
+    transition: ${({ shouldShowFeedBack }) =>
+      shouldShowFeedBack
+        ? 'background-color 0.3s 0.3s ease-in-out'
+        : 'background-color 0.3s ease-in-out'};
+  }
   .form-feedback {
     padding: 20px;
     width: 100%;
@@ -264,12 +273,8 @@ export default function ArticleMainText({
   shouldShowEmojiFeature = true,
 }: ArticleMainTextProps) {
   const [shouldShowFeedBack, setShouldShowFeedBack] = useState(false)
-  const handleClose = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const eventTarget = e.target as HTMLDivElement
-    const eventTargetClassName = eventTarget.className
-    if (eventTargetClassName.includes('epl-feed-back-form-wrapper')) {
-      setShouldShowFeedBack(false)
-    }
+  const handleClose = () => {
+    setShouldShowFeedBack(false)
   }
   const handleOpen = () => {
     setShouldShowFeedBack(true)
@@ -304,8 +309,8 @@ export default function ArticleMainText({
         <FeedBackFormWrapper
           shouldShowFeedBack={shouldShowFeedBack}
           className="epl-feed-back-form-wrapper"
-          onClick={handleClose}
         >
+          <div className="close-background" onClick={handleClose}></div>
           <FeedBackForm
             shouldUseRecaptcha={false}
             {...feedBackFormSetting}
