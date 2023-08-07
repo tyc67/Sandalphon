@@ -8,7 +8,7 @@ import FeedbackFormWrapper from '../../components/article/feedback-form-wrapper'
 import ArticleWrapper from '../../components/article/article-wrapper'
 import Main from '../../components/shared/main-wrapper'
 import Detector from '../../components/shared/detector'
-
+import Related from '../../components/shared/related'
 const LAI_CHING_TE_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/lai-ching-te/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/lai-ching-te/1-tablet.jpeg`,
@@ -47,6 +47,7 @@ export default function ArticleLaiChingTe() {
         candidate="賴清德"
         nameColor="#6F8F46"
       />
+      <Related renderCandidatesId={['hou-yu-ih', 'ko-wen-je']}></Related>
     </Main>
   )
 }
