@@ -146,7 +146,8 @@ const parseArticleContent = (
   content: ArticleContentType,
   name: string,
   id: string,
-  shouldActiveParallaxScrolling: boolean
+  shouldActiveParallaxScrolling: boolean,
+  hasFeedBackFeature: boolean
 ) => {
   const renderItem = (item: ArticleContentItem) => {
     switch (item.type) {
@@ -167,7 +168,12 @@ const parseArticleContent = (
           </Subtitle>
         )
       case 'text':
-        return <ArticleMainText value={item.value}></ArticleMainText>
+        return (
+          <ArticleMainText
+            hasFeedBackFeature={hasFeedBackFeature}
+            value={item.value}
+          ></ArticleMainText>
+        )
       case 'second-text':
         return <SecondText>{item.value}</SecondText>
       case 'image':
@@ -222,6 +228,7 @@ type ArticleContentProps = {
   name: string
   id: string
   shouldActiveParallaxScrolling?: boolean
+  hasFeedBackFeature?: boolean
   children: React.ReactNode
 }
 
@@ -230,13 +237,15 @@ export default function ArticleContent({
   name = '',
   id,
   shouldActiveParallaxScrolling = false,
+  hasFeedBackFeature = true,
   children,
 }: ArticleContentProps): JSX.Element {
   const contentJsx = parseArticleContent(
     content,
     name,
     id,
-    shouldActiveParallaxScrolling
+    shouldActiveParallaxScrolling,
+    hasFeedBackFeature
   )
   return (
     <Wrapper>

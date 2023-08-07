@@ -18,6 +18,7 @@ export default function ArticleYaoJeoTo({
       <ArticleContent
         content={content}
         shouldActiveParallaxScrolling={shouldActiveParallaxScrolling}
+        hasFeedBackFeature={false}
         name="姚人多"
         id=""
       >
