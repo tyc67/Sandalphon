@@ -33,6 +33,7 @@ export default function ArticleLaiChingTe() {
           imagesSrc={LAI_CHING_TE_COVER_IMAGE}
         ></ArticleCover>
         <ArticleContent
+          shouldActiveParallaxScrolling={!state}
           content={content}
           name={LAI_CHING_TE_LETTER.name}
           id={LAI_CHING_TE_LETTER.id}

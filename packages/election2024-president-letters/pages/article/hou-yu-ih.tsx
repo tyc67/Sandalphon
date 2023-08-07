@@ -27,6 +27,7 @@ export default function ArticleHoYouIh() {
           imagesSrc={HOU_YU_IH_COVER_IMAGE}
         ></ArticleCover>
         <ArticleContent
+          shouldActiveParallaxScrolling={!state}
           content={content}
           id={HOU_YU_IH_LETTER.id}
           name={HOU_YU_IH_LETTER.name}

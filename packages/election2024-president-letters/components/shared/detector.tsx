@@ -19,7 +19,7 @@ export default function Detector() {
           zIndex: '1',
           height: '10px',
           width: '100%',
-          top: '60vh',
+          top: '5vh',
           backgroundColor: 'transparent',
         }}
       ></InView>
