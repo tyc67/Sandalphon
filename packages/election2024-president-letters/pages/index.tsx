@@ -7,6 +7,7 @@ import { CANDIDATES_LETTER } from '../constants'
 import Main from '../components/shared/main-wrapper'
 import Detector from '../components/shared/detector'
 import { headerHeight } from '../styles/shared-style'
+import Landing from '../components/landing/landing'
 const Wrapper = styled.section`
   scroll-snap-align: start;
   background-color: ${background.gray};
@@ -24,6 +25,7 @@ export default function Home() {
   const { state, component } = Detector()
   return (
     <Main shouldScrollSnap={state}>
+      <Landing />
       <Wrapper>
         {CANDIDATES_LETTER.map((person) => (
           <InviteLetter
