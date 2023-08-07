@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import FeedBackForm from '@readr-media/react-feedback'
 import { Form } from '@readr-media/react-feedback/dist/typedef'
 import styled, { css } from 'styled-components'
@@ -6,7 +6,7 @@ import { font, color, breakpoint } from '../../styles/theme'
 import { feedbackFormId, emotionFieldId } from '../../config'
 import SVGAddEmojiSmall from '../../public/icon/add-emoji-small.svg'
 import SVGAddEmojiLarge from '../../public/icon/add-emoji-large.svg'
-
+import { EmojiContext } from '../../context/emoji'
 const { text } = color
 const { body, body2, tiny } = font
 
@@ -266,12 +266,13 @@ const FeedBackFormWrapper = styled.div<{ shouldShowFeedBack: boolean }>`
 
 type ArticleMainTextProps = {
   value: string
-  shouldShowEmojiFeature?: boolean
+  hasFeedBackFeature?: boolean
 }
 export default function ArticleMainText({
   value,
-  shouldShowEmojiFeature = true,
+  hasFeedBackFeature = true,
 }: ArticleMainTextProps) {
+  const { shouldShowEmoji } = useContext(EmojiContext)
   const [shouldShowFeedBack, setShouldShowFeedBack] = useState(false)
   const handleClose = () => {
     setShouldShowFeedBack(false)
@@ -281,9 +282,11 @@ export default function ArticleMainText({
   }
   return (
     <Wrapper>
-      {shouldShowEmojiFeature && <EmojiDesktop>心情123456</EmojiDesktop>}
+      {hasFeedBackFeature && shouldShowEmoji && (
+        <EmojiDesktop>心情123456</EmojiDesktop>
+      )}
       <MainText>{value}</MainText>
-      {shouldShowEmojiFeature && (
+      {hasFeedBackFeature && shouldShowEmoji && (
         <FeedBackFormWrapperDesktop>
           <AddEmojiButtonDesktop>
             <SVGAddEmojiLarge className="large" />
@@ -296,7 +299,7 @@ export default function ArticleMainText({
           ></FeedBackForm>
         </FeedBackFormWrapperDesktop>
       )}
-      {shouldShowEmojiFeature && (
+      {hasFeedBackFeature && shouldShowEmoji && (
         <EmojiWrapper>
           <Emoji>心情123456</Emoji>
           <AddEmojiButton onClick={handleOpen}>
@@ -305,7 +308,7 @@ export default function ArticleMainText({
           </AddEmojiButton>
         </EmojiWrapper>
       )}
-      {shouldShowEmojiFeature && (
+      {shouldShowEmoji && (
         <FeedBackFormWrapper
           shouldShowFeedBack={shouldShowFeedBack}
           className="epl-feed-back-form-wrapper"
