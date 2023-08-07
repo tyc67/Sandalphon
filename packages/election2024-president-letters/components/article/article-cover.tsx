@@ -108,11 +108,11 @@ export default function ArticleCover({
 }: ArticleCoverProps): JSX.Element {
   const getSvg = () => {
     switch (id) {
-      case 'LaiChingTe':
+      case 'lai-ching-te':
         return <SvgOpenLetterGreen />
-      case 'HouYuIh':
+      case 'hou-yu-ih':
         return <SvgOpenLetterBlue />
-      case 'KoWenJe':
+      case 'ko-wen-je':
         return <SvgOpenLetterWhite />
       default:
         return <SvgOpenLetterGreen />
