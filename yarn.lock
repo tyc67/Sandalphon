@@ -1161,6 +1161,11 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
+"@dotlottie/react-player@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@dotlottie/react-player/-/react-player-1.1.1.tgz#1c6d1b0aaca8ada3e16e53bd9b8edb8b69867da4"
+  integrity sha512-y+9SnqRR6qY2UGzNLzu0tFZ88gsnkdmtM8KlscCU718MX4p7ZYNp5XncHXlf/ApQplmdQnGUEmBxfBE15a6xQg==
+
 "@emotion/is-prop-valid@^1.1.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-1.2.0.tgz#7f2d35c97891669f7e276eb71c83376a5dc44c83"
