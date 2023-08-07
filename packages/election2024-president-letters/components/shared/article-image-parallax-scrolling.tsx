@@ -29,7 +29,7 @@ const Div = styled.div<{
     width: 100%;
     height: 60vw;
   }
-  @media only screen {
+  @media only screen and (max-device-width: 1199px) {
     background-attachment: scroll;
   }
 `
