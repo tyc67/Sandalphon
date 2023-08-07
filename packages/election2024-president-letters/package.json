@@ -10,6 +10,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@dotlottie/react-player": "^1.1.1",
     "@readr-media/react-feedback": "^3.4.0",
     "axios": "^1.4.0",
     "graphql": "^16.7.1",
