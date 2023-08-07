@@ -40,16 +40,23 @@ const ButtonHideOrShowEmoji = styled.button`
     }
   }
 `
-export default function Header() {
+type Props = {
+  shouldActiveEmojiButton?: boolean
+}
+export default function Header({
+  shouldActiveEmojiButton = true,
+}: Props): JSX.Element {
   return (
     <HeaderWrapper>
       <Link href="https://www.mirrormedia.mg/">
         <MirrorMediaIcon />
       </Link>
-      <ButtonHideOrShowEmoji>
-        <EmojiCloseIcon />
-        隱藏心情
-      </ButtonHideOrShowEmoji>
+      {shouldActiveEmojiButton && (
+        <ButtonHideOrShowEmoji>
+          <EmojiCloseIcon />
+          隱藏心情
+        </ButtonHideOrShowEmoji>
+      )}
     </HeaderWrapper>
   )
 }
