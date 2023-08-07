@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { imagePrefix } from '../../config'
 const Link = styled.a`
   background-color: black;
   width: fit-content;
@@ -19,6 +20,8 @@ const Link = styled.a`
   }
   margin-right: 8px;
   img {
+    width: 16px;
+    height: 16px;
     margin-right: 4px;
   }
 `
@@ -29,7 +32,7 @@ export default function DonateLink({ className = '' }) {
       href="https://www.mirrormedia.mg/donate"
       target="_blank"
     >
-      <img src="/icon/donate.png" alt="donate" />
+      <img src={`${imagePrefix}/icon/donate.png`} alt="donate" />
       <span>贊助本文</span>
     </Link>
   )
