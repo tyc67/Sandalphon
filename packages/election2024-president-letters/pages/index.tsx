@@ -8,6 +8,7 @@ import Main from '../components/shared/main-wrapper'
 import Detector from '../components/shared/detector'
 import { headerHeight } from '../styles/shared-style'
 import Landing from '../components/landing/landing'
+import Related from '../components/shared/related'
 const Wrapper = styled.section`
   scroll-snap-align: start;
   background-color: ${background.gray};
@@ -41,6 +42,9 @@ export default function Home() {
         detector={component}
         shouldActiveParallaxScrolling={!state}
       />
+      <Related
+        renderCandidatesId={['lai-ching-te', 'hou-yu-ih', 'ko-wen-je']}
+      ></Related>
     </Main>
   )
 }

@@ -18,17 +18,17 @@ const breakpoint = {
 
 const color = {
   candidates: {
-    LaiChingTe: {
+    'lai-ching-te': {
       background: 'rgba(237, 255, 223, 1)',
       transition: 'rgba(175, 212, 146, 1)',
       text: 'rgba(111, 143, 70, 1)',
     },
-    HouYuIh: {
+    'hou-yu-ih': {
       background: 'rgba(229, 235, 255, 1)',
       transition: 'rgba(146, 165, 212, 1)',
       text: 'rgba(90, 111, 184, 1)',
     },
-    KoWenJe: {
+    'ko-wen-je': {
       background: 'rgba(229, 253, 255, 1)',
       transition: 'rgba(146, 209, 212, 1)',
       text: 'rgba(63, 140, 136, 1)',
