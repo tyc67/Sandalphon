@@ -9,6 +9,7 @@ import Detector from '../../components/shared/detector'
 import { imagePrefix } from '../../config'
 import FeedbackFormWrapper from '../../components/article/feedback-form-wrapper'
 import Related from '../../components/shared/related'
+import Credits from '../../components/shared/credits'
 const KO_WEN_JE__COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/ko-wen-je/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/ko-wen-je/1-tablet.jpeg`,
@@ -44,6 +45,7 @@ export default function ArticleKoWenJe() {
         nameColor="#3F8C88"
       />
       <Related renderCandidatesId={['lai-ching-te', 'hou-yu-ih']}></Related>
+      <Credits></Credits>
     </Main>
   )
 }

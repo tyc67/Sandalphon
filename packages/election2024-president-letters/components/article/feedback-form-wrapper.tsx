@@ -10,7 +10,7 @@ const FormWrapper = styled.div`
 
   .field-comment {
     margin-top: 0px;
-
+    margin-bottom: 0px;
     .input-control > button[disabled] {
       background-color: #bbbbbb;
     }

@@ -8,6 +8,7 @@ import ArticleWrapper from '../../components/article/article-wrapper'
 import Main from '../../components/shared/main-wrapper'
 import Detector from '../../components/shared/detector'
 import Related from '../../components/shared/related'
+import Credits from '../../components/shared/credits'
 const HOU_YU_IH_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/hou-yu-ih/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/hou-yu-ih/1-tablet.jpeg`,
@@ -42,6 +43,7 @@ export default function ArticleHoYouIh() {
         nameColor="#5A6FB8"
       />
       <Related renderCandidatesId={['lai-ching-te', 'ko-wen-je']}></Related>
+      <Credits></Credits>
     </Main>
   )
 }
