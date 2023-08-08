@@ -4,8 +4,10 @@ import MirrorMediaIcon from '../../public/icon/mirror-media.svg'
 import { color, font } from '../../styles/theme'
 const { text, border } = color
 const { tiny } = font
+import { EmojiContext } from '../../context/emoji'
 import EmojiCloseIcon from '../../public/icon/emoji-close.svg'
-// import EmojiOpenIcon from '../../public/icon/emoji-open.svg'
+import EmojiOpenIcon from '../../public/icon/emoji-open.svg'
+import { useContext } from 'react'
 import { zIndex } from '../../styles/z-index'
 const HeaderWrapper = styled.header`
   background-color: white;
@@ -46,15 +48,28 @@ type Props = {
 export default function Header({
   shouldActiveEmojiButton = true,
 }: Props): JSX.Element {
+  const { shouldShowEmoji, setShouldShowEmoji } = useContext(EmojiContext)
+
   return (
     <HeaderWrapper>
       <Link href="https://www.mirrormedia.mg/">
         <MirrorMediaIcon />
       </Link>
       {shouldActiveEmojiButton && (
-        <ButtonHideOrShowEmoji>
-          <EmojiCloseIcon />
-          隱藏心情
+        <ButtonHideOrShowEmoji
+          onClick={() => setShouldShowEmoji((pre) => !pre)}
+        >
+          {shouldShowEmoji ? (
+            <>
+              <EmojiCloseIcon />
+              隱藏心情
+            </>
+          ) : (
+            <>
+              <EmojiOpenIcon />
+              開啟心情
+            </>
+          )}
         </ButtonHideOrShowEmoji>
       )}
     </HeaderWrapper>

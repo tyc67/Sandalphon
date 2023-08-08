@@ -12,6 +12,7 @@ export type ImageOption = {
 export type ArticleContentItem =
   | { type: 'subtitle'; value: SubtitleValue }
   | { type: 'intro'; value: SubtitleValue }
+  | { type: 'text'; value: OtherValue; id?: string }
   | { type: 'image'; value: OtherValue; imageOption: ImageOption }
   | { type: 'text'; value: OtherValue; id: string }
   | {

@@ -6,6 +6,8 @@ const { background, text, border, candidates } = color
 const { body, h3, h5 } = font
 import ArticleMainText from '../article/article-main-text'
 import ArticleImageParallaxScrolling from './article-image-parallax-scrolling'
+import DonateAndSubscribe from './donate-and-subscribe'
+import SupportMirrorMediaBanner from './support-mirrormedia-banner'
 import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
@@ -236,6 +238,7 @@ type ArticleContentProps = {
   name: string
   id: string
   shouldActiveParallaxScrolling?: boolean
+  hasFeedBackFeature?: boolean
   children: React.ReactNode
 }
 
@@ -244,6 +247,7 @@ export default function ArticleContent({
   name = '',
   id,
   shouldActiveParallaxScrolling = false,
+  hasFeedBackFeature = true,
   children,
 }: ArticleContentProps): JSX.Element {
   const [emojiFormId, setEmojiFormId] = useState<string>('')
@@ -257,8 +261,10 @@ export default function ArticleContent({
   )
   return (
     <Wrapper>
+      <DonateAndSubscribe />
       {children}
       {contentJsx}
+      <SupportMirrorMediaBanner />
     </Wrapper>
   )
 }

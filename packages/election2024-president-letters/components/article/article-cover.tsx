@@ -4,7 +4,7 @@ import { font, color, breakpoint } from '../../styles/theme'
 import SvgOpenLetterGreen from '../../public/icon/mail-open-green.svg'
 import SvgOpenLetterBlue from '../../public/icon/mail-open-blue.svg'
 import SvgOpenLetterWhite from '../../public/icon/mail-open-white.svg'
-import { zIndex } from '../../styles/z-index'
+
 const { h1, h2, body2 } = font
 const { text, candidates } = color
 
@@ -17,7 +17,7 @@ type ArticleCoverProps = {
 const Wrapper = styled.section`
   position: relative;
   background-color: white;
-  z-index: ${zIndex.overHeader};
+
   scroll-snap-align: start;
   height: 100vh;
   display: flex;
@@ -108,11 +108,11 @@ export default function ArticleCover({
 }: ArticleCoverProps): JSX.Element {
   const getSvg = () => {
     switch (id) {
-      case 'LaiChingTe':
+      case 'lai-ching-te':
         return <SvgOpenLetterGreen />
-      case 'HouYuIh':
+      case 'hou-yu-ih':
         return <SvgOpenLetterBlue />
-      case 'KoWenJe':
+      case 'ko-wen-je':
         return <SvgOpenLetterWhite />
       default:
         return <SvgOpenLetterGreen />
