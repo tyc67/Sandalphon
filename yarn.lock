@@ -1364,10 +1364,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@readr-media/react-feedback@^3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@readr-media/react-feedback/-/react-feedback-3.4.0.tgz#3d7f2e50355c31fd95240a2f0a101777b9447208"
-  integrity sha512-gwuUCNVSPYrYDw7ky6bIRsGdmg67DLdbR2jmi7rdyKYeGJS5JDdMO5z+S8H61hcZKC/3P98EWNfD28D5mgvtYQ==
+"@readr-media/react-feedback@3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@readr-media/react-feedback/-/react-feedback-3.5.2.tgz#dfdf2cd877dc7537113468095790a2bdc337bf4a"
+  integrity sha512-e5stf4OxZQQWM+Cfa2npxhhXbN12AGHG+mhUeD8cOdHkvKG+ARvxZ52tNwzojMRLLKYkdgYyXEeQhZEpXra9KA==
   dependencies:
     axios "^0.27.2"
     lodash "^4.17.21"

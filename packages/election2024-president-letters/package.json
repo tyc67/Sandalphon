@@ -10,7 +10,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
-    "@readr-media/react-feedback": "^3.4.0",
+    "@readr-media/react-feedback": "3.5.2",
     "axios": "^1.4.0",
     "graphql": "^16.7.1",
     "react": "18.2.0",
