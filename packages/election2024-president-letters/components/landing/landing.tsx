@@ -47,7 +47,7 @@ export default function Landing() {
   return (
     <Wrapper>
       <DotLottiePlayer
-        src={`${imagePrefix}/landing_v2.lottie`}
+        src={`${imagePrefix}/landing_v2.2.lottie`}
         autoplay
         loop
         className="lottie"
