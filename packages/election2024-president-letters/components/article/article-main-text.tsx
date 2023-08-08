@@ -1,36 +1,20 @@
-import { useState } from 'react'
+import axios from 'axios'
+import { useState, useMemo, useEffect } from 'react'
 import FeedBackForm from '@readr-media/react-feedback'
-import { Form } from '@readr-media/react-feedback/dist/typedef'
+import type {
+  Form,
+  SingleField,
+  NotifyObject,
+} from '@readr-media/react-feedback/dist/typedef'
+import type { ExtendedOption } from '../../types'
 import styled, { css } from 'styled-components'
 import { font, color, breakpoint } from '../../styles/theme'
-import { feedbackFormId, emotionFieldId } from '../../config'
+import { feedbackFormId, emotionFieldId, optionApiUrl } from '../../config'
 import SVGAddEmojiSmall from '../../public/icon/add-emoji-small.svg'
-import SVGAddEmojiLarge from '../../public/icon/add-emoji-large.svg'
+import EmojiSummary from './emoji-summary'
 
 const { text } = color
 const { body, body2, tiny } = font
-
-type Forms = { forms: Form[] }
-const feedBackFormSetting: Forms = {
-  forms: [
-    {
-      id: feedbackFormId,
-      name: 'feedback-like',
-      type: 'form',
-      active: true,
-      fieldsCount: 1,
-      fields: [
-        {
-          id: emotionFieldId,
-          name: '按讚訂閱留言開啟小鈴鐺',
-          type: 'single',
-          status: 'published',
-          sortOrder: null,
-        },
-      ],
-    },
-  ],
-}
 
 const defaultPadding = css`
   padding-left: 20px;
@@ -68,42 +52,6 @@ const MainText = styled(Text)`
   }
 `
 
-const FeedBackFormWrapperDesktop = styled.div`
-  display: none;
-  ${breakpoint.xl} {
-    display: block;
-    position: relative;
-
-    .form-feedback {
-      display: none;
-      position: absolute;
-      top: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: white;
-      z-index: 1;
-      padding: 16px 32px 8px 32px;
-      border-radius: 100px;
-      width: 344px;
-      height: 89px;
-      //title
-      .fnOpuD {
-        display: none;
-      }
-      &::after {
-        content: '';
-        border: 6px solid transparent;
-        position: absolute;
-        border-bottom-color: white;
-        border-top: 0;
-        top: -6px;
-        left: 50%;
-        margin-left: -6px;
-      }
-    }
-  }
-`
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -117,41 +65,61 @@ const Wrapper = styled.div`
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
-
-    &:hover {
-      ${FeedBackFormWrapperDesktop} {
-        .form-feedback {
-          display: block;
-        }
-        button {
-          color: ${text.important};
-          .large {
-            path {
-              fill: ${text.important};
-            }
-          }
-        }
-      }
-    }
   }
 `
-const EmojiWrapper = styled.div`
+const EmojiWrapper = styled.div<{ shouldShowEmoji: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  .form-feedback {
+    display: none;
+  }
+
+  ${breakpoint.lg} {
+    position: relative;
+
+    .form-feedback {
+      display: ${({ shouldShowEmoji }) => (shouldShowEmoji ? 'block' : 'none')};
+      position: absolute;
+      top: 40px;
+      right: calc(334px * -1 / 2 + 34px);
+      background-color: white;
+      z-index: 1;
+      padding: 16px 32px 8px 32px;
+      border-radius: 100px;
+      width: 344px;
+      height: 89px;
+      &::after {
+        content: '';
+        border: 6px solid transparent;
+        position: absolute;
+        border-bottom-color: white;
+        border-top: 0;
+        top: -6px;
+        left: 50%;
+        margin-left: -6px;
+      }
+    }
+  }
+
+  ${breakpoint.xl} {
+    .form-feedback {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+`
+
+const EmojiSummaryWrapper = styled.div`
+  ${tinyFont};
+  color: ${text.secondary};
+
   ${breakpoint.xl} {
     display: none;
   }
 `
-
-const Emoji = styled.div`
-  ${tinyFont};
-  color: ${text.secondary};
-  &:focus {
-    color: ${text.important};
-  }
-`
-const EmojiDesktop = styled(Emoji)`
+const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper)`
   display: none;
   font-size: ${body2.size};
   line-height: ${body2.lineHeight};
@@ -163,7 +131,16 @@ const EmojiDesktop = styled(Emoji)`
   }
 `
 
-const AddEmojiButton = styled.button`
+const emojiActiveEffect = css`
+  color: ${text.important};
+  svg {
+    path {
+      fill: ${text.important};
+    }
+  }
+`
+
+const AddEmojiButton = styled.button<{ isActive: boolean }>`
   ${tinyFont};
   display: flex;
   align-items: center;
@@ -171,47 +148,68 @@ const AddEmojiButton = styled.button`
   justify-content: space-between;
   color: ${text.secondary};
 
-  .small,
-  .large {
+  svg {
+    display: block;
     margin-right: 4px;
     path {
       fill: ${text.secondary};
     }
   }
   &:focus {
-    color: ${text.important};
-    .small,
-    .large {
-      path {
-        fill: ${text.important};
-      }
-    }
-  }
-  .small {
-    display: block;
-  }
-  .large {
-    display: none;
+    ${emojiActiveEffect}
   }
 
   ${breakpoint.xl} {
-    .small {
-      display: none;
+    width: 160px;
+    justify-content: flex-start;
+  }
+
+  .selected-text {
+    order: 1;
+    margin-right: 6px;
+  }
+
+  .selected-image-wrapper {
+    order: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background-color: #efefef;
+    border-radius: 50%;
+
+    > img {
+      width: calc(100% - 4px);
+      height: calc(100% - 4px);
     }
-    .large {
-      display: block;
+  }
+
+  ${({ isActive }) => isActive && emojiActiveEffect}
+
+  ${breakpoint.xl} {
+    .selected-text {
+      order: 2;
+      margin-left: 6px;
+      margin-right: 0;
+    }
+    .selected-image-wrapper {
+      order: 1;
     }
   }
 `
 
-const AddEmojiButtonDesktop = styled(AddEmojiButton)`
-  display: none;
-  ${breakpoint.xl} {
-    display: flex;
-    margin-left: 0px;
-  }
+const HiddenMask = styled.div<{ shouldShow: boolean }>`
+  display: ${({ shouldShow }) => (shouldShow ? 'block' : 'none')};
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: transparent;
 `
-const FeedBackFormWrapper = styled.div<{ shouldShowFeedBack: boolean }>`
+
+const EmojiFormWrapper = styled.div<{ shouldShowEmoji: boolean }>`
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -226,25 +224,25 @@ const FeedBackFormWrapper = styled.div<{ shouldShowFeedBack: boolean }>`
   z-index: 539;
   overflow-y: auto;
 
-  ${({ shouldShowFeedBack }) =>
-    shouldShowFeedBack
+  ${({ shouldShowEmoji }) =>
+    shouldShowEmoji
       ? 'transform: translateY(0%)'
       : 'transform: translateY(100%)'};
   overflow-x: hidden;
-  transition: ${({ shouldShowFeedBack }) =>
-    shouldShowFeedBack
+  transition: ${({ shouldShowEmoji }) =>
+    shouldShowEmoji
       ? 'transform 0.3s ease-in-out'
       : 'transform 0.3s 0.3s ease-in-out'};
   .close-background {
     position: fixed;
     height: 100vh;
     width: 100%;
-    background-color: ${({ shouldShowFeedBack }) =>
-      shouldShowFeedBack ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
-    transition: ${({ shouldShowFeedBack }) =>
-      shouldShowFeedBack
-        ? 'background-color 0.3s 0.3s ease-in-out'
-        : 'background-color 0.3s ease-in-out'};
+    background-color: ${({ shouldShowEmoji }) =>
+    shouldShowEmoji ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
+    transition: ${({ shouldShowEmoji }) =>
+    shouldShowEmoji
+      ? 'background-color 0.3s 0.3s ease-in-out'
+      : 'background-color 0.3s ease-in-out'};
   }
   .form-feedback {
     padding: 20px;
@@ -253,69 +251,203 @@ const FeedBackFormWrapper = styled.div<{ shouldShowFeedBack: boolean }>`
     background-color: white;
     border-radius: 20px 20px 0 0;
     margin: auto auto 0 auto;
+
+    .option-statistic {
+      display: none;
+    }
   }
-  ${breakpoint.md} {
+  ${breakpoint.lg} {
+    display: none;
     .form-feedback {
       width: 100%;
     }
   }
-  ${breakpoint.xl} {
-    display: none;
-  }
 `
 
 type ArticleMainTextProps = {
+  sectionId: string
   value: string
   shouldShowEmojiFeature?: boolean
+  emojiFormId: string
+  onEmojiFormToggle: (
+    /* eslint-disable-line no-unused-vars */ formId: string
+  ) => void
 }
 export default function ArticleMainText({
+  sectionId,
   value,
   shouldShowEmojiFeature = true,
+  emojiFormId,
+  onEmojiFormToggle,
 }: ArticleMainTextProps) {
-  const [shouldShowFeedBack, setShouldShowFeedBack] = useState(false)
+  const [initialized, setInitialized] = useState(false)
+  const [shouldShowEmoji, setshouldShowEmoji] = useState(false)
+  const [summary, setSummary] = useState<Record<string, number>>({})
+  const [selectedOption, setSelectedOption] = useState<string | null>(null)
+
   const handleClose = () => {
-    setShouldShowFeedBack(false)
+    setshouldShowEmoji(false)
+    if (typeof onEmojiFormToggle === 'function') onEmojiFormToggle('')
   }
   const handleOpen = () => {
-    setShouldShowFeedBack(true)
+    setshouldShowEmoji(true)
+    if (typeof onEmojiFormToggle === 'function') onEmojiFormToggle(sectionId)
   }
+
+  const isActive = useMemo(
+    () => sectionId === emojiFormId,
+    [sectionId, emojiFormId]
+  )
+
+  const updateSelectedOption = (option: string | null) => {
+    if (!initialized) return
+
+    if (option) {
+      localStorage.setItem(sectionId, option)
+    } else {
+      localStorage.removeItem(sectionId)
+    }
+    setSelectedOption(option)
+  }
+
+  const onOptionChanged = (data: NotifyObject) => {
+    updateSelectedOption(data.selectedOption)
+    if (data.optionSummary) setSummary(data.optionSummary)
+  }
+
+  const options: ExtendedOption[] = [
+    {
+      name: '很讚',
+      value: 'good',
+      iconUrl: '/icon/good.svg',
+      sortOrder: 1,
+    },
+    {
+      name: '超愛',
+      value: 'very-good',
+      iconUrl: '/icon/very-good.svg',
+      sortOrder: 2,
+    },
+    {
+      name: '想哭',
+      value: 'sad',
+      iconUrl: '/icon/sad.svg',
+      sortOrder: 3,
+    },
+    {
+      name: '驚訝',
+      value: 'shock',
+      iconUrl: '/icon/shock.svg',
+      sortOrder: 4,
+    },
+    {
+      name: '生氣',
+      value: 'angry',
+      iconUrl: '/icon/angry.svg',
+      sortOrder: 5,
+    },
+  ]
+
+  const singleField: SingleField = {
+    id: emotionFieldId,
+    name: '這段讓你覺得...',
+    type: 'single',
+    identifier: sectionId,
+    notifyUpstream: onOptionChanged,
+    selectedItem: selectedOption ?? undefined,
+    options,
+  }
+
+  const feedBackFormSetting: Form[] = [
+    {
+      id: feedbackFormId,
+      name: 'feedback-emotion',
+      fields: [singleField],
+    },
+  ]
+
+  const optionMap = options.reduce(
+    (prev: Record<string, ExtendedOption>, curr: ExtendedOption) => {
+      const k = curr.value
+      prev[k] = curr
+      return prev
+    },
+    {}
+  )
+
+  const fetchOptionSummary = () =>
+    axios.get(optionApiUrl, {
+      params: {
+        form: feedbackFormId,
+        field: emotionFieldId,
+        identifier: sectionId,
+      },
+    })
+
+  useEffect(() => {
+    setSelectedOption(localStorage.getItem(sectionId))
+    fetchOptionSummary()
+      .then(({ data }) => {
+        setSummary(data)
+        setInitialized(true)
+      })
+      .catch((err) => console.error(err))
+  }, [sectionId])
+
   return (
     <Wrapper>
-      {shouldShowEmojiFeature && <EmojiDesktop>心情123456</EmojiDesktop>}
+      {shouldShowEmojiFeature && (
+        <EmojiSummaryWrapperDesktop>
+          <EmojiSummary emojiMap={optionMap} summary={summary} />
+        </EmojiSummaryWrapperDesktop>
+      )}
       <MainText>{value}</MainText>
       {shouldShowEmojiFeature && (
-        <FeedBackFormWrapperDesktop>
-          <AddEmojiButtonDesktop>
-            <SVGAddEmojiLarge className="large" />
-            <span>加入心情</span>
-          </AddEmojiButtonDesktop>
-
-          <FeedBackForm
-            shouldUseRecaptcha={false}
-            {...feedBackFormSetting}
-          ></FeedBackForm>
-        </FeedBackFormWrapperDesktop>
-      )}
-      {shouldShowEmojiFeature && (
-        <EmojiWrapper>
-          <Emoji>心情123456</Emoji>
-          <AddEmojiButton onClick={handleOpen}>
-            <SVGAddEmojiSmall className="small" />
-            <span>加入心情</span>
+        <EmojiWrapper shouldShowEmoji={isActive}>
+          <EmojiSummaryWrapper>
+            <EmojiSummary emojiMap={optionMap} summary={summary} />
+          </EmojiSummaryWrapper>
+          <AddEmojiButton onClick={handleOpen} isActive={isActive}>
+            {selectedOption ? (
+              <>
+                <span className="selected-text">你的心情</span>
+                <span className="selected-image-wrapper">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={optionMap[selectedOption].iconUrl}
+                    alt={optionMap[selectedOption].name}
+                  />
+                </span>
+              </>
+            ) : (
+              <>
+                <SVGAddEmojiSmall />
+                <span>加入心情</span>
+              </>
+            )}
           </AddEmojiButton>
+          <HiddenMask shouldShow={isActive} onClick={handleClose} />
+          {shouldShowEmoji && (
+            <FeedBackForm
+              shouldUseRecaptcha={false}
+              forms={feedBackFormSetting}
+            />
+          )}
         </EmojiWrapper>
       )}
       {shouldShowEmojiFeature && (
-        <FeedBackFormWrapper
-          shouldShowFeedBack={shouldShowFeedBack}
-          className="epl-feed-back-form-wrapper"
+        <EmojiFormWrapper
+          shouldShowEmoji={shouldShowEmoji}
+          className="epl-emoji-form-wrapper"
         >
           <div className="close-background" onClick={handleClose}></div>
-          <FeedBackForm
-            shouldUseRecaptcha={false}
-            {...feedBackFormSetting}
-          ></FeedBackForm>
-        </FeedBackFormWrapper>
+          {shouldShowEmoji && (
+            <FeedBackForm
+              shouldUseRecaptcha={false}
+              forms={feedBackFormSetting}
+            />
+          )}
+        </EmojiFormWrapper>
       )}
     </Wrapper>
   )

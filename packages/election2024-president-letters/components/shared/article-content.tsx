@@ -11,6 +11,7 @@ import {
   ArticleContentItem,
 } from '../../types/index'
 import { headerHeight } from '../../styles/shared-style'
+import { useState } from 'react'
 const defaultPadding = css`
   padding-left: 20px;
   padding-right: 20px;
@@ -128,9 +129,8 @@ const formatImagePath = (value: string): any => {
   const arrayWithWebP = arr.concat(arrWebP)
   arrayWithWebP.map((item) => {
     const isWebP = item[0].includes('WebP')
-    item[1] = `${imagePrefix}/images/article/${value}-${item[1]}.${
-      isWebP ? 'webp' : 'jpeg'
-    }`
+    item[1] = `${imagePrefix}/images/article/${value}-${item[1]}.${isWebP ? 'webp' : 'jpeg'
+      }`
 
     return item
   })
@@ -146,13 +146,17 @@ const parseArticleContent = (
   content: ArticleContentType,
   name: string,
   id: string,
-  shouldActiveParallaxScrolling: boolean
+  shouldActiveParallaxScrolling: boolean,
+  emojiFormId: string,
+  setEmojiFormId: /* eslint-disable-next-line no-unused-vars */ (
+    value: string
+  ) => void
 ) => {
-  const renderItem = (item: ArticleContentItem) => {
+  const renderItem = (item: ArticleContentItem, index: number) => {
     switch (item.type) {
       case 'intro':
         return (
-          <Intro>
+          <Intro key={index}>
             {item.value.map((i, index) => (
               <p key={index}>{i}</p>
             ))}
@@ -160,16 +164,24 @@ const parseArticleContent = (
         )
       case 'subtitle':
         return (
-          <Subtitle candidateId={id}>
+          <Subtitle candidateId={id} key={index}>
             {item.value.map((i, index) => (
               <span key={index}>{i}</span>
             ))}
           </Subtitle>
         )
       case 'text':
-        return <ArticleMainText value={item.value}></ArticleMainText>
+        return (
+          <ArticleMainText
+            key={index}
+            sectionId={`${id}-${item.id}`}
+            value={item.value}
+            emojiFormId={emojiFormId}
+            onEmojiFormToggle={setEmojiFormId}
+          ></ArticleMainText>
+        )
       case 'second-text':
-        return <SecondText>{item.value}</SecondText>
+        return <SecondText key={index}>{item.value}</SecondText>
       case 'image':
         const { value, imageOption } = item
         const imagesSrc = formatImagePath(value)
@@ -180,12 +192,14 @@ const parseArticleContent = (
           <>
             {shouldParallaxScrolling ? (
               <ArticleImageParallaxScrolling
+                key={index}
                 imagesSrc={imagesSrc}
                 imageCaption={imageOption?.imageCaption}
                 shouldActiveParallaxScrolling={shouldActiveParallaxScrolling}
               ></ArticleImageParallaxScrolling>
             ) : (
               <ArticleImage
+                key={index}
                 name={name}
                 type="content"
                 imagesSrc={imagesSrc}
@@ -214,7 +228,7 @@ const parseArticleContent = (
         return null
     }
   }
-  return content.map((contentItem) => renderItem(contentItem))
+  return content.map((contentItem, index) => renderItem(contentItem, index))
 }
 
 type ArticleContentProps = {
@@ -232,11 +246,14 @@ export default function ArticleContent({
   shouldActiveParallaxScrolling = false,
   children,
 }: ArticleContentProps): JSX.Element {
+  const [emojiFormId, setEmojiFormId] = useState<string>('')
   const contentJsx = parseArticleContent(
     content,
     name,
     id,
-    shouldActiveParallaxScrolling
+    shouldActiveParallaxScrolling,
+    emojiFormId,
+    setEmojiFormId
   )
   return (
     <Wrapper>
