@@ -95,11 +95,14 @@ type CustomHeadProps = {
 export default function CustomHead(props: CustomHeadProps) {
   const router = useRouter()
   const currentPath = router.asPath
+  const url = `${staticFileDestination}${
+    currentPath === '/' ? '' : currentPath
+  }`
   const siteInformation = {
     title: props.title ? `${props.title} - ${SITE_TITLE}` : SITE_TITLE,
     description: props.description,
     site_name: SITE_TITLE,
-    url: staticFileDestination + currentPath === '/' ? '' : currentPath,
+    url: url,
     type: 'website',
     image: {
       width: '1200',
