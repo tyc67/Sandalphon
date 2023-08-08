@@ -3,7 +3,7 @@ import { imagePrefix } from '../../config'
 import styled, { css } from 'styled-components'
 import { font, color, breakpoint } from '../../styles/theme'
 const { background, text, border, candidates } = color
-const { body, h3, h5 } = font
+const { h3, h5 } = font
 import ArticleMainText from '../article/article-main-text'
 import ArticleImageParallaxScrolling from './article-image-parallax-scrolling'
 import DonateAndSubscribe from './donate-and-subscribe'
@@ -12,7 +12,7 @@ import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
 } from '../../types/index'
-import { headerHeight } from '../../styles/shared-style'
+import { headerHeight, textFont } from '../../styles/shared-style'
 import { useState } from 'react'
 const defaultPadding = css`
   padding-left: 20px;
@@ -22,11 +22,6 @@ const defaultMargin = css`
   margin-bottom: 24px;
 `
 
-const bodyFont = css`
-  font-size: ${body.size};
-  line-height: ${body.lineHeight};
-  font-weight: ${body.weight};
-`
 const MaxWidth = css`
   max-width: 640px; //todo: after implement like/dislike, should adjust this value
   margin-left: auto;
@@ -45,13 +40,6 @@ const Wrapper = styled.section`
   //for scroll-snap
   scroll-snap-align: start;
   white-space: initial;
-`
-
-const Text = styled.p`
-  ${bodyFont};
-  ${defaultMargin};
-  ${defaultPadding};
-  ${MaxWidth}
 `
 
 const Intro = styled.section`
@@ -98,8 +86,12 @@ const Intro = styled.section`
   }
 `
 
-const SecondText = styled(Text)`
+const SecondText = styled.p`
+  ${textFont};
   color: ${text.secondary};
+  ${defaultMargin};
+  ${defaultPadding};
+  ${MaxWidth}
 `
 const Subtitle = styled.h2<{ candidateId: string }>`
   ${defaultPadding};

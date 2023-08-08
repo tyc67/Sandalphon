@@ -20,8 +20,9 @@ import EmojiSummary from './emoji-summary'
 import { EmojiContext } from '../../context/emoji'
 import { useInView } from 'react-intersection-observer'
 
+import { textFont } from '../../styles/shared-style'
 const { text } = color
-const { body, body2, tiny } = font
+const { body2, tiny } = font
 
 const defaultPadding = css`
   padding-left: 20px;
@@ -29,12 +30,6 @@ const defaultPadding = css`
 `
 const defaultMarginBottom = css`
   margin-bottom: 24px;
-`
-
-const bodyFont = css`
-  font-size: ${body.size};
-  line-height: ${body.lineHeight};
-  font-weight: ${body.weight};
 `
 
 const tinyFont = css`
@@ -46,15 +41,13 @@ const MaxWidth = css`
   max-width: 640px; //todo: after implement like/dislike, should adjust this value
 `
 
-const Text = styled.p`
-  ${bodyFont};
-`
-
-const MainText = styled(Text)`
+const MainText = styled.p`
   color: ${text.important};
+  ${textFont};
   max-width: 600px;
-
+  margin-bottom: 4px;
   ${breakpoint.xl} {
+    margin-bottom: 0;
     width: 600px;
   }
 `

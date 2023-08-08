@@ -4,22 +4,25 @@ import { breakpoint } from '../../styles/theme'
 // import Image from 'next/image'
 import ImageCaption from './image-caption'
 import { css } from 'styled-components'
-
+import { headerHeight } from '../../styles/shared-style'
 const pictureCoverCSS = css`
   position: relative;
   display: block;
   width: 100%;
   overflow: hidden;
-  max-height: 60vh;
   img {
-    width: 100%;
-
+    width: 100vw;
+    height: calc(40vh + ${headerHeight});
+    /* max-height: 60vh; */
     object-fit: cover;
   }
   ${breakpoint.xl} {
     max-height: 450px;
     width: 600px;
     height: 450px;
+    img {
+      height: 450px;
+    }
   }
   ${breakpoint.xxl} {
     width: 720px;
