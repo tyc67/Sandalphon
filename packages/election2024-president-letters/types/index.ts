@@ -1,3 +1,5 @@
+import { Option } from '@readr-media/react-feedback/dist/typedef'
+
 type ItemType = 'text' | 'second-text' | 'image' | 'intro' | 'subtitle'
 
 type SubtitleValue = string[]
@@ -12,8 +14,11 @@ export type ArticleContentItem =
   | { type: 'intro'; value: SubtitleValue }
   | { type: 'text'; value: OtherValue; id?: string }
   | { type: 'image'; value: OtherValue; imageOption: ImageOption }
+  | { type: 'text'; value: OtherValue; id: string }
   | {
-      type: Exclude<ItemType, 'subtitle' | 'image' | 'intro' | 'text'>
-      value: OtherValue
-    }
+    type: Exclude<ItemType, 'subtitle' | 'image' | 'intro' | 'text'>
+    value: OtherValue
+  }
 export type ArticleContent = ArticleContentItem[]
+
+export type ExtendedOption = Option & { sortOrder: number }
