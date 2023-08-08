@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { color, font, breakpoint } from '../../styles/theme'
 import LeftArrowSvg from '../../public/icon/left-arrow.svg'
+import MailGreenSvg from '../../public/icon/mail-green.svg'
+import MailBlueSvg from '../../public/icon/mail-blue.svg'
+import MailWhiteSvg from '../../public/icon/mail-white.svg'
 const { h5, body2 } = font
 const { border, text, candidates } = color
 
@@ -9,7 +12,7 @@ const Wrapper = styled.section`
   padding: 16px 16px 4px 16px;
   border: 1px ${border} solid;
   background-color: white;
-
+  position: relative;
   border-radius: 12px;
   max-width: 280px;
   margin: 0 auto 8px auto;
@@ -17,6 +20,46 @@ const Wrapper = styled.section`
     max-width: 280px;
     min-width: 280px;
     margin: 0 0 0 0;
+  }
+  .decorator {
+    position: absolute;
+
+    &-lai-ching-te {
+      top: -15.48px;
+      left: 186px;
+      transform: rotate(25deg);
+    }
+    &-hou-yu-ih {
+      top: -15.48px;
+      left: 22px;
+      transform: rotate(-30deg);
+    }
+    &-ko-wen-je {
+      top: -15.48px;
+      left: 166px;
+      transform: rotate(15deg);
+    }
+  }
+  ${breakpoint.xl} {
+    .decorator {
+      position: absolute;
+
+      &-lai-ching-te {
+        top: -21.875px;
+        left: 42px;
+        transform: rotate(25deg);
+      }
+      &-hou-yu-ih {
+        top: unset;
+        bottom: -20px;
+        left: 24px;
+        transform: rotate(-30deg);
+      }
+      &-ko-wen-je {
+        left: 166px;
+        transform: rotate(-15deg);
+      }
+    }
   }
 `
 const Top = styled.div`
@@ -90,8 +133,7 @@ const Bottom = styled.button<{ textColor: string }>`
         fill: ${(props) => props.textColor};
       }
     }
-    &:hover,
-    &:visited {
+    &:hover {
       color: ${text.important};
       svg {
         path {
@@ -120,8 +162,23 @@ export default function InviteLetter({
 }: InviteLetterProp): JSX.Element {
   const href = `/article/${id}`
 
+  const getSvg = () => {
+    switch (id) {
+      case 'lai-ching-te':
+        return <MailGreenSvg className={`decorator decorator-${id}`} />
+      case 'hou-yu-ih':
+        return <MailBlueSvg className={`decorator decorator-${id}`} />
+      case 'ko-wen-je':
+        return <MailWhiteSvg className={`decorator decorator-${id}`} />
+      default:
+        return <MailWhiteSvg className={`decorator decorator-${id}`} />
+    }
+  }
+  const decoratorSvg = getSvg()
+
   return (
     <Wrapper>
+      {decoratorSvg}
       <Top>
         <AvatarImage>
           <source srcSet={image.webP}></source>

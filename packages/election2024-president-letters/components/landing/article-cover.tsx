@@ -3,7 +3,10 @@ import CoverImage from '../shared/article-image'
 import { font, color, breakpoint } from '../../styles/theme'
 import { imagePrefix } from '../../config'
 import { CANDIDATES } from '../../constants'
-const { h2, body2 } = font
+import SVGMailOpenGray from '../../public/icon/mail-open-gray.svg'
+import { headerHeight } from '../../styles/shared-style'
+const { h1, h2, body2 } = font
+
 const { text, candidates } = color
 const YAO_JAO_TO_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/yao-jen-to/1-desktop.jpeg`,
@@ -31,18 +34,33 @@ const Bottom = styled.section`
   flex-direction: column;
   justify-content: start;
   background-color: white;
-  padding: 40px 20px;
+  padding: 60px 20px 40px;
   position: relative;
 
-  height: 60vh;
+  height: calc(60vh - ${headerHeight});
   overflow: hidden;
+  svg {
+    position: absolute;
+    top: 230px;
+    right: 10px;
+    transform: rotate(25deg) translate(-50%, -50%);
+  }
   ${breakpoint.xl} {
     height: 450px;
     padding: 40px;
     justify-content: end;
+    svg {
+      bottom: 0;
+      top: 20%;
+      left: 60px;
+      transform: rotate(0deg) translate(-50%, -50%);
+    }
   }
   ${breakpoint.xxl} {
     padding: 40px 120px;
+    svg {
+      left: 140px;
+    }
   }
 `
 const Title = styled.h2`
@@ -52,6 +70,11 @@ const Title = styled.h2`
   font-weight: ${h2.weight};
   ${breakpoint.xl} {
     margin-bottom: 80px;
+  }
+  ${breakpoint.md} {
+    font-size: ${h1.size};
+    line-height: ${h1.lineHeight};
+    font-weight: ${h1.weight};
   }
 `
 const CandidatesName = styled.span<{ candidateId: string }>`
@@ -110,6 +133,7 @@ export default function ArticleCover() {
             清華大學人文社會學院學士班主任
           </span>
         </Description>
+        <SVGMailOpenGray />
       </Bottom>
     </Wrapper>
   )
