@@ -288,6 +288,7 @@ const EmojiFormWrapper = styled.div<{
 type ArticleMainTextProps = {
   sectionId: string
   value: string
+  hasFeedBackFeature: boolean
   emojiFormId: string
   onEmojiFormToggle: (
     /* eslint-disable-line no-unused-vars */ formId: string
@@ -296,6 +297,7 @@ type ArticleMainTextProps = {
 export default function ArticleMainText({
   sectionId,
   value,
+  hasFeedBackFeature,
   emojiFormId,
   onEmojiFormToggle,
 }: ArticleMainTextProps) {
@@ -409,14 +411,16 @@ export default function ArticleMainText({
   )
 
   useEffect(() => {
-    setSelectedOption(localStorage.getItem(sectionId))
-    fetchOptionSummary()
-      .then(({ data }) => {
-        setSummary(data)
-        setInitialized(true)
-      })
-      .catch((err) => console.error(err))
-  }, [sectionId, fetchOptionSummary])
+    if (hasFeedBackFeature) {
+      setSelectedOption(localStorage.getItem(sectionId))
+      fetchOptionSummary()
+        .then(({ data }) => {
+          setSummary(data)
+          setInitialized(true)
+        })
+        .catch((err) => console.error(err))
+    }
+  }, [sectionId, fetchOptionSummary, hasFeedBackFeature])
 
   const { ref, inView } = useInView({
     threshold: 0,
@@ -425,7 +429,7 @@ export default function ArticleMainText({
 
   return (
     <Wrapper ref={ref}>
-      {inView && (
+      {hasFeedBackFeature && inView && (
         <EmojiSummaryWrapperDesktop
           shouldShowEmojiFeature={shouldShowEmojiFeature}
         >
@@ -433,58 +437,62 @@ export default function ArticleMainText({
         </EmojiSummaryWrapperDesktop>
       )}
       <MainText>{value}</MainText>
-      <EmojiWrapper
-        shouldShowEmoji={isActive}
-        shouldShowEmojiFeature={shouldShowEmojiFeature}
-      >
-        {inView && (
-          <EmojiSummaryWrapper>
-            <EmojiSummary emojiMap={optionMap} summary={summary} />
-          </EmojiSummaryWrapper>
-        )}
-        <AddEmojiButton onClick={handleOpen} isActive={isActive}>
-          {selectedOption ? (
-            <>
-              <span className="selected-text">你的心情</span>
-              <span className="selected-image-wrapper">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={optionMap[selectedOption].iconUrl}
-                  alt={optionMap[selectedOption].name}
-                />
-              </span>
-            </>
-          ) : (
-            <>
-              <SVGAddEmojiSmall />
-              <span>加入心情</span>
-            </>
+      {hasFeedBackFeature && (
+        <EmojiWrapper
+          shouldShowEmoji={isActive}
+          shouldShowEmojiFeature={shouldShowEmojiFeature}
+        >
+          {inView && (
+            <EmojiSummaryWrapper>
+              <EmojiSummary emojiMap={optionMap} summary={summary} />
+            </EmojiSummaryWrapper>
           )}
-        </AddEmojiButton>
-        <HiddenMask shouldShow={isActive} onClick={handleClose} />
-        {inView && (
-          <FeedBackForm
-            shouldUseRecaptcha={false}
-            forms={feedBackFormSetting}
-            storageKey="election2024-president-letters"
-          />
-        )}
-      </EmojiWrapper>
+          <AddEmojiButton onClick={handleOpen} isActive={isActive}>
+            {selectedOption ? (
+              <>
+                <span className="selected-text">你的心情</span>
+                <span className="selected-image-wrapper">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={optionMap[selectedOption].iconUrl}
+                    alt={optionMap[selectedOption].name}
+                  />
+                </span>
+              </>
+            ) : (
+              <>
+                <SVGAddEmojiSmall />
+                <span>加入心情</span>
+              </>
+            )}
+          </AddEmojiButton>
+          <HiddenMask shouldShow={isActive} onClick={handleClose} />
+          {inView && (
+            <FeedBackForm
+              shouldUseRecaptcha={false}
+              forms={feedBackFormSetting}
+              storageKey="election2024-president-letters"
+            />
+          )}
+        </EmojiWrapper>
+      )}
 
-      <EmojiFormWrapper
-        shouldShowEmoji={shouldShowEmoji}
-        shouldShowEmojiFeature={shouldShowEmojiFeature}
-        className="epl-emoji-form-wrapper"
-      >
-        <div className="close-background" onClick={handleClose}></div>
-        {inView && (
-          <FeedBackForm
-            shouldUseRecaptcha={false}
-            forms={feedBackFormSetting}
-            storageKey="election2024-president-letters"
-          />
-        )}
-      </EmojiFormWrapper>
+      {hasFeedBackFeature && (
+        <EmojiFormWrapper
+          shouldShowEmoji={shouldShowEmoji}
+          shouldShowEmojiFeature={shouldShowEmojiFeature}
+          className="epl-emoji-form-wrapper"
+        >
+          <div className="close-background" onClick={handleClose}></div>
+          {inView && (
+            <FeedBackForm
+              shouldUseRecaptcha={false}
+              forms={feedBackFormSetting}
+              storageKey="election2024-president-letters"
+            />
+          )}
+        </EmojiFormWrapper>
+      )}
     </Wrapper>
   )
 }
