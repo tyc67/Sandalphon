@@ -272,7 +272,7 @@ const EmojiFormWrapper = styled.div<{ shouldShowEmoji: boolean }>`
 type ArticleMainTextProps = {
   sectionId: string
   value: string
-  shouldShowEmojiFeature?: boolean
+  hasFeedBackFeature?: boolean
   emojiFormId: string
   onEmojiFormToggle: (
     /* eslint-disable-line no-unused-vars */ formId: string
@@ -281,7 +281,7 @@ type ArticleMainTextProps = {
 export default function ArticleMainText({
   sectionId,
   value,
-  shouldShowEmojiFeature = true,
+  hasFeedBackFeature = true,
   emojiFormId,
   onEmojiFormToggle,
 }: ArticleMainTextProps) {
@@ -404,13 +404,13 @@ export default function ArticleMainText({
 
   return (
     <Wrapper>
-      {shouldShowEmojiFeature && (
+      {hasFeedBackFeature && (
         <EmojiSummaryWrapperDesktop>
           <EmojiSummary emojiMap={optionMap} summary={summary} />
         </EmojiSummaryWrapperDesktop>
       )}
       <MainText>{value}</MainText>
-      {shouldShowEmojiFeature && (
+      {hasFeedBackFeature && (
         <EmojiWrapper shouldShowEmoji={isActive}>
           <EmojiSummaryWrapper>
             <EmojiSummary emojiMap={optionMap} summary={summary} />
@@ -442,7 +442,7 @@ export default function ArticleMainText({
           />
         </EmojiWrapper>
       )}
-      {shouldShowEmojiFeature && (
+      {hasFeedBackFeature && (
         <EmojiFormWrapper
           shouldShowEmoji={shouldShowEmoji}
           className="epl-emoji-form-wrapper"
