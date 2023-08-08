@@ -9,6 +9,7 @@ let protocol = 'http'
 let host = 'localhost'
 let imagePrefix: string
 let GTM_ID = ''
+let SITE_URL = ''
 
 switch (env) {
   case 'dev':
@@ -17,6 +18,7 @@ switch (env) {
     staticFileDestination = `${protocol}://${host}/projects/${projectName}`
     imagePrefix = `/projects/${projectName}`
     GTM_ID = 'GTM-PBNLSMX'
+    SITE_URL = 'dev-next.mirrormedia.mg'
 
     break
   case 'staging':
@@ -25,6 +27,7 @@ switch (env) {
     staticFileDestination = `${protocol}://${host}/projects/${projectName}`
     imagePrefix = `/projects/${projectName}`
     GTM_ID = 'GTM-KVDZ27K'
+    SITE_URL = 'staging-next.mirrormedia.mg'
 
     break
 
@@ -34,6 +37,7 @@ switch (env) {
     staticFileDestination = `${protocol}://${host}/projects/${projectName}`
     imagePrefix = `/projects/${projectName}`
     GTM_ID = 'GTM-NCH86SP'
+    SITE_URL = 'www.mirrormedia.mg'
 
     break
   }
@@ -54,4 +58,5 @@ export {
   textFieldId,
   optionApiUrl,
   GTM_ID,
+  SITE_URL,
 }
