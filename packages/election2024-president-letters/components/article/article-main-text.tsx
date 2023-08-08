@@ -9,7 +9,12 @@ import type {
 import type { ExtendedOption } from '../../types'
 import styled, { css } from 'styled-components'
 import { font, color, breakpoint } from '../../styles/theme'
-import { feedbackFormId, emotionFieldId, optionApiUrl } from '../../config'
+import {
+  feedbackFormId,
+  emotionFieldId,
+  optionApiUrl,
+  imagePrefix,
+} from '../../config'
 import SVGAddEmojiSmall from '../../public/icon/add-emoji-small.svg'
 import EmojiSummary from './emoji-summary'
 
@@ -319,31 +324,31 @@ export default function ArticleMainText({
     {
       name: '很讚',
       value: 'good',
-      iconUrl: '/icon/good.svg',
+      iconUrl: `${imagePrefix}/icon/good.svg`,
       sortOrder: 1,
     },
     {
       name: '超愛',
       value: 'very-good',
-      iconUrl: '/icon/very-good.svg',
+      iconUrl: `${imagePrefix}/icon/very-good.svg`,
       sortOrder: 2,
     },
     {
       name: '想哭',
       value: 'sad',
-      iconUrl: '/icon/sad.svg',
+      iconUrl: `${imagePrefix}/icon/sad.svg`,
       sortOrder: 3,
     },
     {
       name: '驚訝',
       value: 'shock',
-      iconUrl: '/icon/shock.svg',
+      iconUrl: `${imagePrefix}/icon/shock.svg`,
       sortOrder: 4,
     },
     {
       name: '生氣',
       value: 'angry',
-      iconUrl: '/icon/angry.svg',
+      iconUrl: `${imagePrefix}/icon/angry.svg`,
       sortOrder: 5,
     },
   ]
