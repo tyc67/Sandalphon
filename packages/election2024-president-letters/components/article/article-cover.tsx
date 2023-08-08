@@ -5,7 +5,7 @@ import SvgOpenLetterGreen from '../../public/icon/mail-open-green.svg'
 import SvgOpenLetterBlue from '../../public/icon/mail-open-blue.svg'
 import SvgOpenLetterWhite from '../../public/icon/mail-open-white.svg'
 
-const { h1, h2, body2 } = font
+const { h1, h3, h2, body2 } = font
 const { text, candidates } = color
 
 type ArticleCoverProps = {
@@ -32,14 +32,14 @@ const Bottom = styled.section`
   flex-direction: column;
   justify-content: start;
   background-color: white;
-  padding: 40px 20px;
+  padding: 60px 20px 40px;
   position: relative;
-  height: 60vh;
+  height: 100%;
   overflow: hidden;
   svg {
     position: absolute;
-    bottom: -16px;
-    right: 0;
+    top: 230px;
+    right: 10px;
     transform: rotate(25deg) translate(-50%, -50%);
   }
   ${breakpoint.xl} {
@@ -62,21 +62,31 @@ const Bottom = styled.section`
 `
 const Title = styled.h1<{ candidateId: string }>`
   color: ${text.important};
-  font-size: ${h1.size};
-  line-height: ${h1.lineHeight};
-  font-weight: ${h1.weight};
+  font-size: ${h2.size};
+  line-height: ${h2.lineHeight};
+  font-weight: ${h2.weight};
   span {
     display: block;
     width: fit-content;
   }
   .subtitle {
-    font-size: ${h2.size};
-    line-height: ${h2.lineHeight};
-    font-weight: ${h2.weight};
+    font-size: ${h3.size};
+    line-height: ${h3.lineHeight};
+    font-weight: ${h3.weight};
     color: ${(props) =>
       candidates[props.candidateId as keyof typeof candidates].text};
     background-color: ${(props) =>
       candidates[props.candidateId as keyof typeof candidates].background};
+  }
+  ${breakpoint.md} {
+    font-size: ${h1.size};
+    line-height: ${h1.lineHeight};
+    font-weight: ${h1.weight};
+    .subtitle {
+      font-size: ${h2.size};
+      line-height: ${h2.lineHeight};
+      font-weight: ${h2.weight};
+    }
   }
   ${breakpoint.xl} {
     height: 152px;
@@ -85,7 +95,7 @@ const Title = styled.h1<{ candidateId: string }>`
   }
 `
 const Desc = styled.div`
-  margin-top: 20px;
+  margin-top: 48px;
 
   p {
     font-size: ${body2.size};

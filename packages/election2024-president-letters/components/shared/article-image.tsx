@@ -20,6 +20,9 @@ const pictureCoverCSS = css`
     max-height: 450px;
     width: 600px;
     height: 450px;
+    img {
+      height: 450px;
+    }
   }
   ${breakpoint.xxl} {
     width: 720px;
