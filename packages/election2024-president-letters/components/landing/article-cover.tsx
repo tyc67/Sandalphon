@@ -4,6 +4,7 @@ import { font, color, breakpoint } from '../../styles/theme'
 import { imagePrefix } from '../../config'
 import { CANDIDATES } from '../../constants'
 import SVGMailOpenGray from '../../public/icon/mail-open-gray.svg'
+import { headerHeight } from '../../styles/shared-style'
 const { h1, h2, body2 } = font
 
 const { text, candidates } = color
@@ -36,7 +37,7 @@ const Bottom = styled.section`
   padding: 60px 20px 40px;
   position: relative;
 
-  height: 100%;
+  height: calc(60vh - ${headerHeight});
   overflow: hidden;
   svg {
     position: absolute;

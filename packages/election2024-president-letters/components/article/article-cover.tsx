@@ -4,7 +4,7 @@ import { font, color, breakpoint } from '../../styles/theme'
 import SvgOpenLetterGreen from '../../public/icon/mail-open-green.svg'
 import SvgOpenLetterBlue from '../../public/icon/mail-open-blue.svg'
 import SvgOpenLetterWhite from '../../public/icon/mail-open-white.svg'
-
+import { headerHeight } from '../../styles/shared-style'
 const { h1, h3, h2, body2 } = font
 const { text, candidates } = color
 
@@ -34,7 +34,7 @@ const Bottom = styled.section`
   background-color: white;
   padding: 60px 20px 40px;
   position: relative;
-  height: 100%;
+  height: calc(60vh - ${headerHeight});
   overflow: hidden;
   svg {
     position: absolute;
