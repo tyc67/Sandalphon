@@ -65,6 +65,7 @@ const Title = styled.h1<{ candidateId: string }>`
   font-size: ${h2.size};
   line-height: ${h2.lineHeight};
   font-weight: ${h2.weight};
+  min-height: 102px;
   span {
     display: block;
     width: fit-content;
@@ -82,6 +83,8 @@ const Title = styled.h1<{ candidateId: string }>`
     font-size: ${h1.size};
     line-height: ${h1.lineHeight};
     font-weight: ${h1.weight};
+    min-height: 132px;
+
     .subtitle {
       font-size: ${h2.size};
       line-height: ${h2.lineHeight};

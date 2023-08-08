@@ -5,23 +5,23 @@ import { headerHeight } from '../../styles/shared-style'
 import { breakpoint } from '../../styles/theme'
 const Wrapper = styled.div`
   padding-top: ${headerHeight};
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   scroll-snap-align: start;
   display: flex;
   align-items: center;
   justify-content: center;
   .lottie {
+    padding-top: calc(${headerHeight} / 2);
     margin: 48px auto 0;
     transform: scale(2.5);
     width: 100%;
     height: 100%;
-    .animation {
-      > div {
-        width: 100%;
-        height: 100%;
-      }
+  }
+  ${breakpoint.sm} {
+    .lottie {
+      transform: scale(2);
     }
   }
   ${breakpoint.md} {
