@@ -13,7 +13,11 @@ import Credits from '../../components/shared/credits'
 import CustomHead from '../../components/shared/head'
 import { getOGDescription, getTitleForHead } from '../../utils'
 const ogDescription = getOGDescription(content)
-const titleForHead = getTitleForHead(LAI_CHING_TE_LETTER.letterDescription)
+const titleForHead = getTitleForHead(
+  LAI_CHING_TE_LETTER.letterDescription,
+  LAI_CHING_TE_LETTER.name
+)
+
 const LAI_CHING_TE_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/lai-ching-te/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/lai-ching-te/1-tablet.jpeg`,

@@ -8,7 +8,8 @@ const getOGDescription = (content: ArticleContent): string => {
   return firstItemValue
 }
 
-const getTitleForHead = (title: string[]): string => {
-  return title.join(' ')
+const getTitleForHead = (title: string[], candidateName: string): string => {
+  const defaultTitle = '給年輕人的一封信'
+  return `【${candidateName}全文】${defaultTitle}　${title.join('　')}`
 }
 export { getOGDescription, getTitleForHead }
