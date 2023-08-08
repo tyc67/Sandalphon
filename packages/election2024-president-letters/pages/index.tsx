@@ -10,6 +10,10 @@ import { headerHeight } from '../styles/shared-style'
 import Landing from '../components/landing/landing'
 import Related from '../components/shared/related'
 import Credits from '../components/shared/credits'
+import CustomHead from '../components/shared/head'
+import { content } from '../constants/article/yao-jen-to'
+import { getOGDescription } from '../utils'
+const ogDesc = getOGDescription(content)
 const Wrapper = styled.section`
   scroll-snap-align: start;
   background-color: ${background.gray};
@@ -26,27 +30,34 @@ const Wrapper = styled.section`
 export default function Home() {
   const { state, component } = Detector()
   return (
-    <Main shouldScrollSnap={state}>
-      <Landing />
-      <Wrapper>
-        {CANDIDATES_LETTER.map((person) => (
-          <InviteLetter
-            key={person.id}
-            id={person.id}
-            name={person.name}
-            description={person.letterDescription}
-            image={person.letterAvatar}
-          ></InviteLetter>
-        ))}
-      </Wrapper>
-      <ArticleYaoJeoTo
-        detector={component}
-        shouldActiveParallaxScrolling={!state}
+    <>
+      <CustomHead
+        title={'盡力明白身邊的年輕人　賴清德、侯友宜、柯文哲寫給年輕人的信'}
+        description={ogDesc}
+        imageUrl="/images/article/yao-jen-to/1-tablet.jpeg"
       />
-      <Related
-        renderCandidatesId={['lai-ching-te', 'hou-yu-ih', 'ko-wen-je']}
-      ></Related>
-      <Credits></Credits>
-    </Main>
+      <Main shouldScrollSnap={state}>
+        <Landing />
+        <Wrapper>
+          {CANDIDATES_LETTER.map((person) => (
+            <InviteLetter
+              key={person.id}
+              id={person.id}
+              name={person.name}
+              description={person.letterDescription}
+              image={person.letterAvatar}
+            ></InviteLetter>
+          ))}
+        </Wrapper>
+        <ArticleYaoJeoTo
+          detector={component}
+          shouldActiveParallaxScrolling={!state}
+        />
+        <Related
+          renderCandidatesId={['lai-ching-te', 'hou-yu-ih', 'ko-wen-je']}
+        ></Related>
+        <Credits></Credits>
+      </Main>
+    </>
   )
 }

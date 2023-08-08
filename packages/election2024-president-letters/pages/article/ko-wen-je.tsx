@@ -10,6 +10,10 @@ import { imagePrefix } from '../../config'
 import FeedbackFormWrapper from '../../components/article/feedback-form-wrapper'
 import Related from '../../components/shared/related'
 import Credits from '../../components/shared/credits'
+import CustomHead from '../../components/shared/head'
+import { getOGDescription, getTitleForHead } from '../../utils'
+const ogDescription = getOGDescription(content)
+const titleForHead = getTitleForHead(KO_WEN_JE_LETTER.letterDescription)
 const KO_WEN_JE__COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/ko-wen-je/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/ko-wen-je/1-tablet.jpeg`,
@@ -22,30 +26,37 @@ export default function ArticleKoWenJe() {
   const { state, component } = Detector()
 
   return (
-    <Main shouldScrollSnap={state}>
-      <ArticleWrapper>
-        <ArticleCover
-          name={KO_WEN_JE_LETTER.name}
-          id={KO_WEN_JE_LETTER.id}
-          title={KO_WEN_JE_LETTER.letterDescription}
-          imagesSrc={KO_WEN_JE__COVER_IMAGE}
-        ></ArticleCover>
-        <ArticleContent
-          content={content}
-          name={KO_WEN_JE_LETTER.name}
-          id={KO_WEN_JE_LETTER.id}
-          shouldActiveParallaxScrolling={!state}
-        >
-          {component}
-        </ArticleContent>
-      </ArticleWrapper>
-      <FeedbackFormWrapper
-        identifier="election24-president-letters-ko-wen-je"
-        candidate="柯文哲"
-        nameColor="#3F8C88"
-      />
-      <Related renderCandidatesId={['lai-ching-te', 'hou-yu-ih']}></Related>
-      <Credits></Credits>
-    </Main>
+    <>
+      <CustomHead
+        title={titleForHead}
+        description={ogDescription}
+        imageUrl="/images/article/ko-wen-je/1-tablet.jpeg"
+      ></CustomHead>
+      <Main shouldScrollSnap={state}>
+        <ArticleWrapper>
+          <ArticleCover
+            name={KO_WEN_JE_LETTER.name}
+            id={KO_WEN_JE_LETTER.id}
+            title={KO_WEN_JE_LETTER.letterDescription}
+            imagesSrc={KO_WEN_JE__COVER_IMAGE}
+          ></ArticleCover>
+          <ArticleContent
+            content={content}
+            name={KO_WEN_JE_LETTER.name}
+            id={KO_WEN_JE_LETTER.id}
+            shouldActiveParallaxScrolling={!state}
+          >
+            {component}
+          </ArticleContent>
+        </ArticleWrapper>
+        <FeedbackFormWrapper
+          identifier="election24-president-letters-ko-wen-je"
+          candidate="柯文哲"
+          nameColor="#3F8C88"
+        />
+        <Related renderCandidatesId={['lai-ching-te', 'hou-yu-ih']}></Related>
+        <Credits></Credits>
+      </Main>
+    </>
   )
 }

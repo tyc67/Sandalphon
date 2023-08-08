@@ -10,6 +10,10 @@ import Main from '../../components/shared/main-wrapper'
 import Detector from '../../components/shared/detector'
 import Related from '../../components/shared/related'
 import Credits from '../../components/shared/credits'
+import CustomHead from '../../components/shared/head'
+import { getOGDescription, getTitleForHead } from '../../utils'
+const ogDescription = getOGDescription(content)
+const titleForHead = getTitleForHead(LAI_CHING_TE_LETTER.letterDescription)
 const LAI_CHING_TE_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/lai-ching-te/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/lai-ching-te/1-tablet.jpeg`,
@@ -25,31 +29,38 @@ export default function ArticleLaiChingTe() {
   const { state, component } = Detector()
   const shouldScrollSnap = state
   return (
-    <Main shouldScrollSnap={shouldScrollSnap}>
-      <ArticleWrapper>
-        <ArticleCover
-          name={LAI_CHING_TE_LETTER.name}
-          id={LAI_CHING_TE_LETTER.id}
-          title={LAI_CHING_TE_LETTER.letterDescription}
-          imagesSrc={LAI_CHING_TE_COVER_IMAGE}
-        ></ArticleCover>
-        <ArticleContent
-          shouldActiveParallaxScrolling={!state}
-          content={content}
-          name={LAI_CHING_TE_LETTER.name}
-          id={LAI_CHING_TE_LETTER.id}
-        >
-          {component}
-        </ArticleContent>
-      </ArticleWrapper>
+    <>
+      <CustomHead
+        title={titleForHead}
+        description={ogDescription}
+        imageUrl="/images/article/lai-ching-te/1-tablet.jpeg"
+      ></CustomHead>
+      <Main shouldScrollSnap={shouldScrollSnap}>
+        <ArticleWrapper>
+          <ArticleCover
+            name={LAI_CHING_TE_LETTER.name}
+            id={LAI_CHING_TE_LETTER.id}
+            title={LAI_CHING_TE_LETTER.letterDescription}
+            imagesSrc={LAI_CHING_TE_COVER_IMAGE}
+          ></ArticleCover>
+          <ArticleContent
+            shouldActiveParallaxScrolling={!state}
+            content={content}
+            name={LAI_CHING_TE_LETTER.name}
+            id={LAI_CHING_TE_LETTER.id}
+          >
+            {component}
+          </ArticleContent>
+        </ArticleWrapper>
 
-      <FeedbackFormWrapper
-        identifier="election24-president-letters-lai-ching-te"
-        candidate="賴清德"
-        nameColor="#6F8F46"
-      />
-      <Related renderCandidatesId={['hou-yu-ih', 'ko-wen-je']}></Related>
-      <Credits></Credits>
-    </Main>
+        <FeedbackFormWrapper
+          identifier="election24-president-letters-lai-ching-te"
+          candidate="賴清德"
+          nameColor="#6F8F46"
+        />
+        <Related renderCandidatesId={['hou-yu-ih', 'ko-wen-je']}></Related>
+        <Credits></Credits>
+      </Main>
+    </>
   )
 }
