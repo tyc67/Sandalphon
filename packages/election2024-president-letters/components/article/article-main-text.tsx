@@ -410,8 +410,13 @@ export default function ArticleMainText({
     [sectionId]
   )
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  })
+
   useEffect(() => {
-    if (hasFeedBackFeature) {
+    if (hasFeedBackFeature && inView) {
       setSelectedOption(localStorage.getItem(sectionId))
       fetchOptionSummary()
         .then(({ data }) => {
@@ -420,12 +425,7 @@ export default function ArticleMainText({
         })
         .catch((err) => console.error(err))
     }
-  }, [sectionId, fetchOptionSummary, hasFeedBackFeature])
-
-  const { ref, inView } = useInView({
-    threshold: 0,
-    triggerOnce: true,
-  })
+  }, [sectionId, fetchOptionSummary, hasFeedBackFeature, inView])
 
   return (
     <Wrapper ref={ref}>
