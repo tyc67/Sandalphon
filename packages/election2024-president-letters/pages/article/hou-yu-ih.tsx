@@ -12,7 +12,10 @@ import Credits from '../../components/shared/credits'
 import CustomHead from '../../components/shared/head'
 import { getOGDescription, getTitleForHead } from '../../utils'
 const ogDescription = getOGDescription(content)
-const titleForHead = getTitleForHead(HOU_YU_IH_LETTER.letterDescription)
+const titleForHead = getTitleForHead(
+  HOU_YU_IH_LETTER.letterDescription,
+  HOU_YU_IH_LETTER.name
+)
 const HOU_YU_IH_COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/hou-yu-ih/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/hou-yu-ih/1-tablet.jpeg`,

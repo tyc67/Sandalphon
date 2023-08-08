@@ -13,7 +13,10 @@ import Credits from '../../components/shared/credits'
 import CustomHead from '../../components/shared/head'
 import { getOGDescription, getTitleForHead } from '../../utils'
 const ogDescription = getOGDescription(content)
-const titleForHead = getTitleForHead(KO_WEN_JE_LETTER.letterDescription)
+const titleForHead = getTitleForHead(
+  KO_WEN_JE_LETTER.letterDescription,
+  KO_WEN_JE_LETTER.name
+)
 const KO_WEN_JE__COVER_IMAGE = {
   desktop: `${imagePrefix}/images/article/ko-wen-je/1-desktop.jpeg`,
   tablet: `${imagePrefix}/images/article/ko-wen-je/1-tablet.jpeg`,
