@@ -3,6 +3,7 @@ import FeedbackForm from '@readr-media/react-feedback'
 import type { Form as FormType } from '@readr-media/react-feedback/dist/typedef'
 import { feedbackFormId, textFieldId } from '../../config'
 import { breakpoint } from '../../styles/theme'
+import { useInView } from 'react-intersection-observer'
 
 const FormWrapper = styled.div`
   background-color: #e5e5e5;
@@ -100,12 +101,22 @@ export default function FeedbackFormWrapper({
     },
   ]
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  })
+
   return (
-    <FormWrapper>
+    <FormWrapper ref={ref}>
       <FormTitle>
         回覆給<span style={{ color: nameColor }}>{candidate}</span>
       </FormTitle>
-      <FeedbackForm forms={forms} storageKey="election2024-president-letters" />
+      {inView && (
+        <FeedbackForm
+          forms={forms}
+          storageKey="election2024-president-letters"
+        />
+      )}
     </FormWrapper>
   )
 }
