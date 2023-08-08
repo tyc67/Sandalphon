@@ -431,6 +431,7 @@ export default function ArticleMainText({
             <FeedBackForm
               shouldUseRecaptcha={false}
               forms={feedBackFormSetting}
+              storageKey="election2024-president-letters"
             />
           )}
         </EmojiWrapper>
@@ -445,6 +446,7 @@ export default function ArticleMainText({
             <FeedBackForm
               shouldUseRecaptcha={false}
               forms={feedBackFormSetting}
+              storageKey="election2024-president-letters"
             />
           )}
         </EmojiFormWrapper>

@@ -105,7 +105,7 @@ export default function FeedbackFormWrapper({
       <FormTitle>
         回覆給<span style={{ color: nameColor }}>{candidate}</span>
       </FormTitle>
-      <FeedbackForm forms={forms} />
+      <FeedbackForm forms={forms} storageKey="election2024-president-letters" />
     </FormWrapper>
   )
 }
