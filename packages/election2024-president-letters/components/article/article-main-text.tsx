@@ -243,11 +243,11 @@ const EmojiFormWrapper = styled.div<{ shouldShowEmoji: boolean }>`
     height: 100vh;
     width: 100%;
     background-color: ${({ shouldShowEmoji }) =>
-    shouldShowEmoji ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
+      shouldShowEmoji ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
     transition: ${({ shouldShowEmoji }) =>
-    shouldShowEmoji
-      ? 'background-color 0.3s 0.3s ease-in-out'
-      : 'background-color 0.3s ease-in-out'};
+      shouldShowEmoji
+        ? 'background-color 0.3s 0.3s ease-in-out'
+        : 'background-color 0.3s ease-in-out'};
   }
   .form-feedback {
     padding: 20px;

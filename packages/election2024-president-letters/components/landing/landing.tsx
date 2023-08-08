@@ -2,6 +2,7 @@
 import styled from 'styled-components'
 import { imagePrefix } from '../../config'
 import { headerHeight } from '../../styles/shared-style'
+import { breakpoint } from '../../styles/theme'
 const Wrapper = styled.div`
   padding-top: ${headerHeight};
   width: 100vw;
@@ -11,6 +12,33 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  .lottie {
+    margin: 48px auto 0;
+    transform: scale(2.5);
+    width: 100%;
+    height: 100%;
+    .animation {
+      > div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  ${breakpoint.md} {
+    .lottie {
+      transform: scale(1.75);
+    }
+  }
+  ${breakpoint.xl} {
+    .lottie {
+      transform: scale(1.25);
+    }
+  }
+  ${breakpoint.xxl} {
+    .lottie {
+      transform: scale(1);
+    }
+  }
 `
 
 import { DotLottiePlayer } from '@dotlottie/react-player'
@@ -19,15 +47,11 @@ export default function Landing() {
   return (
     <Wrapper>
       <DotLottiePlayer
-        src={`${imagePrefix}/landing_v2.lottie`}
+        src={`${imagePrefix}/landing_v2.2.lottie`}
         autoplay
         loop
+        className="lottie"
         renderer="html"
-        style={{
-          width: '600px',
-          height: '500px',
-          transform: 'scale(2.5)',
-        }}
       ></DotLottiePlayer>
     </Wrapper>
   )
