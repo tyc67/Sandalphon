@@ -124,7 +124,7 @@ const EmojiSummaryWrapper = styled.div`
     display: none;
   }
 `
-const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper) <{
+const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper)<{
   shouldShowEmojiFeature: boolean
 }>`
   display: none;
@@ -136,7 +136,7 @@ const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper) <{
   text-align: end;
   ${breakpoint.xl} {
     display: ${({ shouldShowEmojiFeature }) =>
-    shouldShowEmojiFeature ? 'block' : 'none'};
+      shouldShowEmojiFeature ? 'block' : 'none'};
     margin-right: 12px;
   }
 `
@@ -252,11 +252,11 @@ const EmojiFormWrapper = styled.div<{
     height: 100vh;
     width: 100%;
     background-color: ${({ shouldShowEmoji }) =>
-    shouldShowEmoji ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
+      shouldShowEmoji ? 'rgba(0, 0, 0, 0.5)' : 'transparent'};
     transition: ${({ shouldShowEmoji }) =>
-    shouldShowEmoji
-      ? 'background-color 0.3s 0.3s ease-in-out'
-      : 'background-color 0.3s ease-in-out'};
+      shouldShowEmoji
+        ? 'background-color 0.3s 0.3s ease-in-out'
+        : 'background-color 0.3s ease-in-out'};
   }
   .form-feedback {
     padding: 20px;
