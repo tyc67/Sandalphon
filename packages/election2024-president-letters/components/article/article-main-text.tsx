@@ -18,6 +18,7 @@ import {
 import SVGAddEmojiSmall from '../../public/icon/add-emoji-small.svg'
 import EmojiSummary from './emoji-summary'
 import { EmojiContext } from '../../context/emoji'
+import { useInView } from 'react-intersection-observer'
 
 const { text } = color
 const { body, body2, tiny } = font
@@ -417,21 +418,30 @@ export default function ArticleMainText({
       .catch((err) => console.error(err))
   }, [sectionId, fetchOptionSummary])
 
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  })
+
   return (
-    <Wrapper>
-      <EmojiSummaryWrapperDesktop
-        shouldShowEmojiFeature={shouldShowEmojiFeature}
-      >
-        <EmojiSummary emojiMap={optionMap} summary={summary} />
-      </EmojiSummaryWrapperDesktop>
+    <Wrapper ref={ref}>
+      {inView && (
+        <EmojiSummaryWrapperDesktop
+          shouldShowEmojiFeature={shouldShowEmojiFeature}
+        >
+          <EmojiSummary emojiMap={optionMap} summary={summary} />
+        </EmojiSummaryWrapperDesktop>
+      )}
       <MainText>{value}</MainText>
       <EmojiWrapper
         shouldShowEmoji={isActive}
         shouldShowEmojiFeature={shouldShowEmojiFeature}
       >
-        <EmojiSummaryWrapper>
-          <EmojiSummary emojiMap={optionMap} summary={summary} />
-        </EmojiSummaryWrapper>
+        {inView && (
+          <EmojiSummaryWrapper>
+            <EmojiSummary emojiMap={optionMap} summary={summary} />
+          </EmojiSummaryWrapper>
+        )}
         <AddEmojiButton onClick={handleOpen} isActive={isActive}>
           {selectedOption ? (
             <>
@@ -452,11 +462,13 @@ export default function ArticleMainText({
           )}
         </AddEmojiButton>
         <HiddenMask shouldShow={isActive} onClick={handleClose} />
-        <FeedBackForm
-          shouldUseRecaptcha={false}
-          forms={feedBackFormSetting}
-          storageKey="election2024-president-letters"
-        />
+        {inView && (
+          <FeedBackForm
+            shouldUseRecaptcha={false}
+            forms={feedBackFormSetting}
+            storageKey="election2024-president-letters"
+          />
+        )}
       </EmojiWrapper>
 
       <EmojiFormWrapper
@@ -465,11 +477,13 @@ export default function ArticleMainText({
         className="epl-emoji-form-wrapper"
       >
         <div className="close-background" onClick={handleClose}></div>
-        <FeedBackForm
-          shouldUseRecaptcha={false}
-          forms={feedBackFormSetting}
-          storageKey="election2024-president-letters"
-        />
+        {inView && (
+          <FeedBackForm
+            shouldUseRecaptcha={false}
+            forms={feedBackFormSetting}
+            storageKey="election2024-president-letters"
+          />
+        )}
       </EmojiFormWrapper>
     </Wrapper>
   )
