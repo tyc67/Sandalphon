@@ -40,7 +40,11 @@ const tinyFont = css`
 const MaxWidth = css`
   max-width: 640px; //todo: after implement like/dislike, should adjust this value
 `
-
+const hideAndShowAnimation = css<{ shouldShowEmojiFeature: boolean }>`
+  opacity: ${({ shouldShowEmojiFeature }) =>
+    shouldShowEmojiFeature ? '1' : '0'};
+  transition: 0.1s ease-in-out;
+`
 const MainText = styled.p`
   color: ${text.important};
   ${textFont};
@@ -71,11 +75,10 @@ const EmojiWrapper = styled.div<{
   shouldShowEmoji: boolean
   shouldShowEmojiFeature: boolean
 }>`
-  display: ${({ shouldShowEmojiFeature }) =>
-    shouldShowEmojiFeature ? 'flex' : 'none'};
+  display: flex;
+  ${hideAndShowAnimation}
   justify-content: space-between;
   align-items: center;
-
   .form-feedback {
     display: none;
   }
@@ -135,8 +138,8 @@ const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper)<{
   font-weight: ${body2.weight};
   text-align: end;
   ${breakpoint.xl} {
-    display: ${({ shouldShowEmojiFeature }) =>
-      shouldShowEmojiFeature ? 'block' : 'none'};
+    display: block;
+    ${hideAndShowAnimation};
     margin-right: 12px;
   }
 `
@@ -150,14 +153,18 @@ const emojiActiveEffect = css`
   }
 `
 
-const AddEmojiButton = styled.button<{ isActive: boolean }>`
+const AddEmojiButton = styled.button<{
+  isActive: boolean
+  shouldShowEmojiFeature: boolean
+}>`
   ${tinyFont};
   display: flex;
   align-items: center;
   padding: 4px;
   justify-content: space-between;
   color: ${text.secondary};
-
+  cursor: ${({ shouldShowEmojiFeature }) =>
+    shouldShowEmojiFeature ? 'pointer' : 'default'};
   svg {
     display: block;
     margin-right: 4px;
@@ -440,7 +447,11 @@ export default function ArticleMainText({
               <EmojiSummary emojiMap={optionMap} summary={summary} />
             </EmojiSummaryWrapper>
           )}
-          <AddEmojiButton onClick={handleOpen} isActive={isActive}>
+          <AddEmojiButton
+            onClick={handleOpen}
+            isActive={isActive}
+            shouldShowEmojiFeature={shouldShowEmojiFeature}
+          >
             {selectedOption ? (
               <>
                 <span className="selected-text">你的心情</span>
