@@ -63,7 +63,7 @@ const Bottom = styled.section`
     }
   }
 `
-const Title = styled.h2`
+const Title = styled.h1`
   color: ${text.important};
   font-size: ${h2.size};
   line-height: ${h2.lineHeight};
