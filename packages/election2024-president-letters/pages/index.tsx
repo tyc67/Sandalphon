@@ -9,6 +9,7 @@ import Detector from '../components/shared/detector'
 import { headerHeight } from '../styles/shared-style'
 import Landing from '../components/landing/landing'
 import Related from '../components/shared/related'
+import Credits from '../components/shared/credits'
 const Wrapper = styled.section`
   scroll-snap-align: start;
   background-color: ${background.gray};
@@ -45,6 +46,7 @@ export default function Home() {
       <Related
         renderCandidatesId={['lai-ching-te', 'hou-yu-ih', 'ko-wen-je']}
       ></Related>
+      <Credits></Credits>
     </Main>
   )
 }
