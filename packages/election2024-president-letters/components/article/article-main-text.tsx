@@ -435,13 +435,11 @@ export default function ArticleMainText({
             )}
           </AddEmojiButton>
           <HiddenMask shouldShow={isActive} onClick={handleClose} />
-          {shouldShowEmoji && (
-            <FeedBackForm
-              shouldUseRecaptcha={false}
-              forms={feedBackFormSetting}
-              storageKey="election2024-president-letters"
-            />
-          )}
+          <FeedBackForm
+            shouldUseRecaptcha={false}
+            forms={feedBackFormSetting}
+            storageKey="election2024-president-letters"
+          />
         </EmojiWrapper>
       )}
       {shouldShowEmojiFeature && (
@@ -450,13 +448,11 @@ export default function ArticleMainText({
           className="epl-emoji-form-wrapper"
         >
           <div className="close-background" onClick={handleClose}></div>
-          {shouldShowEmoji && (
-            <FeedBackForm
-              shouldUseRecaptcha={false}
-              forms={feedBackFormSetting}
-              storageKey="election2024-president-letters"
-            />
-          )}
+          <FeedBackForm
+            shouldUseRecaptcha={false}
+            forms={feedBackFormSetting}
+            storageKey="election2024-president-letters"
+          />
         </EmojiFormWrapper>
       )}
     </Wrapper>
