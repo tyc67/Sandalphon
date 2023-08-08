@@ -8,6 +8,7 @@ let staticFileDestination: string
 let protocol = 'http'
 let host = 'localhost'
 let imagePrefix: string
+let GTM_ID = ''
 
 switch (env) {
   case 'dev':
@@ -15,12 +16,15 @@ switch (env) {
     host = 'dev.mirrormedia.mg'
     staticFileDestination = `${protocol}://${host}/projects/${projectName}`
     imagePrefix = `/projects/${projectName}`
+    GTM_ID = 'GTM-PBNLSMX'
+
     break
   case 'staging':
     protocol = 'https'
     host = 'staging.mirrormedia.mg'
     staticFileDestination = `${protocol}://${host}/projects/${projectName}`
     imagePrefix = `/projects/${projectName}`
+    GTM_ID = 'GTM-KVDZ27K'
 
     break
 
@@ -29,12 +33,14 @@ switch (env) {
     host = 'www.mirrormedia.mg'
     staticFileDestination = `${protocol}://${host}/projects/${projectName}`
     imagePrefix = `/projects/${projectName}`
+    GTM_ID = 'GTM-NCH86SP'
 
     break
   }
   default: {
     staticFileDestination = `${protocol}://${host}:8080`
     imagePrefix = ''
+    GTM_ID = 'GTM-PBNLSMX'
 
     break
   }
@@ -47,4 +53,5 @@ export {
   emotionFieldId,
   textFieldId,
   optionApiUrl,
+  GTM_ID,
 }
