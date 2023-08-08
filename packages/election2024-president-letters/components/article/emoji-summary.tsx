@@ -14,6 +14,7 @@ const EmojiWrapper = styled.div`
   order: 1;
   margin-left: 0px;
   margin-right: 8px;
+  line-height: 1;
 
   span {
     position: relative;
@@ -99,7 +100,7 @@ export default function EmojiSummary({ emojiMap, summary }: EmojiSummaryProps) {
 
   return (
     <Wrapper>
-      <EmojiWrapper>{emojiList}</EmojiWrapper>
+      {emojiList.length > 0 && <EmojiWrapper>{emojiList}</EmojiWrapper>}
       <Text>{total}個心情</Text>
     </Wrapper>
   )
