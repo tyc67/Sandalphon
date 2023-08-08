@@ -316,6 +316,7 @@ export default function ArticleMainText({
       localStorage.removeItem(sectionId)
     }
     setSelectedOption(option)
+    handleClose()
   }
 
   const onOptionChanged = (data: NotifyObject) => {
