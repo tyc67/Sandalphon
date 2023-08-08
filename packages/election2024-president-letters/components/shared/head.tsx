@@ -99,7 +99,7 @@ export default function CustomHead(props: CustomHeadProps) {
     title: props.title ? `${props.title} - ${SITE_TITLE}` : SITE_TITLE,
     description: props.description,
     site_name: SITE_TITLE,
-    url: staticFileDestination + currentPath,
+    url: staticFileDestination + currentPath === '/' ? '' : currentPath,
     type: 'website',
     image: {
       width: '1200',
