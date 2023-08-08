@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useMemo, useEffect, useCallback } from 'react'
+import { useState, useMemo, useEffect, useCallback, useContext } from 'react'
 import FeedBackForm from '@readr-media/react-feedback'
 import type {
   Form,
@@ -17,6 +17,7 @@ import {
 } from '../../config'
 import SVGAddEmojiSmall from '../../public/icon/add-emoji-small.svg'
 import EmojiSummary from './emoji-summary'
+import { EmojiContext } from '../../context/emoji'
 
 const { text } = color
 const { body, body2, tiny } = font
@@ -72,8 +73,12 @@ const Wrapper = styled.div`
     align-items: flex-start;
   }
 `
-const EmojiWrapper = styled.div<{ shouldShowEmoji: boolean }>`
-  display: flex;
+const EmojiWrapper = styled.div<{
+  shouldShowEmoji: boolean
+  shouldShowEmojiFeature: boolean
+}>`
+  display: ${({ shouldShowEmojiFeature }) =>
+    shouldShowEmojiFeature ? 'flex' : 'none'};
   justify-content: space-between;
   align-items: center;
 
@@ -125,7 +130,9 @@ const EmojiSummaryWrapper = styled.div`
     display: none;
   }
 `
-const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper)`
+const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper) <{
+  shouldShowEmojiFeature: boolean
+}>`
   display: none;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -134,7 +141,8 @@ const EmojiSummaryWrapperDesktop = styled(EmojiSummaryWrapper)`
   font-weight: ${body2.weight};
   text-align: end;
   ${breakpoint.xl} {
-    display: block;
+    display: ${({ shouldShowEmojiFeature }) =>
+    shouldShowEmojiFeature ? 'block' : 'none'};
     margin-right: 12px;
   }
 `
@@ -217,9 +225,13 @@ const HiddenMask = styled.div<{ shouldShow: boolean }>`
   background-color: transparent;
 `
 
-const EmojiFormWrapper = styled.div<{ shouldShowEmoji: boolean }>`
+const EmojiFormWrapper = styled.div<{
+  shouldShowEmoji: boolean
+  shouldShowEmojiFeature: boolean
+}>`
   position: fixed;
-  display: flex;
+  display: ${({ shouldShowEmojiFeature }) =>
+    shouldShowEmojiFeature ? 'flex' : 'none'};
   flex-direction: column;
   justify-content: end;
   bottom: 0;
@@ -275,7 +287,6 @@ const EmojiFormWrapper = styled.div<{ shouldShowEmoji: boolean }>`
 type ArticleMainTextProps = {
   sectionId: string
   value: string
-  shouldShowEmojiFeature?: boolean
   emojiFormId: string
   onEmojiFormToggle: (
     /* eslint-disable-line no-unused-vars */ formId: string
@@ -284,7 +295,6 @@ type ArticleMainTextProps = {
 export default function ArticleMainText({
   sectionId,
   value,
-  shouldShowEmojiFeature = true,
   emojiFormId,
   onEmojiFormToggle,
 }: ArticleMainTextProps) {
@@ -292,6 +302,7 @@ export default function ArticleMainText({
   const [shouldShowEmoji, setshouldShowEmoji] = useState(false)
   const [summary, setSummary] = useState<Record<string, number>>({})
   const [selectedOption, setSelectedOption] = useState<string | null>(null)
+  const { shouldShowEmoji: shouldShowEmojiFeature } = useContext(EmojiContext)
 
   const handleClose = () => {
     setshouldShowEmoji(false)
@@ -408,57 +419,58 @@ export default function ArticleMainText({
 
   return (
     <Wrapper>
-      {shouldShowEmojiFeature && (
-        <EmojiSummaryWrapperDesktop>
-          <EmojiSummary emojiMap={optionMap} summary={summary} />
-        </EmojiSummaryWrapperDesktop>
-      )}
+      <EmojiSummaryWrapperDesktop
+        shouldShowEmojiFeature={shouldShowEmojiFeature}
+      >
+        <EmojiSummary emojiMap={optionMap} summary={summary} />
+      </EmojiSummaryWrapperDesktop>
       <MainText>{value}</MainText>
-      {shouldShowEmojiFeature && (
-        <EmojiWrapper shouldShowEmoji={isActive}>
-          <EmojiSummaryWrapper>
-            <EmojiSummary emojiMap={optionMap} summary={summary} />
-          </EmojiSummaryWrapper>
-          <AddEmojiButton onClick={handleOpen} isActive={isActive}>
-            {selectedOption ? (
-              <>
-                <span className="selected-text">你的心情</span>
-                <span className="selected-image-wrapper">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={optionMap[selectedOption].iconUrl}
-                    alt={optionMap[selectedOption].name}
-                  />
-                </span>
-              </>
-            ) : (
-              <>
-                <SVGAddEmojiSmall />
-                <span>加入心情</span>
-              </>
-            )}
-          </AddEmojiButton>
-          <HiddenMask shouldShow={isActive} onClick={handleClose} />
-          <FeedBackForm
-            shouldUseRecaptcha={false}
-            forms={feedBackFormSetting}
-            storageKey="election2024-president-letters"
-          />
-        </EmojiWrapper>
-      )}
-      {shouldShowEmojiFeature && (
-        <EmojiFormWrapper
-          shouldShowEmoji={shouldShowEmoji}
-          className="epl-emoji-form-wrapper"
-        >
-          <div className="close-background" onClick={handleClose}></div>
-          <FeedBackForm
-            shouldUseRecaptcha={false}
-            forms={feedBackFormSetting}
-            storageKey="election2024-president-letters"
-          />
-        </EmojiFormWrapper>
-      )}
+      <EmojiWrapper
+        shouldShowEmoji={isActive}
+        shouldShowEmojiFeature={shouldShowEmojiFeature}
+      >
+        <EmojiSummaryWrapper>
+          <EmojiSummary emojiMap={optionMap} summary={summary} />
+        </EmojiSummaryWrapper>
+        <AddEmojiButton onClick={handleOpen} isActive={isActive}>
+          {selectedOption ? (
+            <>
+              <span className="selected-text">你的心情</span>
+              <span className="selected-image-wrapper">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={optionMap[selectedOption].iconUrl}
+                  alt={optionMap[selectedOption].name}
+                />
+              </span>
+            </>
+          ) : (
+            <>
+              <SVGAddEmojiSmall />
+              <span>加入心情</span>
+            </>
+          )}
+        </AddEmojiButton>
+        <HiddenMask shouldShow={isActive} onClick={handleClose} />
+        <FeedBackForm
+          shouldUseRecaptcha={false}
+          forms={feedBackFormSetting}
+          storageKey="election2024-president-letters"
+        />
+      </EmojiWrapper>
+
+      <EmojiFormWrapper
+        shouldShowEmoji={shouldShowEmoji}
+        shouldShowEmojiFeature={shouldShowEmojiFeature}
+        className="epl-emoji-form-wrapper"
+      >
+        <div className="close-background" onClick={handleClose}></div>
+        <FeedBackForm
+          shouldUseRecaptcha={false}
+          forms={feedBackFormSetting}
+          storageKey="election2024-president-letters"
+        />
+      </EmojiFormWrapper>
     </Wrapper>
   )
 }
