@@ -131,8 +131,9 @@ const formatImagePath = (value: string): any => {
   const arrayWithWebP = arr.concat(arrWebP)
   arrayWithWebP.map((item) => {
     const isWebP = item[0].includes('WebP')
-    item[1] = `${imagePrefix}/images/article/${value}-${item[1]}.${isWebP ? 'webp' : 'jpeg'
-      }`
+    item[1] = `${imagePrefix}/images/article/${value}-${item[1]}.${
+      isWebP ? 'webp' : 'jpeg'
+    }`
 
     return item
   })
@@ -152,7 +153,8 @@ const parseArticleContent = (
   emojiFormId: string,
   setEmojiFormId: /* eslint-disable-next-line no-unused-vars */ (
     value: string
-  ) => void
+  ) => void,
+  hasFeedBackFeature: boolean
 ) => {
   const renderItem = (item: ArticleContentItem, index: number) => {
     switch (item.type) {
@@ -180,6 +182,7 @@ const parseArticleContent = (
             value={item.value}
             emojiFormId={emojiFormId}
             onEmojiFormToggle={setEmojiFormId}
+            hasFeedBackFeature={hasFeedBackFeature}
           ></ArticleMainText>
         )
       case 'second-text':
@@ -257,7 +260,8 @@ export default function ArticleContent({
     id,
     shouldActiveParallaxScrolling,
     emojiFormId,
-    setEmojiFormId
+    setEmojiFormId,
+    hasFeedBackFeature
   )
   return (
     <Wrapper>
