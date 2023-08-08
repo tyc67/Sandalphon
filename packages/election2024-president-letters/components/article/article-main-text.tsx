@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState, useMemo, useEffect } from 'react'
+import { useState, useMemo, useEffect, useCallback } from 'react'
 import FeedBackForm from '@readr-media/react-feedback'
 import type {
   Form,
@@ -380,14 +380,17 @@ export default function ArticleMainText({
     {}
   )
 
-  const fetchOptionSummary = () =>
-    axios.get(optionApiUrl, {
-      params: {
-        form: feedbackFormId,
-        field: emotionFieldId,
-        identifier: sectionId,
-      },
-    })
+  const fetchOptionSummary = useCallback(
+    () =>
+      axios.get(optionApiUrl, {
+        params: {
+          form: feedbackFormId,
+          field: emotionFieldId,
+          identifier: sectionId,
+        },
+      }),
+    [sectionId]
+  )
 
   useEffect(() => {
     setSelectedOption(localStorage.getItem(sectionId))
