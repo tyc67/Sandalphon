@@ -19,6 +19,13 @@ const Wrapper = styled.section`
   background-color: ${background.gray};
   padding: calc(40px + ${headerHeight}) 20px 40px 20px;
   margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   ${breakpoint.xl} {
     padding: calc(40px + ${headerHeight}) 40px 40px 40px;
     display: flex;
