@@ -64,13 +64,6 @@ const Intro = styled.section`
   color: ${text.secondary};
   p {
     margin-top: 12px;
-    background-image: repeating-linear-gradient(
-      180deg,
-      transparent,
-      transparent calc(${h5.size} * ${h5.lineHeight} - 1px),
-      ${border} calc(${h5.size} * ${h5.lineHeight})
-    );
-    /* background-size: ${`100% calc(${h5.size} * ${h5.lineHeight})`}; */
   }
   ${breakpoint.md} {
     padding-top: 28px;
@@ -80,14 +73,6 @@ const Intro = styled.section`
     font-size: ${h3.size};
     line-height: ${h3.lineHeight};
     font-weight: ${h3.weight};
-    p {
-      background-image: repeating-linear-gradient(
-        180deg,
-        transparent,
-        transparent calc(${h3.size} * ${h3.lineHeight} - 1px),
-        ${border} calc(${h3.size} * ${h3.lineHeight})
-      );
-    }
   }
 `
 
