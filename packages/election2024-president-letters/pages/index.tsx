@@ -41,7 +41,7 @@ export default function Home() {
       <CustomHead
         title={'盡力明白身邊的年輕人　賴清德、侯友宜、柯文哲寫給年輕人的信'}
         description={ogDesc}
-        imageUrl="/images/article/yao-jen-to/1-tablet.jpeg"
+        imageUrl="/images/og.jpg"
       />
       <Main shouldScrollSnap={state}>
         <Landing />
