@@ -8,6 +8,7 @@ import ArticleMainText from '../article/article-main-text'
 import ArticleImageParallaxScrolling from './article-image-parallax-scrolling'
 import DonateAndSubscribe from './donate-and-subscribe'
 import SupportMirrorMediaBanner from './support-mirrormedia-banner'
+import ShareAndCopyLink from './share-and-copy-link'
 import {
   ArticleContent as ArticleContentType,
   ArticleContentItem,
@@ -33,13 +34,20 @@ const Wrapper = styled.section`
   background-color: ${background.gray};
   padding-top: calc(${headerHeight} + 20px);
   padding-bottom: 20px;
-  *:last-child {
+  > *:last-child {
     margin-bottom: 0px;
   }
   overflow-x: hidden;
   //for scroll-snap
   scroll-snap-align: start;
   white-space: initial;
+`
+const ShareAndDonateWrapper = styled.section`
+  ${breakpoint.xl} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 `
 
 const Intro = styled.section`
@@ -247,7 +255,10 @@ export default function ArticleContent({
   )
   return (
     <Wrapper>
-      <DonateAndSubscribe />
+      <ShareAndDonateWrapper>
+        <ShareAndCopyLink />
+        <DonateAndSubscribe />
+      </ShareAndDonateWrapper>
       {children}
       {contentJsx}
       <SupportMirrorMediaBanner />
