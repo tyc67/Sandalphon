@@ -64,7 +64,7 @@ export default function ButtonCopyLink() {
       </CopiedMessage>
 
       <ClickButton onClick={handleCopyLink}>
-        <LinkIcon></LinkIcon>
+        <LinkIcon className="GTM-share-link"></LinkIcon>
       </ClickButton>
     </>
   )
