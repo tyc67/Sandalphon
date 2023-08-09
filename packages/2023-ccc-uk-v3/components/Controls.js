@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import ReactGA from 'react-ga'
 
 import Navigator from './Navigator'
-// import SwitchButton from './SwitchButton'
+import SwitchButton from './SwitchButton'
 
 const Logo = styled.a`
   position: fixed;
@@ -126,16 +126,16 @@ export default function Controls({
   tutorialFinish,
 }) {
   const { i18n } = useTranslation()
-  const [lang /*, setLang*/] = useState(i18n.language)
+  const [lang, setLang] = useState(i18n.language)
   const [showNavigator, setShowNavigator] = useState(false)
   const [showShares, setShowShares] = useState(false)
   const disableNavigator =
     browsingIndex === 0 || browsingIndex === pages.length - 1
 
-  // const onLanguageChanged = (notChinese) => {
-  //   const lang = notChinese ? 'en' : 'zh-TW'
-  //   setLang(lang)
-  // }
+  const onLanguageChanged = (notChinese) => {
+    const lang = notChinese ? 'en' : 'zh-TW'
+    setLang(lang)
+  }
 
   const onShareClicked = () => {
     setShowShares((showShares) => !showShares)
@@ -212,12 +212,12 @@ export default function Controls({
       </Logo>
       <NavButtons>
         {!disableNavigator && <NavigateButton onClick={onNavigateClicked} />}
-        {/* <SwitchButton
+        <SwitchButton
           left="中"
           right="EN"
           onSwitch={onLanguageChanged}
           switchOn={lang === 'en'}
-        /> */}
+        />
         <ShareButton onClick={onShareClicked}>
           <ShareIcon show={showShares}>
             <img
