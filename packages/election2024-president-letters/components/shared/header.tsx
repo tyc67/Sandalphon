@@ -57,6 +57,7 @@ export default function Header({
       </Link>
       {shouldActiveEmojiButton && (
         <ButtonHideOrShowEmoji
+          className={shouldShowEmoji ? 'btn-hide-emoji' : 'btn-show-emoji'}
           onClick={() => setShouldShowEmoji((pre) => !pre)}
         >
           {shouldShowEmoji ? (
