@@ -2,389 +2,533 @@
   {
     "order": "0",
     "type": "L",
-    "name": "ccc2023_01-Mirror-29",
-    "filename": "20230208105536-2651aa82e318c8713f6127a1f6958f0e",
-    "text": "",
-    "eng_text": ""
+    "name": "A01_CHC2023006G01852",
+    "filename": "20230725193655-cd77bed5a5193c7bdd80a82d36e6cce3",
+    "text": "一旦射擊目標確定，第59旅砲兵小隊立即開砲車到定點就位，迅速調整座標並發射。指揮官會確認是否擊中目標，之後可能再發射兩、三枚火箭，然後立即撤離到另一個偽裝隱藏地點，以免成為敵方反擊的目標。",
+    "eng_text": "A 59th Brigade artillery unit equipped with GRAD, a multiple-missile rocket system, fires a rocket. Once a target had been confirmed, they would drive to the position, adjust the coordinates, and fire within minutes. Then another two or three rockets could be fired before they swiftly relocated under another tree line lest they be targeted and take return fire."
   },
   {
     "order": "1",
     "type": "P",
-    "name": "ccc2023_01-Mirror-1",
-    "filename": "20230208105450-2960aeb947a537f3ef15ca5ef31a69b9",
-    "text": "一輛疾行的裝甲車，消失在頓巴斯「灰色地帶」一處黑麥田與向日葵田交界。所謂灰色地帶，指的是未明確區分由俄軍或烏軍佔領的區域。",
-    "eng_text": "UKRAINE. A speedy armored truck disappears on the dusty horizon separated by sunflowers and ryes in the “Grey Zone” of Donbas. The Grey Zone is defined as areas that are not clearly either occupied by Russian or Ukrainian soldiers."
+    "name": "A02_CHC2023006G00381",
+    "filename": "20230725193916-0e7683219d0eaa3209fc86069e36ae28",
+    "text": "烏東頓巴斯第59旅的士兵正在提升他們的突擊戰備狀態，加速攻擊戰壕的訓練。\n",
+    "eng_text": "Soldiers of the 59th Brigade enhance assault readiness and train to deal with various combat medical emergencies."
   },
   {
     "order": "2",
     "type": "P",
-    "name": "ccc2023_01-Mirror-2",
-    "filename": "20230208105510-33f5d89ac0e29cc53d7495345274ffa8",
-    "text": "頓巴斯一處「灰色地帶」，隨處可見整片向日葵田。",
-    "eng_text": "UKRAINE. UKRAINE. Ubiquitous sunflowers in the “grey zone” of Donbas. The Grey Zone is defined as areas that are not clearly either occupied by Russian or Ukrainian soldiers."
+    "name": "A03_CHC2023006G00395",
+    "filename": "20230725193948-e84a59105effa3ca19551abbcc03e078",
+    "text": "一場期待已久的反攻行動正在默默而謹慎地進行，烏東頓巴斯第59旅的士兵正在加緊突擊戰備狀態和攻擊戰壕的訓練。",
+    "eng_text": "Soldiers of the 59th Brigade enhance assault readiness for the long-anticipated counteroffensive, which has been silently and cautiously underway on all fronts to puncture weakness in Russia’s defenses"
   },
   {
     "order": "3",
     "type": "P",
-    "name": "ccc2023_01-Mirror-3",
-    "filename": "20230208105523-73906d42275afe6e0b395d23e3148a1e",
-    "text": "在頓巴斯，一架波蘭製 Krab 155 公釐口徑自走榴彈砲從樹林衝進向日葵花田，射擊五發後立即移動到新的戰鬥位置。",
-    "eng_text": "UKRAINE. A Poland-made Krab 155-mm self-propelled howitzer rushes from the woods to sunflower beds, fires five shells, and relocates immediately in the Donbas region."
+    "name": "A04_CHC2023006G00305",
+    "filename": "20230725194015-8f7a2f55bb058b4fe11c63e287867096",
+    "text": "眾所期待的反攻其實已在烏東和烏南戰線上默默無聲且慢慢謹慎地展開，59旅的士兵正在加强提升加速突擊戰備狀態。\n",
+    "eng_text": "Soldiers of the 59th Brigade enhance trench warfare assault readiness."
   },
   {
     "order": "4",
     "type": "P",
-    "name": "ccc2023_01-Mirror-5",
-    "filename": "20230208105549-9fe40b2fb93d79e0369680becc7846b7",
-    "text": "頓巴斯區的紐約市鎮，一座穀倉遭俄軍砲火攻擊，燃燒持續數日。",
-    "eng_text": "UKRAINE. A grain warehouse has been burning for days due to a barrage of Russian shelling in Niu-York of the Donbas region."
+    "name": "A05_CHC2023006G01613",
+    "filename": "20230725194037-3d25e9cec8012763bb7d5612459cca5d",
+    "text": "頓巴斯第72旅的士兵在前線路邊檢查一枚未爆火箭彈。\n",
+    "eng_text": "A soldier from the 72nd Brigade examines an unexploded rocket on the roadside."
   },
   {
     "order": "5",
     "type": "P",
-    "name": "ccc2023_01-Mirror-6",
-    "filename": "20230208105602-c3b1a0f38e8655fd23a237eb9f5cdabb",
-    "text": "前線城市巴赫穆特遭受日夜不間斷的砲擊，被認為是頓巴斯最危險的區域之一。",
-    "eng_text": "UKRAINE. The frontline city of Bakhmut is considered one of the most dangerous areas in Donbas with constant shelling day and night."
+    "name": "A06_CHC2023006G00307",
+    "filename": "20230725194100-71fe2a3c93315be177019df418cd6081",
+    "text": "烏東頓巴斯第59旅士兵加緊集訓應對各種步槍或炸彈碎片受傷後的急救醫療處理。\n",
+    "eng_text": "Soldiers of the 59th Brigade train to deal with various combat medical emergencies, including using a Tourniquet kit."
   },
   {
     "order": "6",
     "type": "P",
-    "name": "ccc2023_01-Mirror-7",
-    "filename": "20230208105616-a3eed3bc21947e55fc8437dda8aa9bd0",
-    "text": "頓巴斯區前線市鎮錫韋爾斯克寂靜得可怕，只能聽見持續不斷的俄軍砲擊聲。",
-    "eng_text": "UKRAINE. Siversk, a frontline town in the Donbas region is eerily quiet except for the constant Russian shelling"
+    "name": "A07_CHC2023006G00784",
+    "filename": "20230725194122-647ce8f469ab06781dda5feac3005431",
+    "text": "隨著隆隆的引擎聲，一輛裝甲救護車迅速駛來，緊急煞車後，不到一分鐘，醫護人員已將一名受傷的前線士兵送上另一輛野戰救護車，前往設備比較齊全的野戰醫療單位。",
+    "eng_text": "Two teams of medics transport a rifle-injured soldier to an ambulance en route to a stabilization unit."
   },
   {
     "order": "7",
     "type": "P",
-    "name": "ccc2023_01-Mirror-8",
-    "filename": "20230208105630-bb9ab4986e66ba9e687673b2210f71fc",
-    "text": "在頓巴斯前線的比洛霍里夫卡村，一處廢棄的民宅浴室。",
-    "eng_text": "UKRAINE. A deserted civilian bathroom in Bilohorivka in the frontline of the Donbas region."
+    "name": "A08_CHC2023006G00692",
+    "filename": "20230725194146-4bde35ff5f79f08ae0da78143ff77a7f",
+    "text": "烏東頓巴斯第59旅野戰醫護人員就將一名受傷的前線士兵送上救護車，前往設備比較齊全的野戰醫療單位搶救。",
+    "eng_text": "In less than a minute, two teams of medics from the 59th Brigade transport a severely-injured frontline soldier to an ambulance en route to a stabilization/rescue unit."
   },
   {
     "order": "8",
     "type": "P",
-    "name": "ccc2023_01-Mirror-9",
-    "filename": "20230208105642-ffb121f328fd204f19ca5d8cd92769fd",
-    "text": "在頓巴斯前線的比洛霍里夫卡村，一處廢棄民宅浴室被一隊砲兵拿來存放彈藥。",
-    "eng_text": "UKRAINE. A deserted civilian bathroom has been turned into artillery ammo for an artillery squad in Bilohorivka in the frontline of the Donbas region."
+    "name": "A09_CHC2023006G01878",
+    "filename": "20230725194208-00540c46e9d1b156f88e8174e5c48080",
+    "text": "穿著防彈背心的第59旅軍醫試圖為傷勢嚴重的士兵用緊急繃帶為他纏繞傷口，強力止血，注射藥物，並穩定他的狀態。",
+    "eng_text": "Medical doctors of the 59th Brigade, donned in bullet-proof vests with rifle magazines and helmets, manage to stabilize a severely-injured soldier full of shrapnel."
   },
   {
     "order": "9",
     "type": "P",
-    "name": "ccc2023_01-Mirror-53",
-    "filename": "20230223163039-9222f3464a5bb7e27570835af98d74a3",
-    "text": "俄軍轟炸哈爾科夫，一台民用冰箱被燒毀殆盡。",
-    "eng_text": "UKRAINE. A civilian refrigerator is burnt by recognition due to Russian shelling in the Kharkiv region."
+    "name": "A10_CHC2023006G00725",
+    "filename": "20230725194236-94129b8cbb4b6883ed2b0e90125f2c48",
+    "text": "身著防彈背心、配備步槍彈夾和頭盔的第59旅軍醫為受槍傷的士兵止血，注射藥物，並安撫他受創後的驚慌。",
+    "eng_text": "A disoriented frontline soldier of the 59th Brigade seeks comfort and care from the medical doctors in an ambulance."
   },
   {
     "order": "10",
     "type": "P",
-    "name": "ccc2023_01-Mirror-11",
-    "filename": "20230208105706-7854b1e8b2d3c170778e4c9cd63c038d",
-    "text": "前線城市巴赫穆特遭受日夜不間斷的砲擊，被認為是頓巴斯最危險的區域之一。",
-    "eng_text": "UKRAINE. The frontline city of Bakhmut is considered one of the most dangerous areas in Donbas with constant shelling day and night."
+    "name": "A11_CHC2023006G00845",
+    "filename": "20230725194308-838911094e1b59b54fb59ea258818765",
+    "text": "烏東頓巴斯阿夫迪夫卡是一座遭破壞殆盡的城鎮，距離前線陣地不到3公里，目前仍被俄羅斯軍隊從三面包圍，城裡的小巷和道路都已被炮火摧毀夷平。",
+    "eng_text": "Avdiivka, a frontline town three kilometers from the “Zero Line,” is still flanked by Russian troops with daily shelling. All have been destroyed and razed here. Not a home, not a life, has been untouched by the Russian invasion."
   },
   {
     "order": "11",
     "type": "P",
-    "name": "ccc2023_01-Mirror-12",
-    "filename": "20230208105718-6a885dd26c84bd532153fbb180dedee3",
-    "text": "哈爾科夫城裡四處是受俄軍砲擊摧毀的車輛與房屋殘骸。",
-    "eng_text": "UKRAINE. Damages and destruction from Russian shelling in the Kharkiv region."
+    "name": "A12_CHC2023006G01257",
+    "filename": "20230725194343-cf78e70ea3e775a61fe141b8b0de63c0",
+    "text": "烏東頓巴斯阿夫迪夫卡是一座遭炮火破壞殆盡的城鎮，目前仍被俄羅斯軍隊從三面包圍。城裡的每一座房屋、教堂、公寓、幼兒園、學校、商店、小巷和道路都無一倖免。",
+    "eng_text": "Every house, apartment building, kindergarten, school, store, alley, and road has been destroyed and razed in the frontline town of Avdiivka."
   },
   {
     "order": "12",
     "type": "P",
-    "name": "ccc2023_01-Mirror-13",
-    "filename": "20230208105731-be9ce5bfed514bb2b005653d431bddd0",
-    "text": "頓巴斯區前線市鎮錫韋爾斯克，一處燃盡毀棄的車輛及房舍。",
-    "eng_text": "UKRAINE. Utterly burnt and destroyed vehicle and house in Siversk on the frontline near the Donbas region."
+    "name": "A13_CHC2023006G00507",
+    "filename": "20230725194409-b77aa002672100da63b0b9ffaa9381b1",
+    "text": "烏東頓巴斯阿夫迪夫卡的小學教室𥚃，俄羅斯火箭未爆彈至今仍插入教室牆壁，這是一座遭破壞殆盡前線城鎮，目前仍被俄羅斯軍隊從三面包抄。城裡的每一個建築物都已被戰火摧毀。",
+    "eng_text": "An unexploded rocket in an abandoned school in Avdiivka, Donbas. Now a wasteland but still under daily bombardment."
   },
   {
     "order": "13",
     "type": "P",
-    "name": "ccc2023_01-Mirror-14",
-    "filename": "20230208105744-e132c06b738a9a12964473fc94ce8235",
-    "text": "頓巴斯區前線市鎮錫韋爾斯克寂靜得可怕，僅剩一些家庭跟寵物留在此地。",
-    "eng_text": "UKRAINE. Siversk, a frontline town in the Donbas region is eerily quiet except for the few civilian families and the pets."
+    "name": "A14_CHC2023006G00981",
+    "filename": "20230725194438-c16da73a07769bc88d2a9a2a30565714",
+    "text": "阿夫迪夫卡是一座前線城鎮，距離前線不到3公里，被俄羅斯軍隊從三面包圍。這裡無水、無電。少數不願離開的老人僅能靠救難組織送來的食物和水，卑微的活著。城裡的每個家庭、每個生命都無法倖免於這場俄羅斯的入侵。",
+    "eng_text": "Avdiivka, like most frontline towns in which, everything has been razed, and there is no food, water, or electricity. A few senior residents have chosen to stay and only rely on assistance from local NGOs."
   },
   {
     "order": "14",
     "type": "P",
-    "name": "ccc2023_01-Mirror-15",
-    "filename": "20230208105756-58ba2587cec63faa32349ba8d4899696",
-    "text": "因砲擊受傷的市民，正在克拉馬托爾斯克醫院接受醫療處置。",
-    "eng_text": "UKRAINE. Injured civilians due to shelling receive medical treatment at Kramatorsk Hospital."
+    "name": "A15_CHC2023006G01261",
+    "filename": "20230725194502-6d2540c586690bd43f034a6d97453e04",
+    "text": "阿夫迪夫卡是一座前線城鎮，至今日夜仍遭炮火攻擊，這位先生在戰前曾擁有兩棟公寓，而今他只剩下幾面殘存的牆壁了。城裡的每個家庭和個人都無法倖免於這場俄羅斯的入侵。這裡無水、無電。少數不願離開的老人僅能靠救難組織送來的食物和水，卑微的活著。",
+    "eng_text": "Most frontline towns in Donbas have been razed without food, water, or electricity. A few senior residents have chosen to stay and only rely on assistance from local NGOs"
   },
   {
     "order": "15",
     "type": "P",
-    "name": "ccc2023_01-Mirror-17",
-    "filename": "20230208105822-07b2c5ad70a84309c7754d6c661b415d",
-    "text": "因砲擊受傷的市民，正在克拉馬托爾斯克醫院接受醫療處置。",
-    "eng_text": "UKRAINE. Injured civilians due to shelling receive medical treatment at Kramatorsk Hospital."
+    "name": "A16_CHC2023006G00624",
+    "filename": "20230725194534-283a5a51fa9e1113e610d6ac14d5c2ac",
+    "text": "阿夫迪夫卡是一座前線城鎮，城裡的每個家庭、每個生命都無一倖免於俄羅斯的入侵，這裡無水、無電。少數不願離開的老人僅能靠救難組織送來的食物和水，卑微的活著。",
+    "eng_text": "Another frontline town in Donbas another lonely and sick senior resident living without food, water, or electricity. A few senior residents have chosen to stay and only rely on sporadic assistance from local NGOs."
   },
   {
     "order": "16",
     "type": "P",
-    "name": "ccc2023_01-Mirror-18",
-    "filename": "20230208105836-df5f7108a8d43658f17e598f991b897c",
-    "text": "在頓巴斯區前線市鎮比洛霍里夫卡，一頭死去的豬被丟棄在路邊。",
-    "eng_text": "UKRAINE. A dead pig is deserted on the side of the road in Bilohorivka on the frontline of the Donbas region."
+    "name": "A17_CHC2023006G00578",
+    "filename": "20230725194556-22a1b578fd521e12b8a03f91eea7e9c3",
+    "text": "阿夫迪夫卡是一座前線城鎮，這裡無水、無電，城裡的每個家庭、每個生命都無一倖免於俄羅斯的入侵。少數不願離開的老人僅能依靠救難組織送來的食物和水，在地下室苟延殘喘卑微的活著。",
+    "eng_text": "Almost all of the frontline towns in Donbas have been razed without food, water, or electricity. A few senior residents have chosen to stay and only rely on assistance from local NGOs."
   },
   {
     "order": "17",
     "type": "P",
-    "name": "ccc2023_01-Mirror-19",
-    "filename": "20230208105853-f89983b8c35bc19327a2d6abd1836b9b",
-    "text": "頓巴斯區前線市鎮錫韋爾斯克寂靜得可怕，僅剩一些家庭跟寵物留在此地。",
-    "eng_text": "UKRAINE. Siversk, a frontline town in the Donbas region is eerily quiet except for the few civilian families and the pets."
+    "name": "A18_CHC2023006G00463",
+    "filename": "20230725194621-2aa87098945dcacb810ec828c21d6ee5",
+    "text": "烏東頓巴斯阿夫迪夫卡是一座前線城鎮，城裡的每一座房屋、公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀夷平，然而至今仍被俄羅斯軍隊從三面包圍。",
+    "eng_text": "Every house, apartment building, kindergarten, school, store, alley, and road in Avdiivka has been destroyed and razed. Not a home, not a life, has been untouched by the Russian invasion."
   },
   {
     "order": "18",
     "type": "P",
-    "name": "ccc2023_01-Mirror-20",
-    "filename": "20230208105911-d4db9b20601a9268501ee34aa60f2a9b",
-    "text": "在頓巴斯區前線市鎮比洛霍里夫卡，烏克蘭砲兵部隊的一名軍人正在等候發射指令。",
-    "eng_text": "UKRAINE. A soldier of a Ukrainian artillery squad in Bilohorivka on the frontline of the Donbas region waits for an order to shoot."
+    "name": "A19_CHC2023006G01212",
+    "filename": "20230725194658-d2de1b9bab85c2f16b2d2d9f35e0eb52",
+    "text": "阿夫迪夫卡是一座前線城鎮，仍被俄羅斯軍隊從三面包圍。城裡的每一座房屋、公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀，無一倖免。",
+    "eng_text": "Avdiivka is a small town three kilometers from the frontline. Russian troops flank it from three sides; every house, apartment building, kindergarten, store, alley, and road has been destroyed and razed. Not a life has been untouched by the Russian invasion."
   },
   {
     "order": "19",
     "type": "P",
-    "name": "ccc2023_01-Mirror-21",
-    "filename": "20230208105931-32e3a36e97bfe0ed3c7312b07878e37f",
-    "text": "在頓巴斯區前線市鎮比洛霍里夫卡，烏克蘭砲兵部隊的軍人正在等候發射指令。",
-    "eng_text": "UKRAINE. Soldiers of a Ukrainian artillery squad in Bilohorivka on the frontline of the Donbas region wait for an order to shoot."
+    "name": "A20_CHC2023006G01222",
+    "filename": "20230725194723-88394ef0b97713a26ecee7cc1e525e8c",
+    "text": "阿夫迪夫卡是一座前線城鎮，至今日夜仍遭炮火攻擊，這位先生在戰前曾擁有兩棟公寓，而今他只剩下幾面殘存的牆壁了。城裡的每個家庭和個人都無法倖免於這場俄羅斯的入侵。這裡無水、無電。少數不願離開的老人僅能靠救難組織送來的食物和水，卑微的活著。",
+    "eng_text": "Every house, apartment building, kindergarten, school, store, alley, and road has been destroyed and razed in Adviivka. Not a home, not a life, has been untouched by the Russian invasion."
   },
   {
     "order": "20",
     "type": "P",
-    "name": "ccc2023_01-Mirror-22",
-    "filename": "20230208105950-5e0de54978a8427d7603316d9980e661",
-    "text": "在頓巴斯區前線附近的錫韋爾斯克，一名士兵正在監控所有前哨基地間的無線通訊。",
-    "eng_text": "UKRAINE. A soldier monitors all radio communications with all the outposts in Siversk of the Donbas region near the frontline."
+    "name": "A21_CHC2023006G00977",
+    "filename": "20230725194748-69780549434bd4376708addca8b745a1",
+    "text": "每個家庭、每個生命都無法倖免於這場俄羅斯的入侵，位於頓巴斯的阿夫迪夫卡是一座前線城鎮，距離前線僅幾公里，至今仍炮火不停，城裡的每一間房屋、每一座公寓大樓。",
+    "eng_text": "Sun rays spread through broken windows and deserted mailboxes in Avdiivka. Not a home, not a life, has been untouched by the Russian invasion."
   },
   {
     "order": "21",
     "type": "P",
-    "name": "ccc2023_01-Mirror-23",
-    "filename": "20230208110013-6621379c436ee396c5c11a8dfeadabfa",
-    "text": "烏克蘭砲兵營的士兵，於錫韋爾斯克進行120公釐迫擊砲訓練。這門迫擊砲是從俄軍陣地擄獲，烏軍維修後，用來訓練使用。",
-    "eng_text": "UKRAINE. Members of a Ukrainian artillery battalion in Siversk practice 105mm artillery drills."
+    "name": "A22_CHC2023006G00484",
+    "filename": "20230725194816-9e5f49d859ab5773945d34cc4fcc6950",
+    "text": "没有一座前線城鎮，能倖免於俄羅斯的入侵。頓巴斯的阿夫迪夫卡城裡的每一座房屋、公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀。",
+    "eng_text": "The afternoon sun casts shadows from the school's broken glasses on the window sills to the broken glasses on the floor in a Donbas village. Not a place or life has been untouched by the Russian invasion."
   },
   {
     "order": "22",
     "type": "P",
-    "name": "ccc2023_01-Mirror-24",
-    "filename": "20230208110033-078a93b498cc9d66bea2c79841194583",
-    "text": "在頓巴斯區前線市鎮比洛霍里夫卡，烏克蘭砲兵部隊的軍人正在等候發射指令。",
-    "eng_text": "UKRAINE. Soldiers of a Ukrainian artillery squad in Bilohorivka on the frontline of the Donbas region wait for an order to shoot."
+    "name": "A23_CHC2023006G00629",
+    "filename": "20230725194845-514dda4fb1a8a6b64f46d37b5be77c3d",
+    "text": "少數不願離開無水、無電的頓巴斯前線城鎮的老人，僅能依靠救難組織送來的食物和水，在地下室卑微的活著。",
+    "eng_text": "The frontline in Donbas is all but a giant wasteland. Everything has been razed without food, water, or electricity. A few senior residents have chosen to stay and only rely on assistance from local NGOs."
   },
   {
     "order": "23",
     "type": "P",
-    "name": "ccc2023_01-Mirror-26",
-    "filename": "20230208110103-2fbfb65e3b812925124bf871104360ca",
-    "text": "在執行任務的空檔，駐紮頓巴斯區前線錫韋爾斯克的士兵會看影片、與家人聊天。",
-    "eng_text": "UKRAINE. Soldiers in between duties in Siversk of the Donbas region relax by watching the video and chatting with families."
+    "name": "A24_CHC2023006G00612",
+    "filename": "20230725194908-3009030aea791244d54e90c3c7f59d7d",
+    "text": "不願離開無水、無電的頓巴斯前線城鎮卻又久病體虚的老人，僅能依靠救難組織送來的食物和水，以及前線急救組織的冶療。",
+    "eng_text": "Everything has been razed without food, water, or electricity. A few senior residents have chosen to stay and only rely on assistance from local NGOs."
   },
   {
     "order": "24",
     "type": "P",
-    "name": "ccc2023_01-Mirror-28",
-    "filename": "20230208110155-ea88cd1e8c8632561d9cdea322f59702",
-    "text": "在頓巴斯區伊萬尼夫卡，一支烏克蘭國土防禦部隊的成員，從前線輪值歸來休息。",
-    "eng_text": "UKRAINE. Members of a Ukrainian Territorial Defence unit in Ivanivka of the Donbas region relax after a rotation returning from the frontline."
+    "name": "A25_CHC2023006G01301",
+    "filename": "20230725194942-6c938f4abcfe9c6826f3fea1f3f2bbd8",
+    "text": "至今仍被俄羅斯軍隊從三面包圍頓巴斯前線城鎮，在一年多的狂轟亂炸後，城裡的每一座公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀，無一倖免。",
+    "eng_text": "Avdiivka is a frontline town, three kilometers from the “Zero Line,” and Russian troops still flank it from three sides; every house, apartment building, kindergarten, school, store, alley, and road has been destroyed and razed. Not a home, not a life, has been untouched by the Russian invasion."
   },
   {
     "order": "25",
     "type": "P",
-    "name": "ccc2023_01-Mirror-29",
-    "filename": "20230208110214-84ac8a1a28b780a2b6231d78f87c44b4",
-    "text": "一處位在頓巴斯區前線附近伊萬尼夫卡的烏克蘭國土防禦部隊的基地。",
-    "eng_text": "UKRAINE. A Ukrainian Territorial Defence unit base in Ivanivka of the Donbas region near the frontline."
+    "name": "A26_CHC2023006G00834",
+    "filename": "20230725195008-f4e3d58288c9fbb0cc58b8a42334710a",
+    "text": "前線小城卡爾利夫卡的對外橋樑已被摧毀，教堂也早已被遺棄，一切都已遭摧毀，唯一的生命跡象是教堂旁的一座加固的武裝前哨陣地。",
+    "eng_text": "The shelling destroyed the bridge to Karlivka, another abandoned frontline village."
   },
   {
     "order": "26",
     "type": "P",
-    "name": "ccc2023_01-Mirror-30",
-    "filename": "20230208110236-3225624fed3a787e6b69944240f03fa6",
-    "text": "在頓巴斯區的「灰色地帶」，隨處可見尚未收割的麥田。「灰色地帶」指未明確區分由俄軍或烏軍佔領的區域。",
-    "eng_text": "UKRAINE. Ubiquitous unharvested ryes in the “grey zone” of Donbas. The Grey Zone is defined as areas that are not clearly either occupied by Russian or Ukrainian soldiers."
+    "name": "A27_CHC2023006G00364",
+    "filename": "20230725195038-6a9a5b71e12a7e62d4270fd2f9fb2f0f",
+    "text": "烈日下，烏東頓巴斯第59旅的士兵加緊集訓應對各種步槍或炸彈碎片受傷的緊急醫療急救。",
+    "eng_text": "Under the scorching sun, soldiers of the 59th Brigade train to deal with various combat medical emergencies, including using a Tourniquet kit."
   },
   {
     "order": "27",
     "type": "P",
-    "name": "ccc2023_01-Mirror-31",
-    "filename": "20230208110251-addfc48edd4679e074ca76a93047c0af",
-    "text": "頓巴斯區域內，一輛燒毀的民用車輛。",
-    "eng_text": "UKRAINE. A destroyed and deserted civilian vehicle in the Donbas region."
+    "name": "A28_CHC2023006G01722",
+    "filename": "20230725195104-d174d8ea3d94a40594be1b58ee41f44e",
+    "text": "陽光透過木頭的裂縫和偽裝網的孔洞灑進幾乎不見天日的潮濕壕溝，這裡是所謂的「零線」，士兵們在戰壕中堅守陣地，無論發生什麼，都緊握著機關槍，抵禦阻止敵人的進攻。",
+    "eng_text": "Sunrays spill through the holes of camouflage nets in a frontline trench near Novomykhailivka. It is more evident inside each dark, damp, dense, and maze-liked trenches: “If you want to live, dig!” The soldiers in the trenches are to hold the position with machine guns, RPGs, AK rifles, and anti-tank Javelins, no matter what!"
   },
   {
     "order": "28",
     "type": "P",
-    "name": "ccc2023_01-Mirror-32",
-    "filename": "20230208110307-c9706c52efd915bf98b94d7188d5e91f",
-    "text": "俄軍的集束炸彈掉落在頓巴斯區域近前線處。日內瓦公約已禁用集束炸彈。",
-    "eng_text": "UKRAINE. Russian cluster bombs in Ivanivka of the Donbas region near the frontline. Cluster bombs are banned by the Geneva Convention."
+    "name": "A29_CHC2023006G00282",
+    "filename": "20230725195128-5e7c13c33b17558cc43f071f080c7c0a",
+    "text": "第59旅的士兵正在頓巴斯提升小隊突擊集訓，期待已久的反攻行動正默默而謹慎地進行，以突破俄羅斯的防禦缺口，這將是一場漫長而艱苦的戰鬥。",
+    "eng_text": "Soldiers of the 59th Brigade in Kurakhove, Donbas, intensify assault readiness. The long-anticipated counteroffensive has been silently and cautiously under way on the eastern and southern fronts to puncture Russia's defenses. Every square meter gained will require a slow and grinding battle."
   },
   {
     "order": "29",
     "type": "P",
-    "name": "ccc2023_01-Mirror-33",
-    "filename": "20230208110322-1eb6e8c0c1296b1fef10c52b68bc23f4",
-    "text": "前線城市巴赫穆特遭受日夜不間斷的砲擊，前線城市巴赫穆特被認為是頓巴斯最危險的區域之一。",
-    "eng_text": "UKRAINE. The frontline city of Bakhmut is considered one of the most dangerous areas in Donbas with constant shelling day and night."
+    "name": "A30_CHC2023006G00297",
+    "filename": "20230725195155-b226a97804352cbb4b2362f1b1f5f4b1",
+    "text": "第59旅的士兵突擊集訓，所有訓練都是為了使每位士兵變成精湛的殺敵軍人，一跳進戰壕，馬上就進入了自動戰鬥模式：要麼射擊，要麼被射擊；要麼殺人，要麼被殺。",
+    "eng_text": "Soldiers of the 59th Brigade enhance and intensify trench warfare readiness. Every square meter gained will require a slow and grinding battle in the upcoming counteroffensive."
   },
   {
     "order": "30",
     "type": "P",
-    "name": "ccc2023_01-Mirror-34",
-    "filename": "20230208110339-9db1aaff05e744960acc084a6f2b7c9d",
-    "text": "前線城市巴赫穆特遭受日夜不間斷的砲擊，前線城市巴赫穆特被認為是頓巴斯最危險的區域之一。",
-    "eng_text": "UKRAINE. The frontline city of Bakhmut is considered one of the most dangerous\n areas in Donbas with constant shelling day and night.\n\n"
+    "name": "A31_CHC2023006G00318",
+    "filename": "20230725195227-5b4c7404433a1b79bd78d636f6f9b2c7",
+    "text": "第59旅的士兵在頓巴斯庫拉霍韋，集訓研習使用止血繃帶以及使用創傷緊急繃帶纏繞傷口，並應對各種戰鬥醫療緊急情況的訓練。",
+    "eng_text": "At a training facility in Kurakhove, Donbas, soldiers of the 59th Brigade train to deal with a series of combat medical emergencies, including how to use a Tourniquet kit."
   },
   {
     "order": "31",
     "type": "P",
-    "name": "ccc2023_01-Mirror-35",
-    "filename": "20230208110357-3ab482d6d8820a68898a1401854b6ce1",
-    "text": "頓巴斯區的前線市鎮錫韋爾斯克裡，一輛燃盡毀棄的車輛。",
-    "eng_text": "UKRAINE. Utterly burnt and destroyed vehicle in Siversk on the frontline near the Donbas region."
+    "name": "A32_CHC2023006G00749",
+    "filename": "20230725195325-ba719b772591080eae9e6d17cfb37392",
+    "text": "身著彈背心、配備步槍彈夾的第59旅的軍醫為負傷的前線士兵注射藥物，並穩定他們的狀態。",
+    "eng_text": "Doctors of the 59th Brigade try to inject and stabilize injured soldiers from the Donbas frontlines."
   },
   {
     "order": "32",
     "type": "P",
-    "name": "ccc2023_01-Mirror-36",
-    "filename": "20230208110416-3828670d42535ce4051e1bec32331b4b",
-    "text": "在頓巴斯，一架波蘭製 Krab 155 公釐口徑自走榴彈砲從樹林衝進向日葵花田，射擊五發後重新移動到新的戰鬥位置。",
-    "eng_text": "UKRAINE. A Poland-made Krab 155-mm self-propelled howitzer rushes front the woods to sunflower beds, fires five runs, and relocates immediately in the Donbas region."
+    "name": "A33_CHC2023006G00802",
+    "filename": "20230725195355-f6ee087fa59ccfe29b4e2e81f0656741",
+    "text": "第59旅的軍醫生使用創傷緊急繃帶為全身佈滿了炸彈碎片的士兵纏繞傷口，他眼神中滿溢著恐慌和劇痛。左臂雖然在前線以被夾板固定，並用紗布纏繞，其實已完全動彈不得，鮮血仍然從夾板中汨汨滲出，佈滿他已沾滿泥土的手指上。",
+    "eng_text": "Doctors of the 59th Brigade try to inject and stabilize a severely-injured soldier due to multiple shrapnel wounds from the frontlines."
   },
   {
     "order": "33",
     "type": "P",
-    "name": "ccc2023_01-Mirror-37",
-    "filename": "20230208110432-bb41511e1754d668c85c44bfd66d0ca6",
-    "text": "頓巴斯區的紐約市鎮，一座穀倉遭俄軍砲火攻擊，燃燒持續數日。",
-    "eng_text": "UKRAINE. A grain warehouse has been burning for days due to a barrage of Russian shelling in Niu-York of the Donbas region."
+    "name": "A34_CHC2023006G01884",
+    "filename": "20230725195423-4f292fbf7abe7a9e63fe5ef960acf2ee",
+    "text": "緊急前往野戰醫院的途中，第59旅的軍醫生使用創傷緊急繃帶為全身佈滿了炸彈碎片的士兵纏繞傷口，他身體上多處傷口都已被透明的止血敷料填塞滿，眼神中滿溢著恐慌和劇痛。",
+    "eng_text": "Doctors of the 59th Brigade use Israeli trauma bandages and stabilize a severely-injured and disoriented soldier due to multiple shrapnel wounds from the frontlines."
   },
   {
     "order": "34",
     "type": "P",
-    "name": "ccc2023_01-Mirror-38",
-    "filename": "20230208110446-440ad00b51a17e45c4d924ae43c50809",
-    "text": "哈爾科夫城中，某公寓廚房遭砲彈摧毀。",
-    "eng_text": "UKRAINE. A civilian apartment kitchen is bombed and destroyed in the Kharkiv region."
+    "name": "A35_CHC2023006G01779",
+    "filename": "20230725195500-41b1075f1e2ff5235a3e37144d8a3ad1",
+    "text": "在烏東顿巴斯前線的前線，改裝後的大疆DJI Mavic 3 Pro無人機是攻擊首選武器，配備了一枚40毫米的榴彈，操作員和指揮官能夠即時觀察、修正每次的攻擊任務 。",
+    "eng_text": "In “Zero line” near Novomykhailivka, Donbas. The choice weapon for the frontline drone attack has been a modified DJI Mavic 3 Pro with a 40mm grenade attached."
   },
   {
     "order": "35",
     "type": "P",
-    "name": "ccc2023_01-Mirror-39",
-    "filename": "20230208110505-cbe86132da0a2bf91874f3f3b92d5635",
-    "text": "頓巴斯一處「灰色地帶」，隨處可見整片向日葵田。灰色地帶指未明確被俄軍或烏軍佔領的地帶。",
-    "eng_text": "UKRAINE. Ubiquitous sunflowers in the “grey zone” of Donbas. The Grey Zone is defined as areas that are not clearly either occupied by Russian or Ukrainian soldiers."
+    "name": "A36_CHC2023006G01788",
+    "filename": "20230725195527-e4ced23929c9dcf7240de212c4dfb1f3",
+    "text": "在烏東頓巴斯前線的前線，改裝後的大疆DJI Mavic 3 Pro無人機配備40毫米榴彈是攻擊首選武器，他們的任務是擊殺俄羅斯戰壕的士兵和摧毀高價值設施（如坦克、裝甲運兵車或火砲系統）。",
+    "eng_text": "Once a 40mm grenade is attached underneath a DJI drone, the operator and the commander can watch and navigate in real-time each attack mission."
   },
   {
     "order": "36",
     "type": "P",
-    "name": "ccc2023_01-Mirror-40",
-    "filename": "20230208110524-4bcfdb15af1636fd480f67d6679008cb",
-    "text": "烏克蘭國土防禦部隊駐紮在頓巴斯區前線附近的比洛霍里夫卡。",
-    "eng_text": "UKRAINE. A Ukrainian Territorial Defence unit base in Bilohorivka of the Donbas region near the frontline."
+    "name": "A37_CHC2023006G01784",
+    "filename": "20230725195554-8c70e8000bf93e1ba713c36de6ab8609",
+    "text": "在烏東頓巴斯前線，一台售價三千美元的大疆無人機Mavic Pro，壽命大約一星期。無人機隨時可能已被攔截或擊落。",
+    "eng_text": "It will require a soldier to handle take-off and landing to secure and complete each drone attack."
   },
   {
     "order": "37",
     "type": "P",
-    "name": "ccc2023_01-Mirror-41",
-    "filename": "20230208110542-c5136d087888c5627def869c4ec60896",
-    "text": "一名烏克蘭砲兵隊的軍人在頓巴斯區前線附近的比洛霍里夫卡，等待下一次射擊的指令。",
-    "eng_text": "UKRAINE. A soldier of a Ukrainian artillery squad in Bilohorivka on the frontline of the Donbas region waits for an order to shoot."
+    "name": "A38_CHC2023006G00373",
+    "filename": "20230725195626-5ceae319b814b9d19abd034cd433b1ea",
+    "text": "烏東顿巴斯前線庫拉霍韋第59旅的士兵正在提升加速他們的突擊戰備狀態和攻擊戰壕的訓練。一場期待已久的反攻行動正默默而謹慎地進行著。",
+    "eng_text": "Soldiers of the 59th Brigade strengthen trench assault readiness for the much-anticipated counteroffensive, which has been silently and cautiously under way on the eastern and southern fronts to puncture Russia’s defense's weakness."
   },
   {
     "order": "38",
     "type": "P",
-    "name": "ccc2023_01-Mirror-42",
-    "filename": "20230208110558-3fe3afb1bfd28bee5e6a6f33efa2f620",
-    "text": "在頓巴斯區前線附近的比洛霍里夫卡，一處廢棄的公寓客廳被砲兵隊做為彈藥庫。",
-    "eng_text": "UKRAINE. A deserted civilian living room has been turned into artillery ammo for an artillery squad in Bilohorivka in the frontline of the Donbas region."
+    "name": "A39_CHC2023006G00413",
+    "filename": "20230725195656-e21de59559b14cfc1ac0e38df36e2014",
+    "text": "烏東頓巴斯前線庫拉霍韋第59旅的突擊戰備和攻擊戰壕的訓練埸。",
+    "eng_text": "A 59th Brigade assault and shooting training facility in Kurakhove, Donetsk.  "
   },
   {
     "order": "39",
     "type": "P",
-    "name": "ccc2023_01-Mirror-43",
-    "filename": "20230208110612-0234dc32b93ac6d2c94256786a6a5bd4",
-    "text": "一名駐紮頓巴斯區伊瓦尼夫卡的烏克蘭國土防衛隊的士兵完成射擊練習，正在返回基地。",
-    "eng_text": "UKRAINE. A Territorial Defence soldier in Ivanivka, Donbas region returns to base after shooting practice."
+    "name": "A40_CHC2023006G01450",
+    "filename": "20230725195720-299f5c9202c74a221e9b5ab887a6b3ba",
+    "text": "頓巴斯新米哈伊利夫卡前線，在每個黑暗、潮濕、擁擠且迷宮般的戰壕中，有一點再清楚不過：如果你想活下去，就得挖！",
+    "eng_text": "The Russian soldiers are about one kilometer behind the tree line from this trench in Novomykhailivka, Donbas. The soldiers in the defensive trench are to hold the position with machine guns, RPGs, AK rifles, and anti-tank Javelins, no matter what!"
   },
   {
     "order": "40",
     "type": "P",
-    "name": "ccc2023_01-Mirror-44",
-    "filename": "20230208110633-dae00efd4c84338d1a68260cb2faf38c",
-    "text": "駐紮頓巴斯區前線附近比洛霍里夫卡的烏克蘭砲兵隊，正在移動到附近的壕溝。",
-    "eng_text": "UKRAINE. Soldiers of a Ukrainian artillery squad in Bilohorivka on the frontline of the Donbas region relocate themselves to nearby trenches."
+    "name": "A41_CHC2023006G01861",
+    "filename": "20230725195751-26875e69f229f4274c7695f67c5a3331",
+    "text": "在每個黑暗、潮濕、擁擠且迷宮般的戰壕中，無論發生什麼狀況，士兵們都必須堅守這些戰壕，手握機關槍、火箭筒、AK步槍和反坦克標槍飛彈，阻擋敵人進攻。",
+    "eng_text": "In Novomykhailivka, Donbas. It is clearer inside every dark, damp, dense, and maze-liked trench: “If you want to live, dig!”"
   },
   {
     "order": "41",
     "type": "P",
-    "name": "ccc2023_01-Mirror-45",
-    "filename": "20230208110656-7647490b901e042adadc98cadec27427",
-    "text": "一輛廢棄的車停在頓巴斯區前線錫韋爾斯克的路中間。",
-    "eng_text": "UKRAINE. A deserted vehicle on the middle of the road in Siversk on the frontline of the Donbas region."
+    "name": "A42_CHC2023006G01710",
+    "filename": "20230725195819-f7e03df6cb0f2b042cc42cc6c838c7a3",
+    "text": "第72旅的一名士兵在回到戰壕前，吸口菸，喝口提神飮料。偽装網下是一條又一條黑暗、潮濕、擁擠且迷宮般的戰壕中，無論發生什麼狀況，士兵們都必須堅守這些戰壕。",
+    "eng_text": "A 72nd Brigade soldier takes a puff and sips an energy drink before sliding back to the dark, damp, dense, and maze-liked trench to hold the position with machine guns, RPGs, and AK rifles against Russian offense."
   },
   {
     "order": "42",
     "type": "P",
-    "name": "ccc2023_01-Mirror-46",
-    "filename": "20230208110712-49c0ce9dc9aa28c52cc336639b663b9f",
-    "text": "一處頓巴斯區地區前線錫韋爾斯克的烏克蘭國土防衛部隊基地。",
-    "eng_text": "UKRAINE. A Ukrainian Territorial Defence unit base in Siversk of the Donbas region near the frontline."
+    "name": "A43_CHC2023006G01408",
+    "filename": "20230725195843-71b1df37868ee5fc4a12bb9bb49a66c7",
+    "text": "在黑暗、潮濕、擁擠且迷宮般的戰壕中，無論發生什麼狀況，士兵們都必須堅守這些戰壕，手握機關槍、火箭筒、AK步槍和反坦克標槍飛彈，阻擋敵人。",
+    "eng_text": "In the “Zero Line,” a 72nd Brigade machine gunner holds a position against any Russian movement, no matter what!"
   },
   {
     "order": "43",
     "type": "P",
-    "name": "ccc2023_01-Mirror-47",
-    "filename": "20230208110724-a07e14b79a74ec4d0ae82c2fa0bbdb46",
-    "text": "頓巴斯區前線錫韋爾斯克，士兵正在監控所有前哨基地間的無線通訊。",
-    "eng_text": "UKRAINE. Soldiers monitor all radio communications with all the outposts\n in Siversk of the Donbas region near the frontline.\n\n"
+    "name": "A44_CHC2023006G01757",
+    "filename": "20230725195912-770b2f082e720ce32cf3de1abaaf40e6",
+    "text": "在迷宮般的戰壕中，無論發生什麼狀況，士兵們都必須堅守這些戰壕，阻擋敵人前進。",
+    "eng_text": "Every soldier’s mission is to hold their position inside the maze-liked trench with machine guns, RPGs, AK rifles, and anti-tank Javelins, no matter what!"
   },
   {
     "order": "44",
     "type": "P",
-    "name": "ccc2023_01-Mirror-48",
-    "filename": "20230208110736-c2d1f2e1cceaa1cc0450234fefccabb3",
-    "text": "在頓巴斯，一架波蘭製 Krab 155 公釐口徑自走榴彈砲從樹林衝進向日葵花田，射擊五發後立即重新移動到新的戰鬥位置。",
-    "eng_text": "UKRAINE. A Poland-made Krab 155-mm self-propelled howitzer rushes front the woods to sunflower beds, fires five runs, and relocates immediately in the Donbas region."
+    "name": "A45_CHC2023006G01859",
+    "filename": "20230725195942-4230dc81c7932ee33e39d1c03546b4fb",
+    "text": "在頓巴斯前線，任何時候，一旦射擊命令確定，砲兵小隊，立即開砲車到定點就位，迅速調整座標並發射，之後可能再發射兩、三枚火箭，然後立即撤離到另一個偽裝隱藏地點，等待下一個射擊命令。",
+    "eng_text": "A 59th Brigade artillery unit fires a rocket. It’s with GRAD, a multiple-missile rocket system. Upon confirming where a target is hit or not, another two or three missiles could be fired before they swiftly relocated under another tree line lest they be targeted and take return fire. It’s all “shoot and scoot.”"
   },
   {
     "order": "45",
     "type": "P",
-    "name": "ccc2023_01-Mirror-49",
-    "filename": "20230208110749-ca85c51efd61f9753c0afd2c12e18af2",
-    "text": "頓巴斯區前線戰事灰色地帶，一批155公釐自走榴彈砲殼。",
-    "eng_text": "UKRAINE. 155mm Howitzer shells near the grey zone on the frontline in Donbas."
+    "name": "B01_CHC2023006G01768",
+    "filename": "20230725200014-d60d4b13788ef97dbbc61e4d8c0ba8b9",
+    "text": "在烏東頓巴斯前線，改裝後的大疆DJI Mavic 3 Pro無人機配備40毫米榴彈是攻擊首選武器，他們的目標是擊殺俄羅斯戰壕的士兵和摧毀高價值設施（如坦克、裝甲運兵車或火砲系統）。",
+    "eng_text": "In “Zero line” near Novomykhailivka, Donbas. The choice weapon for the frontline drone attack has been a modified DJI Mavic 3 Pro with a 40mm grenade attached to target Russian personnel and high-value targets, such as tanks, APCs, or artillery."
   },
   {
     "order": "46",
     "type": "P",
-    "name": "ccc2023_01-Mirror-50",
-    "filename": "20230208110804-751b5ceee5d122f103e377703d039ca8",
-    "text": "在頓巴斯區前線附近的比洛霍里夫卡，一處廢棄的公寓客廳被砲兵隊做為彈藥庫。",
-    "eng_text": "UKRAINE. A deserted civilian living room has been turned into artillery ammo for \nan artillery squad in Bilohorivka in the frontline of the Donbas region.\n\n"
+    "name": "B02_CHC2023006G00405",
+    "filename": "20230725200044-5403f812db6a8392da2294ec32ffce5d",
+    "text": "烏東顿巴斯前線庫拉霍韋第59旅的突擊戰備和攻擊戰壕的訓練埸。整個烏東和烏南士兵們正在提升他們的突擊戰備狀態，並應對各種戰鬥醫療緊急情況的訓練。",
+    "eng_text": "A 59th Brigade assault and shooting training facility in Kurakhove, Donetsk."
   },
   {
     "order": "47",
     "type": "P",
-    "name": "ccc2023_01-Mirror-51",
-    "filename": "20230208110818-754a75ed948a4b0da68ce6c58df32ffd",
-    "text": "一支烏克蘭國土防衛隊部隊在頓巴斯區戰事灰色地帶進行夜間移防，士兵在營區外站崗。",
-    "eng_text": "A Ukrainian territorial defense soldier stands guard after relocation on the frontline grey zone in Donbas."
+    "name": "B03_CHC2023006G00393",
+    "filename": "20230725200112-0a0c5da70e48f7242400ef8cb42e5583",
+    "text": "一場期待已久的反攻行動正在默默而謹慎地進行，烏東頓巴斯第59旅的士兵持續提升加強突擊戰備和攻擊戰壕的訓練。",
+    "eng_text": "Soldiers of the 59th Brigade in Kurakhove, Donbas, strengthen trench assault readiness for the much-anticipated counteroffensive, which has been silently and cautiously under way on the eastern and southern fronts to puncture Russia’s defense's weakness."
   },
   {
     "order": "48",
+    "type": "P",
+    "name": "B04_CHC2023006G01650",
+    "filename": "20230725200135-7a6a6dd8be7068b41d221d2b81632125",
+    "text": "在黑暗、潮濕、擁擠且迷宮般的戰壕中，無論發生什麼狀況，士兵們都必須手握機關槍、火箭筒、AK步槍和反坦克標槍飛彈，堅守這些戰壕。",
+    "eng_text": "In Novomykhailivka, Donbas. Inside every dark, damp, dense, and maze-liked trench in the frontline, the soldiers are to hold the position with machine guns, RPGs, AK rifles, and Javelins, no matter what!"
+  },
+  {
+    "order": "49",
+    "type": "P",
+    "name": "B05_CHC2023006G01167",
+    "filename": "20230725200221-d6e3440d036e863d0ea117bd7ec7e984",
+    "text": "至今仍被俄羅斯軍隊從三面包圍頓巴斯前線城鎮阿夫迪夫卡，在一年多的狂轟亂炸後，城裡的每一座公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀，無一倖免。",
+    "eng_text": "Avdiivka is a destroyed frontline town, two to three kilometers from the frontline, still flanked by Russian troops. Every house, apartment building, kindergarten, school, store, alley, and road has been destroyed and razed. Not a home, not a life, has been untouched by the Russian invasion."
+  },
+  {
+    "order": "50",
+    "type": "P",
+    "name": "B06_CHC2023006G01108",
+    "filename": "20230725200256-fdfe11202a61d4e06a0553ec8ae1a06e",
+    "text": "阿夫迪夫卡是一座前線城鎮，距離前線陣地不到3公里，至今仍被俄羅斯軍隊從三面包圍。每個家庭、每個生命都無一倖免於這場俄羅斯的入侵。",
+    "eng_text": "Avdiivka is a destroyed town on the frontline. Every house, apartment building, kindergarten, school, store, and alley has been destroyed and razed. Not a home, not a life, has been untouched by the Russian invasion."
+  },
+  {
+    "order": "51",
+    "type": "P",
+    "name": "B07_CHC2023006G00445",
+    "filename": "20230725200324-e9005aab8f41f8e48fee038ecc2c8c65",
+    "text": "頓巴斯的阿夫迪夫卡城裡的每一座房屋、公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀，無一能倖免於俄羅斯的入侵。",
+    "eng_text": "The afternoon sun casts shadows from the school's broken glasses onto the window sills in a Donbas village. Not a place or life has been untouched by the Russian invasion."
+  },
+  {
+    "order": "52",
+    "type": "P",
+    "name": "B08_CHC2023006G00455",
+    "filename": "20230725200353-607b88d8bab377c4b53fff2417de017b",
+    "text": "阿夫迪夫卡是一座前線城鎮，距離前線僅2到3公里，城裡的每一座公寓大樓、學校、商店、小巷和道路都已被摧毀。每個家庭、每個生命都無法倖免於這場俄羅斯的入侵。",
+    "eng_text": "Every house, apartment building, kindergarten, school, store, alley, and road in the frontline town of Avdviika has been destroyed and razed. Not a home, not a life, has been untouched by the Russian invasion."
+  },
+  {
+    "order": "53",
+    "type": "P",
+    "name": "B09_CHC2023006G00932",
+    "filename": "20230725200422-2b7cf9c37d0b5d7c2c0a20aaff1cfb1e",
+    "text": "在頓巴斯前線，第59旅炮兵小隊，等待下一個射擊命令。",
+    "eng_text": "A 59th Brigade artillery unit equipped with GRAD, a multiple-missile rocket system, awaits firing order from the command center and fires a rocket. Sometimes another two or three missiles could be fired before they swiftly relocate under another tree line lest they be targeted and take return fire. It’s all “shoot and scoot.”"
+  },
+  {
+    "order": "54",
+    "type": "P",
+    "name": "B10_CHC2023006G01282",
+    "filename": "20230725200450-8479f7041ebc2109d84c46024ce6d7ce",
+    "text": "阿夫迪夫卡是一座前線城鎮，距離前線僅2、3公里，被俄羅斯軍隊從三面包圍。城裡的每一座房屋、公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀和夷平。每個家庭、每個生命都無法倖免於這場俄羅斯的入侵。",
+    "eng_text": "Not a home, not a life in Avdviika, has been untouched by the Russian invasion."
+  },
+  {
+    "order": "55",
+    "type": "P",
+    "name": "B11_CHC2023006G00701",
+    "filename": "20230725200513-613fc637cfd76072115a96ca44587e71",
+    "text": "身著防彈背心、配備彈夾和頭盔的第59旅軍醫為受槍傷的士兵止血，注射藥物，並穩定他的狀態。",
+    "eng_text": "En route near Karlivka, Donetsk, doctors of the 59th Brigade try to comfort and stabilize a rifle-injured soldier from the frontlines."
+  },
+  {
+    "order": "56",
+    "type": "P",
+    "name": "B12_CHC2023006G00762",
+    "filename": "20230725200537-a6bd5be4cc86ce091f201ed5bc04a4f0",
+    "text": "身著防彈背心、配備彈夾和頭盔的第59旅軍醫為受生病的軍人，注射藥物。",
+    "eng_text": "Donned with bullet-proof vests with rifle magazines and helmets, doctors of the 59th Brigade inject and stabilize injured soldiers from the frontlines."
+  },
+  {
+    "order": "57",
+    "type": "P",
+    "name": "B13_CHC2023006G00436",
+    "filename": "20230725200601-105b596b2376aff0a247cf6f878bb039",
+    "text": "千瘡百孔的阿夫迪夫卡是一座前線城鎮，仍被俄羅斯軍隊從三面包圍。城裡的每一座房屋、公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀",
+    "eng_text": "Every hole is either a bullet or shrapnel and an emotional scar for the frontline town of Avdiivka, a frontline town in Donbas. Every house, apartment building, kindergarten, school, store, alley, and road has been destroyed and razed. Not a home, not a life, has been untouched by the Russian invasion."
+  },
+  {
+    "order": "58",
+    "type": "P",
+    "name": "B14_CHC2023006G00040",
+    "filename": "20230725200634-3b61038db9fc96ebb6b6dc0658069555",
+    "text": "基輔布羅斯基猶太會堂舉行的早禱。",
+    "eng_text": "Morning prayer at the Brodsky Choral Synagogue in Kyiv."
+  },
+  {
+    "order": "59",
+    "type": "P",
+    "name": "B15_CHC2023006G00084",
+    "filename": "20230725200710-30f4f61a7b8fda1795566301d0601cd3",
+    "text": "基輔布羅斯基猶太會堂舉行的早禱。",
+    "eng_text": "Morning prayer at the Brodsky Choral Synagogue in Kyiv."
+  },
+  {
+    "order": "60",
+    "type": "P",
+    "name": "B16_CHC2023006G00943",
+    "filename": "20230725200743-2d6da0bb0186963dfeffc72326b4979a",
+    "text": "阿夫迪夫卡是一座前線城鎮，城裡的每個家庭、每個生命都無一倖免於俄羅斯的入侵，這裡無水、無電。少數不願離開的人僅能靠救難組織提供食物，卑微的活著。",
+    "eng_text": "Avdiivka, like most frontline towns in which, everything has been razed, and there is no food, water, or electricity. A few senior residents have chosen to stay and only rely on assistance from local NGOs."
+  },
+  {
+    "order": "61",
+    "type": "P",
+    "name": "B17_CHC2023006G00656",
+    "filename": "20230725200805-0f7e46a07e5fdfffe99fb988bd10c2a7",
+    "text": "阿夫迪夫卡是一座前線城鎮、小巷和道路都已被摧毀和夷平，無一倖免於這場俄羅斯的入侵。",
+    "eng_text": "Outskirts of frontline town Avdiivka, the destroyed and razed town roads are just layers and layers of dust piling up and left attended. Donetsk."
+  },
+  {
+    "order": "62",
+    "type": "P",
+    "name": "B18_CHC2023006G01019",
+    "filename": "20230725200830-0e2a4826539db6f65a02567804954d2e",
+    "text": "阿夫迪夫卡是一座前線城鎮，距離前線僅2到3公里，所有的設施都已被摧毀和夷平。每個家庭、每個生命都無法倖免於這場俄羅斯的入侵。",
+    "eng_text": "Every house, apartment, kindergarten, school, store, alley, and road has been destroyed and razed by shelling. Not a home, not a life, has been untouched by the Russian invasion."
+  },
+  {
+    "order": "63",
+    "type": "P",
+    "name": "B19_CHC2023006G00869",
+    "filename": "20230725200851-89c34b9d7f130559d875247da75e2389",
+    "text": "阿夫迪夫卡是一座前線城鎮，距離前線不到3公里，被俄羅斯軍隊從三面包圍。城裡的每個家庭、每個生命都無法倖免於這場俄羅斯的入侵，這裡無水、無電。少數不願離開的老人僅能靠救難組織送來的食物和水，卑微的活著。",
+    "eng_text": "Bullet and shrapnel holes are all but a norm in the destroyed frontline town of Avdiivka, Donetsk."
+  },
+  {
+    "order": "64",
+    "type": "P",
+    "name": "B20_CHC2023006G01765",
+    "filename": "20230725200914-72d5ba3a8e33b5e15cd5ada72e853e73",
+    "text": "在烏東頓巴斯前線，一台售價三千美元的大疆無人機Mavic Pro，壽命大約有一星期。無人機可能已被攔截或擊落。",
+    "eng_text": "In Novomykhailivka, Donbas. The choice weapon for the frontline drone attack has been the modified DJI Mavic 3 Pro with a 40mm grenade attached underneath. The operator and the commander can watch in real-time each mission."
+  },
+  {
+    "order": "65",
+    "type": "P",
+    "name": "B21_CHC2023006G01154",
+    "filename": "20230725200939-1bf2b782cf5f43d4f729768dbbdf9869",
+    "text": "阿夫迪夫卡是一座前線城鎮，距離前線不到3公里，被俄羅斯軍隊從三面包圍。城裡的每一座建築物；公寓大樓、幼兒園、學校、商店、小巷和道路都已被摧毀夷平，無一倖免。",
+    "eng_text": "A sick senior resident has lived in the basement for over a year without food, water, or electricity and can rely only on sporadic assistance from local NGOs."
+  },
+  {
+    "order": "66",
     "type": "E",
     "name": "CCCUK_profile",
     "filename": "20220527163720-e8b30d310c0c29a5f7554fdb17ae440b",
@@ -392,11 +536,11 @@
     "eng_text": ""
   },
   {
-    "order": "49",
+    "order": "66",
     "type": "E",
     "name": "",
     "filename": "",
-    "text": "過去一年，攝影家張乾琦先後四次進入烏克蘭拍攝，本刊繼去年獨家取得授權，這次將刊載第四次、在烏東頓巴斯地區的影像作品，這裡被視為戰爭決戰點，也是目前兩軍激戰最激烈的地方之一。\n\n張乾琦說：「我的工作的荒謬性或許在於，我傾向前往人們不停逃出的地方，一個逆行者。」儘管多次躲在戰壕中，躲過砲彈轟炸，他仍計畫未來將前往戰地持續記錄。有別於聲色激動的媒體即時影像，透過他的觀景窗，我們靜靜地看見戰爭中的殘酷、力量與荒涼。\n\n慢慢靠近被攝者的心\n\n撰文：管中祥\n\n近年已移居奧地利的張乾琦，一直關心烏克蘭局勢，戰爭開打，深覺自己有義務記錄、報導這場不義入侵，決定前往採訪。他也認為台灣面對中國缺乏危機意識，希望用影像分享戰地所見所聞，告訴大家「唯有全面備戰才能避戰」。\n\n張乾琦已到烏克蘭四次，其中三次是自費，未來若有機會，還會再到戰場。雖然他可能是前往烏克蘭戰地報導次數最多的台灣人，不過，張乾琦最令人關注的成就，還是他長年累積的作品。\n\n張乾琦曾獲多個重要的國際新聞獎項，同時是2022年台灣卓越新聞獎—「新聞志業特殊貢獻獎」的得主，主辦單位的得獎理由這麼說：\n\n「張乾琦不只有人道主義的關懷，亦有人類學家的田野與同理，細緻觀察對象及其與場域、整體環境的關係，亦能因為同理與客觀，精確描述報導對象的狀態及處境。為了深入議題，他恆常把自己放在第一線與報導對象在一起生活，深具全球性視野，卻又聚焦於無人關注的角落，是一位持續固守在第一線新聞崗位上的攝影工作者，用鏡頭表達他對新聞事件或社會現象的洞察力，影像震撼，為同儕表率。」\n\n他到中正大學分享烏克蘭拍攝經驗時，有同學問：「如何知道畫面能不能拍？會不會拍出好照片？」張乾琦一如以往簡短回答：相機拿起的當下就知道了。\n\n這個答案對同學或許會有點錯愕，但對經驗老道的紀實攝影家來說的確是如此。戰爭現場複雜多變，沒有太多的時間考慮美學、構圖，或者思考什麼是「好照片」？當腦、眼，和心在同一軸線時，按下快門，絕對沒有一觸可及，只是一直專注、不斷專注。長期累積的經驗能讓你在正確的瞬間按下相機上的快門，有時候甚至是「心的快門」在當下作出的決定。\n\n一名優秀的新聞工作者，或是紀實攝影家，除了必要的專業技能、精準的判斷力，以及廣博的知識外，有人類學家走進現場的田野能力更是重要的條件之一。\n\n進入田野首先需要有開放、謙卑的態度，即使已有觀點與立場，也得開放心胸，才不致讓自己的有色眼鏡限制了視野，也要打開感官，用心感受、同理觀察到的人事物，體會被報導者的真實處境，進而了解背後複雜的結構性因素。\n\n我曾在《燦爛時光會客室》節目中問張乾琦，知名的戰地攝影記者 Robert Capa 曾說過：「如果你的照片不夠好，是因為你不夠近」，難道越靠近新聞現場照片就會拍得越好？張乾琦直說，許多人誤以為這只是物理的距離，認為越靠近就能拍得越好，但他認為，所謂的遠近不只是身體距離，還有拍攝者與被攝者之間的心理距離，也就是能否有同理心體貼對方，得到信任，否則被攝者若築起高牆，就算靠得再近，能理解、能呈現的也十分有限。\n\n張乾琦的重要作品幾乎都是經歷過長時間的田野歷程，例如，反諷台灣婚紗攝影生態的《我願意》從1994到拍到2001年；為了拍攝探討跨國婚姻的《囍》，他在2003 到2004年間曾到越南胡志明市六次；而引發諸多討論的《鍊》，則是從1993年到1999年期間前往龍發堂近二十次，每回都待上幾天或一個禮拜，就住在雞場庫房或小廟裡，在廟方同意及關注下觀察他們平日的生活、廟方與院民的互動與管理方式，並且進行拍攝。後來展出的照片僅是在1998年10月的某個下午拍攝完成，拍攝時間雖短，但也因為長期田野，才能讓一張張令人不捨與荒謬的照片透露出院民的現實處境。\n\n而《唐人街》是張乾琦從1992年便開始拍攝的作品，他在那裡和非法移工一起生活過三次，共三個月，為了延伸報導，還曾到這些移工在中國福州的老家逐戶採訪，和12個分散的家庭仍然保持連繫，拍攝計畫仍在進行。\n\n要這樣做得有充分時間與資源，更重要的是價值與心態。張乾琦曾說，透過攝影、透過機器、透過觀景窗看對方，一開始是有距離的，但待久了、接觸多了，會從疏離的旁觀者慢慢轉換成被動的參與者。而當心態、身份與關係的轉變，反而能從日常中看到最真實的東西。《唐人街》系列有張令人印象深刻的照片，有位穿著內褲的非法移工坐在大廈頂樓的逃生梯吃麵，對照一旁車水馬龍的紐約街頭，形成強烈對比，這也是張乾琦的代表作。\n\n有不少人詢問是怎麼拍到？張乾琦說，這是工人們的日常，紐約夏日悶熱，頂樓較為通風，窄小、外掛的逃生梯就成了工人休息、吃飯平台。當時他在那裡住了六個禮拜，和工人一同作息，自然就拍了下來。外人覺得驚豔的照片，對已逐漸成為「局內人」的張乾琦而言，恐怕只是日常生活的一部分。不過，也因為出身貧困，很容易進入惡劣的環境，苦其所苦，更能了解移工們的生活與所行所思，張乾琦強調，因為人在現場，才能掌握到他們的生活節奏。\n\n客觀，並不是刻意保持距離，做個單純的旁觀者；客觀，是一種能更清楚理解事實的方法，有時得接近，保持清明地進入對方的生活，站在當事人的角度，才有機會發現與呈現最接近日常的事實，進而探究其背後複雜的因素。不過，要強調的是，接近未必就是沒有距離，也不是因此全然失去自己的觀察與觀點。\n\n張乾琦不是機構內的記者，有較大的自主空間，但這並不代表新聞工作者就不需要具備這樣的條件。這是新聞工作的基本能力，但也越來越脫離新聞產業的現實，這樣的空間在強調速度、即時、短期獲利的台灣新聞業越來越少見，有些媒體為降低成本，低薪聘任改寫新聞的小編產製新聞，連到新聞現場的機會都沒有，更別說培養像張乾琦這樣的新聞人。即使是有心、有能力的新聞工作者，也很難不被老闆念茲在茲的經營現實給框限。\n\n新聞需要快、狠、準，但也需要深入田野、深度報導的慢新聞；新聞要獲利，也要有監督權力，讓弱勢發聲、社會進步的影響力。曾受《人間雜誌》影響的張乾琦，用鏡頭傳達偷渡客、遊民、精神病患、逃亡者、移民的處境與心聲，不但是以真實的生命突顯出政治經濟文化下的種種問題，同時也是底層民眾的陪伴力量，或許，還能為其帶來微微光亮。\n",
-    "eng_text": ""
+    "text": "當台大醫院手術室門滑開時，一股陌生、消毒過的寒氣迎面襲來，青白的日光燈管偶爾發出高頻的滋滋聲，身著綠森森手術袍的醫護人員和銀白不銹鋼的手術器具在冷冽的白光下顯得井然有序，鎮静和專業。從輪椅上，我可以看見達文西手術系統灰白下垂的巨大機械手臂，國內權威的泌尿科黃醫師和他的團隊，即將用它為我施行攝護腺癌切除手術。在此之前，我向一名工作人員詢問是否可以在手術期間播放華格納的《女武神之騎行》？她微笑回答，暗示我只能在進入手術室前聽聽這段音樂。麻醉劑注射不到十秒，我失去了意識。六小時後，手術室冰涼的冷氣已覆蓋全身，且竄入骨頭。我在手術台被喚醒，巨大的機械手臂高高在上，俯視著我！閤上眼，冰冷的身軀動彈不得，只感受到手術後的腫脹和一陣陣劇烈的疼痛。終於被推回我的病房了，牆上貼滿了我在奧地利的孩子們的照片、他們畫的彩色愛心，和祝福早日康復的信。\n\n刺骨的冷意漸漸散去，我凝視著麻木僵硬腫大的肚子上六處有著暗紅血跡的疤痕，是脹痛、刺痛，也許也有驚愕無奈的身心俱痛吧。床邊擺放著一個需自費、裝有微量嗎啡的靜脈注射架，每當感到疼痛難以忍受時，我會按下按鈕暫時止痛，之後即使是又感覺痛得死去活來了，都必須再等十分鐘，才能再次按下這個按鈕。\n\n長夜死寂的幽暗病房長廊裡，偶爾傳來病人的呻吟，護士間或推著換藥車進出護理站。 病房牆上掛鐘的秒針跳動卻顯得異常尖裂，每一秒似乎比前一秒更沈重、更刺耳地撞擊耳膜。我用濕紙巾包滿耳朵，終於在十分鐘後再次按下按鈕， 止痛藥作用下的疲憊身軀再次陷入昏沉。清晨，一次又一次的咳嗽伴隨著六處傷口一陣又一陣同時刺痛。那天是三月四日。在2022年的同一天，即一年前的今天，我帶著裝備抵達烏克蘭，記錄下被俄羅斯入侵的烏克蘭，想著那片因戰火籠罩而被摧毀的無辜土地，此刻，我多麼希望能回到那裡。\n\n兩個月的康復期後，我回到奧地利格拉茲（Graz）的家，彌補過去幾個月與孩子們的分離時光。這裡是我結婚、成為父親後的家。慢慢地，我逐漸恢復元氣，重拾簡單可行的運動鍛煉。儘管醫生和其他攝護腺癌倖存者一再叮嚀不要提超過三公斤的重物！我仍然經常在寬鬆的短外套内穿著防彈背心快走四、五公里，這種配備第四級防彈板的背心重達九公斤。終於，奧地利的泌尿科醫生認為我已「適合旅行」後，我於六月四日抵達基輔（Kyiv）。\n\n儘管基輔在五月時日夜警報不斷，城市和居民持續遭受俄羅斯巡弋飛彈、彈道導彈和伊朗製「見證者」自殺無人機的襲擊，但六月的第一個星期天，天空仍然明亮湛藍。有位朋友在他家陽台目睹了愛國者防空系統攔截擊落導彈，但他警告我不要拍這些畫面。因為五月有一天，三十幾位剛在社交媒體上分享愛國者擊落俄羅斯導彈影像的人立刻遭到逮捕，他們的臉部雖被馬賽克，但均被迫在電視和社交媒體Telegram上道歉和認罪。\n\n自2022年二月底俄羅斯全面入侵烏克蘭以來，這個國家一直處於緊繃和不安之中。在戒嚴狀態下，各地都強化了嚴密保安措施，任何可疑的行動，都會立刻被舉報，烏克蘭國家祕密安全局（SBU）一定立即行動調查，這點無庸置疑。\n\n回想2022年三月某個黃昏，我突然聽到一聲異常尖銳且陌生的聲響從空中迅速接近。尖裂的頻率越來越高。我抬頭看到一枚約八米長的卡里布爾（Kalibr）巡弋飛彈呼嘯而過，緊接著，第二枚，在灰濛的空中，緊隨著第一枚飛嘯衝向城市的郊區，頻率隨著距離的拉遠而詭異地降低和消散，幾秒後，兩聲爆炸巨響瞬間震動了利沃夫（Lviv）的每一寸土地，市郊外緣的一個儲油槽遭導彈攻擊。一團又一團巨大無法穿透的蘑菇雲滾入空中，帶著異味的厚黑濃煙吹向城市，將利沃夫覆蓋上一層令人窒息的爆炸粉塵，這座美麗的古城瞬間變得黯淡。與此同時，消防車和警車的鳴笛尖嘯而過，聚集在起火的油庫周圍。我跑上附近的利查基夫（Lychakiv）公墓山頂，準備紀錄拍下遭導彈襲擊的利沃夫。\n\n當我屏住呼吸，透過觀景窗凝視前方構圖的同時，從眼角餘光中，我感覺到旁人對我指指點點，且投以懷疑的目光，有幾位已經拿起手機，偶爾斜眼看看我。我心裡正納悶著我的新聞嚮導突然不見了！在還沒意識到將發生什麼之前，一位戴著黑色棒球帽的三十多歲男子快速跑上山頂，另外兩位穿著深色風衣、黑色牛仔褲、棒球帽和黑色斜包的男子緊追在後，不到一分鐘，我已被三人包圍，動彈不得。我舉起雙手，他們的第一個命令卻是要我轉身，雙手放在護欄上，「不准動！」我看到其中一個男子的風衣右下方口袋裡有個突出物。我想，那可能是對講機或手槍。他們對我進行了超過一小時的全身搜查，每根手指和腳趾間都不放過，詳盡地嚴格訊問我過去幾個鐘頭和幾天前的每一張照片和所有的通話紀錄，包括WhatsApp、Telegram和Messenger：「Marta是誰？女朋友？」「不是。」「Igor是誰，他是俄羅斯人嗎？」「來自哈爾科夫（Kharkiv）的攝影師朋友。」「你為什麼保留收據？你是美國中央情報局（CIA）嗎？」「不是！」那你是摩薩德（以色列情報機構）嗎？」「不是！」\n\n天色漸暗，溫度驟降，舉目所及惡味寒風凍地。審訊結束後，我終於被允許穿上襪子，此刻，我的雙腳早已凍僵，毫無知覺了。當我環顧四周，之前的旁觀者早已消失無蹤。只剩下我和三個髮型一模一樣、戴著棒球帽、身穿黑衣的男子。附近依稀可聽見對講機的聲音，以及遠處時而響起的警笛聲。\n \n或許我被誤認為是向俄羅斯提供影像與座標的線人。在審訊搜查過程中，我完全配合，誠實地回答每個問題，因為這是證明自己清白的唯一機會。事後，我向一位在北約任職的朋友複述了這次經歷，他冷笑地回答，我很幸運有著一張亞洲臉孔，否則可能在審問之前就已被壓倒在地，先痛打一頓再說。趕在宵禁前，我匆忙地回到飯店，喝完從克拉科夫（Krakow）帶來的最後一口伏特加，撥了通電話給原本應該協助我拍攝行程的在地新聞嚮導，一句話：「你被解僱了。」\n\n2022年戰爭爆發以來，這已經是我第五趟踏足烏克蘭。我到基輔只是想要與幾位友人喝喝酒、敘敘舊並取得新的記者證。我原本計劃在隔天就啟程前往烏東頓巴斯（Donbas）；但隨後發現，巴黎馬格蘭攝影通訊社提交給烏克蘭國防部（MOD）的申請，竟然在數位深淵中消失無蹤。遇到這樣的挫折，我是既錯愕又難以置信，但我別無選擇，只能在基輔立刻重新申請。我聽說，目前還有一千多位申請者在排隊等待批准。路透社的一位同業說這是一個「不可能加速處理的程序」，需要三到四週的時間，而且這並非由國防部決定，還需要上呈到烏克蘭國家祕密安全局（SBU）批准。我無法釐清我是如何繞過隊伍取得記者證，但我永遠感謝在高層的朋友們加速了這個流程！\n \n我和我的新聞嚮導Evhen沿著M03州際公路，從基輔順利駛向第聶伯城（Dnipro）。途中既無空襲警報，也沒有路障或檢查哨。然而，當我們開往頓巴斯的波克羅夫斯克（Pokrovsk）時，公路兩側開始出現深綠色的軍用車輛來回快速急駛。我們放慢駕駛速度，然後在一個鋼筋混凝土檢查哨站停下。大多數時候，當拿著AK-47步槍警察檢查我的護照和記者證時，我的新聞嚮導會開玩笑指著我說：「成龍！」這通常能立刻化解緊張的氣氛，引來一片笑聲。我會緊握右拳，看著警察回應說：「成龍與烏克蘭站在一起！」儘管我不認為成龍這輩子即使吃了熊心豹子膽，也不會有膽量說出這句話。\n\n戰爭對烏克蘭人的生活產生了深刻且難以理解的影響。自從俄羅斯非法入侵以來，每個烏克蘭人都有家人和朋友在前線戰鬥，或被迫流離失所。即使等到戰爭結束，烏克蘭也將面臨前所未有巨大的挑戰和問題。但現在，首要的目標是贏得這場戰爭，解放原本屬於烏克蘭的領土。\n\n眾所期待的反攻其實已在烏東和烏南戰線上默默無聲且慢慢謹慎地展開，在俄羅斯將近一千公里、前三層、後三層的防線找到突破口。俄軍用了超過半年的時間在防線上挖了反坦克壕溝、佈滿大規模的地雷、層層的三角混凝土龍牙樁和鐵製刺蝟樁，後面則是了精密綿延加固的野戰步兵戰壕、以及鐵絲刺網圍欄與各式各樣的火砲。烏克蘭想取回每一平方公尺領土，勢必得經過漫長的戰鬥。\n\n烏克蘭的全面大反攻需要時間、決心、性命，以及大量火力支援。我曾被分派與第59旅砲兵部隊行動，這個小隊配有四十枚GRAD多管火箭發射系統。一進入戰鬥位置，四名士兵先隱藏在樹林中，隨時等待指揮中心的射擊命令。一旦目標確定，他們會駛至指定位置，迅速調整座標並發射。指揮官先確認目標是否被擊中，並在撤至下一隱藏地點前再射出兩至三枚火箭，然後迅速離開，以免成為敵方火砲的目標。這種戰術被稱作「射擊與撤退」，既有效，也節省彈藥。由於我距離發射的火箭很近，不僅聽到巨大的聲響，衝擊波也穿透了我的身體，我也只能用雙手捂住耳朵，張大嘴勉強平衡壓力。\n\n進入前線陣地之前，所有人都必須將手機設為飛航模式。透過「星鏈」是唯一的聯繫方式。一名第72旅的士兵告訴我，俄羅斯士兵就在此刻我們站立地方一公里外的樹林戰壕裡。我們身處在所謂的「零線」上。當你得在一條又一條黑暗、潮濕、擁擠如迷宮般的戰壕中移動時，有一件事再也清楚不過：「想活下去，就得挖！」士兵們在戰壕中堅守陣地，無論發生什麼，都緊握著機關槍、火箭筒、AK步槍和反坦克標槍飛彈，抵禦阻止敵人的進攻。\n\n後來，我隨一個小隊執行無人機襲擊任務，他們的目標是擊殺俄羅斯戰壕的士兵和摧毀高價值設施（如坦克、裝甲運兵車或火砲系統）。他們選擇的武器是底部改裝、加装了40毫米榴彈的大疆無人機DJI Mavic 3 Pro。我們藏身在指揮中心的加固壕溝內，通過平板電腦監控無人機的飛行。陽光削過木頭的裂縫和偽裝網的孔洞灑進幾乎不見天日的壕溝，蚊子、蒼蠅和蜜蜂在裡面飛來飛去。\n\n在一堆倒落的樹枝和落葉旁，無人機鎖定了三名打赤膊的俄羅斯士兵，他們正在挖掘戰壕，我看著無人機在他們上方盤旋，心想他們三人完了！但榴彈投射落後卻沒有爆炸。無人機返回基地換上另一枚榴彈，再次起飛執行任務。這過程就像一段段戰爭影片的片段，直到我們與無人機的連接突然中斷。操作員感到十分沮喪，他一遍遍地試圖重新連接無人機，但此時，無人機可能已被俄羅斯攔截或擊落。\n\n當我們從高處鳥瞰所有俄羅斯前線的陣地時，他們也能看見烏克蘭前線的陣地。當我在前線的樹林中小便時，我不確定他們是否注意到了我？那些惱人的嗡嗡聲，是蜜蜂飛來飛去嗎？還是致命的無人機在我頭上盤旋？那天下午並沒有發生爆炸，這意味著我又多活了一天，可以繼續再為這場戰爭留下紀錄。\n\n在戰爭爆發之前，Nazzri是烏克蘭西邊一省長的諮詢委員，他沒參與過任何戰鬥。而今，他已經成為一名備受尊重的戰爭英雄，並在我被分派到的無人機部隊擔任指揮官。他向我透露，一台售價三千美元的大疆無人機Mavic 3 Pro，壽命只有一星期。他在社交媒體上相當活躍並且深受歡迎，但是每次在白天與他的車隊同行時，我總是忐忑不安，因為俄羅斯懸賞一筆高達五萬美元的奬金，活捉或擊斃他。\n\n透過一個加密應用程式，我與Yuri約在波克羅夫斯克唯一的披薩店裡見面。他是來自美國加州的退役美軍士兵，自2022年春天起，就全心全意地投入對烏克蘭的戰鬥支援。他在人群中顯得低調、踏實且溫和；吃午餐時，他會不時地巡視周遭的環境。他看起來和我在一段網路爆紅的無人機影片中，所看到的快速反應部隊（QRF）的戰士迥異：在影片中，他們在悍馬裝甲車上，對俄羅斯陣地發動猛烈的近距離機槍火力射擊，每當快速反應部隊的士兵們從武装悍馬車跳下後，馬上就進入了自動戰鬥模式：要麼射擊，要麼被射擊；要麼殺敵，要麼被殺。所有訓練都是為了使每位士兵變成精湛的殺敵軍人。我問他對於中國戰機不斷地飛越台灣海峽中線挑釁以及持續的文攻武嚇有何看法？他毫不猶豫地回答：「你們應該更加清楚，並要為可能的攻擊做好準備。」\n\n我記得今年四月中旬，《紐約時報》刊登了一篇由台灣前文化部長受邀撰寫的社論，這篇文章的中英文遣辭造句都好，但顯然撰寫人既沒邏輯，也缺乏常識。文中的論點就好比一群幫派歹徒，每天在無辜平民的庭院前揮舞匕首和開山刀；但儘管屋主一再被欺凌和面臨死亡威脅，文章卻主張屋主應該試圖跟施暴者對話和談，降格求安，降低緊張局勢。\n\n至於數個月前那份由台灣學者共同簽署的反戰聲明，這些學者為何不去向不斷用武力威嚇臺灣中共解放軍要求反戰呢？與此同時，這似乎顯示他們已在養尊處優的象牙塔裡太久了，也從而導致他們失去對社會問題的深層理解與同理心，不辨菽麥了。我是在基層人間、有一說一，實事求是的紀錄者，不懂在濟濟一堂、充滿著博士們的天上人間，他們從高處是如何俯視普通民眾？我也不確定，如果一位博士學者的家被黑社會歹徒襲擊，除了失聲驚叫之外，他會如何反應呢？我認為他們應該先放下高不可攀的思考模式，去感受和理解普羅大眾的生活經驗。如果我家面臨歹徒的攻擊威脅，我的首要之務就是強化房屋的防禦，並團結所有朋友和家人，組建一個有效的反擊網絡！試問，如果我不主動保護家園和所愛之人，又怎能期待任何國內或國外的救援呢？我再說一次，我絕不會向一個黑幫組織磕頭、屈服或投降。\n\n\n若分裂，我們註定失敗；唯有團結，才可能勝利。共軍一再跨越海峽中線，不斷踩紅線，都快踩成紅地毯了，然而大家依然馬跑舞跳，喝洒捉蝦，對中共的武力威脅已習以為常，麻木不仁了！ 之前我受訪時說過：「唯有全面備戰，才能避戰！」若要等到敵人開第一槍後才準備反擊，那是毫無認知和致命的被動。重點不在敵人什麼時候可能開第一槍，而是我們要上下團結再團結，臨深履薄， 常備不懈，全面備戰。\n\n北約和美國對於俄羅斯入侵烏克蘭的反應一直猶豫不決（我必須強調至今仍是！）他們對於實施制裁的決定也一再延緩。與此同時，由於受到源自中國武漢的病毒影響，全球各地都實行了封鎖措施，使得外援大減。然而，我仍記得一位烏克蘭的朋友告訴我，倘若俄羅斯的坦克膽敢駛進基輔，每個窗戶將會有把AK-47步槍和汽油彈對準每一台入侵的坦克反擊再反擊！\n\n入侵遙不可及嗎？對大多數烏克蘭人來說，在2022年2月24日之前確實如此。但誰又能預料到，一夜之間，烏克蘭的前線城鎮遭受大規模摧毀，而即便是距離前線相當遙遠的村莊和城市，也未能幸免於俄羅斯一再的炮火攻擊。\n\n第53旅的新聞官Raisa帶我去了阿夫迪夫卡（Avdiivka），這座城鎮距離前線僅3公里，至今仍被俄羅斯軍隊從北、東、南三方包圍著。這裡已沒有導彈襲擊的空襲警報來警告市民，因為日夜都不斷有俄羅斯火箭攻擊和烏克蘭的火炮回擊。為了避免被俄羅斯的無人機發現，我們快速地在廢墟之間穿梭。軍車疾馳而過，揚起的灰塵鋪蓋在路邊未爆炸的火箭彈上。城裡的每一座房屋、公寓大樓、幼兒園、學校、商店、小巷和道路都被摧毀。沒有一個家庭、沒有一個生命，不受到了俄羅斯入侵的摧殘。儘管我在戰前已多次前往烏克蘭，但我沒想到烏克蘭人對俄羅斯的仇恨，在每一次親人、友人、家園，和國家遭受攻擊和面臨死亡時，正加速積累！\n\n當裝甲救護車的引擎轟鳴聲在遠處響起，暗示著救護車正在疾速向我們靠近。兩隊醫護人員，攜帶著擔架站立一旁，繃緊神經準備就緒。裝甲救護車緊急煞車後飛揚的塵土，籠罩著待命的醫護人員，不到一分鐘，醫護人員已經將一位身中數槍的前線士兵搬上另一輛野戰救護車，前往設備比較齊全的醫療區。\n\n救護車司機抓起他的AK-47自動步槍，跳上車後，猛踩油門，迅速駛離。搶救生命分秒必爭，同時也避免被俄羅斯的火炮襲擊。在這有空調的救護車𥚃，化學藥物和消毒酒精氣味、濕漉漉的惡臭汗水以及濃烈鐵腥的暗紅血跡在狹窄擁擠的救護車內交織著。兩名穿著防彈背心的軍醫，頭戴鋼盔，各自配備著三個步槍彈匣，正試圖為傷勢嚴重的士兵穩定狀態，以防他在救護車行駛於坑疤曲折的道路上過度晃動。這位失去方向感的士兵，眼神中滿溢著恐慌和劇痛，他高大、扭曲的身體上佈滿了炸彈彈片造成的傷痕。整隻左臂雖然在前線以被夾板固定，並用紗布纏繞，其實已完全動彈不得，鮮血仍然從夾板中汨汨滲出，佈滿他已沾滿泥土的手指上。一名醫護人員用剪刀迅速剪開了被血跡浸透的軍服，他身體上多處傷口都已被透明的止血敷料填塞滿。兩名醫生不斷地用緊急創傷繃帶為他纏繞腹部傷口，兩條滿是泥土的止血繃帶已緊緊纏繞在他的左腿鼠蹊部，鮮血依然在他左小腿多處傷口不停流出，染紅了土黃色的軍靴。前線究竟發生了何等慘烈的戰爭？他的遭遇令人難以想像。每位士兵為了奪回自己國家的土地，勇敢衝上前線，卻隨時都可能付出生命的代價。去年八月我在頓巴斯紀錄的兩個小隊中的三名士兵，都已經在戰場上陣亡了。\n\n抵達邊境的醫療安置所後，受傷的士兵被迅速推進急診室，由一組穿著戰術防護鏡的醫生、護士接手救治。我問救護車上的一位軍醫，這位士兵是否有生還的可能？他吐了一口菸後回答，士兵在前線戰場上的任務已經結束，現在他將在醫院裡繼續為生存與死神搏鬥。我撫摸著自己身上已經逐漸消退的手術疤痕，默想著那位士兵，如果他能夠活下來，背負的將不只是身體的傷痛，內心創傷也將如影隨形。 \n\n行駛穿越烏克蘭的途中，我記得一個朋友曾描述烏克蘭的地形「平坦如鬆餅」。廣袤無垠的景致，時刻變化莫測的雲彩，都讓人讚嘆不已。一位朋友在Telegram上傳來消息，普丁將在二十分鐘後發表關於瓦格納兵變的全國性演說。這又是另一個讓我記得身在何處的歷史事件。當時我即將到達利沃夫，準備在傍晚經由波蘭的克拉科夫機埸搭機回家。雖然俄軍最初對烏克蘭戰火的破壞始於東部和南部，但在烏克蘭的西部地區，人們的絕望之情同樣令人心痛。我當時心想這場叛變是否意味着著入侵戰爭結束的開始，或是普丁政權的崩解？我也在思考，這場軍事叛變又可能如何影響中國對台灣持續的武力威脅呢？我沒有答案。唯一能確信的是，唯有全面備戰，才能避戰！\n \n回到格拉茲後就儘量陪伴孩子，幾天後，我得知克拉馬托爾斯克市（Kramatorsk），中心的Ria披薩店在晚餐尖峰時段，遭俄羅斯導彈襲擊的消息，因為我的孩子們就在身邊，我不忍心看著那些被困在瓦礫中，尖叫尋求救援的死難者的畫面。但我的内心像是塌陷了一個洞。我記得那間披薩店。去年八月，我和同事Sergey在克拉馬托爾斯克及巴赫姆特等地工作了兩週。隔日，一位同業發給我一則Interfax的新聞報導，這是一間用三種語言、備受信任的烏克蘭新聞機構。報導指出，烏克蘭祕密安全局在緊急搜捕行動中，逮捕了一名被控在導彈攻擊前，拍下披薩店位置並傳給俄羅斯情報機構的間諜，他將在法庭上為他對人類犯下的戰爭罪行負責。\n\n瓦格納兵變短暫落幕，但仍留下許多未解之謎。我終於完成了照片的編輯。持續在薄外套内穿著第四級防彈背心，沿著河岸走路，保持鍛鍊，並在臭汗淋漓的耳機𥚃聽著《女武神之歌》。\n\n突然，空襲警報在遠處響起！路上行人卻絲毫不受影響，跑步的繼續跑步，推著娃娃車散步的年輕夫婦依然悠哉，出門蹓狗的老鄰居撿拾狗狗的排泄物後，正要放到附近的垃圾筒。奥地利每週一次測試全國警報系統，一年52次，風雨無阻，絕無例外。這又是個奧地利週六正午時分。",
+    "eng_text": "Resistance\n\nWhen the surgical ward slides open at National Taiwan University Hospital, a cold clinical air swooshes, and everything inside looks and smells sanitarily clean and calm under the cacophony of fluorescent lights. From my wheelchair, I can see the robot-assisted arms of the Da Vinci surgical system, which Dr. Huang, one of the best urologists in the country, and his team will use to perform my prostatectomy. I asked a uniformed staffer if I could play Wagner’s Ride of the Valkyries during the surgery; she grinned but hinted I could only listen to it before entering the ward. Once the anesthesia was injected, I was out within seconds. Six hours later, I was in my hospital bed in excruciating pain. Behind me, on the wall, were pictures of my kids in Austria and their drawings with colorful hearts and get-well-soon letters.\n\nI looked at the multiple bloody scars across my numb, swollen stomach with disbelief. To ease the agonizing pain, an IV pole with a small dose of morphine stood next to my bed. When I reached my pain threshold, I would squeeze the button. Then I had to wait ten minutes for the next fix, no matter how tortured I felt!\n\nOccasionally, patients moaned, and nurses pushed carts across the hall. Otherwise the night was dreadfully still but for the tick of the second hand of the clock on the wall, each echoing louder than the one before. I stuffed my ears with wet tissues, knocked myself out with another fix of painkiller. In the wee hours of the morning, I woke up after coughing and there was a sharp, stabbing sensation on my belly. It was March 4. On the same day in 2022, the year before, I had arrived in Ukraine to document the invasion of Ukraine, an innocent landscape despoiled by Russia. I wished I were there now.\n\nTwo months after surgery and recovery, I finally returned to Graz, Austria, where I have lived since getting married and becoming a parent, to make up for the lost time with my kids. In addition, I gradually exercised to regain stamina. Despite reminders from my doctors and fellow prostate cancer survivors not to carry heavy stuff over three kilos, I walked regularly with a bulletproof vest equipped with level-four armored plates. That’s about nine kilos. Finally, with “fit-to-travel” permission from my urologist in Austria, I arrived in Kyiv on June 4.\n\nThe first Sunday of June in the capital was bright and blue even though it had been under attack from ballistic cruise missiles and Iranian-made Shahed kamikaze drones. My friend who saw the Patriot air defense system intercepting the incoming missiles warned me not to take pictures of intercepts. One day in May, thirty-two individuals who posted pictures or videos of the Patriot intercepting Russian missiles on social media, were arrested. They were forced to make confessions and apologies on TV and on the social media site Telegram with their faces blurred. \n\nThe country has been living with a palpable sense of tension and unease since the Russia’s full-scaled invasion in February 2022. Under martial law, heightened security measures and constant vigilance are everywhere. Any slight suspicious move will be reported and investigated by the Ukraine State’s Secret Services (SBU.) I know that for a fact!\n\nBack in the late afternoon of March 2022, I heard a high-pitched, piercing whistle moving in the air towards me. The swoosh became higher in pitch. I looked up and it was an eight-meter Kalibr cruise missile. Then another one, both whizzing over my head, the sound died down as it receded, and then seconds later, they struck an oil depot outside the city. The rumbling explosions thumped the earth as an impenetrable mushroom cloud billowed into the air. The wind carried it further spread, darkened and suffocated the beautiful historical city of Lviv. Meanwhile, fire engines and police vehicles, wailing, converged on the engulfed depot. I rushed up to a nearby hilltop of the landmark Lychakiv Cemetery to take pictures. \n\nAs I held my breath and looked through the viewfinder, I could also sense in my peripheral vision that onlookers were sizing me up suspiciously. Before I knew what was happening, a man in his mid-30s with a black baseball cap ran up the hill. Then another two men, in dark windbreakers, black jeans, baseball caps and sling pouches, hurried up. In less than a minute, I was boxed in! I raised both arms but the first order was turn around with both hands on the guard rails and remain absolutely still. I could see something protruding from one of the men’s lower right windbreaker pocket. It’s probably either a walkie-talkie or a pistol, I thought. An hour-long body search examined every pore and between my every finger and toe. Every picture and all the phone records, including WhatsApp, Telegram and Messenger from the previous hours and days were questioned and verified: “Who is Marta? Girlfriend?” “No.” “Who is Igor, is he Russian?” “A photographer friend from Kharkiv.” “Why are you keeping receipts? Are you CIA?” “No!” “Mossad?” “No!”\n\nIt was getting dark and chilly. I was finally allowed to put on my socks upon the somewhat satisfactory completion of the interrogation. As I looked around, all the onlookers had already disappeared. It was just me and three baseball-capped, dark-clothed men, all with identical hair-cuts. There was still audible murmuring and the blaring and wailing far away. \n\nI might have been perceived as an informer taking pictures and providing coordinates for Russia. Being cooperative as I was searched and truthfully answering every question, was my only  chance to prove my innocence. I later related the event to a friend with NATO, and he said I was lucky to have an Asian face, or I could have been mopped on the ground before questioning! I hurried back to my hotel just before the curfew started, had a shot of leftover Polish vodka from Krakow and phoned up my fixer—who supposedly was smoothing my way—with one sentence: “You’re fired.”\n\nThis latest was my fifth trip to Ukraine since the invasion. My only objective in Kyiv was to catch up with colleagues over beer and to pick up my new press credential. I was planning to leave for Donbas the next day. Then I realized that the accreditation application from my agency, Magnum Photos in Paris, to the Ukraine Ministry of Defense (MOD) in Kyiv had been lost in the digital abyss. A major hiccup! I had no choice but to reapply right there and right away. I was told that there were a thousand-plus applicants ahead of me all queuing up for approval. And I was further told that it’s an “immovable process” that requires three to four weeks. It’s not up to the MOD but the SBU for the final approval. I cannot clarify how I jumped the line to get my press card. I am forever grateful to friends in high places for expediting the process!\n\nIt was a smooth drive from Kyiv to Dnipro via Highway M03 with my fixer, Evhen; no air alerts and no checkpoints. But once we were headed towards Pokrovsk in Donbas, drab olive-green military vehicles were zooming by in both directions. We slowed down and stopped at checkpoints newly-reinforced with concrete blocks. More often than not, when a policeman with a Kalashnikov rifle checked my passport and press card, my fixer would joke, “Jackie Chan!” And that often was an immediate ice breaker with grins and laughter. With my right fist clenched, I would respond by saying, “Jackie Chan stands with Ukraine,” although I do not think that Jackie Chan would ever have the gall to say that. Not in this life!\n\nThe war’s impact on life in Ukraine is just as incomprehensible as it is lasting. Since the illegal and immoral invasion, every Ukrainian has families and friends fighting in the war as well as displaced, domestically or overseas. Ukraine will face gigantic problems after the war. But for now, the main goal is to win the war and to liberate the land that belongs to Ukraine. \n\nThe long-anticipated counteroffensive has been silently and cautiously under way on the eastern and southern fronts to puncture Russia’s defenses. Russia had spent months fortifying their lines with anti-tank ditches, vast minefields, concrete “dragon’s teeth,” iron “hedgehogs,” intricate infantry trenches, barbed-wired fences and artillery. Every square meter gained will require a slow and grinding battle. \n\nUkraine will need time, will, lives and a lot of firepower to launch a full-scale counteroffensive. I was with the 59th brigade artillery unit equipped with GRAD, a multiple rocket launcher system. Some forty rockets were loaded on the truck with four soldiers standing by, all camouflaged in the woods, ready for the firing order from the command center. Once a target had been confirmed, they would drive to the position, adjust the coordinates and fire within minutes. The commander would confirm whether the target had been hit or not. Then another two or three rockets could be fired before they swiftly relocated under another tree line lest they too be targeted and take return fire. It’s all “shoot and scoot,” but also to conserve ammo. I was quite near the firing rockets, and so, not just the sound, but the shock wave penetrated my body. I covered my ears and kept my mouth open to balance the pressure.\n\nWe were all told to switch our phones to Airplane mode before reaching front line positions. The only connection was via Starlink. A soldier from the 72nd brigade told me that the Russian soldiers were just behind the tree line about a kilometer away from where we stood. We were on the so-called Zero Line. As we moved around a dark, damp, dense and mazelike trench, it was more than clear: “If you want to live, dig!” The soldiers in the trenches are to hold the position with machine guns, rocket-propelled grenades, AK rifles and Javelins, no matter what!\n\nLater, I was embedded with a platoon that would operate drone attacks on Russian trenches and high-value targets, such as tanks, Armored personnel carriers (APCs) or artillery weapon systems. The choice of weapon has been the modified DJI Mavic 3 Pro with a 40mm grenade attached underneath. From inside a reinforced trench within the command center, we watch the drone’s movement on the tablet. Sunlight  shines through cracks in the wood and the holes of camouflage nets. Mosquitos, flies and bees buzz in and out of the trenches.\n\nThree Russian soldiers without T-shirts were spotted digging trenches under some fallen twigs and leaves. The drone was hovering right above them. I was thinking that they were going to die. The grenade dropped but did not explode. The drone returned to base to mount another grenade and took off again for the mission! It all looked like another video clip of war until the connection with the drone was lost. The drone operator was disheartened. He reset over and over again to try to reconnect the drone, but by then the drone had been intercepted or shot down by Russia. \n\nWe could see all the Russian frontline positions from high above, and so could they see us. Did they spot me when I was taking a leak in the woods on the frontline? Were those annoying buzzes those of wasps skimming around? Or a deadly drone hovering above me? There was no explosion that afternoon! I got to live another day to document the war.\n\nNazzri, a politician with no fighting experience before the war, has been a battle-hardened war hero, and is the commander of the unit I was embedded with. He told me that a three-thousand USD Mavic Pro drone may last for a week. He’s been quite public and popular on social media, but it scares me to travel with his convoy, especially during the hours of daylight; there is a fifty-thousand USD bounty on him, dead or alive. \n\nThrough an encrypted app, I arranged to meet Yuri in the only pizzeria in Pokrovsk. He is a retired American career soldier from California and has been devotedly fighting for Ukraine since the spring of 2022. He’s low-key, down to earth and soft-spoken, occasionally scanning his sectors during the lunch. He didn’t resemble the fighter I saw on viral drone footage of a QRF (quick reaction force) mission, in which he was charging on the lead Humvee, assaulting a Russian position with a machine gun at close range. The moment the fighters jumped out of the Humvees, they were already in auto-pilot mode, with a killer’s instinct. It’s either shoot or be shot, kill or be killed. All the training is to make a soldier into a fighter to kill the enemy. I asked Yuri his opinion of the ongoing Chinese aircraft sorties on Taiwan Strait. He replied firmly, “You guys should know better and be prepared for the attack.”\n\nI recall there was a New York Times editorial in mid-April this year, written by a former Taiwan minister of culture. It was nicely written but clearly by someone without common sense. It was as if organized gangsters were brandishing daggers and machetes before an innocent civilian’s front yard every day, and the homeowner, despite being bullied repeatedly and threatened by deadly weapons, should just bow to defuse and de-escalate the situation. \n\nAs for the jointly signed antiwar statement by the Taiwan scholars a month before that, it seems that the eggheads have comfortably dwelt in an ivory tower for too long. They live away from the practicalities and complexities of the real world, hindering their empathy and a holistic understanding of societal issues. \n\nI have my feet on the ground. I don’t view the world from on high, from a metaphorical tower full of PhDs. What would a PhD do if his or her house were about to be attacked by organized gangsters? I don’t know, but I think, first of all, that he or she should jettison the lofty thinking and be connected with the concerns and experiences of ordinary people.\n\nIf there were an imminent threat that my house would be attacked by gangsters, I would first reinforce my house to make it a fortress. Furthermore, I would mobilize and unite a network of friends and relatives to fight back!\n\nDivided, we fall. United, we stand. In the spring of 2022, NATO and the U.S., were wishy-washy (they still are, I might add!) regarding the Russian invasion of Ukraine, and dawdling about instituting sanctions. The rest of the world was masked up and locked down due to the virus spread from Wuhan, China. Foreign assistance was thin. But I remember a Ukrainian friend telling me that if Russian tanks roared in to Kyiv, there would be Kalashnikov rifles and Molotov cocktails out of every window and aiming at each tank.\n\nIf I don’t take the initiative to protect my home and loved ones, how can I expect any help, domestic or foreign? I don’t kowtow to appease or surrender to an organized mafia. \n\nIs an attack far-fetched? It would have seemed so for most of the Ukrainians before February 24, 2022. Who could have imagined the devastation and destruction on the front-line towns and the shelling of villages and cities far away from the frontline?\n\nRaisa, a 53th brigade press officer, took me to Avdiivka, which is two to three kilometers from the frontline, flanked by Russian troops from the north, the south and the east. Here, there are no air alerts to warn citizens of imminent missile attacks, because there are constant incoming and outgoing rockets, night and day. Every single house, apartment building, kindergarten, school, store, alley and/or road has been destroyed and razed. Not a home, not a life, has been untouched by the Russian invasion. Even though I had been to Ukraine several times earlier in the war, I was unprepared how the hatred Ukrainians feel towards Russian has grown since the invasion.\n\nWe moved swiftly from one pocket of wreckage to another to avoid being detected by the Russian drones. Military trucks with camouflage zoom by, spraying another layer of dirt onto the unexploded rockets on the roadside.\n\nA nearing rumble signaled that an armored ambulance was about to roar in. The engine grumbled and dust shrouded the meeting point where two teams of medics with stretchers had been standing by. In less than a minute, they had transported an injured frontline soldier to another ambulance, en route to a stabilization unit. \n\nThe ambulance driver grabbed his Kalashnikov, slammed the door and sped up. Inside the air-conditioned ambulance, the air was stuffy mixed with chemicals, sweat, and blood stains. The two doctors, in bullet-proof vests with three rifle magazines and helmets, tried to keep the severely injured soldier from bumping up and down as the driver zigzagged through the dirt roads full of potholes. The disoriented soldier’s eyes were full of fear and panic. His tall and heavyset body was covered with shrapnel wounds. His entire left arm was stabilized with splints and wrapped with gauze, but was motionless. Blood was still seeping through the plaster and down to his muddy fingertips. One medic hastily cut open the dark stained fatigues with a pair of shears. His body was already full of chest seal packs to stop the bleeding of multiple wounds. The two doctors used an Israeli abdominal bandage to staunch the wounds. Two tourniquets covered with dirt were already applied near the groin of his left leg after the explosion. What happened on the frontline?! It's hard to fathom that this soldier who risked everything to liberate the land that belongs to his country, could die at any second. Three soldiers I had spent time with in Donbas last August have already sacrificed their lives in battle.\n\nUpon arriving at the boarded-up stabilization unit, the traumatized soldier was rushed into the emergency room. Another team of doctors and nurses with ballistic goggles took over. I asked one of the ambulance doctors if the soldier would survive. He said that the soldier’s fight on the frontlines is over. He will now have to fight for his life in the hospital if he lives. I touched my fading surgery scars thinking of the soldier, if he lives, his scars will be emotional as well as physical.\n\nWhile driving across the country, I remember a friend who described the Ukraine landscape “as flat as pancake.” The vast and ever-changing cloud formation is astonishing and unpredictable. A colleague sent me a Telegram message saying Putin was about to address the nation in 20 minutes regarding the Wagner mutiny. This was the kind of historical event that I will remember where I was and what I was doing. I was reaching Lviv on my way home via Krakow in Poland. In the western part of the Ukraine, there was certainly less destruction but no shortage of despair. I wondered if the mutiny was the start of the end of the war and/or the end of Putin! I also asked myself how the military rebellion would affect China’s continuous armed threat to Taiwan. I don’t know. All I know is do not let your guard down, ever.\n\nA few days after returning to Graz and home with the kids, I heard that Ria Pizza in the center of Kramatorsk was struck by a Russian missile during dinnertime. I couldn’t watch the footage of the dying people screaming for help underneath the rubble—my kids were next to me. But there’s a hole in my heart. I remember the place. I spent two weeks with my colleague Sergey working around Kramatorsk, including Bakhmut, last August. The next day, I received an Interfax news report, a reputable Ukrainian news service in three languages, from a colleague. It stated that SBU “in hot pursuit” detained a spotter activated by Russian military intelligence, who sent a filmed location of the café to Russian intelligence before the missile strike. The detained agent would have to answer before the court for his war crime against humanity! \n\nThe short-lived mutiny ended but the Wagnerian drama lingers. So many unanswered questions. I finally finished editing my pictures. And I continue to exercise and walk along the river with my vest and level-four armored plates, and I could listen to the Ride of Valkyries on my sweaty Air pods. \n\nBut then, all of a sudden, an air alert was on! Ah, yes, it’s the national weekly alert drill, fifty-two times a year. No exception. Just another Saturday noon in Austria.\n"
   }
 ]
