@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   margin: 20px auto;
   justify-content: center;
   ${breakpoint.xl} {
-    margin: 40px auto;
+    margin: 40px 0;
   }
 `
 export default function DonateAndSubscribe() {

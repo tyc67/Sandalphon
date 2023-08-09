@@ -14,7 +14,7 @@ const Wrapper = styled.section`
   background-color: white;
   position: relative;
   border-radius: 12px;
-  max-width: 280px;
+  width: 280px;
   margin: 0 auto 8px auto;
   ${breakpoint.xl} {
     max-width: 280px;
