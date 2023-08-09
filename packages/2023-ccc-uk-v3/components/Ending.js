@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import DonateButton from './DonateButton'
@@ -190,16 +190,14 @@ export default function Ending({ id, image }) {
               <img src="images/ig.svg" alt="instagram link" />
             </IG>
           </NameWrapper>
-          <b>{t(`${id}.text.first.pairs.0.head`)}</b>
-          {t(`${id}.text.first.pairs.0.body`)}
-          <b>{t(`${id}.text.first.pairs.1.head`)}</b>
-          {t(`${id}.text.first.pairs.1.body`)}
-          <b>{t(`${id}.text.first.pairs.2.head`)}</b>
-          {t(`${id}.text.first.pairs.2.body`)}
-          <b>{t(`${id}.text.first.pairs.3.head`)}</b>
-          {t(`${id}.text.first.pairs.3.body`)}
-          <b>{t(`${id}.text.first.pairs.4.head`)}</b>
-          {t(`${id}.text.first.pairs.4.body`)}
+          {t(`${id}.text.first.pairs`, { returnObjects: true }).map(
+            (pair, index) => (
+              <React.Fragment key={index}>
+                <b>{t(`${id}.text.first.pairs.${index}.head`)}</b>
+                {t(`${id}.text.first.pairs.${index}.body`)}
+              </React.Fragment>
+            )
+          )}
         </First>
         <ProfileImageWrapper>
           <ProfileImage src={image} />
@@ -207,19 +205,38 @@ export default function Ending({ id, image }) {
         </ProfileImageWrapper>
         <Second>
           <Independent lang={lang}>{t(`${id}.text.second.first`)}</Independent>
-          <Header lang={lang}>{t(`${id}.text.second.pairs.0.head`)}</Header>
-          <Text lang={lang}>{t(`${id}.text.second.pairs.0.body`)}</Text>
+          {t(`${id}.text.second.pairs`, { returnObjects: true }).map(
+            (pair, index) => (
+              <React.Fragment key={index}>
+                <Header lang={lang}>
+                  {t(`${id}.text.second.pairs.${index}.head`)}
+                </Header>
+                <Text lang={lang}>
+                  {t(`${id}.text.second.pairs.${index}.body`)}
+                </Text>
+              </React.Fragment>
+            )
+          )}
         </Second>
         <Credit>
-          <CreditDetail>
-            <span>{t(`${id}.text.credit.pairs.0`)}</span>
-            <IG small href={t(`${id}.text.first.ig`)} target="_blank">
-              <img src="images/ig.svg" alt="instagram link" />
-            </IG>
-          </CreditDetail>
-          <CreditDetail>{t(`${id}.text.credit.pairs.1`)}</CreditDetail>
-          <CreditDetail>{t(`${id}.text.credit.pairs.2`)}</CreditDetail>
-          <CreditDetail>{t(`${id}.text.credit.pairs.3`)}</CreditDetail>
+          {t(`${id}.text.credit.pairs`, { returnObjects: true }).map(
+            (pair, index) => (
+              <React.Fragment key={index}>
+                {index === 0 ? (
+                  <CreditDetail>
+                    <span>{t(`${id}.text.credit.pairs.${index}`)}</span>
+                    <IG href={t(`${id}.text.first.ig`)} target="_blank">
+                      <img src="images/ig.svg" alt="instagram link" />
+                    </IG>
+                  </CreditDetail>
+                ) : (
+                  <CreditDetail>
+                    {t(`${id}.text.credit.pairs.${index}`)}
+                  </CreditDetail>
+                )}
+              </React.Fragment>
+            )
+          )}
         </Credit>
         <DonateWrapper>
           <DonateButton />
@@ -236,23 +253,16 @@ export default function Ending({ id, image }) {
               <img src="images/ig.svg" alt="instagram link" />
             </IG>
           </NameWrapper>
-          {t(`${id}.text.first.pairs.0.body`)}
-          <div>
-            <b>{t(`${id}.text.first.pairs.1.head`)}</b>
-          </div>
-          {t(`${id}.text.first.pairs.1.body`)}
-          <div>
-            <b>{t(`${id}.text.first.pairs.2.head`)}</b>
-          </div>
-          {t(`${id}.text.first.pairs.2.body`)}
-          <div>
-            <b>{t(`${id}.text.first.pairs.3.head`)}</b>
-          </div>
-          {t(`${id}.text.first.pairs.3.body`)}
-          <div>
-            <b>{t(`${id}.text.first.pairs.4.head`)}</b>
-          </div>
-          {t(`${id}.text.first.pairs.4.body`)}
+          {t(`${id}.text.first.pairs`, { returnObjects: true }).map(
+            (pair, index) => (
+              <React.Fragment key={index}>
+                <div>
+                  <b>{t(`${id}.text.first.pairs.${index}.head`)}</b>
+                </div>
+                {t(`${id}.text.first.pairs.${index}.body`)}
+              </React.Fragment>
+            )
+          )}
         </First>
         <ProfileImageWrapper>
           <ProfileImage src={image} />
@@ -260,24 +270,38 @@ export default function Ending({ id, image }) {
         </ProfileImageWrapper>
         <Second>
           <Independent lang={lang}>{t(`${id}.text.second.first`)}</Independent>
-          <Header lang={lang}>{t(`${id}.text.second.pairs.0.head`)}</Header>
-          <Text lang={lang}>{t(`${id}.text.second.pairs.0.body`)}</Text>
-          <Text lang={lang}>{t(`${id}.text.second.pairs.1.body`)}</Text>
-          <Text lang={lang}>{t(`${id}.text.second.pairs.2.body`)}</Text>
-          <Text lang={lang}>{t(`${id}.text.second.pairs.3.body`)}</Text>
-          <Text lang={lang}>{t(`${id}.text.second.pairs.4.body`)}</Text>
-          <Text lang={lang}>{t(`${id}.text.second.pairs.5.body`)}</Text>
+          {t(`${id}.text.second.pairs`, { returnObjects: true }).map(
+            (pair, index) => (
+              <React.Fragment key={index}>
+                <Header lang={lang}>
+                  {t(`${id}.text.second.pairs.${index}.head`)}
+                </Header>
+                <Text lang={lang}>
+                  {t(`${id}.text.second.pairs.${index}.body`)}
+                </Text>
+              </React.Fragment>
+            )
+          )}
         </Second>
         <Credit>
-          <CreditDetail>
-            <span>{t(`${id}.text.credit.pairs.0`)}</span>
-            <IG href={t(`${id}.text.first.ig`)} target="_blank">
-              <img src="images/ig.svg" alt="instagram link" />
-            </IG>
-          </CreditDetail>
-          <CreditDetail>{t(`${id}.text.credit.pairs.1`)}</CreditDetail>
-          <CreditDetail>{t(`${id}.text.credit.pairs.2`)}</CreditDetail>
-          <CreditDetail>{t(`${id}.text.credit.pairs.3`)}</CreditDetail>
+          {t(`${id}.text.credit.pairs`, { returnObjects: true }).map(
+            (pair, index) => (
+              <React.Fragment key={index}>
+                {index === 0 ? (
+                  <CreditDetail>
+                    <span>{t(`${id}.text.credit.pairs.${index}`)}</span>
+                    <IG href={t(`${id}.text.first.ig`)} target="_blank">
+                      <img src="images/ig.svg" alt="instagram link" />
+                    </IG>
+                  </CreditDetail>
+                ) : (
+                  <CreditDetail>
+                    {t(`${id}.text.credit.pairs.${index}`)}
+                  </CreditDetail>
+                )}
+              </React.Fragment>
+            )
+          )}
         </Credit>
         <DonateWrapper>
           <DonateButton />
