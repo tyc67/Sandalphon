@@ -27,8 +27,31 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Update Page Data
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Generate page needed data
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The ccc Ukraine projects is a static page. Although all the page data comes from a google sheet (listed below) and then turn into a json file (check document for the link) We have to put json object into the script/raw-data.json and then run `node script/raw-data-converter.js` to generate all page-necessary data inside datas/pages.json.
+
+For the limit of the all types of page are using the same key inside google sheet (order, type, name, filename, text).
+Page type like 'L' and 'E' should be handled manually inside the file script/raw-data-converter.js. Simply ignore the object from the json and insert all texts one by one to fit the the `firstPage` and `lastPage` objects inside raw-data-converter.js. Remember to run `node script/raw-data-converter.js` agagin to generate new page-needed data.
+
+- Export static page and upload to GCS bucket by gsutil
+
+The project leverages the next.js framework to export the static html files which will be uploaded to GCS bucket for the mirrormedia routing to render as a project page.
+
+run `yarn export` to export static html files.
+
+for dev (no cache version):
+gsutil -h "Cache-Control:no-store" -m cp -r -a public-read ./out/\* gs://statics.mirrormedia.mg/projects/{project_name}
+
+for prod:
+gsutil -m cp -r -a public-read ./out/\* gs://statics.mirrormedia.mg/projects/{project_name}
+
+- Clean dev projects after prod release
+
+Remove the project uploaded for dev testing in the GCS bucket.
+
+### References
+
+- Google sheet example: (link)[https://docs.google.com/spreadsheets/d/1JXyySvrM-aJhUMvzUsL7ifyjvw6VJCKGdY9yVWBHfXE/edit#gid=0]

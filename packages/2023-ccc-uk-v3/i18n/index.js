@@ -12,16 +12,21 @@ const resources = {
   },
 }
 
-// let browserLanguage = navigator.language || navigator.userLanguage
-// if (browserLanguage.toLowerCase().includes('zh')) {
-//   browserLanguage = 'zh-TW'
-// } else {
-//   browserLanguage = 'en'
-// }
+let browserLanguage
+try {
+  browserLanguage = navigator.language || navigator.userLanguage
+  if (browserLanguage.toLowerCase().includes('zh')) {
+    browserLanguage = 'zh-TW'
+  } else {
+    browserLanguage = 'en'
+  }
+} catch (error) {
+  browserLanguage = 'zh-TW'
+}
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: 'zh-TW',
+  lng: browserLanguage,
   fallbackLng: 'en',
   interpolation: {
     escapeValue: false,

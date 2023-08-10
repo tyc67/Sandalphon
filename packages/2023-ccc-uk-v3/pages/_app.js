@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>凝視頓巴斯：張乾琦的戰地攝影紀實</title>
+        <title>逆襲</title>
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />
