@@ -139,6 +139,12 @@ const Header = styled.div`
 `
 
 const Independent = styled.div`
+  color: rgba(145, 187, 239, 1);
+  font-size: 16px;
+  line-height: 1.8;
+  @media (max-width: 930px) {
+    font-size: 14px;
+  }
   ${({ lang }) =>
     lang === 'zh-TW'
       ? `
@@ -146,6 +152,8 @@ const Independent = styled.div`
   `
       : `
     margin-bottom: 25.2px;
+    font-family: Helvetica Neue;
+    font-style: italic;
   `}
 `
 
