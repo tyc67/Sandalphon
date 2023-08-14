@@ -5,8 +5,8 @@ import { environment } from '../const'
 function CustomDocument() {
   const ogUrl =
     environment === 'dev'
-      ? 'https://www.mirrormedia.mg/projects/ccc_ukraine_2023-dev'
-      : 'https://www.mirrormedia.mg/projects/ccc_ukraine_2023'
+      ? 'https://www.mirrormedia.mg/projects/ccc_ukraine_202308-dev'
+      : 'https://www.mirrormedia.mg/projects/ccc_ukraine_202308'
   return (
     <Html>
       <Head>
