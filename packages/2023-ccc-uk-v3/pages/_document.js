@@ -11,8 +11,6 @@ function CustomDocument() {
     <Html>
       <Head>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         <meta property="og:locale" content="zh_TW" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="逆襲" />

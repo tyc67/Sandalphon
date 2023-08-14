@@ -23,6 +23,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>逆襲</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />
