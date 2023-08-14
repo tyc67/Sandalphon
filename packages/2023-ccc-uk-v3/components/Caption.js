@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import ReactGA from 'react-ga'
+// import ReactGA from 'react-ga'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -133,11 +133,11 @@ export default function Caption({ caption, enlarge, showingTutorial, index }) {
       scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight <
       1
     ) {
-      ReactGA.event({
-        category: 'Projects',
-        action: 'scroll',
-        label: `Scroll the caption on page ${index} to the end`,
-      })
+      // ReactGA.event({
+      //   category: 'Projects',
+      //   action: 'scroll',
+      //   label: `Scroll the caption on page ${index} to the end`,
+      // })
     }
   }
 

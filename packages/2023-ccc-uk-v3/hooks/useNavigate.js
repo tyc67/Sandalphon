@@ -1,5 +1,5 @@
 import { useEffect, useRef, useCallback, useState } from 'react'
-import ReactGA from 'react-ga'
+// import ReactGA from 'react-ga'
 
 import useWindowDimensions from './useWindowDimensions'
 
@@ -46,11 +46,11 @@ export default function useNavigate(pagesRef) {
               showingPageIndex ===
               pagesRef.current.querySelectorAll(':scope > div.page').length - 1
             ) {
-              ReactGA.event({
-                category: 'Projects',
-                action: 'scroll',
-                label: `Scroll to end`,
-              })
+              // ReactGA.event({
+              //   category: 'Projects',
+              //   action: 'scroll',
+              //   label: `Scroll to end`,
+              // })
             }
           }
 
@@ -78,11 +78,11 @@ export default function useNavigate(pagesRef) {
 
   useEffect(() => {
     const beforeunloadHandler = () => {
-      ReactGA.event({
-        category: 'Projects',
-        action: 'scroll',
-        label: `Scroll to page ${lowestPageIndexRef.current}`,
-      })
+      // ReactGA.event({
+      //   category: 'Projects',
+      //   action: 'scroll',
+      //   label: `Scroll to page ${lowestPageIndexRef.current}`,
+      // })
     }
     window.addEventListener('beforeunload', beforeunloadHandler)
 
