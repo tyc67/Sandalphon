@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import ReactGA from 'react-ga'
+// import ReactGA from 'react-ga'
 
 import styled, { createGlobalStyle } from 'styled-components'
 import useWindowDimensions from '../hooks/useWindowDimensions'
@@ -240,11 +240,11 @@ export default function Navigator({
 
   const onPageButtonClicked = (index) => {
     navigateTo(index)
-    ReactGA.event({
-      category: 'Projects',
-      action: 'click',
-      label: `Click the page ${index} thumbnail`,
-    })
+    // ReactGA.event({
+    //   category: 'Projects',
+    //   action: 'click',
+    //   label: `Click the page ${index} thumbnail`,
+    // })
   }
 
   useEffect(() => {

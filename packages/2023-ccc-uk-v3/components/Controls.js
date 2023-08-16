@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
-import ReactGA from 'react-ga'
+// import ReactGA from 'react-ga'
 
 import Navigator from './Navigator'
 import SwitchButton from './SwitchButton'
@@ -143,19 +143,19 @@ export default function Controls({
 
   const onNavigateClicked = () => {
     setShowNavigator(true)
-    ReactGA.event({
-      category: 'Projects',
-      action: 'click',
-      label: `Click the sidebar icon`,
-    })
+    // ReactGA.event({
+    //   category: 'Projects',
+    //   action: 'click',
+    //   label: `Click the sidebar icon`,
+    // })
   }
 
   const onShareFB = (e) => {
-    ReactGA.event({
-      category: 'Projects',
-      action: 'click',
-      label: `Click the share icon fb`,
-    })
+    // ReactGA.event({
+    //   category: 'Projects',
+    //   action: 'click',
+    //   label: `Click the share icon fb`,
+    // })
 
     e.stopPropagation()
     window.open(
@@ -171,11 +171,11 @@ export default function Controls({
   }
 
   const onShareLine = (e) => {
-    ReactGA.event({
-      category: 'Projects',
-      action: 'click',
-      label: `Click the share icon line`,
-    })
+    // ReactGA.event({
+    //   category: 'Projects',
+    //   action: 'click',
+    //   label: `Click the share icon line`,
+    // })
 
     e.stopPropagation()
     window.open(
