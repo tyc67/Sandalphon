@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import '../i18n'
 import TagManager from 'react-gtm-module'
 import { GTM_ID } from '../const'
+import { useTranslation } from 'react-i18next'
 
 // ReactGA.initialize(environment === 'dev' ? 'UA-83609754-2' : 'UA-83609754-1')
 
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }) {
 
   //   document.addEventListener('contextmenu', (event) => event.preventDefault())
   // }, [])
+  const { t } = useTranslation()
 
   useEffect(() => {
     TagManager.initialize({ gtmId: GTM_ID })
@@ -22,7 +24,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>逆襲</title>
+        <title>{t(`0.meta.title`)}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <GlobalStyles />
