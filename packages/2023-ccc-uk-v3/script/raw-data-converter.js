@@ -96,7 +96,7 @@ const endingPage = datas
             },
           ],
         },
-        caption: '張乾琦。Photo by Ruslan Ganushchak',
+        caption: '張乾琦。',
         credit: {
           pairs: [
             '撰文：張乾琦',
@@ -144,7 +144,7 @@ const endingPage = datas
             },
           ],
         },
-        caption: 'Chien-Chi Chang.  Photo by Ruslan Ganushchak',
+        caption: 'Chien-Chi Chang.',
         credit: {
           pairs: [
             `Article by: Chien-Chi Chang`,
