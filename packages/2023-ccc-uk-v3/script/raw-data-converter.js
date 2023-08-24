@@ -96,7 +96,7 @@ const endingPage = datas
             },
           ],
         },
-        caption: '張乾琦。攝影：張乾琦/馬格蘭通訊社',
+        caption: '張乾琦。攝影：馬格蘭通訊社, 2023',
         credit: {
           pairs: [
             '撰文：張乾琦',
@@ -145,7 +145,7 @@ const endingPage = datas
             },
           ],
         },
-        caption: 'Chien-Chi Chang. Photography by: Chien-Chi Chang/Magnum Photos',
+        caption: 'Chien-Chi Chang. Photography by: Magnum Photos, 2023',
         credit: {
           pairs: [
             `Article by: Chien-Chi Chang`,
