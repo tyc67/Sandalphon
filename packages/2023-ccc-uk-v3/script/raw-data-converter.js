@@ -66,11 +66,11 @@ const endingPage = datas
           pairs: [
             {
               head: '出生：',
-              body: '1961年1月生於台中市烏日區。\n\n',
+              body: '1961年生於台中市烏日區。\n\n',
             },
             {
               head: '學經歷：',
-              body: '美國印第安那大學教育碩士，曾任《西雅圖時報》《巴爾的摩太陽報》攝影記者，現為馬格蘭通訊社終身會員。\n\n',
+              body: '東吳大學英文學士，美國印第安那大學教育碩士，曾任《西雅圖時報》《巴爾的摩太陽報》攝影記者，現為馬格蘭通訊社終身會員。\n\n',
             },
             {
               head: '攝影作品：',
@@ -78,11 +78,11 @@ const endingPage = datas
             },
             {
               head: '獲獎：',
-              body: '曾獲荷蘭世界新聞攝影獎、美國NPPA年度攝影師、法國影像Visa國際紀實攝影獎、尤金．史密斯攝影獎、美國年度新聞攝影獎、加拿大人權攝影獎多媒體類首獎、第二十八屆東元獎人文類獎、菲利普瓊斯格里菲斯攝影獎。\n\n',
+              body: '曾獲荷蘭世界新聞攝影獎、美國NPPA年度攝影師、法國影像Visa國際紀實攝影獎、尤金．史密斯攝影獎、美國年度新聞攝影獎、第二十八屆東元獎人文類獎、2022年新聞志業特殊貢獻獎，菲利普瓊斯格里菲斯攝影獎，第27屆臺北文化獎。\n\n',
             },
             {
               head: '展覽與典藏：',
-              body: '曾參與威尼斯雙年展、巴西聖保羅雙年展、紐約攝影三年展、斐列茲藝術博覽會等國際展覽。攝影作品獲亨利·卡地亞-布列松基金會、喬治伊斯曼博物館、紐約國際攝影博物館、台南奇美博物館、台灣美術館、紐約皇后藝術博物館等納為典藏。',
+              body: '曾參與威尼斯雙年展、巴西聖保羅雙年展、紐約攝影三年展、斐列茲藝術博覽會等國際展覽。攝影作品獲亨利·卡地亞-布列松基金會、喬治伊斯曼博物館、紐約國際攝影博物館、台南奇美博物館、國立台灣美術館、紐約皇后藝術博物館等納為典藏。',
             },
           ],
         },
@@ -101,6 +101,7 @@ const endingPage = datas
           pairs: [
             '撰文：張乾琦',
             '攝影：張乾琦',
+			'圖片編輯：簡信昌',
             '英文翻譯：許越如',
             '英文校閱：張乾琦',
             // '網頁製作/策展：李文瀚、曾立宇、李又如、王薏晴、簡信昌',
@@ -115,11 +116,11 @@ const endingPage = datas
           pairs: [
             {
               head: '',
-              body: 'Born in January, 1961. From Taichung, Taiwan.\n\n',
+              body: 'Born 1961. Taichung, Taiwan.\n\n',
             },
             {
               head: 'Education and Work Experience',
-              body: 'Chang received an MS from Indiana University, Bloomington. He worked as a photo journalist at The Seattle Times and The Baltimore Sun. His photographic works have been widely published in internationally renowned media such as National Geographic, Time, The Times, and Le Figaro.\nChang joined Magnum Photos in 1995 and was elected as a Full Member in 2001.\n\n',
+              body: 'Chang received a BA from Soochow University in Taipei and an MS from Indiana University, Bloomington.\nHe worked as a photojournalist at The Seattle Times and The Baltimore Sun. \nChang joined Magnum Photos in 1995 and was elected as a Full Member in 2001. \nHis photographic works have been widely published in internationally renowned media such as National Geographic, TIME magazine, New York Times and Der Spiegel.\n\n',
             },
             {
               head: 'Photography Works',
@@ -127,11 +128,11 @@ const endingPage = datas
             },
             {
               head: 'Awards',
-              body: "First prize, Daily Life Stories, World Press Photos, Amsterdam.\nMagazine Photographer of the Year, National Press Photographers Association, US.\nVisa d'Or, Visa pour l'image, Perpignan, France.\nW. Eugene Smith Grant, W. Eugene Smith Memorial Fund for Humanistic Photography Chien-Chi Chang: An Outlander in the Strange Land, New York.\n2021 TECO Award Culture Category, Taiwan.\nPhilip Jones Griffiths Award.\n\n",
+              body: "Magazine Photographer of the Year, National Press Photographers Association (POY), US, 1999 \nFirst prize, Daily Life Stories, World Press Photos, Netherlands, 1999 \nVisa d'Or, Visa pour l'image, Perpignan, France, 1999 \nW. Eugene Smith Memorial Fund for Humanistic Photography, 1999 \nThe Best of Photography Book, The Chain, POY, US, 2003 \nTECO Award Culture Category, Taiwan, 2021 \nPhilip Jones Griffiths Award, UK, 2022 \nThe Foundation for Excellent Journalism Special Contribution Award, Taiwan, 2022 \nTaipei Cultural Award, Taiwan, 2023\n\n",
             },
             {
               head: 'Selected Exhibitions and Collections',
-              body: 'Chang’s works have been shown in galleries and museums around the world including Venice Biennale, São Paulo Biennial, International Center of Photography. His photographic works has been collection by Henri Cartier-Bresson Foundation, George Eastman Museum, International Center of Photography, Queens Museum, National Taiwan Museum of Fine Arts, Chimei Museum, and so on.',
+              body: 'Chang’s works have been shown in galleries and museums around the world including Venice Biennale, São Paulo Biennial, International Center of Photography. His photographic works has been collection by Henri Cartier-Bresson Foundation, George Eastman Museum, International Center of Photography, Queens Museum, Taipei Fine Arts Museume, Chimei Museum, and National Taiwan Museum of Fine Arts.',
             },
           ],
         },
@@ -149,6 +150,7 @@ const endingPage = datas
           pairs: [
             `Article by: Chien-Chi Chang`,
             `Photography by: Chien-Chi Chang`,
+			`Photo editing: Hsin-Chan Chien`,
             `English Translation: Yueh-Ju Hsu`,
             `English Proofreading: Chien-Chi Chang`,
           ],
