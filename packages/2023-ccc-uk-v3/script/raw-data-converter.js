@@ -96,7 +96,7 @@ const endingPage = datas
             },
           ],
         },
-        caption: '張乾琦。',
+        caption: '張乾琦。Photo by Magnum Photos',
         credit: {
           pairs: [
             '撰文：張乾琦',
@@ -145,7 +145,7 @@ const endingPage = datas
             },
           ],
         },
-        caption: 'Chien-Chi Chang.',
+        caption: 'Chien-Chi Chang. Photo by Magnum Photos',
         credit: {
           pairs: [
             `Article by: Chien-Chi Chang`,
