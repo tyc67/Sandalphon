@@ -96,11 +96,11 @@ const endingPage = datas
             },
           ],
         },
-        caption: '張乾琦。攝影：馬格蘭通訊社, 2023',
+        caption: '馬格蘭通訊社, 2023',
         credit: {
           pairs: [
             '撰文：張乾琦',
-            '攝影：張乾琦',
+            '攝影：張乾琦 / 馬格蘭通訊社',
 			'圖片編輯：簡信昌',
             '英文翻譯：許越如',
             '英文校閱：張乾琦',
@@ -128,7 +128,7 @@ const endingPage = datas
             },
             {
               head: 'Awards',
-              body: "Magazine Photographer of the Year, National Press Photographers Association (POY), US, 1999 \nFirst prize, Daily Life Stories, World Press Photos, Netherlands, 1999 \nVisa d'Or, Visa pour l'image, Perpignan, France, 1999 \nW. Eugene Smith Memorial Fund for Humanistic Photography, 1999 \nThe Best of Photography Book, The Chain, POY, US, 2003 \nTECO Award Culture Category, Taiwan, 2021 \nPhilip Jones Griffiths Award, UK, 2022 \nThe Foundation for Excellent Journalism Special Contribution Award, Taiwan, 2022 \nTaipei Cultural Award, Taiwan, 2023\n\n",
+              body: "Magazine Photographer of the Year, National Press Photographers Association (POYi), US, 1999 \nFirst prize, Daily Life Stories, World Press Photos, Netherlands, 1999 \nVisa d'Or, Visa pour l'image, Perpignan, France, 1999 \nW. Eugene Smith Memorial Fund for Humanistic Photography, 1999 \nThe Best of Photography Book, The Chain, (POYi), US, 2003 \nTECO Award Culture Category, Taiwan, 2021 \nPhilip Jones Griffiths Award, UK, 2022 \nThe Foundation for Excellent Journalism Special Contribution Award, Taiwan, 2022 \nTaipei Cultural Award, Taiwan, 2023\n\n",
             },
             {
               head: 'Selected Exhibitions and Collections',
@@ -145,12 +145,12 @@ const endingPage = datas
             },
           ],
         },
-        caption: 'Chien-Chi Chang. Photography by: Magnum Photos, 2023',
+        caption: 'Photo / Magnum Photos, 2023',
         credit: {
           pairs: [
-            `Article by: Chien-Chi Chang`,
+            `Text by: Chien-Chi Chang`,
             `Photography by: Chien-Chi Chang`,
-			`Photo editing: Hsin-Chan Chien`,
+			`Photo Editing: Hsin-Chan Chien`,
             `English Translation: Yueh-Ju Hsu`,
             `English Proofreading: Chien-Chi Chang`,
           ],
