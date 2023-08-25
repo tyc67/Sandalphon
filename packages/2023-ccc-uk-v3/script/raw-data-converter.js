@@ -149,7 +149,7 @@ const endingPage = datas
         credit: {
           pairs: [
             `Text by: Chien-Chi Chang`,
-            `Photography by: Chien-Chi Chang`,
+            `Photo by: Chien-Chi Chang / Magnum Photos`,
 			`Photo Editing: Hsin-Chan Chien`,
             `English Translation: Yueh-Ju Hsu`,
             `English Proofreading: Chien-Chi Chang`,
