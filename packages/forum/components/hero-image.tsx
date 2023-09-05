@@ -1,28 +1,21 @@
 import styled from 'styled-components'
 import { breakpoint } from '~/styles/theme'
+import useWindowDimensions from '~/hook/use-window-dimensions'
 
-// TODO: image-error 處理
-const ImageBlock = styled.div<{ link: HeroImage }>`
+const ImageBlock = styled.div`
   width: 100%;
   height: 100vh;
-  background-image: url(${(props) => props.link.mobile});
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: ${(props) =>
-    props.link.mobile ? 'transparent' : '#d9d9d9'};
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+  }
 
   ${breakpoint.md} {
-    max-height: 290px;
-    background-image: url(${(props) => props.link.tablet});
-    background-color: ${(props) =>
-      props.link.tablet ? 'transparent' : '#d9d9d9'};
-  }
-  ${breakpoint.xl} {
-    max-height: 450px;
-    background-image: url(${(props) => props.link.desktop});
-    background-color: ${(props) =>
-      props.link.desktop ? 'transparent' : '#d9d9d9'};
+    height: auto;
   }
 `
 
@@ -35,8 +28,28 @@ type HeroImageProps = {
   heroImageSrc: HeroImage
 }
 
+// TODO: image-error 圖片有問題的處理方式
 export default function HeroImage({
   heroImageSrc = { mobile: '', tablet: '', desktop: '' },
 }: HeroImageProps): JSX.Element {
-  return <ImageBlock link={heroImageSrc} />
+  const windowDimensions = useWindowDimensions()
+
+  // FIXME: 這邊要重構，避免太多 if
+  let selectedImageSrc = ''
+
+  if (windowDimensions?.width) {
+    if (windowDimensions?.width >= 1200) {
+      selectedImageSrc = heroImageSrc.desktop
+    } else if (windowDimensions?.width >= 768) {
+      selectedImageSrc = heroImageSrc.tablet
+    } else {
+      selectedImageSrc = heroImageSrc.mobile
+    }
+  }
+
+  return (
+    <ImageBlock>
+      <img src={selectedImageSrc} alt="hero-image" />
+    </ImageBlock>
+  )
 }
