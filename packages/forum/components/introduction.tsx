@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { breakpoint } from '~/styles/theme'
 import { defaultBlockStyle } from '~/styles/shared-style'
+import ContentBlock from './shared/content-block'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
@@ -47,7 +48,7 @@ export default function Introduction({
       <h1>論壇簡介</h1>
       <Content>
         <QRCode src={qrCodeSrc} />
-        <p>{introText}</p>
+        <ContentBlock content={introText} />
       </Content>
     </Wrapper>
   )
