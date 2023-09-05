@@ -19,18 +19,23 @@ export const defaultBlockStyle = css`
     line-height: 1.8;
     font-weight: 900;
     text-align: center;
-    margin: 30px auto;
+    margin: 20px auto;
 
     ${breakpoint.md} {
-      font-size: 40px;
+      font-size: 30px;
+    }
+
+    ${breakpoint.xl} {
+      margin: 40px auto;
     }
   }
 
-  p {
+  .shared-content-block {
     font-size: 16px;
     line-height: 1.8;
     font-weight: 400;
     text-align: justify;
+    word-break: break-all;
 
     ${breakpoint.md} {
       font-size: 20px;

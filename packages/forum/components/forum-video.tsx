@@ -1,9 +1,15 @@
 import styled from 'styled-components'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import { transformVideoSrc } from '~/utils'
+import { breakpoint } from '~/styles/theme'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
+  padding: 30px 0px;
+
+  ${breakpoint.md} {
+    padding: 30px 0px;
+  }
 `
 
 const Iframe = styled.iframe`
