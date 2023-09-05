@@ -2,25 +2,25 @@ export const mockData = {
   pageInfo: {
     heroImage_mobile: {
       content:
-        'https://v3-statics-dev.mirrormedia.mg/images/766a244e-03b0-4240-ac50-8dac37a2009d.png',
+        'https://v3-statics-dev.mirrormedia.mg/images/f748dd55-6631-4531-a808-543e89a96456.png',
       instruction:
         '請將圖片上傳 gcs 後的網址貼入 content 欄，這欄是給手機版的圖片',
     },
     heroImage_tablet: {
       content:
-        'https://v3-statics-dev.mirrormedia.mg/images/b314539b-a2b2-46c3-a072-5e7467acb70f.png',
+        'https://v3-statics-dev.mirrormedia.mg/images/161082a6-2311-4fb0-b5b3-0ea19af21b55.png',
       instruction:
         '請將圖片上傳 gcs 後的網址貼入 content 欄，這欄是給平板版的圖片',
     },
     heroImage_desktop: {
       content:
-        'https://v3-statics-dev.mirrormedia.mg/images/b314539b-a2b2-46c3-a072-5e7467acb70f.png',
+        'https://v3-statics-dev.mirrormedia.mg/images/161082a6-2311-4fb0-b5b3-0ea19af21b55.png',
       instruction:
         '請將圖片上傳 gcs 後的網址貼入 content 欄，這欄是給桌機版的圖片',
     },
     introduction: {
       content:
-        '月薪90萬元、從事金融業的何先生，10多年來努力存高殖利率電子股，包括廣達、技嘉、台積電等，今年順利搭上AI行情，手上股票績效大好，本金順利滾上千萬。不過，隨美國升息步入尾聲，他看好債券價格有望彈升，7月順勢將這筆千萬資金獲利了結，全數投入債券。 \n月薪90萬元、從事金融業的何先生，10多年來努力存高殖利率電子股，包括廣達、技嘉、台積電等，今年順利搭上AI行情，手上股票績效大好，本金順利滾上千萬。不過，隨美國升息步入尾聲，他看好債券價格有望彈升，7月順勢將這筆千萬資金獲利了結，全數投入債券。 ',
+        '月薪90萬元、從事金融業的何先生，10多年來努力存高殖利率電子股，包括廣達、技嘉、台積電等，今年順利搭上AI行情，手上股票績效大好，本金順利滾上千萬。不過，隨美國升息步入尾聲，他看好債券價格有望彈升，7月順勢將這筆千萬資金獲利了結，全數投入債券。 \n\n\n月薪90萬元、從事金融業的何先生，10多年來努力存高殖利率電子股，包括廣達、技嘉、台積電等，今年順利搭上AI行情，手上股票績效大好，本金順利滾上千萬。不過，隨美國升息步入尾聲，他看好債券價格有望彈升，7月順勢將這筆千萬資金獲利了結，全數投入債券。 ',
       instruction: '請將文字內容直接填入 content 欄',
     },
     qrCode: {
@@ -94,7 +94,7 @@ export const mockData = {
     {
       name: '裴瑋',
       order: '4',
-      image: '',
+      image: 'https://www.ly.gov.tw//Images/Legislators/90001.jpg',
       description:
         '國會研究室：100224台北市中正區濟南路1段3之1號2101室\n屏東服務處：900021屏東縣屏東市香揚巷58號',
     },
