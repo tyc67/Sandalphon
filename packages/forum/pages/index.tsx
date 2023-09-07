@@ -1,23 +1,20 @@
 import styled from 'styled-components'
 
-import { defaultBlockStyle } from '~/styles/shared-style'
 import { mockData } from '~/constants/constant'
 import { mainColor } from '~/constants/config'
 import ForumVideo from '~/components/forum-video'
 import Introduction from '~/components/introduction'
 import HeroImage from '~/components/hero-image'
 import Speakers from '~/components/speakers'
-import ContentBlock from '~/components/shared/content-block'
+import Schedule from '~/components/schedule'
+import Registration from '~/components/registration'
 
 const Main = styled.main`
   /* background: ${mainColor}; */
   background: #bbd4da;
 `
 
-const Registration = styled.div`
-  ${defaultBlockStyle}
-`
-
+// TODO: 擴用性包含放背景圖片
 export default function Home(): JSX.Element {
   // const { pageInfo, speakers } = forumData
   const { pageInfo, speakers } = mockData
@@ -28,21 +25,19 @@ export default function Home(): JSX.Element {
     desktop: pageInfo?.heroImage_desktop?.content || '',
   }
   const introText = pageInfo?.introduction?.content || ''
-  const introQrCode = pageInfo?.qrCode?.content || ''
+  const introQrCodeSrc = pageInfo?.qrCode?.content || ''
   const videoSrc = pageInfo?.video?.content || ''
   const speakersData = speakers || []
+  const registrationText = pageInfo?.registration?.content || ''
 
   return (
     <Main>
       <HeroImage heroImageSrc={heroImageSrc} />
-      <Introduction introText={introText} qrCodeSrc={introQrCode} />
-      <ForumVideo video={videoSrc} />
+      <Introduction introText={introText} qrCodeSrc={introQrCodeSrc} />
+      <ForumVideo videoSrc={videoSrc} />
       <Speakers speakers={speakersData} />
-
-      <Registration>
-        <h1>報名資訊</h1>
-        <ContentBlock content={pageInfo?.registration?.content} />
-      </Registration>
+      <Schedule />
+      <Registration content={registrationText} />
     </Main>
   )
 }

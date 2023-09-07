@@ -7,7 +7,7 @@
  * see [Youtube API](https://developers.google.com/youtube/player_parameters?hl=zh-tw#enablejsapi) to get more info.
  *
  */
-function transformVideoSrc(url: string) {
+function getVideoSrc(url: string) {
   const youtubePattern =
     /^(?:https?:\/\/)?(?:www\.)?(?:m\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/|v\/)?([a-zA-Z0-9_-]+)(?:&\S+)?$/
   const match = url.match(youtubePattern)
@@ -19,4 +19,4 @@ function transformVideoSrc(url: string) {
   return url
 }
 
-export { transformVideoSrc }
+export { getVideoSrc }
