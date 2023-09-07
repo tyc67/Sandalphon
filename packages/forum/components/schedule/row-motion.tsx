@@ -3,21 +3,24 @@ import { motion, useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import styled, { css } from 'styled-components'
 import { breakpoint } from '~/styles/theme'
+import RowSpeakerLists from '~/components/schedule/row-speaker-lists'
+import { parseSpeakersByType, checkHaveSpeakers } from '~/utils'
+import type { ScheduleItem } from '~/types'
 
 const oddStyle = css`
   margin-left: auto;
   padding: 20px 40px 20px 0px;
 
   ${breakpoint.xl} {
-    padding: 30px 60px 30px 0px;
+    padding: 30px 250px 30px 0px;
   }
 `
 const evenStyle = css`
   margin-right: auto;
-  padding: 20px 0px 20px 30px;
+  padding: 20px 0px 20px 40px;
 
   ${breakpoint.xl} {
-    padding: 30px 0px 30px 60px;
+    padding: 30px 0px 30px 150px;
   }
 `
 
@@ -34,9 +37,12 @@ const CustomMotionDiv = styled(motion.div)<CustomMotionDivProps>`
   ${breakpoint.md} {
     width: 70%;
   }
-
-  ${breakpoint.md} {
+  ${breakpoint.xl} {
     width: 85%;
+
+    & + div {
+      margin-top: 20px;
+    }
   }
 `
 
@@ -45,6 +51,16 @@ const RowContent = styled.div<{ isOrderOdd: boolean }>`
   letter-spacing: 1.4px;
   max-width: 300px;
   ${(props) => (props.isOrderOdd ? oddStyle : evenStyle)};
+
+  ${breakpoint.xl} {
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: ${(props) =>
+      props.isOrderOdd ? 'flex-end' : 'flex-start'};
+    max-width: none;
+    gap: 80px;
+  }
 
   .time {
     font-weight: 700;
@@ -69,49 +85,20 @@ const RowContent = styled.div<{ isOrderOdd: boolean }>`
       }
     }
   }
-
-  ${breakpoint.xl} {
-    width: 80%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    max-width: none;
-    gap: 40px;
-  }
-`
-
-const SpeakerItem = styled.div`
-  & + div {
-    margin-top: 12px;
-  }
-
-  .speaker-name {
-    font-family: 'Noto Serif TC';
-    font-weight: 900;
-    font-size: 16px;
-
-    & + div {
-      margin-top: 7px;
-    }
-  }
-  .speaker-title {
-    font-size: 14px;
-  }
-`
-
-const SpeakerType = styled.div`
-  color: #b3b3b3;
-  margin-bottom: 5px;
 `
 
 type CustomMotionDivProps = {
   order: string
+  content: ScheduleItem
 }
-
 //FIXME: 目前 children 一定要傳，需改成不傳入也可以
 export default function RowMotion({
   order,
+  content = { topic: '', time: '', speakersInfo: '', instruction: '' },
 }: CustomMotionDivProps): JSX.Element {
+  const { topic, time, speakersInfo } = content
+  const formattedSpeakers = parseSpeakersByType(speakersInfo)
+
   const isOrderOdd = Boolean(parseInt(order) % 2 === 1)
 
   const controls = useAnimation()
@@ -136,101 +123,8 @@ export default function RowMotion({
     }
   }, [controls, inView, direction, variants])
 
-  const str = `＊主持人＊王美花：經濟部長、總統／馬英九：總統／蔡英文：前總統\n＊與會嘉賓＊王美花：經濟部長、總統／馬英九：總統／蔡英文：前總統\n＊＊趙樹海：國立臺灣海洋大學河海工程學系教授、諮詢專家／海綿寶寶：華南商業銀行 企業金融事業群副總經理／蔡英文：中華水下文化資產學會理事長`
-
-  function parseData(str: string) {
-    const dataArray = str.split('\n')
-
-    const result = []
-    let currentType = ''
-    let currentSpeakers = []
-
-    for (const data of dataArray) {
-      const matches = data.match(/＊([^＊]+)＊(.+)/)
-
-      if (matches && matches.length === 3) {
-        if (currentType !== '') {
-          // 如果已有当前类型的数据，则将其添加到结果数组
-          result.push({
-            type: currentType,
-            speakers: currentSpeakers,
-          })
-        }
-
-        currentType = matches[1].trim()
-        currentSpeakers = []
-
-        const [, , content] = matches
-        const speakersData = content?.split('／')
-
-        for (const speakerData of speakersData) {
-          const [namePart, titlePart] = speakerData.split('：')
-          const name = namePart.trim()
-          const titles = titlePart.split('、').map((title) => title.trim())
-
-          currentSpeakers.push({
-            name,
-            title: titles,
-          })
-        }
-      } else {
-        const speakersData = data.split('／')
-        currentSpeakers = []
-
-        for (const speakerData of speakersData) {
-          const [namePart, titlePart] = speakerData.split('：')
-          const name = namePart.trim()
-          const titles = titlePart.split('、').map((title) => title.trim())
-
-          currentSpeakers.push({
-            name,
-            title: titles,
-          })
-        }
-
-        // 如果没有类型信息，将type设置为空字符串
-        result.push({
-          type: '',
-          speakers: currentSpeakers,
-        })
-      }
-    }
-
-    // 处理最后一组数据
-    if (currentType !== '') {
-      result.push({
-        type: currentType,
-        speakers: currentSpeakers,
-      })
-    }
-
-    return result
-  }
-
-  const parsedData = parseData(str)
-
-  const data = [
-    { name: '高虹安', title: '新竹市長' },
-    {
-      name: '伍麗華 Saidhai‧Tahovecahe',
-      title: '英國離岸再生能源整合開發中心',
-    },
-  ]
-
-  const speakerLists = data.map((item) => {
-    return (
-      <>
-        <SpeakerType>與會嘉賓</SpeakerType>
-        <SpeakerItem key={item.name}>
-          <p className="speaker-name">{item.name} </p>
-          <p className="speaker-title">{item.title}</p>
-          <p className="speaker-title">{item.title}</p>
-        </SpeakerItem>
-      </>
-    )
-  })
-
   return (
+    // FIXME: 目前 type 還有問題
     <CustomMotionDiv
       className="row-motion"
       ref={ref}
@@ -242,9 +136,11 @@ export default function RowMotion({
       whileTap={{ scale: 0.95 }}
     >
       <RowContent className="row-content" isOrderOdd={isOrderOdd}>
-        <p className="time">12/12 （一）00:00</p>
-        <p className="topic">【城市永續】 新竹市永續城市與 綠運輸政策願景</p>
-        <div>{speakerLists}</div>
+        <p className="time">{time}</p>
+        <p className="topic">{topic}</p>
+        {checkHaveSpeakers(formattedSpeakers) && (
+          <RowSpeakerLists speakerLists={formattedSpeakers} />
+        )}
       </RowContent>
     </CustomMotionDiv>
   )
