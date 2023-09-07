@@ -21,7 +21,7 @@ const SpeakerLists = styled.div`
 const SpeakerItem = styled.div`
   width: 100%;
   max-width: 200px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 `
 
 const HeadPhoto = styled.div`
@@ -44,6 +44,8 @@ const HeadPhoto = styled.div`
 `
 
 const Title = styled.h2`
+  font-family: 'Noto Serif TC';
+  font-weight: 600;
   font-size: 24px;
   text-align: center;
   margin: 40px auto;
@@ -69,9 +71,9 @@ type SpeakersProps = {
 export default function Speakers({
   speakers = [],
 }: SpeakersProps): JSX.Element {
-  const speakerLists = speakers.map((speaker: Speaker) => {
+  const speakerLists = speakers.map((speaker: Speaker, index) => {
     return (
-      <SpeakerItem key={speaker.name}>
+      <SpeakerItem key={index}>
         <HeadPhoto>
           <img
             src={speaker.image}

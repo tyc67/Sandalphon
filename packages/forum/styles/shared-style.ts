@@ -6,6 +6,7 @@ export const defaultBlockStyle = css`
   max-width: 960px;
   margin: auto;
   padding: 30px 20px;
+  font-family: 'Noto Sans TC';
 
   ${breakpoint.md} {
     padding: 30px 60px;
@@ -20,6 +21,8 @@ export const defaultBlockStyle = css`
     font-weight: 900;
     text-align: center;
     margin: 20px auto;
+    font-family: 'Noto Serif TC';
+    font-weight: 900;
 
     ${breakpoint.md} {
       font-size: 30px;
