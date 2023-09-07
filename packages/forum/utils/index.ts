@@ -1,3 +1,5 @@
+import type { Speaker, RowSpeakerItem } from '~/types'
+
 /**
  * Check if the source is from YouTube. If it is, get the YouTube ID and transform it to https://www.youtube.com/embed/${youtubeId}?enablejsapi=1 in order to put it in <iframe>.
  * If the source is not from YouTube video, return the original source URL.
@@ -19,4 +21,77 @@ function getVideoSrc(url: string) {
   return url
 }
 
-export { getVideoSrc }
+function parseSpeakerWithTitle(str: string) {
+  const speakersData = str.split('／') //使用「／」分割不同講者資料
+  const speakers: Speaker[] = []
+
+  speakersData.forEach((speakerInfo) => {
+    const [name, titles] = speakerInfo.split('：') //使用「：」分割出講者名稱＆職稱
+    const titleArray = titles?.split('、') //使用「：」分割出不同職稱為一陣列
+    speakers.push({
+      name: name.trim(),
+      title: titleArray?.map((title) => title.trim()) || [],
+    })
+  })
+
+  return speakers
+}
+
+function parseSpeakersByType(str: string) {
+  const lines = str.split('\n') //使用「\n」區分不同講者類別資料
+  let formattedSpeakersData: RowSpeakerItem[] = []
+
+  lines.forEach((line) => {
+    const parts = line.split('＊') //使用「＊」分割「講者類別」＆「講者清單」
+
+    let type: string = ''
+    let speakerStr: string = ''
+
+    if (parts.length === 3) {
+      type = parts[1].trim() || '' //講者類別
+      speakerStr = parts[2].trim() || '' //講者清單
+    } else {
+      type = '' //講者類別
+      speakerStr = parts[0].trim() || '' //講者清單
+    }
+
+    const speakers = parseSpeakerWithTitle(speakerStr)
+
+    const speakersByType = {
+      type: type,
+      speakers: speakers,
+    }
+
+    formattedSpeakersData.push(speakersByType)
+  })
+
+  return formattedSpeakersData
+}
+
+/**
+ * Checks if the speakerArray is valid.
+ */
+function checkHaveSpeakers(speakerArray: RowSpeakerItem[]): boolean {
+  if (!Array.isArray(speakerArray)) {
+    return false
+  }
+
+  const firstSpeaker = speakerArray[0]
+  if (
+    speakerArray.length === 1 &&
+    firstSpeaker.type.trim() === '' &&
+    firstSpeaker.speakers.length === 1 &&
+    firstSpeaker.speakers[0].title.length === 0
+  ) {
+    return false
+  }
+
+  return true
+}
+
+export {
+  getVideoSrc,
+  parseSpeakerWithTitle,
+  parseSpeakersByType,
+  checkHaveSpeakers,
+}
