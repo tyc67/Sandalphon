@@ -16,8 +16,8 @@ const Main = styled.main`
 
 // TODO: 擴用性包含放背景圖片
 export default function Home(): JSX.Element {
-  // const { pageInfo, speakers } = forumData
-  const { pageInfo, speakers } = mockData
+  // const { pageInfo, speakers, schedule } = forumData //缺：type + 資料 error handle
+  const { pageInfo, speakers, schedule } = mockData
 
   const heroImageSrc = {
     mobile: pageInfo?.heroImage_mobile?.content || '',
@@ -36,7 +36,7 @@ export default function Home(): JSX.Element {
       <Introduction introText={introText} qrCodeSrc={introQrCodeSrc} />
       <ForumVideo videoSrc={videoSrc} />
       <Speakers speakers={speakersData} />
-      <Schedule />
+      <Schedule content={schedule} />
       <Registration content={registrationText} />
     </Main>
   )
