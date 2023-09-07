@@ -105,6 +105,13 @@ export const mockData = {
       description:
         '國會研究室：100224台北市中正區濟南路1段3之1號2101室\n屏東服務處：900021屏東縣屏東市香揚巷58號',
     },
+    {
+      name: '裴瑋',
+      order: '4',
+      image: 'https://www.ly.gov.tw//Images/Legislators/90001.jpg',
+      description:
+        '國會研究室：100224台北市中正區濟南路1段3之1號2101室\n屏東服務處：900021屏東縣屏東市香揚巷58號',
+    },
   ],
   partners: {
     主辦單位: [

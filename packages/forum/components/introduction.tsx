@@ -38,7 +38,6 @@ type IntroProps = {
   introText: string
   qrCodeSrc?: string
 }
-
 export default function Introduction({
   introText = '',
   qrCodeSrc = '',

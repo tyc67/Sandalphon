@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import { getVideoSrc } from '~/utils'
 import { defaultBlockStyle } from '~/styles/shared-style'
-import { transformVideoSrc } from '~/utils'
 import { breakpoint } from '~/styles/theme'
 
 const Wrapper = styled.div`
@@ -20,20 +20,20 @@ const Iframe = styled.iframe`
 `
 
 type VideoProps = {
-  video: string
+  videoSrc: string
   gtmClassName?: string
 }
 export default function ForumVideo({
-  video = '',
+  videoSrc = '',
   gtmClassName = '',
 }: VideoProps): JSX.Element {
-  const videoSrc = transformVideoSrc(video)
+  const src = getVideoSrc(videoSrc)
 
   return (
     <Wrapper>
       <h1>活動影音</h1>
       <Iframe
-        src={videoSrc}
+        src={src}
         loading="lazy"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
