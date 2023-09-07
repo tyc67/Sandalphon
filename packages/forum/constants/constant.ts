@@ -41,32 +41,34 @@ export const mockData = {
   schedule: [
     {
       topic: '離岸風電防疫措施公告',
-      order: '1',
-      time: '2023/10/25',
-      speakerName: '王美花',
-      speakerTitle: '經濟部長',
+      time: '2023/10/25 10:30',
+      speakersInfo:
+        '＊主持人＊王美花：經濟部長、總統／馬英九：總統／蔡英文：前總統\n＊與會嘉賓＊王美花：經濟部長、總統／馬英九：總統／蔡英文：前總統',
+      instruction: '',
     },
     {
       topic: '實施必要之應變處置或措施公告',
-      order: '2',
-      time: '2023/11/2',
-      speakerName: '馬英九',
-      speakerTitle: '前總統',
+      time: '2023/11/2 08:00',
+      speakersInfo: '王美花：經濟部長、總統／馬英九：總統／蔡英文：前總統',
+      instruction: '',
     },
     {
       topic: '防疫公告',
-      order: '3',
-      time: '2023/10/12',
-      speakerName: '蔡英文',
-      speakerTitle: '總統',
+      time: '2023/10/12 12:00',
+      speakersInfo: '',
+      instruction: '',
     },
     {
       topic: '第10屆第2會期：修憲委員會',
-      order: '4',
-      time: '2023/12/12',
-      speakerName: '伍麗華Saidhai‧Tahovecahe',
-      speakerTitle:
-        '前總統前總統前總統前總統前總統前總統前總統前總統前總統前總統前總統前總統',
+      time: '2023/12/12 22:00',
+      speakersInfo: '王美花：經濟部長、總統／蔡英文：前總統',
+      instruction: '',
+    },
+    {
+      topic: '圓滿賦歸',
+      time: '2023/12/20 22:00',
+      speakersInfo: '',
+      instruction: '',
     },
   ],
   speakers: [
