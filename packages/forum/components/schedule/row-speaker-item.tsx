@@ -7,9 +7,9 @@ const SpeakerItem = styled.div`
   }
 
   .speaker-name {
-    font-family: 'Noto Serif TC';
     font-weight: 900;
     font-size: 16px;
+    font-family: 'Noto Serif TC', serif;
   }
   .speaker-title {
     font-size: 14px;
