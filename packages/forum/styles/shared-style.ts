@@ -3,10 +3,10 @@ import { breakpoint } from './theme'
 
 export const defaultBlockStyle = css`
   width: 100%;
-  max-width: 960px;
   margin: auto;
   padding: 30px 20px;
   font-family: 'Noto Sans TC';
+  max-width: 960px;
 
   ${breakpoint.md} {
     padding: 30px 60px;
@@ -20,8 +20,8 @@ export const defaultBlockStyle = css`
     line-height: 1.8;
     font-weight: 900;
     text-align: center;
-    margin: 20px auto;
-    font-family: 'Noto Serif TC';
+    margin: 20px auto 30px auto;
+    font-family: 'Noto Serif TC', serif;
     font-weight: 900;
 
     ${breakpoint.md} {
