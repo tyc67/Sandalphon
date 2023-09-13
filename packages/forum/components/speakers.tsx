@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import ContentBlock from '~/components/shared/content-block'
-// import { imagePrefix } from '~/constants/environment-variables'
-// import Image from 'next/image'
-//FIXME: 研究一下 image-loader，改用 next/image
+import Image from '@readr-media/react-image'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
@@ -44,12 +42,13 @@ const HeadPhoto = styled.div`
 `
 
 const Title = styled.h2`
-  font-family: 'Noto Serif TC';
+  font-family: 'Noto Serif TC', serif;
   font-weight: 600;
   font-size: 24px;
   text-align: center;
   margin: 40px auto;
   line-height: 1.6;
+  letter-spacing: 3px;
 `
 
 const Description = styled(ContentBlock)`
@@ -72,18 +71,19 @@ export default function Speakers({
   speakers = [],
 }: SpeakersProps): JSX.Element {
   const speakerLists = speakers.map((speaker: Speaker, index) => {
+    const formattedImgUrl = {
+      original: speaker.image,
+    }
+
     return (
       <SpeakerItem key={index}>
         <HeadPhoto>
-          <img
-            src={speaker.image}
+          <Image
+            images={formattedImgUrl}
+            defaultImage={'/default-head-shot.png'}
             alt={speaker.name}
-            // width="200"
-            // height="200"
-            // onError={(e) => {
-            //   console.log('有 error')
-            //   e.currentTarget.src = { defaultHeadPhoto }
-            // }}
+            objectFit={'cover'}
+            priority={true}
           />
         </HeadPhoto>
         <Title>{speaker.name}</Title>
