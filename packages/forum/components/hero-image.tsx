@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import Image from '@readr-media/react-image'
 import { breakpoint } from '~/styles/theme'
-import useWindowDimensions from '~/hook/use-window-dimensions'
 
 const ImageBlock = styled.div`
   width: 100%;
@@ -28,28 +28,25 @@ type HeroImageProps = {
   heroImageSrc: HeroImage
 }
 
-// TODO: image-error 圖片有問題的處理方式
 export default function HeroImage({
   heroImageSrc = { mobile: '', tablet: '', desktop: '' },
 }: HeroImageProps): JSX.Element {
-  const windowDimensions = useWindowDimensions()
-
-  // FIXME: 這邊要重構，避免太多 if
-  let selectedImageSrc = ''
-
-  if (windowDimensions?.width) {
-    if (windowDimensions?.width >= 1200) {
-      selectedImageSrc = heroImageSrc.desktop
-    } else if (windowDimensions?.width >= 768) {
-      selectedImageSrc = heroImageSrc.tablet
-    } else {
-      selectedImageSrc = heroImageSrc.mobile
-    }
+  const formattedImgSrc = {
+    original: heroImageSrc.desktop,
+    w480: heroImageSrc.mobile,
+    w800: heroImageSrc.tablet,
+    w1200: heroImageSrc.desktop,
   }
 
   return (
     <ImageBlock>
-      <img src={selectedImageSrc} alt="hero-image" />
+      <Image
+        images={formattedImgSrc}
+        defaultImage={'/default-og-img.svg'}
+        alt="forum-hero-image"
+        objectFit={'cover'}
+        priority={true}
+      />
     </ImageBlock>
   )
 }

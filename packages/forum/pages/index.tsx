@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { mockData } from '~/constants/constant'
 import { mainColor } from '~/constants/config'
 import ForumVideo from '~/components/forum-video'
 import Introduction from '~/components/introduction'
@@ -8,16 +7,26 @@ import HeroImage from '~/components/hero-image'
 import Speakers from '~/components/speakers'
 import Schedule from '~/components/schedule'
 import Registration from '~/components/registration'
+import RelatedPost from '~/components/related-post'
+import Partners from '~/components/partners'
+import type { RelatedPosts } from '~/components/related-post'
 
 const Main = styled.main`
   /* background: ${mainColor}; */
   background: #bbd4da;
 `
 
+type ForumData = {
+  pageInfo: Object
+  schedule: Object
+  speakers: Object
+  partners: Object
+  relatedPost: RelatedPosts
+}
+
 // TODO: 擴用性包含放背景圖片
-export default function Home(): JSX.Element {
-  // const { pageInfo, speakers, schedule } = forumData //缺：type + 資料 error handle
-  const { pageInfo, speakers, schedule } = mockData
+export default function Home({ forumData }: ForumData): JSX.Element {
+  const { pageInfo, speakers, schedule, relatedPost, partners } = forumData // 缺：type + 資料 error handle
 
   const heroImageSrc = {
     mobile: pageInfo?.heroImage_mobile?.content || '',
@@ -37,7 +46,9 @@ export default function Home(): JSX.Element {
       <ForumVideo videoSrc={videoSrc} />
       <Speakers speakers={speakersData} />
       <Schedule content={schedule} />
+      <RelatedPost relatedPosts={relatedPost} />
       <Registration content={registrationText} />
+      <Partners partners={partners} />
     </Main>
   )
 }
@@ -45,7 +56,8 @@ export default function Home(): JSX.Element {
 export async function getServerSideProps() {
   try {
     const response = await fetch(
-      'https://storage.googleapis.com/v3-statics-dev.mirrormedia.mg/json/forum2023.json'
+      // 'https://storage.googleapis.com/v3-statics-dev.mirrormedia.mg/json/forum2023.json'
+      'https://storage.googleapis.com/v3-statics-dev.mirrormedia.mg/files/json/forum2023_gql_all.json'
     )
     const data = await response.json()
 

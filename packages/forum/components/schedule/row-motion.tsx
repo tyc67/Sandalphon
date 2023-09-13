@@ -9,7 +9,11 @@ import type { ScheduleItem } from '~/types'
 
 const oddStyle = css`
   margin-left: auto;
-  padding: 20px 40px 20px 0px;
+  padding: 20px;
+
+  ${breakpoint.sm} {
+    padding: 20px 40px 20px 0px;
+  }
 
   ${breakpoint.xl} {
     padding: 30px 250px 30px 0px;
@@ -17,7 +21,11 @@ const oddStyle = css`
 `
 const evenStyle = css`
   margin-right: auto;
-  padding: 20px 0px 20px 40px;
+  padding: 20px;
+
+  ${breakpoint.sm} {
+    padding: 20px 0px 20px 40px;
+  }
 
   ${breakpoint.xl} {
     padding: 30px 0px 30px 150px;
@@ -34,8 +42,12 @@ const CustomMotionDiv = styled(motion.div)<CustomMotionDivProps>`
     margin-top: 15px;
   }
 
+  ${breakpoint.sm} {
+    width: 80%;
+  }
+
   ${breakpoint.md} {
-    width: 70%;
+    width: 65%;
   }
   ${breakpoint.xl} {
     width: 85%;
@@ -75,7 +87,7 @@ const RowContent = styled.div<{ isOrderOdd: boolean }>`
   }
 
   .topic {
-    font-family: 'Noto Serif TC';
+    font-family: 'Noto Serif TC', serif;
 
     & + * {
       margin-top: 15px;
@@ -124,7 +136,7 @@ export default function RowMotion({
   }, [controls, inView, direction, variants])
 
   return (
-    // FIXME: 目前 type 還有問題
+    // FIXME: 目前 typescript 設定還有問題
     <CustomMotionDiv
       className="row-motion"
       ref={ref}
@@ -133,7 +145,6 @@ export default function RowMotion({
       animate={controls}
       variants={variants}
       whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.95 }}
     >
       <RowContent className="row-content" isOrderOdd={isOrderOdd}>
         <p className="time">{time}</p>

@@ -12,6 +12,10 @@ const Wrapper = styled.div`
   ${breakpoint.md} {
     padding: 30px 0px;
   }
+
+  ${breakpoint.xl} {
+    max-width: none;
+  }
 `
 
 const RowContainer = styled.div`
