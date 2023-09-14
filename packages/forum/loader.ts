@@ -1,5 +1,5 @@
 import { ImageLoaderProps } from 'next/image'
-import { staticFileDestination } from '~/constants/config'
+import { staticFileDestination } from './config'
 
 function imageLoader(imageInfo: ImageLoaderProps) {
   return `${staticFileDestination}${imageInfo.src}`

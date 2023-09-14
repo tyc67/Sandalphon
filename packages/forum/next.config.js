@@ -36,7 +36,7 @@ const nextConfig = {
   assetPrefix: assetPrefixPath,
   images: {
     loader: 'custom',
-    loaderFile: './image-loader.ts',
+    loaderFile: './loader.ts',
   },
   basePath: basePath,
   reactStrictMode: true,
@@ -50,9 +50,6 @@ const nextConfig = {
 
   exportPathMap: async function () {
     return {
-      '/article/lai-ching-te/index': { page: '/article/lai-ching-te' },
-      '/article/hou-yu-ih/index': { page: '/article/hou-yu-ih' },
-      '/article/ko-wen-je/index': { page: '/article/ko-wen-je' },
       '/': { page: '/' },
     }
   },
