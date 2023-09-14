@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import ContentBlock from '~/components/shared/content-block'
 import Image from '@readr-media/react-image'
+import { imagePrefix } from '~/config'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
@@ -27,7 +28,6 @@ const HeadPhoto = styled.div`
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background: #d9d9d9;
   object-fit: cover;
   object-position: center;
   overflow: hidden;
@@ -58,7 +58,6 @@ const Description = styled(ContentBlock)`
 
 type Speaker = {
   name: string
-  order: string
   image: string
   description: string
 }
@@ -80,7 +79,7 @@ export default function Speakers({
         <HeadPhoto>
           <Image
             images={formattedImgUrl}
-            defaultImage={'/default-head-shot.png'}
+            defaultImage={`${imagePrefix}/images/default-head-shot.svg`}
             alt={speaker.name}
             objectFit={'cover'}
             priority={true}
@@ -94,7 +93,7 @@ export default function Speakers({
   })
 
   return (
-    <Wrapper>
+    <Wrapper id="speakers">
       <h1>與會陣容</h1>
       <SpeakerLists>{speakerLists}</SpeakerLists>
     </Wrapper>

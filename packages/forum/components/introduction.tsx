@@ -43,7 +43,7 @@ export default function Introduction({
   qrCodeSrc = '',
 }: IntroProps): JSX.Element {
   return (
-    <Wrapper>
+    <Wrapper id="introduction">
       <h1>論壇簡介</h1>
       <Content>
         <QRCode src={qrCodeSrc} />

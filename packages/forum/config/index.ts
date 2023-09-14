@@ -1,8 +1,10 @@
 // 這裡管理的是在 Build 階段就會寫死數值的環境變數 (通常為 `NEXT_PUBLIC_` 開頭)
 const env: string = String(process.env.NEXT_PUBLIC_ENV)
 const projectName: string = String(process.env.NEXT_PUBLIC_PROJECT_NAME)
-const mainColor: string =
-  String(process.env.NEXT_PUBLIC_MAIN_COLOR) ?? '#bbd4da'
+const primaryColor: string =
+  String(process.env.NEXT_PUBLIC_PRIMARY_COLOR) ?? '#E2FBFE'
+const secondaryColor: string =
+  String(process.env.NEXT_PUBLIC_SECONDARY_COLOR) ?? '#ffffff'
 
 let protocol = 'http'
 let host = 'localhost'
@@ -50,4 +52,11 @@ switch (env) {
   }
 }
 
-export { staticFileDestination, imagePrefix, GTM_ID, SITE_URL, mainColor }
+export {
+  staticFileDestination,
+  imagePrefix,
+  GTM_ID,
+  SITE_URL,
+  primaryColor,
+  secondaryColor,
+}

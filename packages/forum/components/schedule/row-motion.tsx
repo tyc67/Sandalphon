@@ -14,7 +14,6 @@ const oddStyle = css`
   ${breakpoint.sm} {
     padding: 20px 40px 20px 0px;
   }
-
   ${breakpoint.xl} {
     padding: 30px 250px 30px 0px;
   }
@@ -26,7 +25,6 @@ const evenStyle = css`
   ${breakpoint.sm} {
     padding: 20px 0px 20px 40px;
   }
-
   ${breakpoint.xl} {
     padding: 30px 0px 30px 150px;
   }
@@ -137,6 +135,7 @@ export default function RowMotion({
 
   return (
     // FIXME: 目前 typescript 設定還有問題
+    //@ts-ignore
     <CustomMotionDiv
       className="row-motion"
       ref={ref}
