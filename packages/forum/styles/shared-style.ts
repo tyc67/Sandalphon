@@ -2,10 +2,10 @@ import { css } from 'styled-components'
 import { breakpoint } from './theme'
 
 export const defaultBlockStyle = css`
+  font-family: 'Noto Sans TC';
   width: 100%;
   margin: auto;
   padding: 30px 20px;
-  font-family: 'Noto Sans TC';
   max-width: 960px;
 
   ${breakpoint.md} {
