@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components'
 import SlideItem from '~/components/related-post/slide-item'
 import { breakpoint, zIndex } from '~/styles/theme'
 import { defaultBlockStyle } from '~/styles/shared-style'
-import { imagePrefix } from '~/config'
+import ArrowRight from '~/public/icon/carousel-arrow-right.svg'
+import ArrowLeft from '~/public/icon/carousel-arrow-left.svg'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -139,14 +140,11 @@ export default function RelatedPost({
   relatedPosts = [],
 }: RelatedPostProps): JSX.Element {
   return (
-    <Wrapper id="">
+    <Wrapper id="related-post">
       <h1>相關報導</h1>
       <SwiperGroup>
         <div className="custom-swiper-prev swiper-arrow">
-          <img
-            src={`${imagePrefix}/icon/carousel-arrow-left.svg`}
-            alt="carousel-arrow-left"
-          />
+          <ArrowLeft />
         </div>
 
         <Swiper
@@ -184,10 +182,7 @@ export default function RelatedPost({
           })}
         </Swiper>
         <div className="custom-swiper-next swiper-arrow">
-          <img
-            src={`${imagePrefix}/icon/carousel-arrow-right.svg`}
-            alt="carousel-arrow-right"
-          />
+          <ArrowRight />
         </div>
       </SwiperGroup>
     </Wrapper>

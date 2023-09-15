@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { zIndex, color, breakpoint } from '~/styles/theme'
 import { ShareButton } from '@readr-media/share-button'
-// import MirrorMediaIcon from '~/public/icon/mirror-media-icon.svg'
+import MirrorMediaIcon from '~/public/icon/mirror-media-icon.svg'
 import Sidebar from '~/components/sidebar'
 import NavLists from '~/components/layout/nav-lists'
 
@@ -88,7 +88,7 @@ export default function Header() {
         rel="noopener noreferrer nofollow"
         className="mirror-media-icon"
       >
-        {/* <MirrorMediaIcon /> */}
+        <MirrorMediaIcon />
       </Link>
 
       <Aside>

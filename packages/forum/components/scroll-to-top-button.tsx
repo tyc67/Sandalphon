@@ -15,7 +15,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: ${zIndex.coverHeader};
+  z-index: ${zIndex.coverContent};
 
   ${breakpoint.md} {
     right: 35px;

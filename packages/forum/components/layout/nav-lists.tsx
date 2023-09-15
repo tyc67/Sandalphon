@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 import { breakpoint } from '~/styles/theme'
+import { staticFileDestination } from '~/config'
 
 const Wrapper = styled.div`
   display: none;
@@ -41,20 +42,20 @@ const Item = styled.li`
 
 export default function NavLists() {
   const navLists = [
-    { title: '論壇簡介', href: 'introduction' },
-    { title: '活動影音', href: 'video' },
-    { title: '與會陣容', href: 'speakers' },
-    { title: '論壇議程', href: 'schedule' },
-    { title: '相關報導', href: 'related-post' },
-    { title: '報名資訊', href: 'registration' },
-    { title: '共同推動', href: 'partners' },
+    { title: '論壇簡介', href: `${staticFileDestination}#introduction` },
+    { title: '活動影音', href: `${staticFileDestination}#video` },
+    { title: '與會陣容', href: `${staticFileDestination}#speakers` },
+    { title: '論壇議程', href: `${staticFileDestination}#schedule` },
+    { title: '相關報導', href: `${staticFileDestination}#related-post` },
+    { title: '報名資訊', href: `${staticFileDestination}#registration` },
+    { title: '共同推動', href: `${staticFileDestination}#partners` },
   ]
 
   return (
     <Wrapper>
       {navLists.map((list, index) => {
         return (
-          <Link key={index} href={`/#${list.href}`} scroll={false}>
+          <Link key={index} href={list.href} scroll={false}>
             <Item>{list.title}</Item>
           </Link>
         )
