@@ -41,10 +41,11 @@ const LogosImage = styled.div`
 //FIXME: Logo 壞掉時的處理 default-image
 //FIXME: type 類型如無資料則不顯示
 
-type Logo = {
+export type Logo = {
   order: string
   image: string
 }
+
 type PartnersProps = {
   partners: {
     [key: string]: Logo[]
@@ -59,7 +60,7 @@ export default function Partners({
   },
 }: PartnersProps): JSX.Element {
   function removeEmptyLogo(logoList: Logo[]) {
-    return logoList.filter((item) => item.image.trim() !== '')
+    return logoList?.filter((item) => item.image.trim() !== '')
   }
 
   function generateLogos(type: string) {
@@ -78,7 +79,7 @@ export default function Partners({
   }
 
   return (
-    <Wrapper>
+    <Wrapper id="partners">
       <h1>共同推動</h1>
       <LogosWrapper>
         {generateLogos('主辦單位')}

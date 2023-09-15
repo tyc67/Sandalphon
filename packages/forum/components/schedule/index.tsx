@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoint } from '~/styles/theme'
+import { breakpoint, color } from '~/styles/theme'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import RowMotion from '~/components/schedule/row-motion'
 import type { ScheduleItem } from '~/types'
@@ -24,13 +24,13 @@ const RowContainer = styled.div`
   overflow: hidden;
 
   .row-motion:nth-child(even) {
-    background: #e2fbfe;
+    background: ${color.primary};
     border-radius: 20px 0px 0px 20px;
     margin-left: auto;
   }
 
   .row-motion:nth-child(odd) {
-    background: #ffffff;
+    background: ${color.secondary};
     border-radius: 0px 20px 20px 0px;
     margin-right: auto;
   }
@@ -41,7 +41,7 @@ type ScheduleProps = {
 }
 export default function Schedule({ content = [] }: ScheduleProps): JSX.Element {
   return (
-    <Wrapper>
+    <Wrapper id="schedule">
       <h1>論壇議程</h1>
       <RowContainer>
         {content.map((item, index) => {

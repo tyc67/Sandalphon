@@ -25,7 +25,7 @@ export default function ForumVideo({
   const src = getVideoSrc(videoSrc)
 
   return (
-    <Wrapper>
+    <Wrapper id="video">
       <h1>活動影音</h1>
       <Iframe
         src={src}

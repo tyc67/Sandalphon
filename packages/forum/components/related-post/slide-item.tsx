@@ -2,8 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import dayjs from 'dayjs'
-import { breakpoint } from '~/styles/theme'
-import type { RelatedPost } from '~/components/related-post'
+import { breakpoint, color } from '~/styles/theme'
+import type { GenericRelatedPost } from '~/components/related-post'
+import { imagePrefix } from '~/config'
 
 const SlideItem = styled.a`
   cursor: pointer;
@@ -24,7 +25,6 @@ const PostImage = styled.div`
   width: 100%;
   height: 113px;
   overflow: hidden;
-  background: #d9d9d9;
 
   img {
     width: 100%;
@@ -43,8 +43,8 @@ const Content = styled.div`
   line-height: 1.5;
   text-align: left;
   padding: 18px 10px;
-  background: #e2fbfe;
-  height: 132px;
+  background: ${color.primary};
+  height: 144px;
 
   ${breakpoint.md} {
     background: none;
@@ -79,7 +79,7 @@ const Date = styled.p`
 `
 
 type SlideItemProps = {
-  post: RelatedPost
+  post: GenericRelatedPost
 }
 export default function Slide({ post }: SlideItemProps): JSX.Element {
   const { url, heroImage, title, publishedDate } = post
@@ -92,7 +92,7 @@ export default function Slide({ post }: SlideItemProps): JSX.Element {
         <Image
           images={heroImage?.resized}
           imagesWebP={heroImage?.resizedWebp}
-          defaultImage={'/default-og-img.svg'}
+          defaultImage={`${imagePrefix}/images/default-og-img.svg`}
           alt={title}
           objectFit={'cover'}
           priority={true}

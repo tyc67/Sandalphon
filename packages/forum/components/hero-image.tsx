@@ -1,20 +1,22 @@
 import styled from 'styled-components'
-import Image from '@readr-media/react-image'
 import { breakpoint } from '~/styles/theme'
+import useWindowDimensions from '~/hook/use-window-dimensions'
 
 const ImageBlock = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 53px);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  object-fit: contain;
 
   img {
-    width: 100%;
+    height: 100%;
   }
 
   ${breakpoint.md} {
+    width: 100%;
     height: auto;
   }
 `
@@ -31,22 +33,23 @@ type HeroImageProps = {
 export default function HeroImage({
   heroImageSrc = { mobile: '', tablet: '', desktop: '' },
 }: HeroImageProps): JSX.Element {
-  const formattedImgSrc = {
-    original: heroImageSrc.desktop,
-    w480: heroImageSrc.mobile,
-    w800: heroImageSrc.tablet,
-    w1200: heroImageSrc.desktop,
-  }
+  const windowDimensions = useWindowDimensions()
 
+  // FIXME: 這邊要重構，避免太多 if
+  let selectedImageSrc = ''
+
+  if (windowDimensions?.width) {
+    if (windowDimensions?.width >= 1200) {
+      selectedImageSrc = heroImageSrc.desktop
+    } else if (windowDimensions?.width >= 768) {
+      selectedImageSrc = heroImageSrc.tablet
+    } else {
+      selectedImageSrc = heroImageSrc.mobile
+    }
+  }
   return (
     <ImageBlock>
-      <Image
-        images={formattedImgSrc}
-        defaultImage={'/default-og-img.svg'}
-        alt="forum-hero-image"
-        objectFit={'cover'}
-        priority={true}
-      />
+      <img src={selectedImageSrc} alt="hero-image" />
     </ImageBlock>
   )
 }

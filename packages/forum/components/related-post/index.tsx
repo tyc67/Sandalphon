@@ -1,8 +1,10 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import SlideItem from '~/components/related-post/slide-item'
-import { breakpoint } from '~/styles/theme'
+import { breakpoint, zIndex } from '~/styles/theme'
 import { defaultBlockStyle } from '~/styles/shared-style'
+import ArrowRight from '~/public/icon/carousel-arrow-right.svg'
+import ArrowLeft from '~/public/icon/carousel-arrow-left.svg'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -21,7 +23,7 @@ const arrowSharedStyle = css`
   ${breakpoint.md} {
     display: block;
     cursor: pointer;
-    z-index: 100;
+    z-index: ${zIndex.coverContent};
     position: absolute;
     width: 40px;
     height: 100%;
@@ -44,11 +46,9 @@ const SwiperGroup = styled.div`
   justify-content: space-between;
   margin: auto;
   width: 100%;
-  height: 242px;
   position: relative;
 
   ${breakpoint.md} {
-    height: 330px;
     max-width: 545px;
   }
   ${breakpoint.xl} {
@@ -102,19 +102,7 @@ const SwiperGroup = styled.div`
 
   //swiper pagination
   .swiper-pagination {
-    bottom: 0px;
     display: none;
-
-    ${breakpoint.md} {
-      display: block;
-    }
-  }
-  .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-  }
-  .swiper-pagination-bullet-active {
-    background: #054f77;
   }
 `
 
@@ -134,7 +122,7 @@ type HeroImage = {
   resizedWebp: ResizedImage
 }
 
-export type RelatedPost = {
+export type GenericRelatedPost = {
   id: string
   updatedAt: string
   slug: string
@@ -146,19 +134,22 @@ export type RelatedPost = {
 }
 
 type RelatedPostProps = {
-  relatedPosts: RelatedPost[]
+  relatedPosts: GenericRelatedPost[]
 }
 export default function RelatedPost({
-  relatedPosts,
+  relatedPosts = [],
 }: RelatedPostProps): JSX.Element {
   return (
-    <Wrapper>
+    <Wrapper id="related-post">
       <h1>相關報導</h1>
       <SwiperGroup>
         <div className="custom-swiper-prev swiper-arrow">
-          <img src="/carousel-arrow-left.svg" alt="carousel-arrow-left" />
+          <ArrowLeft />
         </div>
+
         <Swiper
+          // @ts-ignore
+          // eslint-disable-next-line no-param-reassign
           breakpoints={{
             768: {
               slidesPerView: 2, // when screen width >= 768px
@@ -167,6 +158,8 @@ export default function RelatedPost({
               slidesPerView: 4, // when screen width >= 1200px
             },
           }}
+          // @ts-ignore
+          // eslint-disable-next-line no-param-reassign
           slidesPerView={'auto'}
           spaceBetween={20}
           slidesPerGroup={1}
@@ -180,7 +173,7 @@ export default function RelatedPost({
             clickable: true,
           }}
         >
-          {relatedPosts?.map((item: RelatedPost) => {
+          {relatedPosts?.map((item: GenericRelatedPost) => {
             return (
               <SwiperSlide key={item.id}>
                 <SlideItem post={item} />
@@ -188,9 +181,8 @@ export default function RelatedPost({
             )
           })}
         </Swiper>
-
         <div className="custom-swiper-next swiper-arrow">
-          <img src="/carousel-arrow-right.svg" alt="carousel-arrow-right" />
+          <ArrowRight />
         </div>
       </SwiperGroup>
     </Wrapper>
