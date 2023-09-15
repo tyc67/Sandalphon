@@ -8,7 +8,6 @@ import Schedule from '~/components/schedule'
 import Registration from '~/components/registration'
 import RelatedPost from '~/components/related-post'
 import Partners from '~/components/partners'
-import ScrollToTopButton from '~/components/scroll-to-top-button'
 import { breakpoint } from '~/styles/theme'
 import Layout from '~/components/layout/layout'
 import type { GenericRelatedPost } from '~/components/related-post'
@@ -105,17 +104,15 @@ export default function Home({ forumData }: ForumData): JSX.Element {
           <RelatedPost relatedPosts={relatedPost} />
           <Registration content={registrationText} />
           <Partners partners={partners} />
-          <ScrollToTopButton />
         </Main>
       </Layout>
     </>
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const response = await fetch(
-      // 'https://storage.googleapis.com/v3-statics-dev.mirrormedia.mg/json/forum2023.json'
       'https://storage.googleapis.com/v3-statics-dev.mirrormedia.mg/files/json/forum2023_gql_all.json'
     )
     const data = await response.json()

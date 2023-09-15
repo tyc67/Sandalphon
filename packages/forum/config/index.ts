@@ -44,7 +44,7 @@ switch (env) {
     break
   }
   default: {
-    staticFileDestination = `${protocol}://${host}:8080`
+    staticFileDestination = `${protocol}://${host}:3000`
     imagePrefix = ''
     GTM_ID = 'GTM-PBNLSMX'
 
