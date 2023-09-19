@@ -141,7 +141,6 @@ export default function SideMenu() {
     )
   })
 
-  // TODO: 展開時禁止下方滑動
   return (
     <>
       <ToggleButton

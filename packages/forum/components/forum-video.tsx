@@ -16,24 +16,24 @@ const Iframe = styled.iframe`
 
 type VideoProps = {
   videoSrc: string
-  gtmClassName?: string
 }
-export default function ForumVideo({
-  videoSrc = '',
-  gtmClassName = '',
-}: VideoProps): JSX.Element {
+export default function ForumVideo({ videoSrc = '' }: VideoProps): JSX.Element {
+  const shouldShowJsx = Boolean(videoSrc && videoSrc.trim() !== '')
   const src = getVideoSrc(videoSrc)
 
   return (
-    <Wrapper id="video">
-      <h1>活動影音</h1>
-      <Iframe
-        src={src}
-        loading="lazy"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className={gtmClassName}
-      />
-    </Wrapper>
+    <>
+      {shouldShowJsx && (
+        <Wrapper id="video">
+          <h1>活動影音</h1>
+          <Iframe
+            src={src}
+            loading="lazy"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </Wrapper>
+      )}
+    </>
   )
 }

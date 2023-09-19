@@ -34,7 +34,6 @@ const CustomMotionDiv = styled(motion.div)<CustomMotionDivProps>`
   order: ${(props) => props.order};
   width: 90%;
   font-size: 16px;
-  outline: 2px solid black;
 
   & + div {
     margin-top: 15px;
