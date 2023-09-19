@@ -3,13 +3,13 @@
 let assetPrefixPath = ''
 switch (process.env.NEXT_PUBLIC_ENV) {
   case 'prod':
-    assetPrefixPath = `https://www.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    assetPrefixPath = `https://events.mirrormedia.mg/events/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
     break
   case 'staging':
-    assetPrefixPath = `https://staging.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    assetPrefixPath = `https://events.mirrormedia.mg/events/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
     break
   case 'dev':
-    assetPrefixPath = `https://dev.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    assetPrefixPath = `https://events.mirrormedia.mg/events/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
     break
   default:
     assetPrefixPath = ''
@@ -20,13 +20,13 @@ let basePath = ''
 
 switch (process.env.NEXT_PUBLIC_ENV) {
   case 'prod':
-    basePath = `/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    basePath = `/events/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
     break
   case 'staging':
-    basePath = `/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    basePath = `/events/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
     break
   case 'dev':
-    basePath = `/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
+    basePath = `/events/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
     break
   default:
     basePath = ''
