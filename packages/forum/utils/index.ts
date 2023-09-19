@@ -1,4 +1,4 @@
-import type { Speaker, RowSpeakerItem } from '~/types'
+import type { RowSpeakerItem, FormattedSpeaker } from '~/types'
 
 /**
  * Check if the source is from YouTube. If it is, get the YouTube ID and transform it to https://www.youtube.com/embed/${youtubeId}?enablejsapi=1 in order to put it in <iframe>.
@@ -23,7 +23,7 @@ function getVideoSrc(url: string) {
 
 function parseSpeakerWithTitle(str: string) {
   const speakersData = str.split('／') //使用「／」分割不同講者資料
-  const speakers: Speaker[] = []
+  const speakers: FormattedSpeaker[] = []
 
   speakersData.forEach((speakerInfo) => {
     const [name, titles] = speakerInfo.split('：') //使用「：」分割出講者名稱＆職稱

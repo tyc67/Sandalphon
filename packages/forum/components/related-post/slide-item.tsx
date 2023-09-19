@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import dayjs from 'dayjs'
 import { breakpoint, color } from '~/styles/theme'
-import type { GenericRelatedPost } from '~/components/related-post'
+import type { GenericRelatedPost } from '~/types'
 import { imagePrefix } from '~/config'
 
 const SlideItem = styled.a`
@@ -49,6 +49,7 @@ const Content = styled.div`
   ${breakpoint.md} {
     background: none;
     padding: 15px 10px 40px 10px;
+    height: 130px;
   }
 `
 
@@ -60,22 +61,18 @@ const PostTitle = styled.div`
   -webkit-line-clamp: 4;
   overflow: hidden;
 
+  & + .date {
+    margin-top: 10px;
+  }
+
   ${breakpoint.md} {
     -webkit-line-clamp: 3;
-
-    & + .date {
-      margin-top: 10px;
-    }
   }
 `
 
 const Date = styled.p`
-  display: none;
-
-  ${breakpoint.md} {
-    display: block;
-    font-size: 14px;
-  }
+  display: block;
+  font-size: 14px;
 `
 
 type SlideItemProps = {
