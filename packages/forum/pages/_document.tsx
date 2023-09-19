@@ -34,7 +34,28 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet"
+          />
+          <meta
+            name="msapplication-TileColor"
+            content="#5bbad5"
+            key="msapplication-TileColor"
+          />
+          <meta name="theme-color" content="#ffffff" key="theme-color" />
+          <meta
+            name="google-site-verification"
+            content="8tUjQvQoBEANJ6nRE9fMnsw2qODvbAgqDjSkLj-Mdw0"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

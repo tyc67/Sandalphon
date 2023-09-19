@@ -12,10 +12,16 @@ type RegistrationProps = {
 export default function Registration({
   content,
 }: RegistrationProps): JSX.Element {
+  const shouldShowJsx = Boolean(content && content.trim() !== '')
+
   return (
-    <Wrapper id="registration">
-      <h1>報名資訊</h1>
-      <ContentBlock content={content} />
-    </Wrapper>
+    <>
+      {shouldShowJsx && (
+        <Wrapper id="registration">
+          <h1>報名資訊</h1>
+          <ContentBlock content={content} />
+        </Wrapper>
+      )}
+    </>
   )
 }

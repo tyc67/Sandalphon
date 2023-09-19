@@ -5,6 +5,7 @@ import { breakpoint, zIndex } from '~/styles/theme'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import ArrowRight from '~/public/icon/carousel-arrow-right.svg'
 import ArrowLeft from '~/public/icon/carousel-arrow-left.svg'
+import type { GenericRelatedPost } from '~/types'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -17,11 +18,10 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
-const arrowSharedStyle = css`
+const arrowSharedStyle = css<{ postLength: number }>`
   display: none;
 
   ${breakpoint.md} {
-    display: block;
     cursor: pointer;
     z-index: ${zIndex.coverContent};
     position: absolute;
@@ -29,8 +29,12 @@ const arrowSharedStyle = css`
     height: 100%;
     top: 50%;
     transform: translateY(-50%);
-    display: flex;
     align-items: center;
+    display: ${(props) => (props.postLength > 2 ? 'flex' : 'none')};
+  }
+
+  ${breakpoint.xl} {
+    display: ${(props) => (props.postLength > 4 ? 'flex' : 'none')};
   }
 `
 
@@ -40,7 +44,7 @@ const Wrapper = styled.div`
   max-width: none;
 `
 
-const SwiperGroup = styled.div`
+const SwiperGroup = styled.div<{ postLength: number }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -78,7 +82,7 @@ const SwiperGroup = styled.div`
 
     ${breakpoint.md} {
       width: 216px;
-      height: 300px;
+      height: 275px;
       margin: 0px;
     }
   }
@@ -109,40 +113,19 @@ const SwiperGroup = styled.div`
 // FIXME: posts 數量如果很少的 error handle
 // FIXME: 手機版滑單張間隔的問題
 
-type ResizedImage = {
-  original: string
-  w480: string
-  w800: string
-  w1200: string
-  w1600: string
-  w2400: string
-}
-type HeroImage = {
-  resized: ResizedImage
-  resizedWebp: ResizedImage
-}
-
-export type GenericRelatedPost = {
-  id: string
-  updatedAt: string
-  slug: string
-  publishedDate: string
-  state: string
-  title: string
-  heroImage: HeroImage | null
-  url: string
-}
-
 type RelatedPostProps = {
-  relatedPosts: GenericRelatedPost[]
+  // relatedPosts: GenericRelatedPost[] //k6
+  relatedPosts: any //k3
 }
 export default function RelatedPost({
   relatedPosts = [],
 }: RelatedPostProps): JSX.Element {
+  const postLength = relatedPosts?.length
+
   return (
     <Wrapper id="related-post">
       <h1>相關報導</h1>
-      <SwiperGroup>
+      <SwiperGroup postLength={postLength}>
         <div className="custom-swiper-prev swiper-arrow">
           <ArrowLeft />
         </div>
@@ -152,17 +135,16 @@ export default function RelatedPost({
           // eslint-disable-next-line no-param-reassign
           breakpoints={{
             768: {
-              slidesPerView: 2, // when screen width >= 768px
+              slidesPerGroup: 2, // when screen width >= 768px
             },
             1200: {
-              slidesPerView: 4, // when screen width >= 1200px
+              slidesPerGroup: 4, // when screen width >= 1200px
             },
           }}
           // @ts-ignore
           // eslint-disable-next-line no-param-reassign
           slidesPerView={'auto'}
           spaceBetween={20}
-          slidesPerGroup={1}
           loop={true}
           modules={[Pagination, Navigation]}
           navigation={{

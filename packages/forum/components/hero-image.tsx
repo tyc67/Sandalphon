@@ -1,5 +1,8 @@
 import styled from 'styled-components'
+import Image from '@readr-media/react-image'
 import { breakpoint } from '~/styles/theme'
+import { imagePrefix } from '~/config'
+import type { FormattedHeroImage } from '~/types'
 import useWindowDimensions from '~/hook/use-window-dimensions'
 
 const ImageBlock = styled.div`
@@ -9,25 +12,21 @@ const ImageBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  object-fit: contain;
 
   img {
-    height: 100%;
+    width: 100%;
   }
+  /* .readr-media-react-image {
+    object-fit: contain !important;
+  } */
 
   ${breakpoint.md} {
-    width: 100%;
     height: auto;
   }
 `
 
-type HeroImage = {
-  mobile: string
-  tablet: string
-  desktop: string
-}
 type HeroImageProps = {
-  heroImageSrc: HeroImage
+  heroImageSrc: FormattedHeroImage
 }
 
 export default function HeroImage({
@@ -47,9 +46,16 @@ export default function HeroImage({
       selectedImageSrc = heroImageSrc.mobile
     }
   }
+
   return (
     <ImageBlock>
-      <img src={selectedImageSrc} alt="hero-image" />
+      <Image
+        images={{ original: selectedImageSrc }}
+        alt="forum-hero-image"
+        objectFit={'contain'}
+        priority={true}
+        defaultImage={`${imagePrefix}/images/default-hero-image-bg.svg`}
+      />
     </ImageBlock>
   )
 }

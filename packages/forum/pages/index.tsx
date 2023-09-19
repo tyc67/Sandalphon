@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 import ForumVideo from '~/components/forum-video'
 import Introduction from '~/components/introduction'
@@ -10,8 +12,9 @@ import RelatedPost from '~/components/related-post'
 import Partners from '~/components/partners'
 import { breakpoint } from '~/styles/theme'
 import Layout from '~/components/layout/layout'
-import type { GenericRelatedPost } from '~/components/related-post'
-import type { Logo } from '~/components/partners'
+import type { K6_ForumData } from '~/types'
+import CustomHead from '../components/shared/head'
+import type { OGProperty } from '~/types'
 
 const Main = styled.main`
   background: #bbd4da;
@@ -22,64 +25,84 @@ const Main = styled.main`
   }
 `
 
-type GenericSpeaker = {
-  name: string
-  image: string
-  description: string
-}
-
-type GenericSchedule = {
-  topic: string
-  time: string
-  speakersInfo: string
-  instruction: string
-}
-
-type ForumData = {
-  pageInfo: {
-    heroImage_mobile: {
-      content: string
-      construction: string
-    }
-    heroImage_tablet: {
-      content: string
-      construction: string
-    }
-    heroImage_desktop: {
-      content: string
-      construction: string
-    }
-    introduction: {
-      content: string
-      construction: string
-    }
-    qrCode: {
-      content: string
-      construction: string
-    }
-    video: {
-      content: string
-      construction: string
-    }
-    registration: {
-      content: string
-      construction: string
-    }
-  }
-  schedule: GenericSchedule[]
-  speakers: GenericSpeaker[]
-  partners: {
-    [key: string]: Logo[]
-  }
-
-  relatedPost: GenericRelatedPost[]
-}
-
 // TODO: 擴用性包含放背景圖片
 
-//@ts-ignore
-export default function Home({ forumData }: ForumData): JSX.Element {
-  const { pageInfo, speakers, schedule, relatedPost, partners } = forumData // 缺：type + 資料 error handle
+type HomeProps = {
+  ogData: OGProperty
+}
+export default function Home({ ogData }: HomeProps): JSX.Element {
+  const [data, setData] = useState<K6_ForumData>({
+    metadata: {
+      pageInfo: {
+        heroImage_mobile: {
+          content: '',
+          construction: '',
+        },
+        heroImage_tablet: {
+          content: '',
+          construction: '',
+        },
+        heroImage_desktop: {
+          content: '',
+          construction: '',
+        },
+        introduction: {
+          content: '',
+          construction: '',
+        },
+        qrCode: {
+          content: '',
+          construction: '',
+        },
+        video: {
+          content: '',
+          construction: '',
+        },
+        registration: {
+          content: '',
+          construction: '',
+        },
+        og_image: {
+          content: '',
+          construction: '',
+        },
+        og_title: {
+          content: '',
+          construction: '',
+        },
+      },
+      schedule: [],
+      speakers: [],
+      partners: {},
+    },
+    relatedPost: [],
+  })
+
+  console.log('data', data)
+
+  useEffect(() => {
+    axios
+      .get(
+        //k6-JSON
+        //'https://v3-statics-dev.mirrormedia.mg/files/json/forum2023_gql_all.json'
+
+        //k3-JSON
+        // 'https://v3-statics-dev.mirrormedia.mg/json/forum2023.json'
+
+        //k3-prod-JSON
+        'https://v3-statics.mirrormedia.mg/json/forum2023.json'
+      )
+      .then((response) => {
+        const data = response.data
+        setData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error)
+      })
+  }, [])
+
+  const { metadata, relatedPost } = data // 缺：type + 資料 error handle
+  const { pageInfo, speakers, schedule, partners } = metadata
 
   const heroImageSrc = {
     mobile: pageInfo?.heroImage_mobile?.content || '',
@@ -94,6 +117,12 @@ export default function Home({ forumData }: ForumData): JSX.Element {
 
   return (
     <>
+      <CustomHead
+        title={ogData.ogTitle}
+        description={ogData.ogDesc}
+        imageUrl={ogData.ogImageSrc}
+      />
+
       <Layout>
         <Main>
           <HeroImage heroImageSrc={heroImageSrc} />
@@ -112,33 +141,29 @@ export default function Home({ forumData }: ForumData): JSX.Element {
 
 export async function getStaticProps() {
   try {
-    const response = await fetch(
-      'https://storage.googleapis.com/v3-statics-dev.mirrormedia.mg/files/json/forum2023_gql_all.json'
+    const response = await axios.get(
+      'https://v3-statics.mirrormedia.mg/json/forum2023.json'
     )
-    const data = await response.json()
+    const data = response.data
 
-    if (!data) {
-      return
-    }
-
-    const forumData = {
-      pageInfo: data.metadata?.pageInfo ?? {},
-      schedule: data.metadata?.schedule ?? {},
-      speakers: data.metadata?.speakers ?? [],
-      partners: data.metadata?.partners ?? {},
-      relatedPost: data.relatedPost ?? [],
-    }
+    const ogTitle = data.metadata?.pageInfo?.og_title?.content || ''
+    const ogImageSrc = data.metadata?.pageInfo?.og_image?.content || ''
+    const ogDesc = data.metadata?.pageInfo?.introduction?.content || ''
 
     return {
       props: {
-        forumData,
+        ogData: {
+          ogTitle: ogTitle,
+          ogImageSrc: ogImageSrc,
+          ogDesc: ogDesc,
+        },
       },
     }
   } catch (error) {
     console.error('Error fetching data:', error)
     return {
       props: {
-        forumData: {},
+        ogData: { ogTitle: '', ogImageSrc: '', ogDesc: '' }, // 或其他錯誤處理
       },
     }
   }

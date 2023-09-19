@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import SpeakerItem from '~/components/schedule/row-speaker-item'
-import type { Speaker, RowSpeakerItem } from '~/types'
+import type { FormattedSpeaker, RowSpeakerItem } from '~/types'
 
 const SpeakersWrapper = styled.div`
   max-width: 300px;
@@ -19,7 +19,7 @@ const SpeakerType = styled.div`
 `
 
 type SpeakersProps = {
-  speakers: Speaker[]
+  speakers: FormattedSpeaker[]
 }
 const Speakers: React.FC<SpeakersProps> = ({ speakers }) => {
   return (

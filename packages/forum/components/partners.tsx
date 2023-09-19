@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import { breakpoint } from '~/styles/theme'
+import type { LogoImage } from '~/types'
+import Image from '@readr-media/react-image'
+import { imagePrefix } from '~/config'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
@@ -32,7 +35,9 @@ const LogosImage = styled.div`
   flex-wrap: wrap;
   gap: 20px;
 
-  img {
+  .readr-media-react-image {
+    max-width: 128px;
+    max-height: 40px;
     height: 40px;
     width: auto;
   }
@@ -41,14 +46,9 @@ const LogosImage = styled.div`
 //FIXME: Logo 壞掉時的處理 default-image
 //FIXME: type 類型如無資料則不顯示
 
-export type Logo = {
-  order: string
-  image: string
-}
-
 type PartnersProps = {
   partners: {
-    [key: string]: Logo[]
+    [key: string]: LogoImage[]
   }
 }
 export default function Partners({
@@ -59,21 +59,29 @@ export default function Partners({
     贊助單位: [],
   },
 }: PartnersProps): JSX.Element {
-  function removeEmptyLogo(logoList: Logo[]) {
-    return logoList?.filter((item) => item.image.trim() !== '')
-  }
-
   function generateLogos(type: string) {
-    const logoList = removeEmptyLogo(partners[type])
+    const logoList = partners[type]
+    const shouldShowList = Boolean(logoList?.length)
 
     return (
       <>
-        <LogoType>{type}</LogoType>
-        <LogosImage>
-          {logoList.map((logo, index) => (
-            <img key={index} src={logo.image} alt={`sponsor-logo ${index}`} />
-          ))}
-        </LogosImage>
+        {shouldShowList && (
+          <>
+            <LogoType>{type}</LogoType>
+            <LogosImage>
+              {logoList?.map((logo, index) => (
+                <Image
+                  key={index}
+                  images={{ original: logo.image }}
+                  alt={`sponsor-logo ${index}`}
+                  objectFit={'contain'}
+                  priority={true}
+                  defaultImage={`${imagePrefix}/images/default-partner-bg.svg`}
+                />
+              ))}
+            </LogosImage>
+          </>
+        )}
       </>
     )
   }

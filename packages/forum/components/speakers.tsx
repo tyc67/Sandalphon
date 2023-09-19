@@ -3,6 +3,7 @@ import { defaultBlockStyle } from '~/styles/shared-style'
 import ContentBlock from '~/components/shared/content-block'
 import Image from '@readr-media/react-image'
 import { imagePrefix } from '~/config'
+import type { GenericSpeaker } from '~/types'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
@@ -56,20 +57,13 @@ const Description = styled(ContentBlock)`
   text-align: left;
 `
 
-type Speaker = {
-  name: string
-  image: string
-  description: string
-}
-
 type SpeakersProps = {
-  speakers: Speaker[]
+  speakers: GenericSpeaker[]
 }
-
 export default function Speakers({
   speakers = [],
 }: SpeakersProps): JSX.Element {
-  const speakerLists = speakers.map((speaker: Speaker, index) => {
+  const speakerLists = speakers.map((speaker: GenericSpeaker, index) => {
     const formattedImgUrl = {
       original: speaker.image,
     }
@@ -92,10 +86,16 @@ export default function Speakers({
     )
   })
 
+  const shouldShowJSX = Boolean(Array.isArray(speakers) && speakers.length > 0)
+
   return (
-    <Wrapper id="speakers">
-      <h1>與會陣容</h1>
-      <SpeakerLists>{speakerLists}</SpeakerLists>
-    </Wrapper>
+    <>
+      {shouldShowJSX && (
+        <Wrapper id="speakers">
+          <h1>與會陣容</h1>
+          <SpeakerLists>{speakerLists}</SpeakerLists>
+        </Wrapper>
+      )}
+    </>
   )
 }
