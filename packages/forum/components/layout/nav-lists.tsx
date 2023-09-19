@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 import { breakpoint } from '~/styles/theme'
-import { staticFileDestination } from '~/config'
+import { navLists } from '~/constants'
 
 const Wrapper = styled.div`
   display: none;
@@ -41,16 +41,6 @@ const Item = styled.li`
 `
 
 export default function NavLists() {
-  const navLists = [
-    { title: '論壇簡介', href: `${staticFileDestination}#introduction` },
-    { title: '活動影音', href: `${staticFileDestination}#video` },
-    { title: '與會陣容', href: `${staticFileDestination}#speakers` },
-    { title: '論壇議程', href: `${staticFileDestination}#schedule` },
-    { title: '相關報導', href: `${staticFileDestination}#related-post` },
-    { title: '報名資訊', href: `${staticFileDestination}#registration` },
-    { title: '共同推動', href: `${staticFileDestination}#partners` },
-  ]
-
   return (
     <Wrapper>
       {navLists.map((list, index) => {
