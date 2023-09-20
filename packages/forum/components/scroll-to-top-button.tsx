@@ -10,7 +10,7 @@ const Button = styled.button`
   height: 36px;
   background: rgba(3, 3, 3, 0.7);
   position: fixed;
-  top: calc(100vh - 80px);
+  top: calc(100vh - 100px);
   right: 28px;
   display: flex;
   align-items: center;
