@@ -58,7 +58,8 @@ export const mockData = {
       sections: [],
       publishedDate: 'Tue, 07 Mar 2023 06:41:23 GMT',
       state: 'published',
-      title: 'wide版型圖片滿版',
+      title:
+        'wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版wide版型圖片滿版',
       adTrace: '',
       extend_byline: '',
       heroCaption: '',
@@ -656,17 +657,28 @@ export const mockData = {
       url: 'https://dev.mirrormedia.mg/story/2023?utm_source=mirrormedia&utm_medium=project&utm_campaign=2023forum',
     },
     {
-      _id: '64fea93e8058be1a001lkjljkljlk275e1',
-      updatedAt: 'Mon, 11 Sep 2023 05:45:23 GMT',
-      slug: '2023',
-      name: '測試 2023 風電論壇',
-      createTime: 'Mon, 11 Sep 2023 05:44:30 GMT',
+      _id: '6406dc93f2fd591a00185f82',
+      updatedAt: 'Mon, 11 Sep 2023 05:44:10 GMT',
+      slug: 'wide-test-full-image',
+      name: 'wide-test-full-image',
+      createTime: 'Tue, 07 Mar 2023 06:41:23 GMT',
       device: 'all',
       hiddenAdvertised: false,
       relateds: [],
       titleColor: 'light',
       albums: [],
       tags: [
+        {
+          _id: '64814c7f5243021a008b3457',
+          name: 'xuan_test_tag',
+          style: 'feature',
+          sections: [],
+          css: '',
+          isFeatured: false,
+          javascript: '',
+          og_description: '',
+          og_title: '',
+        },
         {
           _id: '64fea8dd8058be1a001275e0',
           name: '2023風電論壇',
@@ -679,7 +691,7 @@ export const mockData = {
           og_title: '',
         },
       ],
-      style: 'article',
+      style: 'wide',
       vocals: [],
       engineers: [],
       designers: [],
@@ -688,155 +700,51 @@ export const mockData = {
       writers: [],
       categories: [],
       sections: [],
-      publishedDate: 'Mon, 11 Sep 2023 05:44:30 GMT',
+      publishedDate: 'Tue, 07 Mar 2023 06:41:23 GMT',
       state: 'published',
-      title: '測試 2023 風電論壇',
+      title: 'wide版型圖片滿版',
       adTrace: '',
-      brief: {
-        apiData: [
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '9kj40',
-          },
-        ],
-        html: '<p>測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇</p>',
-      },
-      content: {
-        apiData: [
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'header-two',
-            id: '35vl1',
-          },
-          {
-            styles: {},
-            content: [
-              ['測試 2023 風電論壇測試 2023 風電論壇', '測試 2023 風電論壇'],
-            ],
-            alignment: 'center',
-            type: 'ordered-list-item',
-            id: '4CG6IpJWR',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: 'at0j9',
-          },
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '26udp',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '2rqb5',
-          },
-          {
-            styles: {},
-            content: [
-              {
-                id: '6450cf44ee752e1b00158223',
-                description: '20230502test',
-                url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg',
-                original: {
-                  height: 451,
-                  width: 800,
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d.jpeg',
-                },
-                desktop: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-desktop.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                tablet: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                mobile: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-mobile.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                square: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-square.jpeg',
-                  width: 1400,
-                  height: 1400,
-                },
-                tiny: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tiny.jpeg',
-                  width: 150,
-                  height: 85,
-                },
-              },
-            ],
-            alignment: 'center',
-            type: 'image',
-            id: 'e2g0',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: 'balbi',
-          },
-        ],
-        html: '<h2>測試 2023 風電論壇</h2><ol><li>測試 2023 風電論壇測試 2023 風電論壇</li><li>測試 2023 風電論壇</li></ol><p></p><p>測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇</p><p></p><div><img alt="20230502test" src="https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg" srcset="https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-mobile.jpeg 800w,  https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg 1280w, https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-desktop.jpeg 2400w" class=""> </img></div><p></p>',
-      },
       extend_byline: '',
       heroCaption: '',
       heroImage: {
-        _id: '64f02b578058be1a001275de',
-        description: 'windpowerforum2023',
-        createTime: 'Thu, 31 Aug 2023 05:55:35 GMT',
+        _id: '634e72ebf1e8f91900178e3b',
+        description: 'hh_og',
+        createTime: 'Tue, 18 Oct 2022 09:33:31 GMT',
         tags: [],
         image: {
-          filename: '20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9.png',
-          filetype: 'image/png',
-          height: 452,
+          filename: '20221018173331-d5cd172beb86d28d00126278c7a9e7f3.jpg',
+          filetype: 'image/jpeg',
+          height: 1260,
           resizedTargets: {
             tiny: {
-              height: 57,
+              height: 79,
               width: 150,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-tiny.png',
+              url: 'https://www.mirrormedia.com.tw/assets/images/20221018173331-d5cd172beb86d28d00126278c7a9e7f3-tiny.jpg',
             },
             square: {
               height: 1400,
               width: 1400,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-square.png',
+              url: 'https://www.mirrormedia.com.tw/assets/images/20221018173331-d5cd172beb86d28d00126278c7a9e7f3-square.jpg',
             },
             mobile: {
-              height: 301,
+              height: 420,
               width: 800,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-mobile.png',
+              url: 'https://www.mirrormedia.com.tw/assets/images/20221018173331-d5cd172beb86d28d00126278c7a9e7f3-mobile.jpg',
             },
             tablet: {
-              height: 452,
+              height: 630,
               width: 1200,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-tablet.png',
+              url: 'https://www.mirrormedia.com.tw/assets/images/20221018173331-d5cd172beb86d28d00126278c7a9e7f3-tablet.jpg',
             },
             desktop: {
-              height: 452,
-              width: 1200,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-desktop.png',
+              height: 1050,
+              width: 2000,
+              url: 'https://www.mirrormedia.com.tw/assets/images/20221018173331-d5cd172beb86d28d00126278c7a9e7f3-desktop.jpg',
             },
           },
-          size: 652029,
-          url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9.png',
-          width: 1200,
+          size: 1457345,
+          url: 'https://www.mirrormedia.com.tw/assets/images/20221018173331-d5cd172beb86d28d00126278c7a9e7f3.jpg',
+          width: 2400,
         },
       },
       isAdult: false,
@@ -849,15 +757,39 @@ export const mockData = {
       og_title: '',
       redirect: '',
       subtitle: '',
+      brief: {
+        apiData: [
+          {
+            styles: {},
+            content: ['Test'],
+            alignment: 'center',
+            type: 'unstyled',
+            id: 'eojm1',
+          },
+        ],
+        html: '<p>Test</p>',
+      },
+      content: {
+        apiData: [
+          {
+            styles: {},
+            content: ['Test'],
+            alignment: 'center',
+            type: 'unstyled',
+            id: '9sprg',
+          },
+        ],
+        html: '<p>Test</p>',
+      },
       _links: {
         self: {
           title: 'post',
-          href: 'posts/64fea93e8058be1a001275e1',
+          href: 'posts/6406dc93f2fd591a00185f82',
         },
         related: {
           heroImage: {
             title: 'Image',
-            href: 'images/64f02b578058be1a001275de',
+            href: 'images/634e72ebf1e8f91900178e3b',
           },
           albums: [],
           sections: [],
@@ -871,27 +803,42 @@ export const mockData = {
           tags: [
             {
               title: 'tag',
+              href: 'tags/64814c7f5243021a008b3457',
+            },
+            {
+              title: 'tag',
               href: 'tags/64fea8dd8058be1a001275e0',
             },
           ],
           relateds: [],
         },
       },
-      word_count: 727,
-      url: 'https://dev.mirrormedia.mg/story/2023?utm_source=mirrormedia&utm_medium=project&utm_campaign=2023forum',
+      word_count: 11,
+      url: 'https://dev.mirrormedia.mg/story/wide-test-full-image?utm_source=mirrormedia&utm_medium=project&utm_campaign=2023forum',
     },
     {
-      _id: '64fea93e805;lkl;k;l8be1a001275e1',
-      updatedAt: 'Mon, 11 Sep 2023 05:45:23 GMT',
-      slug: '2023',
-      name: '測試 2023 風電論壇',
-      createTime: 'Mon, 11 Sep 2023 05:44:30 GMT',
+      _id: '64343e7aee6b871a008386d8',
+      updatedAt: 'Mon, 11 Sep 2023 06:02:57 GMT',
+      slug: '20230411prf00s',
+      name: '20230411prf00s',
+      createTime: 'Mon, 10 Apr 2023 16:51:06 GMT',
       device: 'all',
       hiddenAdvertised: false,
       relateds: [],
       titleColor: 'light',
       albums: [],
       tags: [
+        {
+          _id: '64814c7f5243021a008b3457',
+          name: 'xuan_test_tag',
+          style: 'feature',
+          sections: [],
+          css: '',
+          isFeatured: false,
+          javascript: '',
+          og_description: '',
+          og_title: '',
+        },
         {
           _id: '64fea8dd8058be1a001275e0',
           name: '2023風電論壇',
@@ -904,7 +851,7 @@ export const mockData = {
           og_title: '',
         },
       ],
-      style: 'article',
+      style: 'wide',
       vocals: [],
       engineers: [],
       designers: [],
@@ -913,157 +860,12 @@ export const mockData = {
       writers: [],
       categories: [],
       sections: [],
-      publishedDate: 'Mon, 11 Sep 2023 05:44:30 GMT',
+      publishedDate: 'Mon, 10 Apr 2023 16:52:22 GMT',
       state: 'published',
-      title: '測試 2023 風電論壇',
+      title: '哈囉哈囉 prf-橫圖',
       adTrace: '',
-      brief: {
-        apiData: [
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '9kj40',
-          },
-        ],
-        html: '<p>測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇</p>',
-      },
-      content: {
-        apiData: [
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'header-two',
-            id: '35vl1',
-          },
-          {
-            styles: {},
-            content: [
-              ['測試 2023 風電論壇測試 2023 風電論壇', '測試 2023 風電論壇'],
-            ],
-            alignment: 'center',
-            type: 'ordered-list-item',
-            id: '4CG6IpJWR',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: 'at0j9',
-          },
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '26udp',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '2rqb5',
-          },
-          {
-            styles: {},
-            content: [
-              {
-                id: '6450cf44ee752e1b00158223',
-                description: '20230502test',
-                url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg',
-                original: {
-                  height: 451,
-                  width: 800,
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d.jpeg',
-                },
-                desktop: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-desktop.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                tablet: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                mobile: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-mobile.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                square: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-square.jpeg',
-                  width: 1400,
-                  height: 1400,
-                },
-                tiny: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tiny.jpeg',
-                  width: 150,
-                  height: 85,
-                },
-              },
-            ],
-            alignment: 'center',
-            type: 'image',
-            id: 'e2g0',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: 'balbi',
-          },
-        ],
-        html: '<h2>測試 2023 風電論壇</h2><ol><li>測試 2023 風電論壇測試 2023 風電論壇</li><li>測試 2023 風電論壇</li></ol><p></p><p>測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇</p><p></p><div><img alt="20230502test" src="https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg" srcset="https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-mobile.jpeg 800w,  https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg 1280w, https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-desktop.jpeg 2400w" class=""> </img></div><p></p>',
-      },
       extend_byline: '',
       heroCaption: '',
-      heroImage: {
-        _id: '64f02b578058be1a001275de',
-        description: 'windpowerforum2023',
-        createTime: 'Thu, 31 Aug 2023 05:55:35 GMT',
-        tags: [],
-        image: {
-          filename: '20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9.png',
-          filetype: 'image/png',
-          height: 452,
-          resizedTargets: {
-            tiny: {
-              height: 57,
-              width: 150,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-tiny.png',
-            },
-            square: {
-              height: 1400,
-              width: 1400,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-square.png',
-            },
-            mobile: {
-              height: 301,
-              width: 800,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-mobile.png',
-            },
-            tablet: {
-              height: 452,
-              width: 1200,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-tablet.png',
-            },
-            desktop: {
-              height: 452,
-              width: 1200,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-desktop.png',
-            },
-          },
-          size: 652029,
-          url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9.png',
-          width: 1200,
-        },
-      },
       isAdult: false,
       isAdvertised: false,
       isAudioSiteOnly: false,
@@ -1074,15 +876,80 @@ export const mockData = {
       og_title: '',
       redirect: '',
       subtitle: '',
+      brief: {
+        apiData: [
+          {
+            styles: {},
+            content: ['123'],
+            alignment: 'center',
+            type: 'unstyled',
+            id: '4mmnq',
+          },
+        ],
+        html: '<p>123</p>',
+      },
+      content: {
+        apiData: [
+          {
+            styles: {},
+            content: ['123'],
+            alignment: 'center',
+            type: 'unstyled',
+            id: '26bnf',
+          },
+        ],
+        html: '<p>123</p>',
+      },
+      heroImage: {
+        _id: '6450cf44ee752e1b00158223',
+        description: '20230502test',
+        createTime: 'Tue, 02 May 2023 08:52:20 GMT',
+        tags: [],
+        image: {
+          filename: '20230502165220-e71b336567151c162f3bfc8f08fcd81d.jpeg',
+          filetype: 'image/jpeg',
+          height: 451,
+          resizedTargets: {
+            tiny: {
+              height: 85,
+              width: 150,
+              url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tiny.jpeg',
+            },
+            square: {
+              height: 1400,
+              width: 1400,
+              url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-square.jpeg',
+            },
+            mobile: {
+              height: 451,
+              width: 800,
+              url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-mobile.jpeg',
+            },
+            tablet: {
+              height: 451,
+              width: 800,
+              url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg',
+            },
+            desktop: {
+              height: 451,
+              width: 800,
+              url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-desktop.jpeg',
+            },
+          },
+          size: 30675,
+          url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d.jpeg',
+          width: 800,
+        },
+      },
       _links: {
         self: {
           title: 'post',
-          href: 'posts/64fea93e8058be1a001275e1',
+          href: 'posts/64343e7aee6b871a008386d8',
         },
         related: {
           heroImage: {
             title: 'Image',
-            href: 'images/64f02b578058be1a001275de',
+            href: 'images/6450cf44ee752e1b00158223',
           },
           albums: [],
           sections: [],
@@ -1096,39 +963,31 @@ export const mockData = {
           tags: [
             {
               title: 'tag',
+              href: 'tags/64814c7f5243021a008b3457',
+            },
+            {
+              title: 'tag',
               href: 'tags/64fea8dd8058be1a001275e0',
             },
           ],
           relateds: [],
         },
       },
-      word_count: 727,
-      url: 'https://dev.mirrormedia.mg/story/2023?utm_source=mirrormedia&utm_medium=project&utm_campaign=2023forum',
+      word_count: 10,
+      url: 'https://dev.mirrormedia.mg/story/20230411prf00s?utm_source=mirrormedia&utm_medium=project&utm_campaign=2023forum',
     },
     {
-      _id: '64fea93;lk;lk;lk;e8058be1a001275e1',
-      updatedAt: 'Mon, 11 Sep 2023 05:45:23 GMT',
-      slug: '2023',
-      name: '測試 2023 風電論壇',
-      createTime: 'Mon, 11 Sep 2023 05:44:30 GMT',
+      _id: '64e612328058be1a001275d7',
+      updatedAt: 'Mon, 11 Sep 2023 05:43:17 GMT',
+      slug: 'dy_test_0823',
+      name: 'dy_test_0823',
+      createTime: 'Wed, 23 Aug 2023 14:05:38 GMT',
       device: 'all',
       hiddenAdvertised: false,
       relateds: [],
       titleColor: 'light',
       albums: [],
-      tags: [
-        {
-          _id: '64fea8dd8058be1a001275e0',
-          name: '2023風電論壇',
-          style: 'feature',
-          sections: [],
-          css: '',
-          isFeatured: false,
-          javascript: '',
-          og_description: '',
-          og_title: '',
-        },
-      ],
+      tags: [],
       style: 'article',
       vocals: [],
       engineers: [],
@@ -1138,157 +997,24 @@ export const mockData = {
       writers: [],
       categories: [],
       sections: [],
-      publishedDate: 'Mon, 11 Sep 2023 05:44:30 GMT',
+      publishedDate: 'Wed, 23 Aug 2023 14:05:38 GMT',
       state: 'published',
-      title: '測試 2023 風電論壇',
+      title: '這是一篇屬於life的文章',
       adTrace: '',
-      brief: {
-        apiData: [
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '9kj40',
-          },
-        ],
-        html: '<p>測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇</p>',
-      },
       content: {
         apiData: [
           {
             styles: {},
-            content: ['測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'header-two',
-            id: '35vl1',
-          },
-          {
-            styles: {},
-            content: [
-              ['測試 2023 風電論壇測試 2023 風電論壇', '測試 2023 風電論壇'],
-            ],
-            alignment: 'center',
-            type: 'ordered-list-item',
-            id: '4CG6IpJWR',
-          },
-          {
-            styles: {},
-            content: [''],
+            content: ['123456789'],
             alignment: 'center',
             type: 'unstyled',
-            id: 'at0j9',
-          },
-          {
-            styles: {},
-            content: ['測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇'],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '26udp',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: '2rqb5',
-          },
-          {
-            styles: {},
-            content: [
-              {
-                id: '6450cf44ee752e1b00158223',
-                description: '20230502test',
-                url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg',
-                original: {
-                  height: 451,
-                  width: 800,
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d.jpeg',
-                },
-                desktop: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-desktop.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                tablet: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                mobile: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-mobile.jpeg',
-                  width: 800,
-                  height: 451,
-                },
-                square: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-square.jpeg',
-                  width: 1400,
-                  height: 1400,
-                },
-                tiny: {
-                  url: 'https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tiny.jpeg',
-                  width: 150,
-                  height: 85,
-                },
-              },
-            ],
-            alignment: 'center',
-            type: 'image',
-            id: 'e2g0',
-          },
-          {
-            styles: {},
-            content: [''],
-            alignment: 'center',
-            type: 'unstyled',
-            id: 'balbi',
+            id: '9cubg',
           },
         ],
-        html: '<h2>測試 2023 風電論壇</h2><ol><li>測試 2023 風電論壇測試 2023 風電論壇</li><li>測試 2023 風電論壇</li></ol><p></p><p>測試 2023 風電論壇測試 2023 風電論壇測試 2023 風電論壇</p><p></p><div><img alt="20230502test" src="https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg" srcset="https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-mobile.jpeg 800w,  https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-tablet.jpeg 1280w, https://www.mirrormedia.com.tw/assets/images/20230502165220-e71b336567151c162f3bfc8f08fcd81d-desktop.jpeg 2400w" class=""> </img></div><p></p>',
+        html: '<p>123456789</p>',
       },
       extend_byline: '',
       heroCaption: '',
-      heroImage: {
-        _id: '64f02b578058be1a001275de',
-        description: 'windpowerforum2023',
-        createTime: 'Thu, 31 Aug 2023 05:55:35 GMT',
-        tags: [],
-        image: {
-          filename: '20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9.png',
-          filetype: 'image/png',
-          height: 452,
-          resizedTargets: {
-            tiny: {
-              height: 57,
-              width: 150,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-tiny.png',
-            },
-            square: {
-              height: 1400,
-              width: 1400,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-square.png',
-            },
-            mobile: {
-              height: 301,
-              width: 800,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-mobile.png',
-            },
-            tablet: {
-              height: 452,
-              width: 1200,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-tablet.png',
-            },
-            desktop: {
-              height: 452,
-              width: 1200,
-              url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9-desktop.png',
-            },
-          },
-          size: 652029,
-          url: 'https://www.mirrormedia.com.tw/assets/images/20230831135535-0e4f7b26cde8c38b82bf1fee4cf4aaf9.png',
-          width: 1200,
-        },
-      },
       isAdult: false,
       isAdvertised: false,
       isAudioSiteOnly: false,
@@ -1299,25 +1025,43 @@ export const mockData = {
       og_title: '',
       redirect: '',
       subtitle: '',
+      brief: {
+        apiData: [
+          {
+            styles: {},
+            content: ['1111'],
+            alignment: 'center',
+            type: 'unstyled',
+            id: '5g72c',
+          },
+        ],
+        html: '<p>1111</p>',
+      },
       _links: {
         self: {
           title: 'post',
-          href: 'posts/64fea93e8058be1a001275e1',
+          href: 'posts/64e612328058be1a001275d7',
         },
         related: {
-          heroImage: {
-            title: 'Image',
-            href: 'images/64f02b578058be1a001275de',
-          },
           albums: [],
-          sections: [],
+          sections: [
+            {
+              title: 'section',
+              href: 'sections/64e4885d8058be1a001275d5',
+            },
+          ],
           writers: [],
           vocals: [],
           photographers: [],
           camera_man: [],
           designers: [],
           engineers: [],
-          categories: [],
+          categories: [
+            {
+              title: 'postcategory',
+              href: 'postcategories/57dfb7b8ee85930e00cad4cf',
+            },
+          ],
           tags: [
             {
               title: 'tag',
@@ -1327,11 +1071,11 @@ export const mockData = {
           relateds: [],
         },
       },
-      word_count: 727,
-      url: 'https://dev.mirrormedia.mg/story/2023?utm_source=mirrormedia&utm_medium=project&utm_campaign=2023forum',
+      word_count: 16,
+      url: 'https://dev.mirrormedia.mg/story/dy_test_0823?utm_source=mirrormedia&utm_medium=project&utm_campaign=2023forum',
     },
     {
-      _id: '64fea93e8058;ll;k;lk;lk;lbe1a001275e1',
+      _id: '64fea93e8058be1a001275e1',
       updatedAt: 'Mon, 11 Sep 2023 05:45:23 GMT',
       slug: '2023',
       name: '測試 2023 風電論壇',
@@ -1561,24 +1305,28 @@ export const mockData = {
       heroImage_mobile: {
         content:
           'https://v3-statics-dev.mirrormedia.mg/images/f748dd55-6631-4531-a808-543e89a96456.png',
+
         instruction:
           '請將圖片上傳 gcs 後的網址貼入 content 欄，這欄是給手機版的圖片',
       },
       heroImage_tablet: {
         content:
           'https://v3-statics-dev.mirrormedia.mg/images/161082a6-2311-4fb0-b5b3-0ea19af21b55.png',
+
         instruction:
           '請將圖片上傳 gcs 後的網址貼入 content 欄，這欄是給平板版的圖片',
       },
       heroImage_desktop: {
         content:
           'https://v3-statics-dev.mirrormedia.mg/images/161082a6-2311-4fb0-b5b3-0ea19af21b55.png',
+
         instruction:
           '請將圖片上傳 gcs 後的網址貼入 content 欄，這欄是給桌機版的圖片',
       },
       introduction: {
         content:
-          '月薪90萬元、從事金融業的何先生，10多年來努力存高殖利率電子股，包括廣達、技嘉、台積電等，今年順利搭上AI行情，手上股票績效大好，本金順利滾上千萬。不過，隨美國升息步入尾聲，他看好債券價格有望彈升，7月順勢將這筆千萬資金獲利了結，全數投入債券。 \n\n\n月薪90萬元、從事金融業的何先生，10多年來努力存高殖利率電子股，包括廣達、技嘉、台積電等，今年順利搭上AI行情，手上股票績效大好，本金順利滾上千萬。不過，隨美國升息步入尾聲，他看好債券價格有望彈升，7月順勢將這筆千萬資金獲利了結，全數投入債券。 ',
+          '期債券各買500萬元，算是把股票的錢全部拿出來ALL IN債券。」投資股票20年的何先生說，去年美國利率升的又急又快，這輩子沒見過，現在還出現殖利率倒掛（短債殖利率大於長債），他想要息收和價差雙賺，因此長、短債都布局，而他計畫將這筆錢放2至3年，預估報酬率有30%。\n記者問，有想過放定存更安穩嗎？他笑說，他與身邊很多朋友都看好美國升息已經步入尾聲，若明年市場開始降息，債券價格會上升，「如果',
+
         instruction: '請將文字內容直接填入 content 欄',
       },
       qrCode: {
@@ -1587,7 +1335,8 @@ export const mockData = {
         instruction: '請將 QR Code 圖片上傳 gcs 後的網址貼入 content 欄',
       },
       video: {
-        content: 'https://www.youtube.com/watch?v=6WZ67f9M3RE',
+        content:
+          'https://storage.googleapis.com/statics-readr-tw-dev/files/test-e0u6aXKDeeLbFrNXXCi.mp4',
         instruction: '請將 youtube 連結的網址填入 content 欄',
       },
       registration: {
@@ -1607,8 +1356,9 @@ export const mockData = {
     },
     schedule: [
       {
-        topic: '離岸風電防疫措施公告',
-        time: '2023/10/25 10:30',
+        topic:
+          '實施必要之應變處置或措施公告實施必要之應變處置或措施公告實施必要之應變處置或措施公告實施必要之應變處置或措施公告實施必要之應變處置或措施公告實施必要之應變處置或措施公告實施必要之應變處置或措施公告實施必要之應變處置或措施公告實施必要之應變處置或措施公告',
+        time: '2023/10/25 kjjkhjkhkjhkjhkjhkjhkhjkhkjhkjhkkhjkhkjhkjhkkhjkhkjhkjhkkhjkhkjhkjhkkhjkhkjhkjhk',
         speakersInfo:
           '＊主持人＊王美花：經濟部長、總統／馬英九：總統／蔡英文：前總統\n＊與會嘉賓＊王美花：經濟部長、總統／馬英九：總統／蔡英文：前總統',
         instruction: '',
@@ -1633,9 +1383,17 @@ export const mockData = {
         instruction: '',
       },
       {
-        topic: '圓滿賦歸',
+        topic: '',
         time: '',
-        speakersInfo: '',
+        speakersInfo:
+          '趙樹海：國立臺灣海洋大學河海工程學系教授、諮詢專家／海綿寶寶：華南商業銀行 企業金融事業群副總經理／蔡英文：中華水下文化資產學會理事長',
+        instruction: '',
+      },
+      {
+        topic: '',
+        time: '',
+        speakersInfo:
+          '趙樹海：國立臺灣海洋大學河海工程學系教授、諮詢專家／海綿寶寶：華南商業銀行 企業金融事業群副總經理／蔡英文：中華水下文化資產學會理事長',
         instruction: '',
       },
       {
@@ -1662,7 +1420,7 @@ export const mockData = {
     speakers: [
       {
         name: '王美花',
-        image: 'https://www.ly.gov.tw//Images/Legislators/90001.jpg',
+        image: 'https://www.ly.gov.tw//Images/Legislators/90001---.jpg',
         description:
           '為防治控制疫情需要，於嚴重特殊傳染性肺炎中央流行疫情指揮中心成立期間，離岸風力發電專案公司應依本公告規定事項辦理。\n為防治控制疫情需要，於嚴重特殊傳染性肺炎中央流行疫情指揮中心成立期間，離岸風力發電專案公司應依本公告規定事項辦理。',
       },
@@ -1704,35 +1462,35 @@ export const mockData = {
     ],
     partners: {
       主辦單位: [
-        {
-          order: '1',
-          image:
-            'https://statics.mnews.tw/assets/images/clg4xkvkp000e10kphr0e7vqo.png',
-        },
-        {
-          order: '2',
-          image:
-            'https://statics.mnews.tw/assets/images/clfgn3jbb000710ng6ion3bae.png',
-        },
-        {
-          order: '3',
-          image: '',
-        },
+        // {
+        //   order: '1',
+        //   image:
+        //     'https://statics.mnews.tw/assets/images/clg4xkvkp000e10kphr0e7vqo.png',
+        // },
+        // {
+        //   order: '2',
+        //   image:
+        //     'https://statics.mnews.tw/assets/images/clfgn3jbb000710ng6ion3bae.png',
+        // },
+        // {
+        //   order: '3',
+        //   image: '',
+        // },
       ],
       指導單位: [
-        {
-          order: '1',
-          image:
-            'https://statics.mnews.tw/assets/images/clfgn2e2w000s10o7bu7ygntc.png',
-        },
-        {
-          order: '2',
-          image: '',
-        },
-        {
-          order: '3',
-          image: '',
-        },
+        // {
+        //   order: '1',
+        //   image:
+        //     'https://statics.mnews.tw/assets/images/clfgn2e2w000s10o7bu7ygntc.png',
+        // },
+        // {
+        //   order: '2',
+        //   image: '',
+        // },
+        // {
+        //   order: '3',
+        //   image: '',
+        // },
       ],
       合作單位: [
         {
@@ -1750,49 +1508,49 @@ export const mockData = {
         },
       ],
       贊助單位: [
-        {
-          order: '1',
-          image:
-            'https://statics.mnews.tw/assets/images/clg4xkvkp000e10kphr0e7vqo.png',
-        },
-        {
-          order: '2',
-          image:
-            'https://statics.mnews.tw/assets/images/clfgn4mw9000810ng9klbckp7.png',
-        },
-        {
-          order: '3',
-          image:
-            'https://statics.mnews.tw/assets/images/clfgn1g2x000r10o70o4qeutp.jpg',
-        },
-        {
-          order: '4',
-          image: '',
-        },
-        {
-          order: '5',
-          image: '',
-        },
-        {
-          order: '6',
-          image: '',
-        },
-        {
-          order: '7',
-          image: '',
-        },
-        {
-          order: '8',
-          image: '',
-        },
-        {
-          order: '9',
-          image: '',
-        },
-        {
-          order: '10',
-          image: '',
-        },
+        // {
+        //   order: '1',
+        //   image:
+        //     'https://statics.mnews.tw/assets/images/clg4xkvkp000e10kphr0e7vqo.png',
+        // },
+        // {
+        //   order: '2',
+        //   image:
+        //     'https://statics.mnews.tw/assets/images/clfgn4mw9000810ng9klbckp7.png',
+        // },
+        // {
+        //   order: '3',
+        //   image:
+        //     'https://statics.mnews.tw/assets/images/clfgn1g2x000r10o70o4qeutp.jpg',
+        // },
+        // {
+        //   order: '4',
+        //   image: '',
+        // },
+        // {
+        //   order: '5',
+        //   image: '',
+        // },
+        // {
+        //   order: '6',
+        //   image: '',
+        // },
+        // {
+        //   order: '7',
+        //   image: '',
+        // },
+        // {
+        //   order: '8',
+        //   image: '',
+        // },
+        // {
+        //   order: '9',
+        //   image: '',
+        // },
+        // {
+        //   order: '10',
+        //   image: '',
+        // },
       ],
     },
   },

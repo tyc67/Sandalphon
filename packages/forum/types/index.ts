@@ -38,7 +38,8 @@ export type GenericRelatedPost = {
   publishedDate: string
   state: string
   title: string
-  heroImage: HeroImage | null
+  // heroImage: HeroImage | null // K6
+  heroImage: any // K3
   url: string
 }
 
