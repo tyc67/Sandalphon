@@ -1,7 +1,11 @@
-import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+import { breakpoint } from '~/styles/theme'
+import type { K6_ForumData } from '~/types'
 
+import Layout from '~/components/layout/layout'
+import CustomHead from '~/components/shared/head'
 import ForumVideo from '~/components/forum-video'
 import Introduction from '~/components/introduction'
 import HeroImage from '~/components/hero-image'
@@ -10,11 +14,7 @@ import Schedule from '~/components/schedule'
 import Registration from '~/components/registration'
 import RelatedPost from '~/components/related-post'
 import Partners from '~/components/partners'
-import { breakpoint } from '~/styles/theme'
-import Layout from '~/components/layout/layout'
-import type { K6_ForumData } from '~/types'
-import CustomHead from '../components/shared/head'
-import type { OGProperty } from '~/types'
+import { mockData } from '~/constants'
 
 const Main = styled.main`
   background: #bbd4da;
@@ -26,11 +26,7 @@ const Main = styled.main`
 `
 
 // TODO: 擴用性包含放背景圖片
-
-type HomeProps = {
-  ogData: OGProperty
-}
-export default function Home({ ogData }: HomeProps): JSX.Element {
+export default function Home(): JSX.Element {
   const [data, setData] = useState<K6_ForumData>({
     metadata: {
       pageInfo: {
@@ -83,13 +79,13 @@ export default function Home({ ogData }: HomeProps): JSX.Element {
   useEffect(() => {
     axios
       .get(
-        //k6-JSON
+        //k6-JSON（目前尚未上版）
         //'https://v3-statics-dev.mirrormedia.mg/files/json/forum2023_gql_all.json'
 
-        //k3-JSON
-        // 'https://v3-statics-dev.mirrormedia.mg/json/forum2023.json'
+        //k3-prod-test-JSON
+        // 'https://v3-statics.mirrormedia.mg/json/forum2023.json'
 
-        //k3-prod-JSON
+        //k3-final-JSON
         'https://v3-statics.mirrormedia.mg/json/forum2023.json'
       )
       .then((response) => {
@@ -101,7 +97,7 @@ export default function Home({ ogData }: HomeProps): JSX.Element {
       })
   }, [])
 
-  const { metadata, relatedPost } = data // 缺：type + 資料 error handle
+  const { metadata, relatedPost } = mockData // 缺：type
   const { pageInfo, speakers, schedule, partners } = metadata
 
   const heroImageSrc = {
@@ -118,9 +114,9 @@ export default function Home({ ogData }: HomeProps): JSX.Element {
   return (
     <>
       <CustomHead
-        title={ogData.ogTitle}
-        description={ogData.ogDesc}
-        imageUrl={ogData.ogImageSrc}
+        title="2023 離岸風電 高峰論壇"
+        description="隨著Apple、Google、Microsoft等重量級企業加入全球再生能源倡議RE100，再生能源對出口導向的台灣經濟發展將更加重要。然而，台灣自2021年被列為全球採購再生能源最困難的市場之一後，此問題並未有太大改善。持平而論，未來幾年要大幅提高綠電供給，似乎只能仰賴離岸風電。換句話說，台灣離岸風電的發展順利與否，將攸關台灣經濟的命運。有鑑於此，《鏡週刊》特別舉辦「離岸風電高峰論壇」，盼能集思廣益，解決此一難題。"
+        imageUrl="https://v3-statics-dev.mirrormedia.mg/images/161082a6-2311-4fb0-b5b3-0ea19af21b55.png"
       />
 
       <Layout>
@@ -137,34 +133,4 @@ export default function Home({ ogData }: HomeProps): JSX.Element {
       </Layout>
     </>
   )
-}
-
-export async function getStaticProps() {
-  try {
-    const response = await axios.get(
-      'https://v3-statics.mirrormedia.mg/json/forum2023.json'
-    )
-    const data = response.data
-
-    const ogTitle = data.metadata?.pageInfo?.og_title?.content || ''
-    const ogImageSrc = data.metadata?.pageInfo?.og_image?.content || ''
-    const ogDesc = data.metadata?.pageInfo?.introduction?.content || ''
-
-    return {
-      props: {
-        ogData: {
-          ogTitle: ogTitle,
-          ogImageSrc: ogImageSrc,
-          ogDesc: ogDesc,
-        },
-      },
-    }
-  } catch (error) {
-    console.error('Error fetching data:', error)
-    return {
-      props: {
-        ogData: { ogTitle: '', ogImageSrc: '', ogDesc: '' }, // 或其他錯誤處理
-      },
-    }
-  }
 }

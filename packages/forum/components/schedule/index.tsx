@@ -43,7 +43,16 @@ const RowContainer = styled.div`
 type ScheduleProps = {
   content: ScheduleItem[]
 }
-export default function Schedule({ content = [] }: ScheduleProps): JSX.Element {
+export default function Schedule({
+  content = [],
+}: ScheduleProps): JSX.Element | null {
+  //Error Handle
+  const shouldShowJSX = Boolean(Array.isArray(content) && content.length > 0)
+
+  if (!shouldShowJSX) {
+    return null
+  }
+
   return (
     <Wrapper id="schedule">
       <h1>論壇議程</h1>

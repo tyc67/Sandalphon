@@ -119,32 +119,36 @@ type RelatedPostProps = {
 }
 export default function RelatedPost({
   relatedPosts = [],
-}: RelatedPostProps): JSX.Element {
+}: RelatedPostProps): JSX.Element | null {
   const postLength = relatedPosts?.length
+  if (!postLength) {
+    return null
+  }
 
   return (
     <Wrapper id="related-post">
       <h1>相關報導</h1>
+
       <SwiperGroup postLength={postLength}>
         <div className="custom-swiper-prev swiper-arrow">
           <ArrowLeft />
         </div>
 
         <Swiper
-          // @ts-ignore
-          // eslint-disable-next-line no-param-reassign
           breakpoints={{
+            320: {
+              spaceBetween: 10,
+            },
             768: {
-              slidesPerGroup: 2, // when screen width >= 768px
+              spaceBetween: 20,
+              slidesPerView: 2, // when screen width >= 768px
             },
             1200: {
-              slidesPerGroup: 4, // when screen width >= 1200px
+              slidesPerView: 4, // when screen width >= 1200px
             },
           }}
-          // @ts-ignore
-          // eslint-disable-next-line no-param-reassign
           slidesPerView={'auto'}
-          spaceBetween={20}
+          slidesPerGroup={1}
           loop={true}
           modules={[Pagination, Navigation]}
           navigation={{

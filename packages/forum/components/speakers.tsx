@@ -62,7 +62,7 @@ type SpeakersProps = {
 }
 export default function Speakers({
   speakers = [],
-}: SpeakersProps): JSX.Element {
+}: SpeakersProps): JSX.Element | null {
   const speakerLists = speakers.map((speaker: GenericSpeaker, index) => {
     const formattedImgUrl = {
       original: speaker.image,
@@ -86,16 +86,17 @@ export default function Speakers({
     )
   })
 
+  //Error Handle
   const shouldShowJSX = Boolean(Array.isArray(speakers) && speakers.length > 0)
 
+  if (!shouldShowJSX) {
+    return null
+  }
+
   return (
-    <>
-      {shouldShowJSX && (
-        <Wrapper id="speakers">
-          <h1>與會陣容</h1>
-          <SpeakerLists>{speakerLists}</SpeakerLists>
-        </Wrapper>
-      )}
-    </>
+    <Wrapper id="speakers">
+      <h1>與會陣容</h1>
+      <SpeakerLists>{speakerLists}</SpeakerLists>
+    </Wrapper>
   )
 }
