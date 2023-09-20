@@ -5,7 +5,7 @@ type ContentProps = {
 export default function ContentBlock({
   content = '',
 }: ContentProps): JSX.Element | null {
-  if (typeof content !== 'string' || !content) {
+  if (typeof content !== 'string' || !content.trim()) {
     return null
   }
 

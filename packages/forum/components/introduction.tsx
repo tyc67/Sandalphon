@@ -17,24 +17,36 @@ const Content = styled.div`
     align-items: center;
     justify-content: space-between;
     flex-direction: row-reverse;
+    gap: 60px;
   }
 `
 
-const QRCode = styled.div`
+const QRCode = styled.div<{ shouldShowQRCode: boolean }>`
+  display: ${({ shouldShowQRCode }) => (shouldShowQRCode ? 'block' : 'none')};
   width: 184px;
   height: 184px;
   min-width: 184px;
   margin: auto;
-  display: block;
-  margin-bottom: 30px;
+
+  & + .intro-text {
+    margin-top: 30px;
+  }
 
   ${breakpoint.md} {
-    margin-bottom: 40px;
+    & + .intro-text {
+      margin-top: 40px;
+    }
   }
 
   ${breakpoint.xl} {
-    margin: auto 0px auto 60px;
+    & + .intro-text {
+      margin: 0px;
+    }
   }
+`
+
+const IntroText = styled.div<{ shouldShowText: boolean }>`
+  display: ${({ shouldShowText }) => (shouldShowText ? 'block' : 'none')};
 `
 
 type IntroProps = {
@@ -44,14 +56,24 @@ type IntroProps = {
 export default function Introduction({
   introText = '',
   qrCodeSrc = '',
-}: IntroProps): JSX.Element {
-  //什麼時候這個 block 會整個不見？？
+}: IntroProps): JSX.Element | null {
+  // Error Handle
+  const shouldShowText = Boolean(
+    typeof introText !== 'string' || introText.trim()
+  )
+  const shouldShowQRCode = Boolean(
+    typeof qrCodeSrc !== 'string' || qrCodeSrc.trim()
+  )
+
+  if (!shouldShowText && !shouldShowQRCode) {
+    return null
+  }
 
   return (
     <Wrapper id="introduction">
       <h1>論壇簡介</h1>
       <Content>
-        <QRCode>
+        <QRCode shouldShowQRCode={shouldShowQRCode}>
           <Image
             images={{ original: qrCodeSrc }}
             objectFit={'contain'}
@@ -60,7 +82,10 @@ export default function Introduction({
             alt="qr-code"
           />
         </QRCode>
-        <ContentBlock content={introText} />
+
+        <IntroText shouldShowText={shouldShowText} className="intro-text">
+          <ContentBlock content={introText} />
+        </IntroText>
       </Content>
     </Wrapper>
   )

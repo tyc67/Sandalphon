@@ -1,10 +1,14 @@
 // 這裡管理的是在 Build 階段就會寫死數值的環境變數 (通常為 `NEXT_PUBLIC_` 開頭)
 const env: string = String(process.env.NEXT_PUBLIC_ENV)
 const projectName: string = String(process.env.NEXT_PUBLIC_PROJECT_NAME)
-const primaryColor: string =
-  String(process.env.NEXT_PUBLIC_PRIMARY_COLOR) ?? '#E2FBFE'
+
+const OG_TITLE: string = process.env.OG_TITLE || ''
+const OG_DESC: string = process.env.OG_DESC || ''
+const OG_IMAGE_URL: string = process.env.OG_IMAGE_URL || ''
+
+const primaryColor: string = process.env.NEXT_PUBLIC_PRIMARY_COLOR || '#E2FBFE'
 const secondaryColor: string =
-  String(process.env.NEXT_PUBLIC_SECONDARY_COLOR) ?? '#ffffff'
+  process.env.NEXT_PUBLIC_SECONDARY_COLOR || '#ffffff'
 
 let protocol = 'http'
 let host = 'localhost'
@@ -59,4 +63,7 @@ export {
   SITE_URL,
   primaryColor,
   secondaryColor,
+  OG_TITLE,
+  OG_DESC,
+  OG_IMAGE_URL,
 }

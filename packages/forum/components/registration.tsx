@@ -11,17 +11,17 @@ type RegistrationProps = {
 }
 export default function Registration({
   content,
-}: RegistrationProps): JSX.Element {
-  const shouldShowJsx = Boolean(content && content.trim() !== '')
+}: RegistrationProps): JSX.Element | null {
+  //Error Handle
+  const shouldShowJsx = Boolean(typeof content !== 'string' || content.trim())
+  if (!shouldShowJsx) {
+    return null
+  }
 
   return (
-    <>
-      {shouldShowJsx && (
-        <Wrapper id="registration">
-          <h1>報名資訊</h1>
-          <ContentBlock content={content} />
-        </Wrapper>
-      )}
-    </>
+    <Wrapper id="registration">
+      <h1>報名資訊</h1>
+      <ContentBlock content={content} />
+    </Wrapper>
   )
 }

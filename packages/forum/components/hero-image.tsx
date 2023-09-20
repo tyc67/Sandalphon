@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useState, useEffect } from 'react'
 import Image from '@readr-media/react-image'
 import { breakpoint } from '~/styles/theme'
 import { imagePrefix } from '~/config'
@@ -16,9 +17,6 @@ const ImageBlock = styled.div`
   img {
     width: 100%;
   }
-  /* .readr-media-react-image {
-    object-fit: contain !important;
-  } */
 
   ${breakpoint.md} {
     height: auto;
@@ -33,26 +31,24 @@ export default function HeroImage({
   heroImageSrc = { mobile: '', tablet: '', desktop: '' },
 }: HeroImageProps): JSX.Element {
   const windowDimensions = useWindowDimensions()
+  const [selectedSrc, setSelectedSrc] = useState('')
 
-  // FIXME: 這邊要重構，避免太多 if
-  let selectedImageSrc = ''
-
-  if (windowDimensions?.width) {
-    if (windowDimensions?.width >= 1200) {
-      selectedImageSrc = heroImageSrc.desktop
-    } else if (windowDimensions?.width >= 768) {
-      selectedImageSrc = heroImageSrc.tablet
+  useEffect(() => {
+    if (windowDimensions?.width && windowDimensions?.width >= 1200) {
+      setSelectedSrc(heroImageSrc.desktop)
+    } else if (windowDimensions?.width && windowDimensions?.width >= 768) {
+      setSelectedSrc(heroImageSrc.tablet)
     } else {
-      selectedImageSrc = heroImageSrc.mobile
+      setSelectedSrc(heroImageSrc.mobile)
     }
-  }
+  }, [windowDimensions, heroImageSrc])
 
   return (
     <ImageBlock>
       <Image
-        images={{ original: selectedImageSrc }}
+        images={{ original: selectedSrc }}
         alt="forum-hero-image"
-        objectFit={'contain'}
+        objectFit={'cover'}
         priority={true}
         defaultImage={`${imagePrefix}/images/default-hero-image-bg.svg`}
       />

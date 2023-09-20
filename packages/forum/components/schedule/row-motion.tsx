@@ -15,7 +15,7 @@ const oddStyle = css`
     padding: 20px 40px 20px 0px;
   }
   ${breakpoint.xl} {
-    padding: 30px 250px 30px 0px;
+    padding: 30px 180px 30px 0px;
   }
 `
 const evenStyle = css`
@@ -73,6 +73,11 @@ const RowContent = styled.div<{ isOrderOdd: boolean }>`
 
   .time {
     font-weight: 700;
+    word-break: break-all;
+
+    ${breakpoint.xl} {
+      max-width: 200px;
+    }
 
     & + * {
       margin-top: 10px;
@@ -85,6 +90,11 @@ const RowContent = styled.div<{ isOrderOdd: boolean }>`
 
   .topic {
     font-family: 'Noto Serif TC', serif;
+    word-break: break-all;
+
+    ${breakpoint.xl} {
+      max-width: 300px;
+    }
 
     & + * {
       margin-top: 15px;
@@ -132,6 +142,10 @@ export default function RowMotion({
     }
   }, [controls, inView, direction, variants])
 
+  //Error Handle
+  const shouldShowTime = Boolean(typeof time !== 'string' || time.trim())
+  const shouldShowTopic = Boolean(typeof topic !== 'string' || topic.trim())
+
   return (
     // FIXME: 目前 typescript 設定還有問題
     //@ts-ignore
@@ -145,8 +159,10 @@ export default function RowMotion({
       whileHover={{ scale: 1.03 }}
     >
       <RowContent className="row-content" isOrderOdd={isOrderOdd}>
-        <p className="time">{time}</p>
-        <p className="topic">{topic}</p>
+        {shouldShowTime && <p className="time">{time}</p>}
+
+        {shouldShowTopic && <p className="topic">{topic}</p>}
+
         {checkHaveSpeakers(formattedSpeakers) && (
           <RowSpeakerLists speakerLists={formattedSpeakers} />
         )}

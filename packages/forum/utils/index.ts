@@ -1,4 +1,4 @@
-import type { RowSpeakerItem, FormattedSpeaker } from '~/types'
+import type { RowSpeakerItem, FormattedSpeaker, LogoImage } from '~/types'
 
 /**
  * Check if the source is from YouTube. If it is, get the YouTube ID and transform it to https://www.youtube.com/embed/${youtubeId}?enablejsapi=1 in order to put it in <iframe>.
@@ -77,11 +77,11 @@ function checkHaveSpeakers(speakerArray: RowSpeakerItem[]): boolean {
   }
 
   const firstSpeaker = speakerArray[0]
+
   if (
     speakerArray.length === 1 &&
-    firstSpeaker.type.trim() === '' &&
     firstSpeaker.speakers.length === 1 &&
-    firstSpeaker.speakers[0].title.length === 0
+    firstSpeaker.speakers[0].name.trim() === ''
   ) {
     return false
   }
@@ -89,9 +89,14 @@ function checkHaveSpeakers(speakerArray: RowSpeakerItem[]): boolean {
   return true
 }
 
+function removeEmptyLogo(logoList: LogoImage[]) {
+  return logoList.filter((item) => item.image.trim() !== '')
+}
+
 export {
   getVideoSrc,
   parseSpeakerWithTitle,
   parseSpeakersByType,
   checkHaveSpeakers,
+  removeEmptyLogo,
 }

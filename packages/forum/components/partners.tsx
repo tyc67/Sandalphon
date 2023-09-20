@@ -4,6 +4,7 @@ import { breakpoint } from '~/styles/theme'
 import type { LogoImage } from '~/types'
 import Image from '@readr-media/react-image'
 import { imagePrefix } from '~/config'
+import { removeEmptyLogo } from '~/utils'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
@@ -43,9 +44,6 @@ const LogosImage = styled.div`
   }
 `
 
-//FIXME: Logo 壞掉時的處理 default-image
-//FIXME: type 類型如無資料則不顯示
-
 type PartnersProps = {
   partners: {
     [key: string]: LogoImage[]
@@ -58,30 +56,38 @@ export default function Partners({
     合作單位: [],
     贊助單位: [],
   },
-}: PartnersProps): JSX.Element {
+}: PartnersProps): JSX.Element | null {
+  // Error Handle：檢查是否所有單位都是空陣列，如果所有單位都是空陣列，則返回null
+  const isEmptyPartners = Object.values(partners).every(
+    (partner) => !partner.length
+  )
+
+  if (isEmptyPartners) {
+    return null
+  }
+
   function generateLogos(type: string) {
-    const logoList = partners[type]
-    const shouldShowList = Boolean(logoList?.length)
+    const logoList = removeEmptyLogo(partners[type])
+
+    if (!logoList?.length) {
+      return null
+    }
 
     return (
       <>
-        {shouldShowList && (
-          <>
-            <LogoType>{type}</LogoType>
-            <LogosImage>
-              {logoList?.map((logo, index) => (
-                <Image
-                  key={index}
-                  images={{ original: logo.image }}
-                  alt={`sponsor-logo ${index}`}
-                  objectFit={'contain'}
-                  priority={true}
-                  defaultImage={`${imagePrefix}/images/default-partner-bg.svg`}
-                />
-              ))}
-            </LogosImage>
-          </>
-        )}
+        <LogoType>{type}</LogoType>
+        <LogosImage>
+          {logoList?.map((logo, index) => (
+            <Image
+              key={index}
+              images={{ original: logo.image }}
+              alt={`sponsor-logo ${index}`}
+              objectFit={'contain'}
+              priority={true}
+              defaultImage={`${imagePrefix}/images/default-partner-bg.svg`}
+            />
+          ))}
+        </LogosImage>
       </>
     )
   }

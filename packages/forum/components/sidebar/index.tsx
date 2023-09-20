@@ -3,13 +3,13 @@ import { useState, useEffect, useRef } from 'react'
 import MenuIcon from '~/public/icon/menu-icon.svg'
 import { zIndex, breakpoint } from '~/styles/theme'
 import MediaIcons from '~/components/sidebar/media-icons'
-import { staticFileDestination } from '~/config'
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
 import Link from 'next/link'
+import { navLists } from '~/constants'
 
 const SideMenuWrapper = styled.nav<{ show: boolean }>`
   position: fixed;
@@ -25,13 +25,13 @@ const SideMenuWrapper = styled.nav<{ show: boolean }>`
   justify-content: flex-start;
   align-items: center;
   visibility: ${(prop) => (prop.show ? 'visible' : 'hidden')};
-  transform: ${(prop) => (prop.show ? 'translateY(0px)' : 'translateX(375px)')};
+  transform: ${(prop) => (prop.show ? 'translateX(0px)' : 'translateX(375px)')};
   transition: 0.4s cubic-bezier(0.8, 0, 0.2, 1);
   z-index: ${zIndex.top};
 
   @media (min-width: 375px) {
     transform: ${(prop) =>
-      prop.show ? 'translateY(0px)' : 'translateX(767px)'};
+      prop.show ? 'translateX(0px)' : 'translateX(767px)'};
   }
 
   ${breakpoint.md} {
@@ -116,16 +116,6 @@ export default function SideMenu() {
     }
   }, [show])
 
-  const navLists = [
-    { title: '論壇簡介', href: `${staticFileDestination}#introduction` },
-    { title: '活動影音', href: `${staticFileDestination}#video` },
-    { title: '與會陣容', href: `${staticFileDestination}#speakers` },
-    { title: '論壇議程', href: `${staticFileDestination}#schedule` },
-    { title: '相關報導', href: `${staticFileDestination}#related-post` },
-    { title: '報名資訊', href: `${staticFileDestination}#registration` },
-    { title: '共同推動', href: `${staticFileDestination}#partners` },
-  ]
-
   const contentLists = navLists.map((list, index) => {
     return (
       <Link
@@ -144,7 +134,8 @@ export default function SideMenu() {
   return (
     <>
       <ToggleButton
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault()
           setShow(!show)
         }}
         show={show}

@@ -58,15 +58,11 @@ const PostTitle = styled.div`
   font-size: 16px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   overflow: hidden;
 
   & + .date {
     margin-top: 10px;
-  }
-
-  ${breakpoint.md} {
-    -webkit-line-clamp: 3;
   }
 `
 
@@ -87,8 +83,9 @@ export default function Slide({ post }: SlideItemProps): JSX.Element {
     <SlideItem href={url} target="_blank" rel="noopener noreferrer nofollow">
       <PostImage>
         <Image
-          images={heroImage?.resized}
-          imagesWebP={heroImage?.resizedWebp}
+          images={{ original: heroImage?.image?.url }} // K3-json
+          // images={heroImage?.resized} // k6-json
+          // imagesWebP={heroImage?.resizedWebp} // k6-json
           defaultImage={`${imagePrefix}/images/default-og-img.svg`}
           alt={title}
           objectFit={'cover'}

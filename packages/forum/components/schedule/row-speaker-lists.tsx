@@ -1,10 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import SpeakerItem from '~/components/schedule/row-speaker-item'
+import { breakpoint } from '~/styles/theme'
 import type { FormattedSpeaker, RowSpeakerItem } from '~/types'
 
 const SpeakersWrapper = styled.div`
   max-width: 300px;
+
+  ${breakpoint.xl} {
+    min-width: 120px;
+    max-width: 230px;
+  }
 `
 
 const TypeGroup = styled.div`
