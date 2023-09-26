@@ -54,9 +54,11 @@
 | NEXT_PUBLIC_SIDEBAR_TEXT_COLOR | 字串     | 'rgba(182, 242, 255, 1)'                                | 手機版展開式側欄小標文字顏色   |
 | NEXT_PUBLIC_SIDEBAR_BG_COLOR   | 字串     | 'rgba(11, 25, 48, 0.8)'                                 | 手機版展開式側欄底圖顏色       |
 | NEXT_PUBLIC_BG_IMAGE_URL       | 字串     | ''                                                      | 專題背景底圖（單張呈現不重複） |
-|                                |
 
 註：OG 圖片設定方式：目前設計上不透過環境變數指定，要請需求方提供： (1) 尺寸：1200x630 (2) 檔案格式：jpg / jpeg 的圖片，並上傳到 GCS 上該次論壇專題的資料夾內的 images 資料夾內。（ code 寫法設定統一吃 /images/og.jpg 檔案當作 OG Image）
+
+<img width="816" alt="截圖 2023-09-26 下午8 05 14" src="https://github.com/ChangRongXuan/Sandalphon/assets/104489150/e23339cf-dffa-4bc8-8d6a-f18387d0fce1">
+<img width="535" alt="截圖 2023-09-26 下午8 10 08" src="https://github.com/ChangRongXuan/Sandalphon/assets/104489150/a85fae7b-c229-450a-838b-cfb166cd1b17">
 
 ---
 
