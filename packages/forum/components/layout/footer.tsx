@@ -5,6 +5,7 @@ import { breakpoint, color } from '~/styles/theme'
 const Wrapper = styled.div`
   width: 100%;
   background: ${color.background};
+  color: ${color.text.normal};
 `
 const TextGroup = styled.div`
   margin: auto;

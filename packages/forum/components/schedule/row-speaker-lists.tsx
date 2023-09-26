@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import SpeakerItem from '~/components/schedule/row-speaker-item'
-import { breakpoint } from '~/styles/theme'
+import { breakpoint, color } from '~/styles/theme'
 import type { FormattedSpeaker, RowSpeakerItem } from '~/types'
 
 const SpeakersWrapper = styled.div`
@@ -19,7 +19,7 @@ const TypeGroup = styled.div`
   }
 `
 const SpeakerType = styled.div`
-  color: #b3b3b3;
+  color: ${color.gray};
   margin-bottom: 8px;
   font-size: 14px;
 `

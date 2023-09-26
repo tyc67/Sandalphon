@@ -1,14 +1,35 @@
-// 這裡管理的是在 Build 階段就會寫死數值的環境變數 (通常為 `NEXT_PUBLIC_` 開頭)
+// 這裡管理的是在 Build 階段就會寫死數值的環境變數。
+// .env.local 中的變數，僅能在 sever-side 階段取用。但以 `NEXT_PUBLIC_` 開頭命名者，可在 client-side 階段取用。
 const env: string = String(process.env.NEXT_PUBLIC_ENV)
 const projectName: string = String(process.env.NEXT_PUBLIC_PROJECT_NAME)
 
-const OG_TITLE: string = process.env.OG_TITLE || ''
-const OG_DESC: string = process.env.OG_DESC || ''
-const OG_IMAGE_URL: string = process.env.OG_IMAGE_URL || ''
+// JSON 設定
+const JSON_URL: string =
+  process.env.NEXT_PUBLIC_DATA_JSON ||
+  'https://v3-statics.mirrormedia.mg/json/forum2023.json'
 
+// OpenGraph 設定
+const OG_TITLE: string = process.env.NEXT_PUBLIC_OG_TITLE || ''
+const OG_DESC: string = process.env.NEXT_PUBLIC_OG_DESC || ''
+const OG_IMAGE_URL: string =
+  process.env.NEXT_PUBLIC_OG_IMAGE_URL ||
+  'https://v3-statics-dev.mirrormedia.mg/images/161082a6-2311-4fb0-b5b3-0ea19af21b55.png'
+
+// Color 設定
 const primaryColor: string = process.env.NEXT_PUBLIC_PRIMARY_COLOR || '#E2FBFE'
 const secondaryColor: string =
   process.env.NEXT_PUBLIC_SECONDARY_COLOR || '#ffffff'
+const backgroundColor: string = process.env.NEXT_PUBLIC_BG_COLOR || '#BBD4DA'
+const titleColor: string = process.env.NEXT_PUBLIC_TITLE_COLOR || '#000000'
+const textColor: string = process.env.NEXT_PUBLIC_TEXT_COLOR || '#000000'
+const borderColor: string = process.env.NEXT_PUBLIC_BORDER_COLOR || '#000000'
+const sideBarBgColor: string =
+  process.env.NEXT_PUBLIC_SIDEBAR_BG_COLOR || 'rgba(11, 25, 48, 0.8)'
+const sideBarTextColor: string =
+  process.env.NEXT_PUBLIC_SIDEBAR_TEXT_COLOR || 'rgba(182, 242, 255, 1)'
+
+// Background Image 專題背景底圖設定
+const bgImageURL: string = process.env.NEXT_PUBLIC_BG_IMAGE_URL || ''
 
 let protocol = 'http'
 let host = 'localhost'
@@ -61,9 +82,17 @@ export {
   imagePrefix,
   GTM_ID,
   SITE_URL,
+  JSON_URL,
   primaryColor,
   secondaryColor,
+  backgroundColor,
+  titleColor,
+  textColor,
+  borderColor,
+  sideBarBgColor,
+  sideBarTextColor,
   OG_TITLE,
   OG_DESC,
   OG_IMAGE_URL,
+  bgImageURL,
 }

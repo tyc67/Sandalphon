@@ -1,5 +1,5 @@
 import { css } from 'styled-components'
-import { breakpoint } from './theme'
+import { breakpoint, color } from '~/styles/theme'
 
 export const defaultBlockStyle = css`
   font-family: 'Noto Sans TC';
@@ -7,6 +7,7 @@ export const defaultBlockStyle = css`
   margin: auto;
   padding: 30px 20px;
   max-width: 960px;
+  color: ${color.text.normal};
 
   ${breakpoint.md} {
     padding: 30px 60px;
@@ -23,6 +24,7 @@ export const defaultBlockStyle = css`
     margin: 20px auto 30px auto;
     font-family: 'Noto Serif TC', serif;
     font-weight: 900;
+    color: ${color.text.title};
 
     ${breakpoint.md} {
       font-size: 30px;
@@ -39,6 +41,7 @@ export const defaultBlockStyle = css`
     font-weight: 400;
     text-align: justify;
     word-break: break-all;
+    color: ${color.text.normal};
 
     ${breakpoint.md} {
       font-size: 20px;

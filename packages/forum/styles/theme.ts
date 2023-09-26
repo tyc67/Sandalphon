@@ -1,3 +1,12 @@
+import {
+  primaryColor,
+  secondaryColor,
+  backgroundColor,
+  titleColor,
+  textColor,
+  borderColor,
+} from '~/config'
+
 const mediaSize = {
   xs: 0,
   sm: 576,
@@ -20,14 +29,17 @@ const theme = {
 }
 
 const color = {
-  background: '#BBD4DA',
-  primary: '#E2FBFE',
-  secondary: '#ffffff',
-  border: '#000000',
+  background: backgroundColor,
+  primary: primaryColor,
+  secondary: secondaryColor,
+  border: borderColor,
   text: {
-    title: '#000000',
-    normal: '#000000',
+    title: titleColor,
+    normal: textColor,
   },
+  black: '#000000',
+  white: '#ffffff',
+  gray: '#b3b3b3',
 }
 
 const zIndex = {

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import { breakpoint } from '~/styles/theme'
-import type { LogoImage } from '~/types'
+import type { GenericPartners } from '~/types'
 import Image from '@readr-media/react-image'
 import { imagePrefix } from '~/config'
-import { removeEmptyLogo } from '~/utils'
+import { removeEmptyLogo, checkAllImagesEmpty } from '~/utils'
 
 const Wrapper = styled.div`
   ${defaultBlockStyle}
@@ -45,9 +45,7 @@ const LogosImage = styled.div`
 `
 
 type PartnersProps = {
-  partners: {
-    [key: string]: LogoImage[]
-  }
+  partners: GenericPartners
 }
 export default function Partners({
   partners = {
@@ -57,16 +55,18 @@ export default function Partners({
     贊助單位: [],
   },
 }: PartnersProps): JSX.Element | null {
-  // Error Handle：檢查是否所有單位都是空陣列，如果所有單位都是空陣列，則返回null
+  // Error Handle：(1)檢查是否所有單位類型都是空陣列 (=Excel上無填寫任何單位），是的話返回null
   const isEmptyPartners = Object.values(partners).every(
     (partner) => !partner.length
   )
+  // Error Handle：(2)檢查是否所有單位的 image 欄位值都是空字串（‘’），是的話返回 null
+  const isAllImageEmpty = checkAllImagesEmpty(partners)
 
-  if (isEmptyPartners) {
+  if (isEmptyPartners || isAllImageEmpty) {
     return null
   }
 
-  function generateLogos(type: string) {
+  function renderLogoByType(type: string) {
     const logoList = removeEmptyLogo(partners[type])
 
     if (!logoList?.length) {
@@ -96,10 +96,10 @@ export default function Partners({
     <Wrapper id="partners">
       <h1>共同推動</h1>
       <LogosWrapper>
-        {generateLogos('主辦單位')}
-        {generateLogos('指導單位')}
-        {generateLogos('合作單位')}
-        {generateLogos('贊助單位')}
+        {renderLogoByType('主辦單位')}
+        {renderLogoByType('指導單位')}
+        {renderLogoByType('合作單位')}
+        {renderLogoByType('贊助單位')}
       </LogosWrapper>
     </Wrapper>
   )

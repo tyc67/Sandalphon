@@ -1,6 +1,6 @@
 import React from 'react' // eslint-disable-line
 import styled from 'styled-components'
-import { zIndex } from '~/styles/theme'
+import { zIndex, color } from '~/styles/theme'
 
 const CopyAlert = styled.div`
   user-select: none;
@@ -8,7 +8,7 @@ const CopyAlert = styled.div`
     padding: 21px 10px;
     border-radius: 16px;
     background: rgba(73, 73, 73, 0.8);
-    color: #ffffff;
+    color: ${color.white};
     text-align: center;
     position: fixed;
     top: 54px;

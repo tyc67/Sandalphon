@@ -1,15 +1,17 @@
-import styled from 'styled-components'
 import { useState, useEffect, useRef } from 'react'
-import MenuIcon from '~/public/icon/menu-icon.svg'
-import { zIndex, breakpoint } from '~/styles/theme'
-import MediaIcons from '~/components/sidebar/media-icons'
+import styled from 'styled-components'
+import Link from 'next/link'
 import {
   disableBodyScroll,
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
-import Link from 'next/link'
+
+import { zIndex, breakpoint, color } from '~/styles/theme'
+import MediaIcons from '~/components/sidebar/media-icons'
+import { ToggleIcon } from '~/components/sidebar/toggle-icon'
 import { navLists } from '~/constants'
+import { sideBarBgColor, sideBarTextColor } from '~/config'
 
 const SideMenuWrapper = styled.nav<{ show: boolean }>`
   position: fixed;
@@ -19,7 +21,7 @@ const SideMenuWrapper = styled.nav<{ show: boolean }>`
   bottom: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(11, 25, 48, 0.8);
+  background: ${sideBarBgColor};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -47,7 +49,7 @@ const ContentWrapper = styled.div`
 `
 
 const MenuList = styled.li`
-  color: rgba(182, 242, 255, 1);
+  color: ${sideBarTextColor};
   font-family: 'Noto Serif TC', serif;
   font-size: 20px;
   font-weight: 700;
@@ -57,7 +59,7 @@ const MenuList = styled.li`
   list-style: none;
 
   &:hover {
-    color: #ffffff;
+    color: ${color.white};
     text-decoration-line: underline;
     text-underline-offset: 8px;
     text-decoration-thickness: 1px;
@@ -84,6 +86,12 @@ const ToggleButton = styled.div<{ show: boolean }>`
     max-width: 28px;
     transform: ${(prop) => (prop.show ? 'rotate(90deg)' : 'rotate(0deg)')};
     transition-duration: 0.3s;
+  }
+
+  .highlight {
+    fill: none;
+    stroke-width: 3;
+    stroke: #491ec4;
   }
 
   ${breakpoint.md} {
@@ -140,7 +148,7 @@ export default function SideMenu() {
         }}
         show={show}
       >
-        <MenuIcon />
+        <ToggleIcon pathColor={sideBarTextColor} />
       </ToggleButton>
 
       <SideMenuWrapper

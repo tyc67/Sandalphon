@@ -1,4 +1,9 @@
-import type { RowSpeakerItem, FormattedSpeaker, LogoImage } from '~/types'
+import type {
+  RowSpeakerItem,
+  FormattedSpeaker,
+  LogoImage,
+  GenericPartners,
+} from '~/types'
 
 /**
  * Check if the source is from YouTube. If it is, get the YouTube ID and transform it to https://www.youtube.com/embed/${youtubeId}?enablejsapi=1 in order to put it in <iframe>.
@@ -93,10 +98,28 @@ function removeEmptyLogo(logoList: LogoImage[]) {
   return logoList.filter((item) => item.image.trim() !== '')
 }
 
+/**
+ * Check if all the 'image' values in types within partners are empty (''), and if they are, return true.
+ */
+const checkAllImagesEmpty = (partners: GenericPartners) => {
+  for (const key in partners) {
+    if (partners.hasOwnProperty(key)) {
+      const items = partners[key]
+      for (const item of items) {
+        if (item.image !== '') {
+          return false
+        }
+      }
+    }
+  }
+  return true
+}
+
 export {
   getVideoSrc,
   parseSpeakerWithTitle,
   parseSpeakersByType,
   checkHaveSpeakers,
   removeEmptyLogo,
+  checkAllImagesEmpty,
 }

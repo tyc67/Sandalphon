@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 
-import { breakpoint } from '~/styles/theme'
+import { breakpoint, color } from '~/styles/theme'
 import { navLists } from '~/constants'
 
 const Wrapper = styled.div`
@@ -28,8 +28,8 @@ const Item = styled.li`
   font-weight: 700;
   text-align: center;
   list-style: none;
-  color: #ffffff;
-  background: #000000;
+  color: ${color.white};
+  background: ${color.black};
   padding: 5px 8px;
   border-radius: 4px;
   cursor: pointer;
