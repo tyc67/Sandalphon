@@ -45,8 +45,12 @@ export type GenericRelatedPost = {
 
 // partner
 export type LogoImage = {
-  order: string
+  instruction: string
   image: string
+}
+
+export type GenericPartners = {
+  [key: string]: LogoImage[]
 }
 
 // speaker
@@ -57,43 +61,34 @@ export type GenericSpeaker = {
 }
 
 // index
-
-export type K6_ForumData = {
+export type ForumData = {
   metadata: {
     pageInfo: {
-      heroImage_mobile: {
+      heroImage_mobile?: {
         content: string
         construction: string
       }
-      heroImage_tablet: {
+      heroImage_tablet?: {
         content: string
         construction: string
       }
-      heroImage_desktop: {
+      heroImage_desktop?: {
         content: string
         construction: string
       }
-      introduction: {
+      introduction?: {
         content: string
         construction: string
       }
-      qrCode: {
+      qrCode?: {
         content: string
         construction: string
       }
-      video: {
+      video?: {
         content: string
         construction: string
       }
-      registration: {
-        content: string
-        construction: string
-      }
-      og_title: {
-        content: string
-        construction: string
-      }
-      og_image: {
+      registration?: {
         content: string
         construction: string
       }
