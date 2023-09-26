@@ -154,8 +154,6 @@ export default function CustomHead(props: CustomHeadProps) {
         color="#5bbad5"
       />
 
-      {/* TODO: 有需要加 site.webmanifest 檔案嗎？ */}
-      {/* <link rel="manifest" href={`${staticFileDestination}/site.webmanifest`} /> */}
       <OpenGraph properties={siteInformation} />
 
       <meta name="application-name" content={siteInformation.title} />

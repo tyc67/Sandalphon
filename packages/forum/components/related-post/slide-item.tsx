@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import dayjs from 'dayjs'
 import { breakpoint, color } from '~/styles/theme'
-import type { GenericRelatedPost } from '~/types'
+// import type { GenericRelatedPost } from '~/types' //K6
 import { imagePrefix } from '~/config'
 
 const SlideItem = styled.a`
   cursor: pointer;
-  min-width: 200px;
+  max-width: 200px;
 
   &:hover .post-title {
     text-decoration-line: underline;
@@ -17,7 +17,7 @@ const SlideItem = styled.a`
   }
 
   ${breakpoint.md} {
-    min-width: 216px;
+    max-width: 216px;
   }
 `
 
@@ -72,7 +72,8 @@ const Date = styled.p`
 `
 
 type SlideItemProps = {
-  post: GenericRelatedPost
+  // post: GenericRelatedPost //K6
+  post: any //K3
 }
 export default function Slide({ post }: SlideItemProps): JSX.Element {
   const { url, heroImage, title, publishedDate } = post

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import { breakpoint } from '~/styles/theme'
-import type { K6_ForumData } from '~/types'
+import { breakpoint, color } from '~/styles/theme'
+import type { ForumData } from '~/types'
+import { bgImageURL, JSON_URL } from '~/config'
 
 import Layout from '~/components/layout/layout'
 import CustomHead from '~/components/shared/head'
@@ -14,10 +15,12 @@ import Schedule from '~/components/schedule'
 import Registration from '~/components/registration'
 import RelatedPost from '~/components/related-post'
 import Partners from '~/components/partners'
-import { mockData } from '~/constants'
 
 const Main = styled.main`
-  background: #bbd4da;
+  background-image: ${bgImageURL ? `url(${bgImageURL})` : 'none'};
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: ${color.background};
   padding-top: 53px;
 
   ${breakpoint.xl} {
@@ -25,48 +28,10 @@ const Main = styled.main`
   }
 `
 
-// TODO: 擴用性包含放背景圖片
 export default function Home(): JSX.Element {
-  const [data, setData] = useState<K6_ForumData>({
+  const [data, setData] = useState<ForumData>({
     metadata: {
-      pageInfo: {
-        heroImage_mobile: {
-          content: '',
-          construction: '',
-        },
-        heroImage_tablet: {
-          content: '',
-          construction: '',
-        },
-        heroImage_desktop: {
-          content: '',
-          construction: '',
-        },
-        introduction: {
-          content: '',
-          construction: '',
-        },
-        qrCode: {
-          content: '',
-          construction: '',
-        },
-        video: {
-          content: '',
-          construction: '',
-        },
-        registration: {
-          content: '',
-          construction: '',
-        },
-        og_image: {
-          content: '',
-          construction: '',
-        },
-        og_title: {
-          content: '',
-          construction: '',
-        },
-      },
+      pageInfo: {},
       schedule: [],
       speakers: [],
       partners: {},
@@ -74,20 +39,9 @@ export default function Home(): JSX.Element {
     relatedPost: [],
   })
 
-  console.log('data', data)
-
   useEffect(() => {
     axios
-      .get(
-        //k6-JSON（目前尚未上版）
-        //'https://v3-statics-dev.mirrormedia.mg/files/json/forum2023_gql_all.json'
-
-        //k3-prod-test-JSON
-        // 'https://v3-statics.mirrormedia.mg/json/forum2023.json'
-
-        //k3-final-JSON
-        'https://v3-statics.mirrormedia.mg/json/forum2023.json'
-      )
+      .get(JSON_URL)
       .then((response) => {
         const data = response.data
         setData(data)
@@ -97,7 +51,7 @@ export default function Home(): JSX.Element {
       })
   }, [])
 
-  const { metadata, relatedPost } = mockData // 缺：type
+  const { metadata, relatedPost } = data
   const { pageInfo, speakers, schedule, partners } = metadata
 
   const heroImageSrc = {
