@@ -27,7 +27,7 @@ const RowContainer = styled.div`
     background: ${color.primary};
     border-radius: 20px 0px 0px 20px;
     margin-left: auto;
-    border: 2px solid black;
+    border: 2px solid ${color.border};
     border-right: none;
   }
 
@@ -35,7 +35,7 @@ const RowContainer = styled.div`
     background: ${color.secondary};
     border-radius: 0px 20px 20px 0px;
     margin-right: auto;
-    border: 2px solid black;
+    border: 2px solid ${color.border};
     border-left: none;
   }
 `
