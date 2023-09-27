@@ -11,9 +11,7 @@ const JSON_URL: string =
 // OpenGraph 設定
 const OG_TITLE: string = process.env.NEXT_PUBLIC_OG_TITLE || ''
 const OG_DESC: string = process.env.NEXT_PUBLIC_OG_DESC || ''
-const OG_IMAGE_URL: string =
-  process.env.NEXT_PUBLIC_OG_IMAGE_URL ||
-  'https://v3-statics-dev.mirrormedia.mg/images/161082a6-2311-4fb0-b5b3-0ea19af21b55.png'
+const OG_IMAGE_URL: string = process.env.NEXT_PUBLIC_OG_IMAGE_URL || ''
 
 // Color 設定
 const primaryColor: string = process.env.NEXT_PUBLIC_PRIMARY_COLOR || '#E2FBFE'

@@ -122,6 +122,23 @@ export default function RelatedPost({
     return null
   }
 
+  // 由於桌機版（>1200）一次要滑動 4 篇，當文章總數未滿 8 篇時，swiper 的無限滾動會失效。
+  // 因此需要複製增加報導卡片數量，防止 swiper bug 產生。
+  const slides =
+    postLength < 8
+      ? // 當 relatedPosts 少於等於 8 篇時，多複製新增報導數量，以避免 swiper bug
+        [...relatedPosts, ...relatedPosts?.slice(0, 4)].map((item: any) => (
+          <SwiperSlide key={item._id}>
+            <SlideItem post={item} />
+          </SwiperSlide>
+        ))
+      : // 當 relatedPosts 大於 8 篇時，照一般模式 render
+        relatedPosts?.map((item: any) => (
+          <SwiperSlide key={item._id}>
+            <SlideItem post={item} />
+          </SwiperSlide>
+        ))
+
   return (
     <Wrapper id="related-post">
       <h1>相關報導</h1>
@@ -135,13 +152,16 @@ export default function RelatedPost({
           breakpoints={{
             320: {
               spaceBetween: 10,
+              slidesPerView: 'auto',
             },
             768: {
               spaceBetween: 20,
+              slidesPerGroup: 2,
               slidesPerView: 2, // when screen width >= 768px
             },
             1200: {
               spaceBetween: 15,
+              slidesPerGroup: 4,
               slidesPerView: 4, // when screen width >= 1200px
             },
           }}
@@ -164,15 +184,10 @@ export default function RelatedPost({
             )
           })} */}
 
-          {/* k3 */}
-          {relatedPosts?.map((item: any) => {
-            return (
-              <SwiperSlide key={item._id}>
-                <SlideItem post={item} />
-              </SwiperSlide>
-            )
-          })}
+          {/* K3 */}
+          {slides}
         </Swiper>
+
         <div className="custom-swiper-next swiper-arrow">
           <ArrowRight />
         </div>

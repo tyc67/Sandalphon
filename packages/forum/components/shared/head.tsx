@@ -108,8 +108,8 @@ export default function CustomHead(props: CustomHeadProps) {
     image: {
       width: '1200',
       height: '630',
-      type: 'images/png',
-      url: props.imageUrl ?? '',
+      type: 'images/jpeg',
+      url: `${staticFileDestination}${props.imageUrl}`,
     },
     card: 'summary_large_image',
     fbAppId: FB_APP_ID,
