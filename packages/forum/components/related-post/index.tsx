@@ -5,7 +5,7 @@ import { breakpoint, zIndex } from '~/styles/theme'
 import { defaultBlockStyle } from '~/styles/shared-style'
 import ArrowRight from '~/public/icon/carousel-arrow-right.svg'
 import ArrowLeft from '~/public/icon/carousel-arrow-left.svg'
-// import type { GenericRelatedPost } from '~/types'  //K6
+import type { GenericRelatedPost } from '~/types'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -111,8 +111,7 @@ const SwiperGroup = styled.div<{ postLength: number }>`
 `
 
 type RelatedPostProps = {
-  // relatedPosts: GenericRelatedPost[] //k6
-  relatedPosts: any //k3
+  relatedPosts: GenericRelatedPost[]
 }
 export default function RelatedPost({
   relatedPosts = [],
@@ -127,14 +126,16 @@ export default function RelatedPost({
   const slides =
     postLength < 8
       ? // 當 relatedPosts 少於等於 8 篇時，多複製新增報導數量，以避免 swiper bug
-        [...relatedPosts, ...relatedPosts?.slice(0, 4)].map((item: any) => (
-          <SwiperSlide key={item._id}>
-            <SlideItem post={item} />
-          </SwiperSlide>
-        ))
+        [...relatedPosts, ...relatedPosts?.slice(0, 4)].map(
+          (item: GenericRelatedPost) => (
+            <SwiperSlide key={item.id}>
+              <SlideItem post={item} />
+            </SwiperSlide>
+          )
+        )
       : // 當 relatedPosts 大於 8 篇時，照一般模式 render
-        relatedPosts?.map((item: any) => (
-          <SwiperSlide key={item._id}>
+        relatedPosts?.map((item: GenericRelatedPost) => (
+          <SwiperSlide key={item.id}>
             <SlideItem post={item} />
           </SwiperSlide>
         ))
@@ -175,16 +176,6 @@ export default function RelatedPost({
             clickable: true,
           }}
         >
-          {/* k6 */}
-          {/* {relatedPosts?.map((item: GenericRelatedPost) => {
-            return (
-              <SwiperSlide key={item.id}>
-                <SlideItem post={item} />
-              </SwiperSlide>
-            )
-          })} */}
-
-          {/* K3 */}
           {slides}
         </Swiper>
 

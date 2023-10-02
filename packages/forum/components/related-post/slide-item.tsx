@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import dayjs from 'dayjs'
 import { breakpoint, color } from '~/styles/theme'
-// import type { GenericRelatedPost } from '~/types' //K6
+import type { GenericRelatedPost } from '~/types'
 import { imagePrefix } from '~/config'
 
 const SlideItem = styled.a`
@@ -72,8 +72,7 @@ const Date = styled.p`
 `
 
 type SlideItemProps = {
-  // post: GenericRelatedPost //K6
-  post: any //K3
+  post: GenericRelatedPost
 }
 export default function Slide({ post }: SlideItemProps): JSX.Element {
   const { url, heroImage, title, publishedDate } = post
@@ -84,9 +83,8 @@ export default function Slide({ post }: SlideItemProps): JSX.Element {
     <SlideItem href={url} target="_blank" rel="noopener noreferrer nofollow">
       <PostImage>
         <Image
-          images={{ original: heroImage?.image?.url }} // K3-json
-          // images={heroImage?.resized} // k6-json
-          // imagesWebP={heroImage?.resizedWebp} // k6-json
+          images={heroImage?.resized}
+          imagesWebP={heroImage?.resizedWebp}
           defaultImage={`${imagePrefix}/images/default-og-img.svg`}
           alt={title}
           objectFit={'cover'}
