@@ -114,3 +114,10 @@ export type OGProperty = {
   ogImageSrc: string
   ogDesc: string
 }
+
+// header
+export type NavItem = {
+  title: string
+  href: string
+  show: boolean
+}

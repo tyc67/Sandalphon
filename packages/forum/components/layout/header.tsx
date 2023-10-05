@@ -57,7 +57,7 @@ const Aside = styled.div`
   justify-content: flex-end;
 `
 
-export default function Header() {
+export default function Header(): JSX.Element {
   const [isVisible, setIsVisible] = useState(true)
   const [prevScrollPos, setPrevScrollPos] = useState(0)
 

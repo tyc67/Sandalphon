@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 
 import { breakpoint, color } from '~/styles/theme'
-import { navLists } from '~/constants'
+import { useNavLists } from '~/contexts/nav-list'
 
 const Wrapper = styled.div`
   display: none;
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   }
 `
 
-const Item = styled.li`
+const Item = styled.li<{ show: boolean }>`
   font-family: 'Noto Serif TC', serif;
   font-size: 14px;
   font-weight: 700;
@@ -33,6 +33,7 @@ const Item = styled.li`
   padding: 5px 8px;
   border-radius: 4px;
   cursor: pointer;
+  display: ${({ show }) => (show ? 'block' : 'none')};
 
   ${breakpoint.xl} {
     font-size: 20px;
@@ -41,12 +42,18 @@ const Item = styled.li`
 `
 
 export default function NavLists() {
+  const navLists = useNavLists()
+
   return (
     <Wrapper>
-      {navLists.map((list, index) => {
+      {navLists?.map((item, index) => {
+        if (!item.show) {
+          return null
+        }
+
         return (
-          <Link key={index} href={list.href} scroll={false}>
-            <Item>{list.title}</Item>
+          <Link key={index} href={item.href} scroll={false}>
+            <Item show={item.show}>{item.title}</Item>
           </Link>
         )
       })}
