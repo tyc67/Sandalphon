@@ -9,7 +9,6 @@ type NavListsProviderProps = {
   navLists: NavItem[]
 }
 
-// 將 context 中的 Provider 包裹在你的應用程序中
 export const NavListsProvider = ({
   children,
   navLists,
