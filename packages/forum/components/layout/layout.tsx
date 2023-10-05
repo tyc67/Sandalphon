@@ -2,7 +2,10 @@ import Header from '~/components/layout/header'
 import Footer from '~/components/layout/footer'
 import ScrollToTopButton from '../scroll-to-top-button'
 
-export default function Layout({ children }: any) {
+type LayoutProps = {
+  children: React.ReactNode
+}
+export default function Layout({ children }: LayoutProps): JSX.Element {
   return (
     <>
       <Header />
