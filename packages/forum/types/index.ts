@@ -30,7 +30,6 @@ export type HeroImage = {
   resizedWebp: ResizedImage
 }
 
-// k6 版本
 export type GenericRelatedPost = {
   id: string
   updatedAt: string
@@ -38,8 +37,7 @@ export type GenericRelatedPost = {
   publishedDate: string
   state: string
   title: string
-  // heroImage: HeroImage | null // K6
-  heroImage: any // K3
+  heroImage: HeroImage | null
   url: string
 }
 
