@@ -10,8 +10,8 @@ import {
 import { zIndex, breakpoint, color } from '~/styles/theme'
 import MediaIcons from '~/components/sidebar/media-icons'
 import { ToggleIcon } from '~/components/sidebar/toggle-icon'
-import { navLists } from '~/constants'
 import { sideBarBgColor, sideBarTextColor } from '~/config'
+import { useNavLists } from '~/contexts/nav-list'
 
 const SideMenuWrapper = styled.nav<{ show: boolean }>`
   position: fixed;
@@ -100,6 +100,8 @@ const ToggleButton = styled.div<{ show: boolean }>`
 `
 
 export default function SideMenu() {
+  const navLists = useNavLists()
+
   const [show, setShow] = useState(false)
   // eslint-disable-next-line no-unused-vars
   const [href, setHref] = useState('')
@@ -124,17 +126,21 @@ export default function SideMenu() {
     }
   }, [show])
 
-  const contentLists = navLists.map((list, index) => {
+  const contentLists = navLists.map((item, index) => {
+    if (!item.show) {
+      return null
+    }
+
     return (
       <Link
         key={index}
-        href={list.href}
+        href={item.href}
         scroll={false}
         onClick={() => {
           setShow(!show)
         }}
       >
-        <MenuList>{list.title}</MenuList>
+        <MenuList>{item.title}</MenuList>
       </Link>
     )
   })
