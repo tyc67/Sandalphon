@@ -278,14 +278,14 @@ export default function Navigator({
               const active = browsingIndex === index
               let photo = page.image
               if (page.type !== 'M') {
-                const mmBaseUrl = 'https://www.mirrormedia.mg/assets/images/'
+                const mmBaseUrl = 'https://v3-statics.mirrormedia.mg/images/'
                 let suffix = ''
                 if (width > 930) {
-                  suffix = '-desktop.jpg'
+                  suffix = '-w2400.webP'
                 } else if (width > 568) {
-                  suffix = '-tablet.jpg'
+                  suffix = '-w1600.webP'
                 } else {
-                  suffix = '-mobile.jpg'
+                  suffix = '-w800.webP'
                 }
                 photo = mmBaseUrl + page.image + suffix
               }

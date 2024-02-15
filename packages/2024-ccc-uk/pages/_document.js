@@ -11,7 +11,7 @@ function CustomDocument() {
   return (
     <Html>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta property="og:locale" content="zh_TW" />
         <meta property="og:type" content="article" />
         <meta
@@ -20,11 +20,11 @@ function CustomDocument() {
         />
         <meta
           property="og:image"
-          content="https://www.mirrormedia.mg/assets/images/20230725193655-cd77bed5a5193c7bdd80a82d36e6cce3-tablet.jpg"
+          content="https://v3-statics.mirrormedia.mg/images/e1ad0adb-3270-45f8-bc73-06b645a11a10-w1200.jpg"
         />
         <meta
           property="og:image:secure_url"
-          content="https://www.mirrormedia.mg/assets/images/20230725193655-cd77bed5a5193c7bdd80a82d36e6cce3-tablet.jpg"
+          content="https://v3-statics.mirrormedia.mg/images/e1ad0adb-3270-45f8-bc73-06b645a11a10-w1200.jpg"
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta
