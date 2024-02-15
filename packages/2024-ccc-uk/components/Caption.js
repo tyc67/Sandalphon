@@ -47,10 +47,10 @@ const Wrapper = styled.div`
         z-index: 9;
         position: absolute;
         content: "";
-        top: -50%;
+        top: -49%;
         left: -50%;
         right: -50%;
-        bottom: -50%;
+        bottom: -49%;
         border: 1px solid;
         transform: scale(0.5);
       }    
