@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import Navigator from './Navigator'
 import SwitchButton from './SwitchButton'
+import gtag from '../utils/gtag'
 
 const Logo = styled.a`
   position: fixed;
@@ -132,9 +133,18 @@ export default function Controls({
   const disableNavigator =
     browsingIndex === 0 || browsingIndex === pages.length - 1
 
+  const onLogoClicked = () => {
+    gtag.sendGAEvent('click', {
+      projects: `mm logo`,
+    })
+  }
+
   const onLanguageChanged = (notChinese) => {
     const lang = notChinese ? 'en' : 'zh-TW'
     setLang(lang)
+    gtag.sendGAEvent('click', {
+      projects: notChinese ? 'switch to ENG' : 'switch to CN',
+    })
   }
 
   const onShareClicked = () => {
@@ -143,19 +153,15 @@ export default function Controls({
 
   const onNavigateClicked = () => {
     setShowNavigator(true)
-    // ReactGA.event({
-    //   category: 'Projects',
-    //   action: 'click',
-    //   label: `Click the sidebar icon`,
-    // })
+    gtag.sendGAEvent('click', {
+      projects: `sidebar icon`,
+    })
   }
 
   const onShareFB = (e) => {
-    // ReactGA.event({
-    //   category: 'Projects',
-    //   action: 'click',
-    //   label: `Click the share icon fb`,
-    // })
+    gtag.sendGAEvent('click', {
+      projects: `share icon fb`,
+    })
 
     e.stopPropagation()
     window.open(
@@ -171,11 +177,9 @@ export default function Controls({
   }
 
   const onShareLine = (e) => {
-    // ReactGA.event({
-    //   category: 'Projects',
-    //   action: 'click',
-    //   label: `Click the share icon line`,
-    // })
+    gtag.sendGAEvent('click', {
+      projects: `share icon line`,
+    })
 
     e.stopPropagation()
     window.open(
@@ -207,7 +211,11 @@ export default function Controls({
 
   return (
     <>
-      <Logo href="https://www.mirrormedia.mg/" target="_blank">
+      <Logo
+        href="https://www.mirrormedia.mg/"
+        target="_blank"
+        onClick={onLogoClicked}
+      >
         <img src="images/mirrormedia-logo.svg" alt="mirror media logo" />
       </Logo>
       <NavButtons>

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import styled, { createGlobalStyle } from 'styled-components'
 import useWindowDimensions from '../hooks/useWindowDimensions'
+import gtag from '../utils/gtag'
 
 export const GlobalStyles = createGlobalStyle`
   html, body {
@@ -240,11 +241,9 @@ export default function Navigator({
 
   const onPageButtonClicked = (index) => {
     navigateTo(index)
-    // ReactGA.event({
-    //   category: 'Projects',
-    //   action: 'click',
-    //   label: `Click the page ${index} thumbnail`,
-    // })
+    gtag.sendGAEvent('click', {
+      projects: `page ${index} thumbnail`,
+    })
   }
 
   useEffect(() => {
@@ -276,7 +275,7 @@ export default function Navigator({
           <PageButtonWrapper>
             {pages.map((page, index) => {
               const active = browsingIndex === index
-              let photo = page.image
+              let photo
               if (page.type !== 'M') {
                 const mmBaseUrl = 'https://v3-statics.mirrormedia.mg/images/'
                 let suffix = ''
@@ -288,6 +287,8 @@ export default function Navigator({
                   suffix = '-w800.webP'
                 }
                 photo = mmBaseUrl + page.image + suffix
+              } else {
+                photo = page.image.mobile
               }
 
               return index === 0 || index === pages.length - 1 ? (

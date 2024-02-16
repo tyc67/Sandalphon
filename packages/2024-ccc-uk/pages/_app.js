@@ -3,22 +3,21 @@ import { GlobalStyles } from '../styles/global-styles'
 // import ReactGA from 'react-ga'
 import { useEffect } from 'react'
 import '../i18n'
-import TagManager from 'react-gtm-module'
-import { GTM_ID } from '../const'
 import { useTranslation } from 'react-i18next'
+import gtag from '../utils/gtag'
 
 // ReactGA.initialize(environment === 'dev' ? 'UA-83609754-2' : 'UA-83609754-1')
 
 function MyApp({ Component, pageProps }) {
-  // useEffect(() => {
-  //   ReactGA.pageview(window.location.pathname)
-
-  //   document.addEventListener('contextmenu', (event) => event.preventDefault())
-  // }, [])
+  useEffect(() => {
+    document.addEventListener('contextmenu', (event) => event.preventDefault())
+  }, [])
   const { t } = useTranslation()
 
   useEffect(() => {
-    TagManager.initialize({ gtmId: GTM_ID })
+    gtag.init()
+
+    gtag.sendGAPageView('/')
   }, [])
 
   return (

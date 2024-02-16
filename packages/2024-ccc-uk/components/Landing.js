@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
+import gtag from '../utils/gtag'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -127,6 +128,13 @@ export default function Landing({ title, description, credit, ig }) {
   const {
     i18n: { language },
   } = useTranslation()
+
+  const onIGClicked = () => {
+    gtag.sendGAEvent('click', {
+      projects: `icon instagram`,
+    })
+  }
+
   return (
     <>
       <Wrapper>
@@ -135,11 +143,11 @@ export default function Landing({ title, description, credit, ig }) {
         <Credit lang={language}>
           <b>{credit}</b>
         </Credit>
-        <IG href={ig} target="_blank">
+        <IG href={ig} target="_blank" onClick={onIGClicked}>
           <img src="images/ig.svg" alt="instagram link" />
         </IG>
       </Wrapper>
-      <MobileIG href={ig} target="_blank">
+      <MobileIG href={ig} target="_blank" onClick={onIGClicked}>
         <img src="images/ig.svg" alt="instagram link" />
       </MobileIG>
     </>

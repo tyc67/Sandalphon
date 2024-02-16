@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import DonateButton from './DonateButton'
+import gtag from '../utils/gtag'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -187,6 +188,12 @@ export default function Ending({ id, image }) {
     setLang(language)
   }, [language])
 
+  const onIGClicked = () => {
+    gtag.sendGAEvent('click', {
+      projects: `icon instagram`,
+    })
+  }
+
   let EndingComponent
   if (lang === 'zh-TW') {
     EndingComponent = (
@@ -194,7 +201,11 @@ export default function Ending({ id, image }) {
         <First>
           <NameWrapper>
             <Name lang={lang}>{t(`${id}.text.first.name`)}</Name>
-            <IG href={t(`${id}.text.first.ig`)} target="_blank">
+            <IG
+              href={t(`${id}.text.first.ig`)}
+              target="_blank"
+              onClick={onIGClicked}
+            >
               <img src="images/ig.svg" alt="instagram link" />
             </IG>
           </NameWrapper>
@@ -233,7 +244,11 @@ export default function Ending({ id, image }) {
                 {index === 0 ? (
                   <CreditDetail>
                     <span>{t(`${id}.text.credit.pairs.${index}`)}</span>
-                    <IG href={t(`${id}.text.first.ig`)} target="_blank">
+                    <IG
+                      href={t(`${id}.text.first.ig`)}
+                      target="_blank"
+                      onClick={onIGClicked}
+                    >
                       <img src="images/ig.svg" alt="instagram link" />
                     </IG>
                   </CreditDetail>
@@ -257,7 +272,11 @@ export default function Ending({ id, image }) {
         <First>
           <NameWrapper>
             <Name lang={lang}>{t(`${id}.text.first.name`)}</Name>
-            <IG href={t(`${id}.text.first.ig`)} target="_blank">
+            <IG
+              href={t(`${id}.text.first.ig`)}
+              target="_blank"
+              onClick={onIGClicked}
+            >
               <img src="images/ig.svg" alt="instagram link" />
             </IG>
           </NameWrapper>
@@ -298,7 +317,11 @@ export default function Ending({ id, image }) {
                 {index === 0 ? (
                   <CreditDetail>
                     <span>{t(`${id}.text.credit.pairs.${index}`)}</span>
-                    <IG href={t(`${id}.text.first.ig`)} target="_blank">
+                    <IG
+                      href={t(`${id}.text.first.ig`)}
+                      target="_blank"
+                      onClick={onIGClicked}
+                    >
                       <img src="images/ig.svg" alt="instagram link" />
                     </IG>
                   </CreditDetail>
