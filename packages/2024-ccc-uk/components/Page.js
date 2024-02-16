@@ -59,6 +59,18 @@ const Video = styled.video`
     max-width: 54.9%;
     height: 55.3%;
   }
+
+  ${({ noMapCationMode }) =>
+    noMapCationMode &&
+    `
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    max-width: unset;
+    `}
 `
 
 const Image = styled.img`
@@ -87,6 +99,17 @@ const Image = styled.img`
       width: unset;
     }
   }
+
+  ${({ noMapCationMode }) =>
+    noMapCationMode &&
+    `
+      top: 0 !important;
+      left: 0 !important;
+      bottom: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain !important;
+      `}
 `
 
 export default function Page({
@@ -132,13 +155,20 @@ export default function Page({
   switch (type) {
     case 'M':
       window.id = id
-      const src = id === 1 ? 'images/map1.m4v' : 'images/map2.m4v'
-      Media =
-        width > 930 ? (
-          <Video ref={videoRef} className="video" src={src} muted />
-        ) : (
-          <Image src={photo} />
-        )
+      const isDesktop = width > 930
+      const src = isDesktop ? photo.desktop : photo.mobile
+      const noMapCationMode = !t(`${id}.text`)
+      Media = isDesktop ? (
+        <Video
+          ref={videoRef}
+          className="video"
+          src={src}
+          muted
+          noMapCationMode={noMapCationMode}
+        />
+      ) : (
+        <Image src={src} alt="map" noMapCationMode={noMapCationMode} />
+      )
       break
     case 'L':
     case 'P':
@@ -161,11 +191,10 @@ export default function Page({
         ig={t(`${id}.text.ig`)}
       />
     )
-  } else if (type === 'E') {
-    Content = <Ending id={id} image={photo} />
-  } else {
+  } else if (type === 'M') {
+    const mapCaption = t(`${id}.text`)
     Content =
-      showCaption || type === 'M' ? (
+      showCaption && !!mapCaption ? (
         <Caption
           caption={t(`${id}.text`)}
           enlarge={type === 'M'}
@@ -173,6 +202,17 @@ export default function Page({
           index={id}
         />
       ) : null
+  } else if (type === 'E') {
+    Content = <Ending id={id} image={photo} />
+  } else {
+    Content = showCaption ? (
+      <Caption
+        caption={t(`${id}.text`)}
+        enlarge={type === 'M'}
+        showingTutorial={showingTutorial}
+        index={id}
+      />
+    ) : null
   }
 
   return (
