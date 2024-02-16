@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import gtag from '../utils/gtag'
+import { projectName } from '../consts/config'
 
 const Wrapper = styled.div`
   position: absolute;
@@ -131,7 +132,7 @@ export default function Landing({ title, description, credit, ig }) {
 
   const onIGClicked = () => {
     gtag.sendGAEvent('click', {
-      projects: `icon instagram`,
+      projects: `icon instagram - ${projectName}`,
     })
   }
 

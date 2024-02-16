@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 import styled, { createGlobalStyle } from 'styled-components'
 import useWindowDimensions from '../hooks/useWindowDimensions'
 import gtag from '../utils/gtag'
+import { projectName } from '../consts/config'
 
 export const GlobalStyles = createGlobalStyle`
   html, body {
@@ -242,7 +243,7 @@ export default function Navigator({
   const onPageButtonClicked = (index) => {
     navigateTo(index)
     gtag.sendGAEvent('click', {
-      projects: `page ${index} thumbnail`,
+      projects: `page ${index} thumbnail - ${projectName}`,
     })
   }
 

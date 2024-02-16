@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import Navigator from './Navigator'
 import SwitchButton from './SwitchButton'
 import gtag from '../utils/gtag'
+import { projectName } from '../consts/config'
 
 const Logo = styled.a`
   position: fixed;
@@ -135,7 +136,7 @@ export default function Controls({
 
   const onLogoClicked = () => {
     gtag.sendGAEvent('click', {
-      projects: `mm logo`,
+      projects: `mm logo - ${projectName}`,
     })
   }
 
@@ -143,7 +144,9 @@ export default function Controls({
     const lang = notChinese ? 'en' : 'zh-TW'
     setLang(lang)
     gtag.sendGAEvent('click', {
-      projects: notChinese ? 'switch to ENG' : 'switch to CN',
+      projects: notChinese
+        ? `switch to ENG - ${projectName}`
+        : `switch to CN - ${projectName}`,
     })
   }
 
@@ -154,13 +157,13 @@ export default function Controls({
   const onNavigateClicked = () => {
     setShowNavigator(true)
     gtag.sendGAEvent('click', {
-      projects: `sidebar icon`,
+      projects: `sidebar icon - ${projectName}`,
     })
   }
 
   const onShareFB = (e) => {
     gtag.sendGAEvent('click', {
-      projects: `share icon fb`,
+      projects: `share icon fb - ${projectName}`,
     })
 
     e.stopPropagation()
@@ -178,7 +181,7 @@ export default function Controls({
 
   const onShareLine = (e) => {
     gtag.sendGAEvent('click', {
-      projects: `share icon line`,
+      projects: `share icon line - ${projectName}`,
     })
 
     e.stopPropagation()

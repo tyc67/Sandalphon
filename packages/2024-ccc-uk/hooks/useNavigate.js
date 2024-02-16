@@ -3,6 +3,7 @@ import { useEffect, useRef, useCallback, useState } from 'react'
 
 import useWindowDimensions from './useWindowDimensions'
 import gtag from '../utils/gtag'
+import { projectName } from '../consts/config'
 
 export default function useNavigate(pagesRef) {
   const [browsingIndex, setBrowsingIndex] = useState(0)
@@ -48,7 +49,7 @@ export default function useNavigate(pagesRef) {
               pagesRef.current.querySelectorAll(':scope > div.page').length - 1
             ) {
               gtag.sendGAEvent('scroll', {
-                projects: `scroll to end`,
+                projects: `scroll to end - ${projectName}`,
               })
             }
           }
@@ -78,7 +79,7 @@ export default function useNavigate(pagesRef) {
   useEffect(() => {
     const beforeunloadHandler = () => {
       gtag.sendGAEvent('scroll', {
-        projects: `scroll to page ${lowestPageIndexRef.current}`,
+        projects: `scroll to page ${lowestPageIndexRef.current} - ${projectName}`,
       })
     }
     window.addEventListener('beforeunload', beforeunloadHandler)

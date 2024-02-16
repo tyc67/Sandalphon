@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import DonateButton from './DonateButton'
 import gtag from '../utils/gtag'
+import { projectName } from '../consts/config'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -190,7 +191,7 @@ export default function Ending({ id, image }) {
 
   const onIGClicked = () => {
     gtag.sendGAEvent('click', {
-      projects: `icon instagram`,
+      projects: `icon instagram - ${projectName}`,
     })
   }
 

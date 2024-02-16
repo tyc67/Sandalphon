@@ -4,3 +4,4 @@ const ga4Ids = {
   prod: 'G-341XFN0675',
 }
 export const ga4Id = ga4Ids[env]
+export const projectName = 'ccc_ukraine_2024'

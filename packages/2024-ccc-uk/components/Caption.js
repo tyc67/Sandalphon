@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import gtag from '../utils/gtag'
+import { projectName } from '../consts/config'
 // import ReactGA from 'react-ga'
 
 const Wrapper = styled.div`
@@ -135,7 +136,7 @@ export default function Caption({ caption, enlarge, showingTutorial }) {
       1
     ) {
       gtag.sendGAEvent('scroll', {
-        projects: `scroll the caption on page ${index} to the end`,
+        projects: `scroll the caption on page ${index} to the end - ${projectName}`,
       })
     }
   }
