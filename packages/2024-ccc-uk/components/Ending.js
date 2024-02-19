@@ -60,6 +60,7 @@ const ProfileImageWrapper = styled.div`
 
   @media (max-width: 930px) {
     margin: 40px auto;
+    width: unset;
   }
 `
 const ProfileImage = styled.img`
