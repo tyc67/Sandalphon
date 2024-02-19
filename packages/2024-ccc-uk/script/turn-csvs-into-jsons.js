@@ -25,8 +25,15 @@ const inputPath = FolderPath
 const outputPath = `${FolderPath}/output/`
 
 // Loop through each file in inputPath
-fs.readdirSync(inputPath).forEach((fileName) => {
+fs.readdirSync(inputPath, { withFileTypes: true }).forEach((file) => {
+  const fileName = file.name
   console.log(fileName)
+
+  // skip folder
+  if (file.isDirectory()) {
+    return
+  }
+
   // Use to generate json file
   const fileNameWithoutFormat = fileName.split('.')[0]
   // Path to each CSV file
