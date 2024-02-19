@@ -128,7 +128,7 @@ const Text = styled.p`
   }
 `
 
-export default function Caption({ caption, enlarge, showingTutorial }) {
+export default function Caption({ caption, enlarge, showingTutorial, index }) {
   const onScrollHandler = (e) => {
     const scroller = e.target
     if (
