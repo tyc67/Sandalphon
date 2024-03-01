@@ -45,7 +45,7 @@ firstPage = {
   },
   eng_text: {
     title: `Ukraine: Lest We Forget\nChien-Chi Chang's Reportage of the Two-Year Anniversary of the Russia-Ukraine War`,
-    foreword: `As Austrians celebrate the New Year with sky-bound fireworks, Ukrainians are awakened by the sounds of explosions. Braving the severe cold and snow, he travels for the eighth time to the Ukrainian war zone, witnessing the prolonged and arduous conditions on the frontlines, often likened to a "meat grinder.”`,
+    foreword: `Braving the severe cold and snow, he travels for the eighth time to the Ukrainian war zone, witnessing the prolonged and arduous conditions on the frontlines, often likened to a "meat grinder.”`,
     credit: 'Chien-Chi Chang',
     ig: 'https://www.instagram.com/chien_chi_chang',
     eng_text: firstPage.eng_text,

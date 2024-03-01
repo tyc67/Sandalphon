@@ -10,6 +10,7 @@ export default function useNavigate(pagesRef) {
   const lowestPageIndexRef = useRef(0)
   const pageNavigationInfosRef = useRef([])
   const windowDimensions = useWindowDimensions()
+  const isMapGASent = useRef(false)
 
   const jumpToPage = useCallback(
     (index) => {
@@ -41,6 +42,21 @@ export default function useNavigate(pagesRef) {
         entries = entries.filter((entry) => entry.isIntersecting)
         if (entries.length === 1) {
           const showingPageIndex = entries[0].target.id.split('-')[1] - 0
+
+          // quick silly way to trigger ga event on map showed. Make sure to change this if map's index is modified.
+          // only send this event once per page lifecycle.
+          if (showingPageIndex === 1) {
+            if (!isMapGASent.current) {
+              const windowWidth = windowDimensions.width
+              const eventName = `scroll to map ${
+                windowWidth > 930 ? 'desktop' : 'mobile'
+              } - ${projectName}`
+              gtag.sendGAEvent('scroll', {
+                projects: eventName,
+              })
+              isMapGASent.current = true
+            }
+          }
 
           if (showingPageIndex > lowestPageIndexRef.current) {
             lowestPageIndexRef.current = showingPageIndex
@@ -74,7 +90,7 @@ export default function useNavigate(pagesRef) {
         observer.unobserve(pageDom)
       })
     }
-  }, [pagesRef])
+  }, [pagesRef, windowDimensions])
 
   useEffect(() => {
     const beforeunloadHandler = () => {
