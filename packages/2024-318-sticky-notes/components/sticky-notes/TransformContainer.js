@@ -1,37 +1,38 @@
 import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
-import { fixedHeight } from '../../const/sticky-notes'
+import { fixedStickyHeight } from '../../const/sticky-notes'
+import StickyNotes from './StickyNotes'
 
-const StickyNotesA = styled.div`
+const TransformWrapper = styled.div`
   position: fixed;
   width: 100%;
-  height: ${fixedHeight}px;
+  height: ${fixedStickyHeight}px;
   bottom: 0;
   background: transparent;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+  pointer-events: none;
 
   ${({ expandMode }) =>
     expandMode &&
     `
     position: relative;
-    top: -${fixedHeight}px;
-    transform: translateY(${fixedHeight}px);
+    top: -${fixedStickyHeight}px;
+    transform: translateY(${fixedStickyHeight}px);
     min-height: 90vh;
     height: auto;
     bottom: unset;
   `}
 `
 
-const Card = styled.div`
-  position: absolute;
-  top: 30px;
-  left: 150px;
-  height: 150px;
-  width: 150px;
-  border: 2px solid black;
-  transform: rotate(84deg);
-  background: white;
-}
+const ContainWrapper = styled.div`
+  width: 375px;
+  margin: 0 auto;
+  @media (min-width: 744px) {
+    width: 744px;
+  }
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
 `
 
 export default function TransformContainer() {
@@ -69,9 +70,11 @@ export default function TransformContainer() {
   return (
     <>
       <div ref={divRef} />
-      <StickyNotesA expandMode={expandMode}>
-        <Card />
-      </StickyNotesA>
+      <TransformWrapper expandMode={expandMode}>
+        <ContainWrapper>
+          <StickyNotes expandMode={expandMode} />
+        </ContainWrapper>
+      </TransformWrapper>
     </>
   )
 }

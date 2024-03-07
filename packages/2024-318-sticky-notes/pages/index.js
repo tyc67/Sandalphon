@@ -4,6 +4,7 @@ import TransformContainer from '../components/sticky-notes/TransformContainer'
 const GlobalStyle = createGlobalStyle`
   body{
     background:  black;
+    margin: 0;
   }
 `
 
