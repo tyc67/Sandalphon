@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useStickyNotes } from '../../hooks/useStickyNotes'
+import { useStickyNotesInLines } from '../../hooks/useStickyNotes'
 import StickyNotesLine from './StickyNotesLine'
 import { mockStickyNotes } from '../../data/mockData'
 
@@ -20,9 +20,14 @@ const Wrapper = styled.div`
   }
   transition: padding-top 0.5s ease-in-out;
 
-  ${({ expandMode }) =>
-    expandMode
-      ? `
+  ${
+    /**
+     * @param {Object} props
+     * @param {boolean} props.expandMode
+     */
+    ({ expandMode }) =>
+      expandMode
+        ? `
           padding-top: 48px;
           @media (min-width: 744px) {
             padding-top: 63px;
@@ -31,13 +36,19 @@ const Wrapper = styled.div`
             padding-top: 91px;
           }
         `
-      : `
+        : `
           padding-top: 0;
-        `}
+        `
+  }
 `
-
+/**
+ *
+ * @param {Object} props
+ * @param {boolean} props.expandMode
+ * @returns {JSX.Element}
+ */
 export default function StickyNotes({ expandMode }) {
-  const stickyNotesInLines = useStickyNotes(mockStickyNotes)
+  const stickyNotesInLines = useStickyNotesInLines(mockStickyNotes)
 
   return (
     <Wrapper expandMode={expandMode}>

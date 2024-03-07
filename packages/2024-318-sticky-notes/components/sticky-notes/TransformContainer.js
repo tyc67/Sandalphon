@@ -12,16 +12,23 @@ const TransformWrapper = styled.div`
   transition: transform 0.8s ease-in-out;
   pointer-events: none;
 
-  ${({ expandMode }) =>
-    expandMode &&
-    `
+  ${
+    /**
+     *
+     * @param {Object} props
+     * @param {boolean} props.expandMode
+     */
+    ({ expandMode }) =>
+      expandMode &&
+      `
     position: relative;
     top: -${fixedStickyHeight}px;
     transform: translateY(${fixedStickyHeight}px);
     min-height: 90vh;
     height: auto;
     bottom: unset;
-  `}
+  `
+  }
 `
 
 const ContainWrapper = styled.div`

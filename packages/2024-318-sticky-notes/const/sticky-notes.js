@@ -1,26 +1,58 @@
 export const fixedStickyHeight = 110
 
-// how many lines the sticky notes will render
+/**
+ * how many lines the sticky notes will render
+ * @typedef {Object} RwdLines
+ * @property {number} mobile
+ * @property {number} tablet
+ * @property {number} desktop
+ */
+/** @type {RwdLines} */
 export const rwdLines = {
   mobile: 2,
   tablet: 3,
   desktop: 5,
 }
 
-// how many notes to insert one empty note
+/**
+ * how many notes to insert one empty note
+ * @typedef {Object} RwdEmptyNotePerSection
+ * @property {number} mobile
+ * @property {number} tablet
+ * @property {number} desktop
+ */
+
+/** @type {RwdEmptyNotePerSection} */
 export const rwdEmptyNotePerSection = {
   mobile: 10,
   tablet: 15,
   desktop: 25,
 }
 
+/**
+ * @typedef {import("../components/sticky-notes/StickyNote").StickyNote} StickyNote
+ */
+/** @type {StickyNote} */
 export const emptyStickyNote = {
   description: '',
   imageUrl: '',
-  index: null,
   fixed: '',
+  type: 'empty',
+  id: '',
+  color: {
+    color: '',
+    code: '',
+  },
+  rotateAngle: '',
 }
 
+/**
+ * @typedef {Object} StickyNoteColor
+ * @property {string} color
+ * @property {string} code
+ */
+
+/** @type {StickyNoteColor[]} */
 export const stickyNoteColors = [
   { color: 'red', code: 'rgba(255, 140, 140, 1)' },
   { color: 'blue', code: 'rgba(39, 216, 255, 1)' },
