@@ -22,10 +22,7 @@ export default function StickyNotesLine({ stickyNotes }) {
   return (
     <Wrapper>
       {stickyNotes.map((stickyNote) => (
-        <StickeyNote
-          stickyNote={stickyNote}
-          key={stickyNote.type + stickyNote.description}
-        />
+        <StickeyNote stickyNote={stickyNote} key={stickyNote.id} />
       ))}
     </Wrapper>
   )

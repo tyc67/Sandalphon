@@ -1,5 +1,7 @@
 import { useRef } from 'react'
 import styled from 'styled-components'
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
+import { stickyNoteActions } from '../../store/sticky-note-slice'
 
 const Wrapper = styled.div.attrs(
   /**
@@ -47,6 +49,16 @@ const Wrapper = styled.div.attrs(
  */
 export default function StickeyNote({ stickyNote }) {
   const wrapperRef = useRef()
+  const dispatch = useAppDispatch()
+
+  const onNoteClicked = () => {
+    dispatch(
+      stickyNoteActions.changeFixedNote({
+        show: true,
+        note: stickyNote,
+      })
+    )
+  }
 
   return (
     <Wrapper
@@ -54,6 +66,7 @@ export default function StickeyNote({ stickyNote }) {
       id={stickyNote.id}
       bgColor={stickyNote.color.code}
       rotateDegree={stickyNote.rotateAngle}
+      onClick={onNoteClicked}
     ></Wrapper>
   )
 }

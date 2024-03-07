@@ -1,5 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import TransformContainer from '../components/sticky-notes/TransformContainer'
+import { useAppSelector } from '../hooks/useRedux'
+import FixedNote from '../components/sticky-notes/FixedNote'
 
 const GlobalStyle = createGlobalStyle`
   body{
@@ -16,6 +18,8 @@ const MockArticle = styled.div`
 `
 
 export default function Home() {
+  const fixedNote = useAppSelector((state) => state.stickyNote.fixedNote)
+
   return (
     <>
       <GlobalStyle />
@@ -410,6 +414,7 @@ export default function Home() {
         quia ab accusamus, saepe quam
       </MockArticle>
       <TransformContainer />
+      {fixedNote.show && <FixedNote stickyNote={fixedNote.note} />}
     </>
   )
 }
