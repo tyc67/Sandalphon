@@ -1,27 +1,24 @@
 import { useRef } from 'react'
 import styled from 'styled-components'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs(
+  /**
+   * @param {Object} props
+   * @param {string} props.bgColor
+   * @param {string} props.rotateDegree
+   * @returns
+   */
+  (props) => ({
+    style: {
+      background: props.bgColor,
+      transform: `rotate(${props.rotateDegree}deg)`,
+    },
+  })
+)`
   width: 136px;
   height: 136px;
   border-radius: 4px;
   pointer-events: auto;
-  ${
-    /**
-     * @param {Object} props
-     * @param {string} props.bgColor
-     * @param {string} props.rotateDegree
-     * @returns
-     */
-    ({ bgColor }) =>
-      bgColor &&
-      `
-  background-color: ${bgColor};
-  `
-  }
-  transform: rotate(${({ rotateDegree }) => {
-    return rotateDegree ? rotateDegree : 0
-  }}deg);
 `
 
 /**
