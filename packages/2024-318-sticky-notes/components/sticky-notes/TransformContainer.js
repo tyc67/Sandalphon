@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { fixedStickyHeight } from '../../const/sticky-notes'
 import StickyNotes from './StickyNotes'
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
+import { stickyNoteActions } from '../../store/sticky-note-slice'
 
 const TransformWrapper = styled.div`
   position: fixed;
@@ -9,7 +11,7 @@ const TransformWrapper = styled.div`
   height: ${fixedStickyHeight}px;
   bottom: 0;
   background: transparent;
-  transition: transform 0.8s ease-in-out;
+  transition: transform 1s ease-in-out;
   pointer-events: none;
 
   ${
@@ -31,6 +33,22 @@ const TransformWrapper = styled.div`
   }
 `
 
+const StickyNotesPlaceHolder = styled.div`
+  height: 100vh;
+  ${
+    /**
+     * @param {Object} props
+     * @param {boolean} props.expandMode
+     */
+    ({ expandMode }) =>
+      expandMode &&
+      `
+      height: 0;
+      
+    `
+  }
+`
+
 const ContainWrapper = styled.div`
   width: 375px;
   margin: 0 auto;
@@ -43,7 +61,9 @@ const ContainWrapper = styled.div`
 `
 
 export default function TransformContainer() {
-  const [expandMode, setExpandMode] = useState(false)
+  const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
+  const dispatch = useAppDispatch()
+
   const divRef = useRef()
 
   useEffect(() => {
@@ -59,11 +79,11 @@ export default function TransformContainer() {
         console.log(
           'target below the screen, set position: fixed to the bottom'
         )
-        setExpandMode(false)
+        dispatch(stickyNoteActions.changeExpandMode(false))
       } // target shows on the bottom of the screen
       else if (isIntersection && targetTop > 0 && targetTop <= windowHeight) {
         console.log('target top shows the screen, set position: relative')
-        setExpandMode(true)
+        dispatch(stickyNoteActions.changeExpandMode(true))
       }
     })
     if (divRef.current) {
@@ -72,14 +92,15 @@ export default function TransformContainer() {
     return () => {
       observer.disconnect()
     }
-  }, [])
+  }, [dispatch])
 
   return (
     <>
-      <div ref={divRef} />
+      <div ref={divRef} id="sticky-notes-top" />
+      <StickyNotesPlaceHolder expandMode={expandMode} />
       <TransformWrapper expandMode={expandMode}>
         <ContainWrapper>
-          <StickyNotes expandMode={expandMode} />
+          <StickyNotes />
         </ContainWrapper>
       </TransformWrapper>
     </>
