@@ -11,6 +11,8 @@ import { createSlice } from '@reduxjs/toolkit'
  * @property {FixedNote} fixedNote
  * @property {boolean} expandMode
  */
+
+/** @type {StickyNoteState} */
 const initialState = {
   fixedNote: {
     show: false,
