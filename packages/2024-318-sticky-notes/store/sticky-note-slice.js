@@ -7,14 +7,23 @@ import { createSlice } from '@reduxjs/toolkit'
  * @property {boolean} show
  * @property {StickyNote} note
  *
+ * @typedef {Object} NewNote
+ * @property {boolean} show
+ * @property {StickyNote} note
+ *
  * @typedef {Object} StickyNoteState
  * @property {FixedNote} fixedNote
+ * @property {NewNote} newNote
  * @property {boolean} expandMode
  */
 
 /** @type {StickyNoteState} */
 const initialState = {
   fixedNote: {
+    show: false,
+    note: null,
+  },
+  newNote: {
     show: false,
     note: null,
   },
@@ -27,6 +36,9 @@ const stickyNoteSlice = createSlice({
   reducers: {
     changeFixedNote(state, action) {
       state.fixedNote = action.payload
+    },
+    changeNewNote(state, action) {
+      state.newNote = action.payload
     },
     changeExpandMode(state, action) {
       state.expandMode = action.payload

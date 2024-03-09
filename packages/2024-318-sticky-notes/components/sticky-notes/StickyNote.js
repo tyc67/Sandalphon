@@ -117,6 +117,13 @@ export default function StickeyNote({ stickyNote }) {
           note: stickyNote,
         })
       )
+    } else {
+      dispatch(
+        stickyNoteActions.changeNewNote({
+          show: true,
+          note: stickyNote,
+        })
+      )
     }
   }
 

@@ -60,7 +60,6 @@ const NewNoteWrapper = styled.div`
   padding: 16px 24px 56px;
   border-radius: 4px;
   background: white;
-  transition: transform 0.5s ease-in-out;
   cursor: pointer;
 `
 
@@ -165,21 +164,32 @@ const EditSvg = (
 )
 
 export default function MobileNewNote() {
-  const [fixedMode, setFixedMode] = useState(false)
   const [noteContent, setNoteContent] = useState('')
   const [addingCompleted, setAddingCompleted] = useState(false)
   const isStickyNotesExpanded = useAppSelector(
     (state) => state.stickyNote.expandMode
   )
+  const newNote = useAppSelector((state) => state.stickyNote.newNote)
+  const fixedMode = newNote.show
   const textAreaRef = useRef(null)
   const dispatch = useAppDispatch()
 
   const openFixedNewNote = () => {
-    setFixedMode(true)
+    dispatch(
+      stickyNoteActions.changeNewNote({
+        show: true,
+        note: {},
+      })
+    )
   }
 
   const closeFixedNewNote = () => {
-    setFixedMode(false)
+    dispatch(
+      stickyNoteActions.changeNewNote({
+        show: false,
+        note: null,
+      })
+    )
     setNoteContent('')
     setAddingCompleted(false)
   }
