@@ -64,7 +64,6 @@ const ContainWrapper = styled.div`
 
 export default function TransformContainer() {
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
-  const fixedNote = useAppSelector((state) => state.stickyNote.fixedNote)
   const dispatch = useAppDispatch()
 
   const divRef = useRef()
@@ -106,7 +105,7 @@ export default function TransformContainer() {
           <StickyNotes />
         </ContainWrapper>
       </TransformWrapper>
-      {fixedNote.show && <FixedNote />}
+      <FixedNote />
       <NewNote />
     </>
   )

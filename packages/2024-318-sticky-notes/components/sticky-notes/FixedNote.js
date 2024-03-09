@@ -97,8 +97,13 @@ const Button = styled.button`
  */
 export default function FixedNote() {
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
-  const stickyNote = useAppSelector((state) => state.stickyNote.fixedNote.note)
+  const fixedNote = useAppSelector((state) => state.stickyNote.fixedNote)
+  const { note: stickyNote, show } = fixedNote
   const dispatch = useAppDispatch()
+
+  if (!show) {
+    return null
+  }
   const stickyNoteColor = stickyNote.color.code
 
   const closeFixedNote = () => {
