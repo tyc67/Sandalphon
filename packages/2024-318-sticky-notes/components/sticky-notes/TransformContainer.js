@@ -4,6 +4,7 @@ import { fixedStickyHeight } from '../../const/sticky-notes'
 import StickyNotes from './StickyNotes'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
+import NewNote from './NewNote'
 
 const TransformWrapper = styled.div`
   position: fixed;
@@ -103,6 +104,7 @@ export default function TransformContainer() {
           <StickyNotes />
         </ContainWrapper>
       </TransformWrapper>
+      <NewNote />
     </>
   )
 }
