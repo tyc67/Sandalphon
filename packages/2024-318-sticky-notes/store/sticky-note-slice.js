@@ -3,6 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 /**
  * @typedef {import('../components/sticky-notes/StickyNote').StickyNote} StickyNote
  *
+ * @typedef {Object} Position
+ * @property {number} line
+ * @property {number} index
+ *
+ * @typedef {StickyNote & {position: Position}} StickyNoteWithPosition
+ *
  * @typedef {Object} FixedNote
  * @property {boolean} show
  * @property {StickyNote} note
@@ -12,6 +18,8 @@ import { createSlice } from '@reduxjs/toolkit'
  * @property {StickyNote} note
  *
  * @typedef {Object} StickyNoteState
+ * @property {StickyNote[][]} stickyNotesInLines
+ * @property {StickyNote[]} emptyStickyNotes
  * @property {FixedNote} fixedNote
  * @property {NewNote} newNote
  * @property {boolean} expandMode
@@ -19,6 +27,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 /** @type {StickyNoteState} */
 const initialState = {
+  stickyNotesInLines: [],
+  emptyStickyNotes: [],
   fixedNote: {
     show: false,
     note: null,
@@ -34,6 +44,12 @@ const stickyNoteSlice = createSlice({
   name: 'stickyNote',
   initialState,
   reducers: {
+    changeStickyNotesInLines(state, action) {
+      state.stickyNotesInLines = action.payload
+    },
+    changeEmptyNotes(state, action) {
+      state.emptyStickyNotes = action.payload
+    },
     changeFixedNote(state, action) {
       state.fixedNote = action.payload
     },

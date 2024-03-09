@@ -47,7 +47,10 @@ const Wrapper = styled.div`
  */
 export default function StickyNotes() {
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
-  const stickyNotesInLines = useStickyNotesInLines(mockStickyNotes)
+  const stickyNotesInLines = useAppSelector(
+    (state) => state.stickyNote.stickyNotesInLines
+  )
+  useStickyNotesInLines(mockStickyNotes)
 
   return (
     <Wrapper expandMode={expandMode}>

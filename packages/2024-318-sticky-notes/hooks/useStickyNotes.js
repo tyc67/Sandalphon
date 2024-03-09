@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {
   emptyStickyNote,
   rwdEmptyNotePerSection,
@@ -9,6 +9,8 @@ import {
   genRandomCardRotateAngle,
 } from '../utils/stikcy-notes'
 import useDevice from './useDevice'
+import { useAppDispatch } from './useRedux'
+import { stickyNoteActions } from '../store/sticky-note-slice'
 
 /**
  * @typedef {import('../data/mockData').RawStickyNote} RawStickyNote
@@ -29,17 +31,13 @@ function convertRawStickyNoteToDisplayStickyNote(rawStickyNotes) {
   }))
 }
 
-/** @type {StickyNote[][]} */
-const initialStickyNotes = []
-
 /**
  *
  * @param {RawStickyNote[]} rawData
  * @returns
  */
 export function useStickyNotesInLines(rawData = []) {
-  const [displayStickyNotesInLines, setDisplayStickyNotesInLines] =
-    useState(initialStickyNotes)
+  const dispatch = useAppDispatch()
   const device = useDevice()
 
   useEffect(() => {
@@ -79,7 +77,7 @@ export function useStickyNotesInLines(rawData = []) {
 
     const copyFixedSticyNotes = [...fixedStickyNotes]
     const copyRandomStickyNotes = [...randomStickyNotes]
-    /** @type {StickyNote[]} */
+    /** @type {import('../store/sticky-note-slice').StickyNoteWithPosition[]} */
     const emptyStickyNotes = []
 
     /**
@@ -116,8 +114,16 @@ export function useStickyNotesInLines(rawData = []) {
           color: genRandomCardColor(),
           rotateAngle: genRandomCardRotateAngle(),
         }
+        /** @type {import('../store/sticky-note-slice').Position} */
+        const position = {
+          line: nestedArrayIndex,
+          index: stickyNotesLines[nestedArrayIndex].length,
+        }
         stickyNotesLines[nestedArrayIndex].push(newEmptyStickyNote)
-        emptyStickyNotes.push(newEmptyStickyNote)
+        emptyStickyNotes.push({
+          ...newEmptyStickyNote,
+          position,
+        })
         continue
       }
 
@@ -126,8 +132,8 @@ export function useStickyNotesInLines(rawData = []) {
       stickyNotesLines[nestedArrayIndex].push(randomSticyNote)
     }
 
-    setDisplayStickyNotesInLines(stickyNotesLines)
-  }, [rawData, device])
-
-  return displayStickyNotesInLines
+    console.log('emptyStickyNotes', emptyStickyNotes)
+    dispatch(stickyNoteActions.changeStickyNotesInLines(stickyNotesLines))
+    dispatch(stickyNoteActions.changeEmptyNotes(emptyStickyNotes))
+  }, [rawData, device, dispatch])
 }
