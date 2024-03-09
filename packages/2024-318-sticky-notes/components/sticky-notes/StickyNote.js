@@ -15,11 +15,16 @@ const Wrapper = styled.div.attrs((props) => ({
   pointer-events: auto;
   padding: 12px 8px;
   cursor: pointer;
-  &:hover,
   &:active {
     scale: 1.088;
   }
   transition: scale 0.3s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      scale: 1.088;
+    }
+  }
 
   ${
     /**
@@ -48,12 +53,17 @@ const Wrapper = styled.div.attrs((props) => ({
 
       animation: scale 2s infinite;
 
-      &:hover,
       &:active {
         scale: 1.1;
         animation: unset;
+      }    
+      @media (hover: hover) {
+        &:hover {
+          scale: 1.1;
+          animation: unset;
+        }
       }
-    
+        
   `
   }
 `
