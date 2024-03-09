@@ -110,12 +110,14 @@ export default function StickeyNote({ stickyNote }) {
   const isEmptyCard = stickyNote.type === 'empty' && !stickyNote.description
 
   const onNoteClicked = () => {
-    dispatch(
-      stickyNoteActions.changeFixedNote({
-        show: true,
-        note: stickyNote,
-      })
-    )
+    if (stickyNote.type !== 'empty') {
+      dispatch(
+        stickyNoteActions.changeFixedNote({
+          show: true,
+          note: stickyNote,
+        })
+      )
+    }
   }
 
   return (
