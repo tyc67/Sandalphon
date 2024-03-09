@@ -93,13 +93,11 @@ const Button = styled.button`
 `
 
 /**
- *
- * @param {Object} props
- * @param {import('./StickyNote').StickyNote} props.stickyNote
  * @returns {JSX.Element}
  */
-export default function FixedNote({ stickyNote }) {
+export default function FixedNote() {
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
+  const stickyNote = useAppSelector((state) => state.stickyNote.fixedNote.note)
   const dispatch = useAppDispatch()
   const stickyNoteColor = stickyNote.color.code
 
@@ -111,6 +109,7 @@ export default function FixedNote({ stickyNote }) {
       })
     )
   }
+
   return (
     <>
       <GlobalStyle />
