@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { useStickyNotesInLines } from '../../hooks/useStickyNotes'
 import StickyNotesLine from './StickyNotesLine'
 import { mockStickyNotes } from '../../data/mockData'
+import { useAppSelector } from '../../hooks/useRedux'
 
 const Wrapper = styled.div`
   display: flex;
@@ -42,13 +43,14 @@ const Wrapper = styled.div`
   }
 `
 /**
- *
- * @param {Object} props
- * @param {boolean} props.expandMode
  * @returns {JSX.Element}
  */
-export default function StickyNotes({ expandMode }) {
-  const stickyNotesInLines = useStickyNotesInLines(mockStickyNotes)
+export default function StickyNotes() {
+  const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
+  const stickyNotesInLines = useAppSelector(
+    (state) => state.stickyNote.stickyNotesInLines
+  )
+  useStickyNotesInLines(mockStickyNotes)
 
   return (
     <Wrapper expandMode={expandMode}>

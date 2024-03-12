@@ -15,11 +15,16 @@ const Wrapper = styled.div.attrs((props) => ({
   pointer-events: auto;
   padding: 12px 8px;
   cursor: pointer;
-  &:hover,
   &:active {
     scale: 1.088;
   }
   transition: scale 0.3s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      scale: 1.088;
+    }
+  }
 
   ${
     /**
@@ -48,12 +53,17 @@ const Wrapper = styled.div.attrs((props) => ({
 
       animation: scale 2s infinite;
 
-      &:hover,
       &:active {
         scale: 1.1;
         animation: unset;
+      }    
+      @media (hover: hover) {
+        &:hover {
+          scale: 1.1;
+          animation: unset;
+        }
       }
-    
+        
   `
   }
 `
@@ -73,6 +83,10 @@ const TextCard = styled.div`
  * @typedef {import('../../data/mockData').RawNoteType | 'empty'} NoteType
  * @typedef {import('../../const/sticky-notes').StickyNoteColor} StickyNoteColor
  *
+ * @typedef {Object} Position
+ * @property {number} line
+ * @property {number} index
+ *
  * @typedef {Object} StickyNoteBgColor
  * @property {string} name
  * @property {string} code - css color syntax like '
@@ -85,6 +99,7 @@ const TextCard = styled.div`
  * @property {NoteType} type
  * @property {StickyNoteColor} color
  * @property {string} rotateAngle
+ * @property {Position} position
  */
 
 /**
@@ -100,12 +115,21 @@ export default function StickeyNote({ stickyNote }) {
   const isEmptyCard = stickyNote.type === 'empty' && !stickyNote.description
 
   const onNoteClicked = () => {
-    dispatch(
-      stickyNoteActions.changeFixedNote({
-        show: true,
-        note: stickyNote,
-      })
-    )
+    if (stickyNote.type !== 'empty') {
+      dispatch(
+        stickyNoteActions.changeFixedNote({
+          show: true,
+          note: stickyNote,
+        })
+      )
+    } else {
+      dispatch(
+        stickyNoteActions.changeNewNote({
+          show: true,
+          note: stickyNote,
+        })
+      )
+    }
   }
 
   return (
