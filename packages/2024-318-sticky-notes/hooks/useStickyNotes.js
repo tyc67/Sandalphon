@@ -28,6 +28,10 @@ function convertRawStickyNoteToDisplayStickyNote(rawStickyNotes) {
     id: rawStickyNote.type + '-' + crypto.randomUUID(),
     color: genRandomCardColor(),
     rotateAngle: genRandomCardRotateAngle(),
+    position: {
+      line: null,
+      index: null,
+    },
   }))
 }
 
@@ -77,7 +81,7 @@ export function useStickyNotesInLines(rawData = []) {
 
     const copyFixedSticyNotes = [...fixedStickyNotes]
     const copyRandomStickyNotes = [...randomStickyNotes]
-    /** @type {import('../store/sticky-note-slice').StickyNoteWithPosition[]} */
+    /** @type {StickyNote[]} */
     const emptyStickyNotes = []
 
     /**
@@ -101,6 +105,10 @@ export function useStickyNotesInLines(rawData = []) {
       // handle fixed notes first
       if (copyFixedSticyNotes.length !== 0) {
         const fixedStickyNote = copyFixedSticyNotes.shift()
+        fixedStickyNote.position = {
+          line: nestedArrayIndex,
+          index: stickyNotesLines[nestedArrayIndex].length,
+        }
         stickyNotesLines[nestedArrayIndex].push(fixedStickyNote)
         continue
       }
@@ -113,22 +121,23 @@ export function useStickyNotesInLines(rawData = []) {
           id: crypto.randomUUID(),
           color: genRandomCardColor(),
           rotateAngle: genRandomCardRotateAngle(),
+          position: {
+            line: nestedArrayIndex,
+            index: stickyNotesLines[nestedArrayIndex].length,
+          },
         }
-        /** @type {import('../store/sticky-note-slice').Position} */
-        const position = {
-          line: nestedArrayIndex,
-          index: stickyNotesLines[nestedArrayIndex].length,
-        }
+
         stickyNotesLines[nestedArrayIndex].push(newEmptyStickyNote)
-        emptyStickyNotes.push({
-          ...newEmptyStickyNote,
-          position,
-        })
+        emptyStickyNotes.push(newEmptyStickyNote)
         continue
       }
 
       // hadnle random notes later
       const randomSticyNote = copyRandomStickyNotes.pop()
+      randomSticyNote.position = {
+        line: nestedArrayIndex,
+        index: stickyNotesLines[nestedArrayIndex].length,
+      }
       stickyNotesLines[nestedArrayIndex].push(randomSticyNote)
     }
 

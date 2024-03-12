@@ -55,7 +55,7 @@ export default function StickyNotes() {
   return (
     <Wrapper expandMode={expandMode}>
       {stickyNotesInLines.map((stickeyNotesInLine, i) => (
-        <StickyNotesLine line={i} key={i} stickyNotes={stickeyNotesInLine} />
+        <StickyNotesLine key={i} stickyNotes={stickeyNotesInLine} />
       ))}
     </Wrapper>
   )

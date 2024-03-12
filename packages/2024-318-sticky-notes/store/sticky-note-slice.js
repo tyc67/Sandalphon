@@ -3,23 +3,17 @@ import { createSlice } from '@reduxjs/toolkit'
 /**
  * @typedef {import('../components/sticky-notes/StickyNote').StickyNote} StickyNote
  *
- * @typedef {Object} Position
- * @property {number} line
- * @property {number} index
- *
- * @typedef {StickyNote & {position: Position}} StickyNoteWithPosition
- *
  * @typedef {Object} FixedNote
  * @property {boolean} show
  * @property {StickyNote} note
  *
  * @typedef {Object} NewNote
  * @property {boolean} show
- * @property {StickyNoteWithPosition} note
+ * @property {StickyNote} note
  *
  * @typedef {Object} StickyNoteState
  * @property {StickyNote[][]} stickyNotesInLines
- * @property {StickyNoteWithPosition[]} emptyStickyNotes
+ * @property {StickyNote[]} emptyStickyNotes
  * @property {FixedNote} fixedNote
  * @property {NewNote} newNote
  * @property {boolean} expandMode
