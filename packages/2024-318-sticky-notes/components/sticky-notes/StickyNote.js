@@ -82,6 +82,7 @@ const TextCard = styled.div`
 /**
  * @typedef {import('../../data/mockData').RawNoteType | 'empty'} NoteType
  * @typedef {import('../../const/sticky-notes').StickyNoteColor} StickyNoteColor
+ * @typedef {import('../../store/sticky-note-slice').Position} Position
  *
  * @typedef {Object} StickyNoteBgColor
  * @property {string} name
@@ -100,10 +101,11 @@ const TextCard = styled.div`
 /**
  *
  * @param {Object} props
+ * @param {Position} props.position
  * @param {StickyNote} props.stickyNote
  * @returns {JSX.Element}
  */
-export default function StickeyNote({ stickyNote }) {
+export default function StickeyNote({ position, stickyNote }) {
   const wrapperRef = useRef()
   const dispatch = useAppDispatch()
 
@@ -121,7 +123,7 @@ export default function StickeyNote({ stickyNote }) {
       dispatch(
         stickyNoteActions.changeNewNote({
           show: true,
-          note: stickyNote,
+          note: { ...stickyNote, position },
         })
       )
     }

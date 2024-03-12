@@ -15,11 +15,11 @@ import { createSlice } from '@reduxjs/toolkit'
  *
  * @typedef {Object} NewNote
  * @property {boolean} show
- * @property {StickyNote} note
+ * @property {StickyNoteWithPosition} note
  *
  * @typedef {Object} StickyNoteState
  * @property {StickyNote[][]} stickyNotesInLines
- * @property {StickyNote[]} emptyStickyNotes
+ * @property {StickyNoteWithPosition[]} emptyStickyNotes
  * @property {FixedNote} fixedNote
  * @property {NewNote} newNote
  * @property {boolean} expandMode

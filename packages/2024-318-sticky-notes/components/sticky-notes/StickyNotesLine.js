@@ -15,14 +15,19 @@ const Wrapper = styled.div`
 /**
  *
  * @param {Object} props
+ * @param {number} props.line
  * @param {StickyNote[]} props.stickyNotes
  * @returns {JSX.Element}
  */
-export default function StickyNotesLine({ stickyNotes }) {
+export default function StickyNotesLine({ line, stickyNotes }) {
   return (
     <Wrapper>
-      {stickyNotes.map((stickyNote) => (
-        <StickeyNote stickyNote={stickyNote} key={stickyNote.id} />
+      {stickyNotes.map((stickyNote, i) => (
+        <StickeyNote
+          position={{ line, index: i }}
+          stickyNote={stickyNote}
+          key={stickyNote.id}
+        />
       ))}
     </Wrapper>
   )
