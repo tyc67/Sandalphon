@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
-import { insertNewRowToSheet } from '../../utils/stikcy-notes'
+import { insertNewRowToSheet } from '../../api/googlesheet'
 
 const GlobalStyle = createGlobalStyle`
   body {

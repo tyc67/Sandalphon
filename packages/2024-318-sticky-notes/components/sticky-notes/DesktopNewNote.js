@@ -3,8 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import useClickOutside from '../../hooks/useClickOutside'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
-import axios from '../../axios'
-import { insertNewRowToSheet } from '../../utils/stikcy-notes'
+import { insertNewRowToSheet } from '../../api/googlesheet'
 
 const GlobalStyle = createGlobalStyle`
   body {
