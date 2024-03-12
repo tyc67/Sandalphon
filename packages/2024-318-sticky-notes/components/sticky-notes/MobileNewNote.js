@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
+import { insertNewRowToSheet } from '../../utils/stikcy-notes'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -166,6 +167,7 @@ const EditSvg = (
 export default function MobileNewNote() {
   const [noteContent, setNoteContent] = useState('')
   const [addingCompleted, setAddingCompleted] = useState(false)
+  const [isRequestInFlight, setIsRequestInFlight] = useState(false)
   const isStickyNotesExpanded = useAppSelector(
     (state) => state.stickyNote.expandMode
   )
@@ -189,6 +191,46 @@ export default function MobileNewNote() {
     setAddingCompleted(false)
   }
 
+  const onSubmit = () => {
+    if (isRequestInFlight || !noteContent) {
+      return
+    }
+
+    let noteToAdd = newNote.note || emptyStickyNotes[0]
+    noteToAdd = {
+      ...noteToAdd,
+      description: noteContent,
+      type: 'user',
+    }
+
+    const newRow = {
+      id: noteToAdd.id,
+      time: new Date().toLocaleString(),
+      text: noteToAdd.description,
+      image: noteToAdd.imageUrl,
+      promote: noteToAdd.fixed,
+      type: noteToAdd.type,
+    }
+    insertNewRowToSheet(newRow)
+      .then(() => {
+        localStorage.addedNote = JSON.stringify([newRow])
+
+        dispatch(
+          stickyNoteActions.stickyNoteAdded({
+            stickyNote: noteToAdd,
+          })
+        )
+
+        setAddingCompleted(true)
+      })
+      .catch((e) => console.error(e))
+      .finally(() => {
+        setIsRequestInFlight(false)
+      })
+
+    setIsRequestInFlight(true)
+  }
+
   useEffect(() => {
     if (fixedMode && textAreaRef.current) {
       textAreaRef.current.focus()
@@ -199,16 +241,7 @@ export default function MobileNewNote() {
     if (!addingCompleted) {
       return (
         <ButtonWrapper>
-          <Button
-            onClick={() => {
-              // todo: send api
-              setTimeout(() => {
-                setAddingCompleted(true)
-              }, 500)
-            }}
-          >
-            送出
-          </Button>
+          <Button onClick={onSubmit}>送出</Button>
           <Button
             onClick={() => {
               setTimeout(() => {

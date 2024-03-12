@@ -44,6 +44,14 @@ const stickyNoteSlice = createSlice({
     changeStickyNotesInLines(state, action) {
       state.stickyNotesInLines = action.payload
     },
+    stickyNoteAdded(state, action) {
+      const { stickyNote } = action.payload
+      const { position } = stickyNote
+      state.stickyNotesInLines[position.line][position.index] = stickyNote
+      state.emptyStickyNotes = state.emptyStickyNotes.filter(
+        (emptyStickyNote) => emptyStickyNote.id !== stickyNote.id
+      )
+    },
     changeEmptyNotes(state, action) {
       state.emptyStickyNotes = action.payload
     },

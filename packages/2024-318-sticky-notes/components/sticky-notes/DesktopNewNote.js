@@ -3,6 +3,8 @@ import styled, { createGlobalStyle } from 'styled-components'
 import useClickOutside from '../../hooks/useClickOutside'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
+import axios from '../../axios'
+import { insertNewRowToSheet } from '../../utils/stikcy-notes'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -146,10 +148,15 @@ export default function DesktopNewNote() {
   const [isFolded, setIsFolded] = useState(true)
   const [noteContent, setNoteContent] = useState('')
   const [addingCompleted, setAddingCompleted] = useState(false)
+  const [isRequestInFlight, setIsRequestInFlight] = useState(false)
   const isStickyNotesExpanded = useAppSelector(
     (state) => state.stickyNote.expandMode
   )
   const newNote = useAppSelector((state) => state.stickyNote.newNote)
+  const emptyStickyNotes = useAppSelector(
+    (state) => state.stickyNote.emptyStickyNotes
+  )
+
   const fixedMode = newNote.show
   const desktopNewNoteRef = useRef(null)
   const textAreaRef = useRef(null)
@@ -165,6 +172,46 @@ export default function DesktopNewNote() {
     dispatch(stickyNoteActions.resetNewNote())
     setNoteContent('')
     setAddingCompleted(false)
+  }
+
+  const onSubmit = () => {
+    if (isRequestInFlight || !noteContent) {
+      return
+    }
+
+    let noteToAdd = newNote.note || emptyStickyNotes[0]
+    noteToAdd = {
+      ...noteToAdd,
+      description: noteContent,
+      type: 'user',
+    }
+
+    const newRow = {
+      id: noteToAdd.id,
+      time: new Date().toLocaleString(),
+      text: noteToAdd.description,
+      image: noteToAdd.imageUrl,
+      promote: noteToAdd.fixed,
+      type: noteToAdd.type,
+    }
+    insertNewRowToSheet(newRow)
+      .then(() => {
+        localStorage.addedNote = JSON.stringify([newRow])
+
+        dispatch(
+          stickyNoteActions.stickyNoteAdded({
+            stickyNote: noteToAdd,
+          })
+        )
+
+        setAddingCompleted(true)
+      })
+      .catch((e) => console.error(e))
+      .finally(() => {
+        setIsRequestInFlight(false)
+      })
+
+    setIsRequestInFlight(true)
   }
 
   useEffect(() => {
@@ -185,18 +232,7 @@ export default function DesktopNewNote() {
     if (fixedMode) {
       return (
         <ButtonWrapper>
-          {!addingCompleted && (
-            <Button
-              onClick={() => {
-                // todo: send api
-                setTimeout(() => {
-                  setAddingCompleted(true)
-                }, 500)
-              }}
-            >
-              送出
-            </Button>
-          )}
+          {!addingCompleted && <Button onClick={onSubmit}>送出</Button>}
           <Button
             onClick={() => {
               setTimeout(() => {
@@ -212,16 +248,7 @@ export default function DesktopNewNote() {
       return (
         <ButtonWrapper>
           {!addingCompleted ? (
-            <Button
-              onClick={() => {
-                // todo: send api
-                setTimeout(() => {
-                  setAddingCompleted(true)
-                }, 500)
-              }}
-            >
-              送出
-            </Button>
+            <Button onClick={onSubmit}>送出</Button>
           ) : !isStickyNotesExpanded ? (
             <Button
               onClick={() => {
