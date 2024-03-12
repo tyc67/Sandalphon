@@ -110,7 +110,7 @@ export function useStickyNotesInLines(rawData = []) {
         /** @type {StickyNote} */
         const newEmptyStickyNote = {
           ...emptyStickyNote,
-          id: 'empty-' + crypto.randomUUID(),
+          id: crypto.randomUUID(),
           color: genRandomCardColor(),
           rotateAngle: genRandomCardRotateAngle(),
         }
