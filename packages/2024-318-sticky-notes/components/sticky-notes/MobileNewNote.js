@@ -184,12 +184,7 @@ export default function MobileNewNote() {
   }
 
   const closeFixedNewNote = () => {
-    dispatch(
-      stickyNoteActions.changeNewNote({
-        show: false,
-        note: null,
-      })
-    )
+    dispatch(stickyNoteActions.resetNewNote())
     setNoteContent('')
     setAddingCompleted(false)
   }

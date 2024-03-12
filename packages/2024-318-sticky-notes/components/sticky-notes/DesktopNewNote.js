@@ -162,12 +162,7 @@ export default function DesktopNewNote() {
   const dispatch = useAppDispatch()
 
   const closeFixedNewNote = () => {
-    dispatch(
-      stickyNoteActions.changeNewNote({
-        show: false,
-        note: null,
-      })
-    )
+    dispatch(stickyNoteActions.resetNewNote())
     setNoteContent('')
     setAddingCompleted(false)
   }

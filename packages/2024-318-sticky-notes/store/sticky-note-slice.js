@@ -25,6 +25,12 @@ import { createSlice } from '@reduxjs/toolkit'
  * @property {boolean} expandMode
  */
 
+/** @type {NewNote} */
+const initialNewNote = {
+  show: false,
+  note: null,
+}
+
 /** @type {StickyNoteState} */
 const initialState = {
   stickyNotesInLines: [],
@@ -33,10 +39,7 @@ const initialState = {
     show: false,
     note: null,
   },
-  newNote: {
-    show: false,
-    note: null,
-  },
+  newNote: initialNewNote,
   expandMode: false,
 }
 
@@ -55,6 +58,9 @@ const stickyNoteSlice = createSlice({
     },
     changeNewNote(state, action) {
       state.newNote = action.payload
+    },
+    resetNewNote(state) {
+      state.newNote = initialNewNote
     },
     changeExpandMode(state, action) {
       state.expandMode = action.payload
