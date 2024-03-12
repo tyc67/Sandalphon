@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import { useAppDispatch } from '../../hooks/useRedux'
+import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 
 const GlobalStyle = createGlobalStyle`
@@ -93,13 +93,17 @@ const Button = styled.button`
 `
 
 /**
- *
- * @param {Object} props
- * @param {import('./StickyNote').StickyNote} props.stickyNote
  * @returns {JSX.Element}
  */
-export default function FixedNote({ stickyNote }) {
+export default function FixedNote() {
+  const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
+  const fixedNote = useAppSelector((state) => state.stickyNote.fixedNote)
+  const { note: stickyNote, show } = fixedNote
   const dispatch = useAppDispatch()
+
+  if (!show) {
+    return null
+  }
   const stickyNoteColor = stickyNote.color.code
 
   const closeFixedNote = () => {
@@ -110,6 +114,7 @@ export default function FixedNote({ stickyNote }) {
       })
     )
   }
+
   return (
     <>
       <GlobalStyle />
@@ -126,7 +131,22 @@ export default function FixedNote({ stickyNote }) {
         >
           <TextCard>{stickyNote.description}</TextCard>
           <ButtonWrapper>
-            <Button color={stickyNoteColor}>前往留言板</Button>
+            {!expandMode && (
+              <Button
+                color={stickyNoteColor}
+                onClick={() => {
+                  closeFixedNote()
+                  dispatch(stickyNoteActions.changeExpandMode(true))
+                  setTimeout(() => {
+                    document
+                      .querySelector('#sticky-notes-top')
+                      ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  })
+                }}
+              >
+                前往留言板
+              </Button>
+            )}
             <Button
               color={stickyNoteColor}
               onClick={() => {

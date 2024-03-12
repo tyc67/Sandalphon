@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {
   emptyStickyNote,
   rwdEmptyNotePerSection,
@@ -9,6 +9,8 @@ import {
   genRandomCardRotateAngle,
 } from '../utils/stikcy-notes'
 import useDevice from './useDevice'
+import { useAppDispatch } from './useRedux'
+import { stickyNoteActions } from '../store/sticky-note-slice'
 
 /**
  * @typedef {import('../data/mockData').RawStickyNote} RawStickyNote
@@ -26,11 +28,12 @@ function convertRawStickyNoteToDisplayStickyNote(rawStickyNotes) {
     id: rawStickyNote.type + '-' + crypto.randomUUID(),
     color: genRandomCardColor(),
     rotateAngle: genRandomCardRotateAngle(),
+    position: {
+      line: null,
+      index: null,
+    },
   }))
 }
-
-/** @type {StickyNote[][]} */
-const initialStickyNotes = []
 
 /**
  *
@@ -38,8 +41,7 @@ const initialStickyNotes = []
  * @returns
  */
 export function useStickyNotesInLines(rawData = []) {
-  const [displayStickyNotesInLines, setDisplayStickyNotesInLines] =
-    useState(initialStickyNotes)
+  const dispatch = useAppDispatch()
   const device = useDevice()
 
   useEffect(() => {
@@ -103,6 +105,10 @@ export function useStickyNotesInLines(rawData = []) {
       // handle fixed notes first
       if (copyFixedSticyNotes.length !== 0) {
         const fixedStickyNote = copyFixedSticyNotes.shift()
+        fixedStickyNote.position = {
+          line: nestedArrayIndex,
+          index: stickyNotesLines[nestedArrayIndex].length,
+        }
         stickyNotesLines[nestedArrayIndex].push(fixedStickyNote)
         continue
       }
@@ -112,10 +118,15 @@ export function useStickyNotesInLines(rawData = []) {
         /** @type {StickyNote} */
         const newEmptyStickyNote = {
           ...emptyStickyNote,
-          id: 'empty-' + crypto.randomUUID(),
+          id: crypto.randomUUID(),
           color: genRandomCardColor(),
           rotateAngle: genRandomCardRotateAngle(),
+          position: {
+            line: nestedArrayIndex,
+            index: stickyNotesLines[nestedArrayIndex].length,
+          },
         }
+
         stickyNotesLines[nestedArrayIndex].push(newEmptyStickyNote)
         emptyStickyNotes.push(newEmptyStickyNote)
         continue
@@ -123,11 +134,15 @@ export function useStickyNotesInLines(rawData = []) {
 
       // hadnle random notes later
       const randomSticyNote = copyRandomStickyNotes.pop()
+      randomSticyNote.position = {
+        line: nestedArrayIndex,
+        index: stickyNotesLines[nestedArrayIndex].length,
+      }
       stickyNotesLines[nestedArrayIndex].push(randomSticyNote)
     }
 
-    setDisplayStickyNotesInLines(stickyNotesLines)
-  }, [rawData, device])
-
-  return displayStickyNotesInLines
+    console.log('emptyStickyNotes', emptyStickyNotes)
+    dispatch(stickyNoteActions.changeStickyNotesInLines(stickyNotesLines))
+    dispatch(stickyNoteActions.changeEmptyNotes(emptyStickyNotes))
+  }, [rawData, device, dispatch])
 }

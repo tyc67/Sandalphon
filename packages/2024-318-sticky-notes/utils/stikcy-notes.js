@@ -1,3 +1,4 @@
+import axios from '../axios'
 import { cardRotateDegreeRange, stickyNoteColors } from '../const/sticky-notes'
 
 /**
