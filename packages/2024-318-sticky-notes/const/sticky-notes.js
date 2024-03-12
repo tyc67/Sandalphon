@@ -46,6 +46,10 @@ export const emptyStickyNote = {
     code: '',
   },
   rotateAngle: '',
+  position: {
+    line: null,
+    index: null,
+  },
 }
 
 /**
@@ -76,7 +80,7 @@ export const cardRotateDegreeRange = 5
 
 export const googleSheetApiUrl =
   env === 'local'
-    ? 'http://localhost:3000/api/googlesheet'
+    ? 'http://localhost:3001/api/googlesheet'
     : env === 'dev'
     ? 'https://dev.mirrormedia.mg/api/googlesheet'
     : 'https://www.mirrormedia.mg/api/googlesheet'
