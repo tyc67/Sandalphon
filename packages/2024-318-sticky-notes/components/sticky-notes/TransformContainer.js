@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import NewNote from './NewNote'
 import FixedNote from './FixedNote'
+import useRecaptcha from '../../hooks/use-recaptcha'
 
 const TransformWrapper = styled.div`
   position: fixed;
@@ -63,10 +64,11 @@ const ContainWrapper = styled.div`
 `
 
 export default function TransformContainer() {
+  const divRef = useRef()
+
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
   const dispatch = useAppDispatch()
-
-  const divRef = useRef()
+  const { verified } = useRecaptcha()
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -95,6 +97,10 @@ export default function TransformContainer() {
       observer.disconnect()
     }
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(stickyNoteActions.changeIsRecaptchaVerified(verified))
+  }, [verified])
 
   return (
     <>

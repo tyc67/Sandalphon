@@ -17,6 +17,7 @@ import { createSlice } from '@reduxjs/toolkit'
  * @property {FixedNote} fixedNote
  * @property {NewNote} newNote
  * @property {boolean} expandMode
+ * @property {boolean} isRecaptchaVerified
  */
 
 /** @type {NewNote} */
@@ -35,6 +36,7 @@ const initialState = {
   },
   newNote: initialNewNote,
   expandMode: false,
+  isRecaptchaVerified: false,
 }
 
 const stickyNoteSlice = createSlice({
@@ -66,6 +68,9 @@ const stickyNoteSlice = createSlice({
     },
     changeExpandMode(state, action) {
       state.expandMode = action.payload
+    },
+    changeIsRecaptchaVerified(state, action) {
+      state.isRecaptchaVerified = action.payload
     },
   },
 })
