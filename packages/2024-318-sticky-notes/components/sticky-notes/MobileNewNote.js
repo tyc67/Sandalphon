@@ -169,6 +169,9 @@ export default function MobileNewNote() {
   const isStickyNotesExpanded = useAppSelector(
     (state) => state.stickyNote.expandMode
   )
+  const emptyStickyNotes = useAppSelector(
+    (state) => state.stickyNote.emptyStickyNotes
+  )
   const newNote = useAppSelector((state) => state.stickyNote.newNote)
   const fixedMode = newNote.show
   const textAreaRef = useRef(null)
@@ -176,10 +179,7 @@ export default function MobileNewNote() {
 
   const openFixedNewNote = () => {
     dispatch(
-      stickyNoteActions.changeNewNote({
-        show: true,
-        note: {},
-      })
+      stickyNoteActions.changeNewNote({ show: true, note: emptyStickyNotes[0] })
     )
   }
 
