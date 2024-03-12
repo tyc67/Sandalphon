@@ -1,3 +1,5 @@
+import { env } from '.'
+
 export const fixedStickyHeight = 110
 
 /**
@@ -71,3 +73,13 @@ export const colorToAngle = {
 
 // decide the range of the rotate degree range ex: 5 deg -> range in -5 ~ 5 deg
 export const cardRotateDegreeRange = 5
+
+export const googleSheetApiUrl =
+  env === 'local'
+    ? 'http://localhost:3000/api/googlesheet'
+    : env === 'dev'
+    ? 'https://dev.mirrormedia.mg/api/googlesheet'
+    : 'https://www.mirrormedia.mg/api/googlesheet'
+
+export const googleSheetId = '1YS35rZCU4AoyiPB9gH0hZ6_dtuvq_FbYVjk_bHFk2xA'
+export const googleSheetTitle = env !== 'prod' ? 'postin-dev' : 'postin-prod'
