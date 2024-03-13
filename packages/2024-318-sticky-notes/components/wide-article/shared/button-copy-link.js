@@ -3,7 +3,7 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import useSharedUrl from '~/hooks/useSharedUrl'
-import { staticFileDestination } from '~/config'
+import { staticFileDestination } from '~/const/wide-article'
 import gtag from '~/utils/gtag'
 
 const CopiedMessage = styled.div`

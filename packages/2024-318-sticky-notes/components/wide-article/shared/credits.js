@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { SITE_URL } from '~/config'
+import { SITE_URL } from '~/const/wide-article'
 
 /**
  * @typedef {import('~/type/theme').Theme} Theme

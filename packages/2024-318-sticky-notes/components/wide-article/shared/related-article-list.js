@@ -1,10 +1,8 @@
-//TODO: insert real Advertisement, not just fake
-
 import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import Link from 'next/link'
 import { defaultPingFangFontFamily } from '~/styles/shared-style'
-import { SITE_URL, staticFileDestination } from '~/config'
+import { SITE_URL, staticFileDestination } from '~/const/wide-article'
 import gtag from '~/utils/gtag'
 /**
  * @typedef {Pick<import('~/type/wide-article/post').HeroImage ,'id' | 'resized' | 'resizedWebp'>} HeroImage
