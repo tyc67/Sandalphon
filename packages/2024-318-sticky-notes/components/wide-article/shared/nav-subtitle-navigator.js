@@ -216,6 +216,24 @@ export default function NavSubtitleNavigator({
   handleCloseSideBar = () => {},
 }) {
   const [currentIndex, setCurrentIndex] = useState(undefined)
+  const [scrollTitles, setScrollTitles] = useState([]) //for GA4 scroll event
+
+  useEffect(() => {
+    if (currentIndex) {
+      const matchedItem = h2AndH3Block.find((item) => item.key === currentIndex)
+      const hasScrolled = Boolean(
+        scrollTitles.find((item) => item.key === currentIndex)
+      )
+
+      if (!hasScrolled) {
+        setScrollTitles([...scrollTitles, matchedItem])
+      }
+
+      //如果該標題已經有觸發過 GA4 scroll event，則不再重複觸發。
+      matchedItem && !hasScrolled && onGA4Event('scroll', matchedItem.text)
+    }
+  }, [h2AndH3Block, currentIndex, scrollTitles])
+
   const handleOnClick = (key) => {
     const target = document.querySelector(`[data-offset-key*="${key}"]`)
     if (!target) {
@@ -273,6 +291,8 @@ export default function NavSubtitleNavigator({
           offsetKey.includes(item.key)
         )
 
+        console.log('執行 updateCurrentIndexIfVisible')
+
         if (item && item.isIntersecting !== isIntersecting) {
           item.isIntersecting = isIntersecting
 
@@ -284,6 +304,7 @@ export default function NavSubtitleNavigator({
 
           if (lastIndex !== -1) {
             const lastKey = reverseArray[lastIndex].key
+
             setCurrentIndex(lastKey)
           }
         }
