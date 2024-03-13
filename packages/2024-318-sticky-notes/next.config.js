@@ -23,6 +23,11 @@ const nextConfig = {
       ssr: true,
     },
   },
+  exportPathMap: async function () {
+    return {
+      '/': { page: '/' },
+    }
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
