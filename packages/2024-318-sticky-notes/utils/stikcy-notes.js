@@ -170,7 +170,6 @@ export function refillDisplayStickyNotes(
   device,
   randomEmptyNoteInsertIndex
 ) {
-  console.log('randomEmptyNoteInsertIndex', randomEmptyNoteInsertIndex)
   const newStickyNotesLines = JSON.parse(JSON.stringify(stickyNotesLines))
   const newEmptyStickyNotes = JSON.parse(JSON.stringify(emptyStickyNotes))
   const lines = rwdLines[device]

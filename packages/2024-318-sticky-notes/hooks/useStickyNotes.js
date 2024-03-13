@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import useDevice from './useDevice'
 import { useAppDispatch, useAppSelector } from './useRedux'
 import { stickyNoteActions } from '../store/sticky-note-slice'
-import axios from '~/axios'
 import useInView from './useInView'
 import { fetchStickyNotesAtPage } from '~/api/fetch-sticky-notes'
 
