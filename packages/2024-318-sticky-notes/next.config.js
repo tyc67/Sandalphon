@@ -1,18 +1,4 @@
-let assetPrefixPath = ''
-
-switch (process.env.NEXT_PUBLIC_ENV) {
-  case 'prod':
-  case 'dev':
-    assetPrefixPath = `https://www.mirrormedia.mg/projects/${process.env.NEXT_PUBLIC_PROJECT_NAME}`
-    break
-
-  default:
-    assetPrefixPath = 'http://localhost:3000'
-    break
-}
-
 const nextConfig = {
-  assetPrefix: assetPrefixPath,
   images: {
     unoptimized: true,
   },
