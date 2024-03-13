@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import NewNote from './NewNote'
 import FixedNote from './FixedNote'
-import useRecaptcha from '../../hooks/use-recaptcha'
+import useRecaptcha from '../../hooks/useRecaptcha'
 import { useStickyNotesInLines } from '~/hooks/useStickyNotes'
 
 const TransformWrapper = styled.div`
