@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import useSharedUrl from '~/hooks/useSharedUrl'
-import { staticFileDestination } from '~/const/wide-article'
+import { staticFileDestination } from '~/config'
 import gtag from '~/utils/gtag'
 
 const FACEBOOK_SHARED_URL = 'https://www.facebook.com/share.php?u='

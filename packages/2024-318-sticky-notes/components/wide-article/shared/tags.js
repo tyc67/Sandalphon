@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SITE_URL } from '~/const/wide-article'
+import { SITE_URL } from '~/config'
 import gtag from '~/utils/gtag'
 
 /**

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import styled from 'styled-components'
-import { staticFileDestination, SITE_URL } from '~/const/wide-article'
+import { staticFileDestination, SITE_URL } from '~/config'
 
 /**
  * @typedef {import('~/type/theme').Theme} Theme

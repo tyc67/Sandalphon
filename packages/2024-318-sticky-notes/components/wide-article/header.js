@@ -12,7 +12,7 @@ import CloseButton from '~/components/wide-article/shared/close-button'
 import NavSubtitleNavigator from '~/components/wide-article/shared/nav-subtitle-navigator'
 import ButtonSocialNetworkShare from '~/components/wide-article/shared/button-social-network-share'
 import ButtonCopyLink from '~/components/wide-article/shared/button-copy-link'
-import { READR_URL, SITE_URL } from '~/const/wide-article'
+import { READR_URL, SITE_URL } from '~/config'
 
 /**
  * @typedef {import('~/type/theme').Theme} Theme

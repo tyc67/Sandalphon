@@ -1,6 +1,6 @@
 // https://github.com/codler/react-ga4#readme
 import ga4 from 'react-ga4'
-import { ga4Id } from '~/const'
+import { ga4Id } from '~/config'
 
 const init = () => {
   ga4.initialize([

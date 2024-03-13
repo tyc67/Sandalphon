@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SITE_URL } from '~/const/wide-article'
+import { SITE_URL } from '~/config'
 
 const Link = styled.a`
   background-color: #1d9fb8;
