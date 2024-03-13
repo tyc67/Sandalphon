@@ -34,7 +34,7 @@ export const genRandomCardRotateAngle = () => {
  */
 function convertRawStickyNoteToDisplayStickyNote(rawStickyNotes) {
   return rawStickyNotes.map((rawStickyNote) => ({
-    id: rawStickyNote.type + '-' + crypto.randomUUID(),
+    id: rawStickyNote.id + '-' + crypto.randomUUID(),
     description: rawStickyNote.text,
     imageUrl: rawStickyNote.image,
     fixed: rawStickyNote.promote,
@@ -170,8 +170,6 @@ export function refillDisplayStickyNotes(
   device,
   randomEmptyNoteInsertIndex
 ) {
-  const newStickyNotesLines = JSON.parse(JSON.stringify(stickyNotesLines))
-  const newEmptyStickyNotes = JSON.parse(JSON.stringify(emptyStickyNotes))
   const lines = rwdLines[device]
   const emptyNoteCountPerSection = rwdEmptyNotePerSection[device]
 
@@ -188,18 +186,6 @@ export function refillDisplayStickyNotes(
 
   const stickyNoteLength = rawStickyNotes.length
 
-  /**
-   * Since empty note will be inserted into displayNotes per emptyNotePerSection,
-   * this random index will decide the position of empty notes in each section.
-   * Skip first ${lines} index to avoid insert the empty note in the firsct secrion
-   * cause conflict with the fixed notes.
-   */
-  // const randomEmptyNoteInsertIndex =
-  //   lines +
-  //   Math.floor(
-  //     Math.random() *
-  //       (Math.min(emptyNoteCountPerSection, stickyNoteLength) - lines)
-  //   )
   const additionalEmptyNotesCount = Math.ceil(
     stickyNoteLength / emptyNoteCountPerSection
   )
@@ -209,7 +195,7 @@ export function refillDisplayStickyNotes(
 
   let minNestedArrayLength
   let nestedArrIndexToStart = 0
-  for (const [i, stickyNotesLine] of newStickyNotesLines.entries()) {
+  for (const [i, stickyNotesLine] of stickyNotesLines.entries()) {
     if (!minNestedArrayLength) {
       minNestedArrayLength = stickyNotesLine.length
       continue
@@ -238,12 +224,12 @@ export function refillDisplayStickyNotes(
         rotateAngle: genRandomCardRotateAngle(),
         position: {
           line: nestedArrayIndex,
-          index: newStickyNotesLines[nestedArrayIndex]?.length,
+          index: stickyNotesLines[nestedArrayIndex]?.length,
         },
       }
 
-      newStickyNotesLines[nestedArrayIndex]?.push(newEmptyStickyNote)
-      newEmptyStickyNotes.push(newEmptyStickyNote)
+      stickyNotesLines[nestedArrayIndex]?.push(newEmptyStickyNote)
+      emptyStickyNotes.push(newEmptyStickyNote)
       continue
     }
 
@@ -252,14 +238,14 @@ export function refillDisplayStickyNotes(
     if (randomSticyNote) {
       randomSticyNote.position = {
         line: nestedArrayIndex,
-        index: newStickyNotesLines[nestedArrayIndex]?.length,
+        index: stickyNotesLines[nestedArrayIndex]?.length,
       }
-      newStickyNotesLines[nestedArrayIndex]?.push(randomSticyNote)
+      stickyNotesLines[nestedArrayIndex]?.push(randomSticyNote)
     }
   }
 
   return {
-    stickyNotesLines: newStickyNotesLines,
-    emptyStickyNotes: newEmptyStickyNotes,
+    stickyNotesLines: stickyNotesLines,
+    emptyStickyNotes: emptyStickyNotes,
   }
 }
