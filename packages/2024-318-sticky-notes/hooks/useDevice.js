@@ -6,7 +6,7 @@ import useWindowDimensions from './useWindowDimensions'
  */
 
 /** @type {Device} */
-const initialDevice = 'mobile'
+const initialDevice = null
 /*
  * @returns {Device}
  */
