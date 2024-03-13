@@ -80,7 +80,7 @@ const TextCard = styled.div`
 `
 
 /**
- * @typedef {import('../../data/mockData').RawNoteType | 'empty'} NoteType
+ * @typedef {import('~/data/mockData').RawNoteType | 'empty'} NoteType
  * @typedef {import('../../const/sticky-notes').StickyNoteColor} StickyNoteColor
  *
  * @typedef {Object} Position
