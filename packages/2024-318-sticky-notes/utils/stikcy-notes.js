@@ -69,10 +69,14 @@ export function initializeDisplayStickyNotes(rawStickyNotes, device) {
       return e.fixed === String(i + 1)
     })
     if (noteIndex !== -1) {
-      fixedNotes[i] = stickyNotesFromDB[noteIndex]
+      const fixedNote = stickyNotesFromDB[noteIndex]
+      fixedNote.color = stickyNoteColors[i]
+      fixedNotes[i] = fixedNote
       stickyNotesFromDB.splice(noteIndex, 1)
     } else {
-      fixedNotes[i] = stickyNotesFromDB[0]
+      const fixedNote = stickyNotesFromDB[0]
+      fixedNote.color = stickyNoteColors[i]
+      fixedNotes[i] = fixedNote
       stickyNotesFromDB.splice(0, 1)
     }
     return fixedNotes
