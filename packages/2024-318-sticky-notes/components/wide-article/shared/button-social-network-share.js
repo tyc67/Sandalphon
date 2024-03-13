@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import useSharedUrl from '~/hooks/useSharedUrl'
-import { staticFileDestination } from '~/config'
+import { staticFileDestination } from '~/const/wide-article'
+import gtag from '~/utils/gtag'
 
 const FACEBOOK_SHARED_URL = 'https://www.facebook.com/share.php?u='
 const LINE_SHARED_URL = 'https://social-plugins.line.me/lineit/share?url='
@@ -27,6 +28,15 @@ export default function ButtonSocialNetworkShare({
   height = 35,
   handleGetShareUrl = useSharedUrl,
 }) {
+  /**
+   * @param {string} logoName
+   */
+  const onLogoClicked = (logoName = '') => {
+    gtag.sendGAEvent('click', {
+      projects: `${logoName}`,
+    })
+  }
+
   const sharedUrl = handleGetShareUrl()
   const getSocialNetWorkInfo = (type) => {
     switch (type) {
@@ -35,12 +45,14 @@ export default function ButtonSocialNetworkShare({
           imageSrc: `${staticFileDestination}/wide-article/fb-logo.svg`,
           imageAlt: 'facebook-share',
           link: `${FACEBOOK_SHARED_URL}${sharedUrl}`,
+          onClick: () => onLogoClicked('share-facebook'),
         }
       case 'line':
         return {
           imageSrc: `${staticFileDestination}/wide-article/line-logo.svg`,
           imageAlt: 'line-share',
           link: `${LINE_SHARED_URL}${sharedUrl}`,
+          onClick: () => onLogoClicked('share-line'),
         }
 
       default:
@@ -48,12 +60,18 @@ export default function ButtonSocialNetworkShare({
           imageSrc: `${staticFileDestination}/wide-article/line-logo.svg`,
           imageAlt: 'line-share',
           link: `${FACEBOOK_SHARED_URL}${sharedUrl}`,
+          onClick: () => onLogoClicked('share-line'),
         }
     }
   }
   const imageInfo = getSocialNetWorkInfo(type)
   return (
-    <Link href={imageInfo.link} target="_blank" aria-label={imageInfo.imageAlt}>
+    <Link
+      href={imageInfo.link}
+      target="_blank"
+      aria-label={imageInfo.imageAlt}
+      onClick={imageInfo.onClick}
+    >
       <Image
         src={imageInfo.imageSrc}
         width={width}

@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { SITE_URL } from '~/config'
+import { SITE_URL } from '~/const/wide-article'
 
 /**
  * Transform params `time` into different pattern

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import { SITE_URL } from '~/config'
+import { SITE_URL } from '~/const/wide-article'
+import gtag from '~/utils/gtag'
 
 /**
  * @typedef {import('~/type/wide-article/post').Tag[]}Tags
@@ -35,6 +36,15 @@ const Tag = styled.a`
  * @returns {JSX.Element}
  */
 export default function Tags({ tags, className = '' }) {
+  /**
+   * @param {string} tagName
+   */
+  const onTagClicked = (tagName = '') => {
+    gtag.sendGAEvent('click', {
+      projects: `click ${tagName}`,
+    })
+  }
+
   const shouldShowTags = tags && tags.length
   const tagsJsx = shouldShowTags ? (
     <TagsWrapper className={className}>
@@ -44,6 +54,7 @@ export default function Tags({ tags, className = '' }) {
           href={`${SITE_URL}/tag/${tag.slug}`}
           target="_blank"
           rel="noreferrer"
+          onClick={() => onTagClicked(tag.name)}
         >
           {tag.name}
         </Tag>
