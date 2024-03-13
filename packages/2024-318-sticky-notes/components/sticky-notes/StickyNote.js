@@ -3,82 +3,6 @@ import styled from 'styled-components'
 import { useAppDispatch } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 
-const Wrapper = styled.div.attrs((props) => ({
-  style: {
-    background: props.backgroundColor,
-    transform: `rotate(${props.rotateDegree}deg)`,
-  },
-}))`
-  width: 136px;
-  height: 136px;
-  border-radius: 4px;
-  pointer-events: auto;
-  padding: 12px 8px;
-  cursor: pointer;
-  &:active {
-    scale: 1.088;
-  }
-  transition: scale 0.3s ease-in-out;
-
-  @media (hover: hover) {
-    &:hover {
-      scale: 1.088;
-    }
-  }
-
-  ${
-    /**
-     * @param {Object} props
-     * @param {string} props.backgroundColor
-     * @param {string} props.rotateDegree
-     * @param {boolean} props.empty
-     * @returns
-     */
-    ({ empty }) =>
-      empty &&
-      `
-      box-shadow: 2px 2px 6px 0px rgba(255, 255, 255, 0.85);
-
-      @keyframes scale {
-        0% {
-          scale: none;
-        }
-        50% {
-          scale: 1.1;
-        }
-        100% {
-          scale: none;
-        }
-      }
-
-      animation: scale 2s infinite;
-
-      &:active {
-        scale: 1.1;
-        animation: unset;
-      }    
-      @media (hover: hover) {
-        &:hover {
-          scale: 1.1;
-          animation: unset;
-        }
-      }
-        
-  `
-  }
-`
-
-const TextCard = styled.div`
-  font-family: 'Noto Sans TC';
-  font-weight: 350;
-  font-size: 14px;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
-  overflow: hidden;
-`
-
 /**
  * @typedef {import('~/data/mockData').RawNoteType | 'empty'} NoteType
  * @typedef {import('../../const/sticky-notes').StickyNoteColor} StickyNoteColor
@@ -100,7 +24,112 @@ const TextCard = styled.div`
  * @property {StickyNoteColor} color
  * @property {string} rotateAngle
  * @property {Position} position
+ *
+ * @typedef {'text' | 'empty' | 'image'} CardType
  */
+
+// .attrs((props) => ({
+//   style: {
+//     background: props.backgroundColor,
+//     transform: `rotate(${props.rotateDegree}deg)`,
+//   },
+// }))
+const Wrapper = styled.div`
+  position: relative;
+  width: 136px;
+  height: 136px;
+  border-radius: 4px;
+  pointer-events: auto;
+  padding: 12px 8px;
+  cursor: pointer;
+  &:active {
+    scale: 1.088;
+  }
+  transition: scale 0.3s ease-in-out;
+
+  @media (hover: hover) {
+    &:hover {
+      scale: 1.088;
+    }
+  }
+
+  ${({ rotateDegree }) =>
+    rotateDegree &&
+    `
+    transform: rotate(${rotateDegree}deg);
+  `}
+
+  ${
+    /**
+     * @param {Object} props
+     * @param {string} props.backgroundColor
+     * @param {string} props.rotateDegree
+     * @param {CardType} props.cardType
+     */
+    ({ cardType, backgroundColor }) => {
+      if (cardType === 'empty') {
+        return `
+          background: ${backgroundColor};
+          box-shadow: 2px 2px 6px 0px rgba(255, 255, 255, 0.85);
+
+          @keyframes scale {
+            0% {
+              scale: none;
+            }
+            50% {
+              scale: 1.1;
+            }
+            100% {
+              scale: none;
+            }
+          }
+    
+          animation: scale 2s infinite;
+    
+          &:active {
+            scale: 1.1;
+            animation: unset;
+          }    
+          @media (hover: hover) {
+            &:hover {
+              scale: 1.1;
+              animation: unset;
+            }
+          }
+        `
+      } else if (cardType === 'image') {
+        return `
+          border-radius: unset;
+          background: transparent;
+        `
+      } else if (cardType === 'text') {
+        return `
+          background: ${backgroundColor};
+        `
+      }
+    }
+  }
+`
+
+const TextCard = styled.div`
+  font-family: 'Noto Sans TC';
+  font-weight: 350;
+  font-size: 14px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+`
+
+const ImageCard = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`
 
 /**
  *
@@ -112,7 +141,12 @@ export default function StickeyNote({ stickyNote }) {
   const wrapperRef = useRef()
   const dispatch = useAppDispatch()
 
-  const isEmptyCard = stickyNote.type === 'empty' && !stickyNote.description
+  const cardType =
+    stickyNote.type === 'empty'
+      ? 'empty'
+      : stickyNote.imageUrl
+      ? 'image'
+      : 'text'
 
   const onNoteClicked = () => {
     if (stickyNote.type !== 'empty') {
@@ -132,16 +166,28 @@ export default function StickeyNote({ stickyNote }) {
     }
   }
 
+  let cardJsx
+  switch (cardType) {
+    case 'empty':
+    case 'text':
+      cardJsx = <TextCard>{stickyNote.description}</TextCard>
+      break
+    case 'image':
+      cardJsx = <ImageCard src={stickyNote.imageUrl} />
+      break
+    default:
+      break
+  }
   return (
     <Wrapper
       ref={wrapperRef}
       id={stickyNote.id}
       backgroundColor={stickyNote.color.code}
       rotateDegree={stickyNote.rotateAngle}
-      empty={isEmptyCard}
+      cardType={cardType}
       onClick={onNoteClicked}
     >
-      <TextCard>{stickyNote.description}</TextCard>
+      {cardJsx}
     </Wrapper>
   )
 }
