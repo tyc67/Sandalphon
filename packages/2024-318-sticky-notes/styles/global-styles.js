@@ -591,4 +591,7 @@ video {
   max-width: 100%;
   height: auto;
 }
+.grecaptcha-badge {
+  display: none;
+}
 `
