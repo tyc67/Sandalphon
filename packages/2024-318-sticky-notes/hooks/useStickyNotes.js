@@ -42,12 +42,7 @@ export function useStickyNotesInLines(endRef) {
       try {
         let newRawStickyNotes = rawStickyNotes
         if (!rawStickyNotes.length) {
-          const response = await axios.get(
-            `https://v3-statics-dev.mirrormedia.mg/json/project_318_1.json`
-          )
-          /** @type {import('~/data/mockData').RawData} */
-          const rawData = response.data
-          const { sheet_data, meta } = rawData
+          const { sheet_data, meta } = await fetchStickyNotesAtPage(1)
           newRawStickyNotes = sheet_data
 
           setMeta({
