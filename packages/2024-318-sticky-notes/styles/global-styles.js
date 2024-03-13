@@ -16,7 +16,7 @@ export const GlobalStyles = createGlobalStyle`
 
  //default font family  
  html {
-  ${defaultSansSerifFontFamily};
+   ${defaultSansSerifFontFamily};
   line-height: 1.5; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
 }

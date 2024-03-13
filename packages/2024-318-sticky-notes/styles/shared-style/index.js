@@ -6,9 +6,9 @@ const defaultSansSerifFontFamily = css`
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 `
 
-const defaultSerifFontFamily = css`
-  font-family: 'Noto Serif TC', source-han-serif-tc, 'Songti TC', serif,
-    PMingLiU;
+const defaultPingFangFontFamily = css`
+  font-family: 'PingFang TC', 'Noto Serif TC', source-han-serif-tc, 'Songti TC',
+    serif, PMingLiU;
 `
 
-export { defaultSansSerifFontFamily, defaultSerifFontFamily }
+export { defaultSansSerifFontFamily, defaultPingFangFontFamily }

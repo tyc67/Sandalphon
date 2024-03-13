@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import DraftRenderBlock from './draft-renderer-block'
+import { defaultPingFangFontFamily } from '~/styles/shared-style/index'
 
 /**
  * @typedef {import('~/type/theme').Theme} Theme
@@ -31,6 +32,7 @@ const BriefContainer = styled.div`
   *::before,
   *::after {
     color: white;
+    ${defaultPingFangFontFamily};
   }
 `
 

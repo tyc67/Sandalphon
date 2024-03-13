@@ -1,6 +1,3 @@
-//TODO: add jsDoc for credits
-//TODO: member 的判斷都拿掉
-
 import styled from 'styled-components'
 import DraftRenderBlock from '~/components/wide-article/shared/draft-renderer-block'
 import { MirrorMedia } from '@mirrormedia/lilith-draft-renderer'
@@ -12,15 +9,14 @@ import SubscribeLink from '~/components/wide-article/shared/subscribe-link'
 import HeroImageAndVideo from '~/components/wide-article/shared/hero-image-and-video'
 import Credits from '~/components/wide-article/shared/credits'
 import SupportMirrorMediaBanner from '~/components/wide-article/shared/support-mirrormedia-banner'
-import NavSubtitleNavigator from '~/components/wide-article/shared/nav-subtitle-navigator' //漢堡包展開內容
+import NavSubtitleNavigator from '~/components/wide-article/shared/nav-subtitle-navigator'
 import MoreInfoAndTag from '~/components/wide-article/shared/more-info-and-tag'
 import Date from '~/components/wide-article/shared/date'
 import ButtonCopyLink from '~/components/wide-article/shared/button-copy-link'
 import ButtonSocialNetworkShare from '~/components/wide-article/shared/button-social-network-share'
-import Aside from '~/components/wide-article/shared/aside' //暫時註解，要保留
+import Aside from '~/components/wide-article/shared/aside'
 import ArticleBrief from '~/components/wide-article/shared/brief'
-
-//FIXME: section / tag 有要保留嗎？
+import { defaultPingFangFontFamily } from '~/styles/shared-style/index'
 
 /**
  * @typedef {import('~/type/wide-article/post').Post} PostData
@@ -118,7 +114,8 @@ const DraftWrapper = styled.div`
   *,
   *::before,
   *::after {
-    color: white !important;
+    color: white;
+    ${defaultPingFangFontFamily};
   }
 `
 

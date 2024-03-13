@@ -3,7 +3,7 @@
 import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import Link from 'next/link'
-import { defaultSerifFontFamily } from '~/styles/shared-style'
+import { defaultPingFangFontFamily } from '~/styles/shared-style'
 import { SITE_URL, staticFileDestination } from '~/config'
 /**
  * @typedef {Pick<import('~/type/wide-article/post').HeroImage ,'id' | 'resized' | 'resizedWebp'>} HeroImage
@@ -110,7 +110,7 @@ const Article = styled.figure`
     align-items: center;
     background-color: transparent;
     color: white;
-    ${defaultSerifFontFamily};
+    ${defaultPingFangFontFamily};
     font-weight: 500;
     line-height: 1.5;
     margin-bottom: 36px;

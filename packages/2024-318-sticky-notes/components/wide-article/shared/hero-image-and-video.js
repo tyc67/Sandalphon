@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 import CustomImage from '@readr-media/react-image'
-import { defaultSerifFontFamily } from '~/styles/shared-style'
+import { defaultPingFangFontFamily } from '~/styles/shared-style'
 /**
  * @typedef {Pick<import('~/type/wide-article/post').HeroImage ,'id' | 'resized' | 'resizedWebp'>} HeroImage
  */
@@ -36,7 +36,7 @@ const TitleWrapper = styled.section`
 const ArticleTitle = styled.h1`
   color: rgba(0, 0, 0, 0.87);
   font-size: 24px;
-  ${defaultSerifFontFamily};
+  ${defaultPingFangFontFamily};
   font-weight: 700;
   text-align: center;
   display: block;
@@ -57,17 +57,17 @@ const ArticleSubtitle = styled.h2`
   font-size: 20px;
   font-weight: 500;
   line-height: normal;
-  ${defaultSerifFontFamily};
+  ${defaultPingFangFontFamily};
   text-align: center;
   margin: 0.3rem;
   ${({ theme }) => theme.breakpoint.md} {
-    ${defaultSerifFontFamily};
+    ${defaultPingFangFontFamily};
     color: #c1c1c1;
     font-size: 28px;
     font-weight: 400;
   }
   ${({ theme }) => theme.breakpoint.xl} {
-    ${defaultSerifFontFamily};
+    ${defaultPingFangFontFamily};
     font-size: 32px;
     line-height: 1.5;
   }
