@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled, { css } from 'styled-components'
+import { onGA4Event } from '~/utils/wide-article'
 
 /**
  * @typedef {Pick<import('~/type/wide-article/draft').DraftBlock, 'key' | 'text' | 'type'> & { type: 'header-two' | 'header-three'}} H2AndH3Block
@@ -325,7 +326,10 @@ export default function NavSubtitleNavigator({
                 }
                 headerType={item.type}
                 key={item.key}
-                onClick={() => handleOnClick(item.key)}
+                onClick={() => {
+                  handleOnClick(item.key)
+                  onGA4Event('click', `click ${item.text}-318_10th`)
+                }}
               >
                 <a href={`#header-${item.key}`}>{item.text}</a>
               </NavItem>

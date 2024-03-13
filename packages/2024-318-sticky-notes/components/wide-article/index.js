@@ -17,6 +17,7 @@ import ButtonSocialNetworkShare from '~/components/wide-article/shared/button-so
 import Aside from '~/components/wide-article/shared/aside'
 import ArticleBrief from '~/components/wide-article/shared/brief'
 import { defaultPingFangFontFamily } from '~/styles/shared-style/index'
+import { onGA4Event } from '~/utils/wide-article'
 
 /**
  * @typedef {import('~/type/wide-article/post').Post} PostData
@@ -119,7 +120,6 @@ const DraftWrapper = styled.div`
   }
 `
 
-// FIXME: postData、postContent 是否可以只保留一個？
 /**
  *
  * @param {Object} param
@@ -171,8 +171,6 @@ export default function StoryWideStyle({ postData, postContent }) {
   ]
 
   const h2AndH3Block = getContentBlocksH2H3(postContent.data)
-  // 一律不蓋掉文章，不處理 trimmed 的部分
-  // const shouldShowArticleMask = postContent.type === 'trimmedContent' //FIXME: 確認一下後台哪裡有 postContent.type
 
   return (
     <>
@@ -211,8 +209,15 @@ export default function StoryWideStyle({ postData, postContent }) {
             </DateWrapper>
 
             <DonateSubscribeWrapper>
-              <DonateLink />
-              <SubscribeLink className="subscribe-btn" />
+              <DonateLink
+                onClick={() => onGA4Event('click', '贊助本文- top-318_10th')}
+              />
+              <SubscribeLink
+                className="subscribe-btn"
+                onClick={() =>
+                  onGA4Event('click', '加入訂閱會員- top-318_10th')
+                }
+              />
             </DonateSubscribeWrapper>
 
             <section className="content">

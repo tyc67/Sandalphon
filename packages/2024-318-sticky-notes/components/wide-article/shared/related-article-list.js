@@ -1,9 +1,11 @@
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import Link from 'next/link'
 import { defaultPingFangFontFamily } from '~/styles/shared-style'
 import { SITE_URL, staticFileDestination } from '~/const/wide-article'
 import gtag from '~/utils/gtag'
+import { onGA4Event } from '~/utils/wide-article'
 /**
  * @typedef {Pick<import('~/type/wide-article/post').HeroImage ,'id' | 'resized' | 'resizedWebp'>} HeroImage
  */
@@ -137,19 +139,45 @@ const Article = styled.figure`
  * @returns {JSX.Element}
  */
 export default function RelatedArticleList({ relateds }) {
-  /**
-   * @param {string} articleTitle
-   */
-  const onArticleClicked = (articleTitle = '') => {
-    gtag.sendGAEvent('click', {
-      projects: `click延伸閱讀 - ${articleTitle}`,
+  const wrapperRef = useRef(null)
+
+  useEffect(() => {
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          gtag.sendGAEvent('scroll', {
+            projects: `scroll to 延伸閱讀`,
+          })
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, {
+      root: null,
+      threshold: 0.1,
     })
-  }
+
+    if (wrapperRef.current) {
+      observer.observe(wrapperRef.current)
+    }
+
+    return () => {
+      if (wrapperRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        observer.unobserve(wrapperRef.current)
+      }
+    }
+  }, [])
 
   const relatedsArticleJsx = relateds.length ? (
     <ArticleWrapper>
       {relateds.map((related) => (
-        <li key={related.id} onClick={() => onArticleClicked(related.title)}>
+        <li
+          key={related.id}
+          onClickCapture={() =>
+            onGA4Event('click', `${related.title}-318_10th`)
+          }
+        >
           <Article>
             <Link
               href={`${SITE_URL}/story/${related.slug}`}
@@ -184,7 +212,7 @@ export default function RelatedArticleList({ relateds }) {
   ) : null
 
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <div className="title">延伸閱讀</div>
       {relatedsArticleJsx}
     </Wrapper>
