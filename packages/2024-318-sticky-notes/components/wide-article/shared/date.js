@@ -47,7 +47,8 @@ export default function Date({
   return (
     <DateText className={className}>
       {timeType === 'publishedDate' ? '發布時間 ' : '更新時間 '}
-      {formattedTime} 臺北時間
+      {timeType === 'publishedDate' ? '2024.03.18 06:00' : formattedTime}
+      臺北時間
     </DateText>
   )
 }

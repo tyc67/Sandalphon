@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import Image from '@readr-media/react-image'
 import Link from 'next/link'
 import { defaultPingFangFontFamily } from '~/styles/shared-style'
-import { SITE_URL, staticFileDestination } from '~/config'
+import { SITE_URL, staticFileDestination } from '~/const/wide-article'
+import gtag from '~/utils/gtag'
 /**
  * @typedef {Pick<import('~/type/wide-article/post').HeroImage ,'id' | 'resized' | 'resizedWebp'>} HeroImage
  */
@@ -138,10 +139,19 @@ const Article = styled.figure`
  * @returns {JSX.Element}
  */
 export default function RelatedArticleList({ relateds }) {
+  /**
+   * @param {string} articleTitle
+   */
+  const onArticleClicked = (articleTitle = '') => {
+    gtag.sendGAEvent('click', {
+      projects: `click延伸閱讀 - ${articleTitle}`,
+    })
+  }
+
   const relatedsArticleJsx = relateds.length ? (
     <ArticleWrapper>
       {relateds.map((related) => (
-        <li key={related.id}>
+        <li key={related.id} onClick={() => onArticleClicked(related.title)}>
           <Article>
             <Link
               href={`${SITE_URL}/story/${related.slug}`}
