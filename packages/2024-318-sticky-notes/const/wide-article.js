@@ -17,8 +17,7 @@ switch (env) {
   case 'prod': {
     SITE_URL = 'https://www.mirrormedia.mg'
     READR_URL = 'https://www.readr.tw'
-    POST_JSON =
-      'https://storage.googleapis.com/v3-statics-dev.mirrormedia.mg/files/json/318_story.json'
+    POST_JSON = 'https://v3-statics.mirrormedia.mg/files/json/318_story.json'
     staticFileDestination = `https://www.mirrormedia.mg/projects/${projectName}`
     break
   }
