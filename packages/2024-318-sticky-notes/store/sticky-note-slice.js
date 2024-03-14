@@ -11,10 +11,14 @@ import {
  * @typedef {Object} FixedNote
  * @property {boolean} show
  * @property {StickyNote} note
+ * @property {'added' | ''} status
  *
  * @typedef {Object} NewNote
  * @property {boolean} show
  * @property {StickyNote} note
+ * @property {string} content
+ * @property {'' | 'success' | 'error'} addingResult
+ * @property {boolean} isRequestInFlight
  *
  * @typedef {Object} StickyNoteState
  * @property {RawStickyNote[]} rawStickyNotes
@@ -31,6 +35,16 @@ import {
 const initialNewNote = {
   show: false,
   note: null,
+  content: '',
+  addingResult: '',
+  isRequestInFlight: false,
+}
+
+/** @type {FixedNote} */
+const initialFixedNote = {
+  show: false,
+  note: null,
+  status: '',
 }
 
 /** @type {StickyNoteState} */
@@ -41,6 +55,7 @@ const initialState = {
   fixedNote: {
     show: false,
     note: null,
+    status: '',
   },
   newNote: initialNewNote,
   expandMode: false,
@@ -90,8 +105,24 @@ const stickyNoteSlice = createSlice({
     changeFixedNote(state, action) {
       state.fixedNote = action.payload
     },
-    changeNewNote(state, action) {
-      state.newNote = action.payload
+    resetFixedNote(state) {
+      state.fixedNote = initialFixedNote
+    },
+    showFixedNewNote(state, action) {
+      state.newNote = {
+        ...state.newNote,
+        show: true,
+        note: action.payload,
+      }
+    },
+    changeNewNoteContent(state, action) {
+      state.newNote.content = action.payload
+    },
+    changeNewNoteAddingResult(state, action) {
+      state.newNote.addingResult = action.payload
+    },
+    changeNewNoteRequestInFlight(state, action) {
+      state.newNote.isRequestInFlight = action.payload
     },
     resetNewNote(state) {
       state.newNote = initialNewNote
