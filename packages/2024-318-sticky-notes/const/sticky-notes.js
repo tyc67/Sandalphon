@@ -79,9 +79,7 @@ export const colorToAngle = {
 export const cardRotateDegreeRange = 5
 
 export const googleSheetApiUrl =
-  env === 'local'
-    ? 'http://localhost:3001/api/googlesheet'
-    : env === 'dev'
+  env !== 'prod'
     ? 'https://dev.mirrormedia.mg/api/googlesheet'
     : 'https://www.mirrormedia.mg/api/googlesheet'
 
