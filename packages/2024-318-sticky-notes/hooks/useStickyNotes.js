@@ -44,10 +44,7 @@ export function useStickyNotesInLines(endRef) {
           const { sheet_data, meta } = await fetchStickyNotesAtPage(1)
           newRawStickyNotes = sheet_data
 
-          setMeta({
-            total_pages: meta['total pages'],
-            next: meta.next,
-          })
+          setMeta(meta)
         }
 
         dispatch(
@@ -80,11 +77,9 @@ export function useStickyNotesInLines(endRef) {
             stickyNoteActions.appendStickyNotes({ newRawStickyNotes, device })
           )
           setPage(newPage)
-          setMeta({
-            total_pages: meta['total pages'],
-            next: meta.next,
-          })
+          setMeta(meta)
         })
+        .catch((error) => console.error(error))
         .finally(() => {
           isLoadingMoreRef.current = false
         })
