@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import styled from 'styled-components'
-import { staticFileDestination, SITE_URL } from '~/config'
+import { staticFileDestination, SITE_URL } from '~/const/wide-article'
 
 /**
  * @typedef {import('~/type/theme').Theme} Theme
@@ -46,9 +46,14 @@ const Link = styled.a`
     };
 `
 
-export default function DonateLink({ className = '' }) {
+export default function DonateLink({ className = '', onClick = () => {} }) {
   return (
-    <Link className={className} href={`${SITE_URL}/donate`} target="_blank">
+    <Link
+      className={className}
+      href={`${SITE_URL}/donate`}
+      target="_blank"
+      onClick={onClick}
+    >
       <Image
         src={`${staticFileDestination}/wide-article/donate.png`}
         width={13.33}

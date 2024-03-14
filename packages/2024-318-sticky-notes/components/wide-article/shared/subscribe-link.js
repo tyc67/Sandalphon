@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SITE_URL } from '~/config'
+import { SITE_URL } from '~/const/wide-article'
 
 const Link = styled.a`
   background-color: #1d9fb8;
@@ -22,9 +22,14 @@ const Link = styled.a`
   }
 `
 
-export default function SubscribeLink({ className = '' }) {
+export default function SubscribeLink({ className = '', onClick = () => {} }) {
   return (
-    <Link className={className} href={`${SITE_URL}/subscribe`} target="_blank">
+    <Link
+      className={className}
+      href={`${SITE_URL}/subscribe`}
+      target="_blank"
+      onClick={onClick}
+    >
       <span>加入訂閱會員</span>
     </Link>
   )

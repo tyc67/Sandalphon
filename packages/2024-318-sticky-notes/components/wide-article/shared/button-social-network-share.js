@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import useSharedUrl from '~/hooks/useSharedUrl'
-import { staticFileDestination } from '~/config'
-import gtag from '~/utils/gtag'
+import { staticFileDestination } from '~/const/wide-article'
+import { onGA4Event } from '~/utils/wide-article'
 
 const FACEBOOK_SHARED_URL = 'https://www.facebook.com/share.php?u='
 const LINE_SHARED_URL = 'https://social-plugins.line.me/lineit/share?url='
@@ -28,15 +28,6 @@ export default function ButtonSocialNetworkShare({
   height = 35,
   handleGetShareUrl = useSharedUrl,
 }) {
-  /**
-   * @param {string} logoName
-   */
-  const onLogoClicked = (logoName = '') => {
-    gtag.sendGAEvent('click', {
-      projects: `${logoName}`,
-    })
-  }
-
   const sharedUrl = handleGetShareUrl()
   const getSocialNetWorkInfo = (type) => {
     switch (type) {
@@ -45,14 +36,14 @@ export default function ButtonSocialNetworkShare({
           imageSrc: `${staticFileDestination}/wide-article/fb-logo.svg`,
           imageAlt: 'facebook-share',
           link: `${FACEBOOK_SHARED_URL}${sharedUrl}`,
-          onClick: () => onLogoClicked('share-facebook'),
+          onClick: () => onGA4Event('click', 'share-facebook-318_10th'),
         }
       case 'line':
         return {
           imageSrc: `${staticFileDestination}/wide-article/line-logo.svg`,
           imageAlt: 'line-share',
           link: `${LINE_SHARED_URL}${sharedUrl}`,
-          onClick: () => onLogoClicked('share-line'),
+          onClick: () => onGA4Event('click', 'share-line-318_10th'),
         }
 
       default:
@@ -60,7 +51,7 @@ export default function ButtonSocialNetworkShare({
           imageSrc: `${staticFileDestination}/wide-article/line-logo.svg`,
           imageAlt: 'line-share',
           link: `${FACEBOOK_SHARED_URL}${sharedUrl}`,
-          onClick: () => onLogoClicked('share-line'),
+          onClick: () => onGA4Event('click', 'share-line-318_10th'),
         }
     }
   }

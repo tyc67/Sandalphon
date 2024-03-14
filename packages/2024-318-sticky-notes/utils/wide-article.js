@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
-import { SITE_URL } from '~/config'
+import { SITE_URL } from '~/const/wide-article'
+import gtag from '~/utils/gtag'
 
 /**
  * Transform params `time` into different pattern
@@ -64,4 +65,14 @@ const getArticleHref = (slug, style, partner) => {
   return `${SITE_URL}/story/${slug}/`
 }
 
-export { transformTimeDataIntoDotFormat, getArticleHref }
+/**
+ * @param {string} type
+ * @param {string} label
+ */
+const onGA4Event = (type = 'click', label = '') => {
+  gtag.sendGAEvent(`${type}`, {
+    projects: label,
+  })
+}
+
+export { transformTimeDataIntoDotFormat, getArticleHref, onGA4Event }

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import DonateLink from './donate-link'
 import SubscribeLink from './subscribe-link'
+import { onGA4Event } from '~/utils/wide-article'
 
 const Container = styled.div`
   margin: 32px 0;
@@ -101,7 +102,10 @@ export default function SupportMirrorMediaBanner({ className }) {
             <br />
             小額贊助鏡週刊！
           </p>
-          <DonateLink className="banner-button" />
+          <DonateLink
+            className="banner-button"
+            onClick={() => onGA4Event('click', '贊助本文- bottom-318_10th')}
+          />
         </InnerBox>
         <InnerBox>
           <p className="desc">
@@ -109,7 +113,10 @@ export default function SupportMirrorMediaBanner({ className }) {
             <br />
             暢享無廣告閱讀體驗
           </p>
-          <SubscribeLink className="banner-button" />
+          <SubscribeLink
+            className="banner-button"
+            onClick={() => onGA4Event('click', '加入訂閱會員- bottom-318_10th')}
+          />
         </InnerBox>
       </InnerWrapper>
     </Container>

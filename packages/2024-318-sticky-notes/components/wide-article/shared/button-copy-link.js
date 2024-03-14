@@ -3,8 +3,8 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import useSharedUrl from '~/hooks/useSharedUrl'
-import { staticFileDestination } from '~/config'
-import gtag from '~/utils/gtag'
+import { staticFileDestination } from '~/const/wide-article'
+import { onGA4Event } from '~/utils/wide-article'
 
 const CopiedMessage = styled.div`
   position: fixed;
@@ -66,12 +66,6 @@ export default function ButtonCopyLink({ width = 35, height = 35 }) {
     }
   }
 
-  const onLogoClicked = () => {
-    gtag.sendGAEvent('click', {
-      projects: `share-link`,
-    })
-  }
-
   return (
     <>
       <CopiedMessage shouldShowMessage={shouldShowMessage}>
@@ -81,7 +75,7 @@ export default function ButtonCopyLink({ width = 35, height = 35 }) {
       <ClickButton
         onClick={() => {
           handleCopyLink()
-          onLogoClicked()
+          onGA4Event('click', 'share-link-318_10th')
         }}
         aria-label="link-share-icon"
         // @ts-ignore
