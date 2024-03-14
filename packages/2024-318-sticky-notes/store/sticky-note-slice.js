@@ -21,6 +21,7 @@ import {
  * @property {boolean} isRequestInFlight
  *
  * @typedef {Object} StickyNoteState
+ * @property {boolean} showStickyNotesPanel
  * @property {RawStickyNote[]} rawStickyNotes
  * @property {StickyNote[][]} stickyNotesInLines
  * @property {StickyNote[]} emptyStickyNotes
@@ -49,6 +50,7 @@ const initialFixedNote = {
 
 /** @type {StickyNoteState} */
 const initialState = {
+  showStickyNotesPanel: false,
   rawStickyNotes: [],
   stickyNotesInLines: [],
   emptyStickyNotes: [],
@@ -67,6 +69,9 @@ const stickyNoteSlice = createSlice({
   name: 'stickyNote',
   initialState,
   reducers: {
+    changeShowStickyNotesPanel(state, action) {
+      state.showStickyNotesPanel = action.payload
+    },
     initialStickyNotes(state, action) {
       const { rawStickyNotes, device } = action.payload
 

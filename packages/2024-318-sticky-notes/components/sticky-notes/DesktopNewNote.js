@@ -64,22 +64,27 @@ const NewNoteWrapper = styled.div`
   padding: 16px 24px 56px;
   border-radius: 4px;
   background: white;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.8s ease-in-out;
   cursor: pointer;
+  transform: translateY(200%);
   ${
     /**
      * @param {Object} props
      * @param {boolean} props.isFolded
      * @param {boolean} props.fixedMode
+     * @param {boolean} props.showStickyNotesPanel
      */
-    ({ isFolded }) =>
-      isFolded
-        ? `
-      transform: translateY(178px);
-    `
-        : `
-      transform: translateY(0);
-    `
+    ({ isFolded, showStickyNotesPanel }) => {
+      if (showStickyNotesPanel) {
+        return isFolded
+          ? `
+              transform: translateY(178px);
+            `
+          : `
+              transform: translateY(0);
+            `
+      }
+    }
   }
   ${({ fixedMode }) =>
     fixedMode &&
@@ -90,17 +95,6 @@ const NewNoteWrapper = styled.div`
       bottom: unset;
 
   `}
-  animation: rise-from-bottom2 1s ease-in-out;
-
-  @keyframes rise-from-bottom2 {
-    0% {
-      transform: translateY(100%);
-    }
-
-    100% {
-      transform: translateY(178px);
-    }
-  }
 `
 
 const TextArea = styled.textarea`
@@ -178,6 +172,9 @@ export default function DesktopNewNote() {
   )
   const isRecaptchaVerified = useAppSelector(
     (state) => state.stickyNote.isRecaptchaVerified
+  )
+  const showStickyNotesPanel = useAppSelector(
+    (state) => state.stickyNote.showStickyNotesPanel
   )
   const {
     show: fixedMode,
@@ -333,6 +330,7 @@ export default function DesktopNewNote() {
           <NewNoteWrapper
             isFolded={isFolded}
             fixedMode={fixedMode}
+            showStickyNotesPanel={showStickyNotesPanel}
             onClick={(e) => {
               e.stopPropagation()
               if (isFolded) {

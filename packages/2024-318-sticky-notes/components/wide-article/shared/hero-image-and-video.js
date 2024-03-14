@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components'
 import CustomImage from '@readr-media/react-image'
 import { defaultPingFangFontFamily } from '~/styles/shared-style'
+import { useEffect, useRef } from 'react'
+import { useAppDispatch } from '~/hooks/useRedux'
+import { stickyNoteActions } from '~/store/sticky-note-slice'
 /**
  * @typedef {Pick<import('~/type/wide-article/post').HeroImage ,'id' | 'resized' | 'resizedWebp'>} HeroImage
  */
@@ -171,6 +174,9 @@ export default function HeroImageAndVideo({
   style = 'wide',
   subtitle = '',
 }) {
+  const dispatch = useAppDispatch()
+  const landingTopRef = useRef(null)
+  const landingBottomRef = useRef(null)
   const shouldShowHeroVideo = Boolean(heroVideo)
   const shouldShowHeroImage = Boolean(!shouldShowHeroVideo && heroImage)
 
@@ -207,11 +213,42 @@ export default function HeroImageAndVideo({
     return null
   }
   const heroJsx = getHeroJsx()
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id
+        const isIntersecting = entry.isIntersecting
+        /**
+         *  Since the landing page is at the first page in the screen,
+         * we only care if the topRef is on the screen (only scroll up case)
+         * and bottomRef is off the screen (only scroll down case).
+         */
+        if (id === 'landing-top' && isIntersecting) {
+          dispatch(stickyNoteActions.changeShowStickyNotesPanel(false))
+        } else if (id === 'landing-bottom' && !isIntersecting) {
+          dispatch(stickyNoteActions.changeShowStickyNotesPanel(true))
+        }
+      })
+    })
+    if (landingTopRef.current) {
+      observer.observe(landingTopRef.current)
+    }
+    if (landingBottomRef.current) {
+      observer.observe(landingBottomRef.current)
+    }
+    return () => {
+      observer.disconnect()
+    }
+  }, [dispatch])
+
   return (
     <>
+      <div id="landing-top" ref={landingTopRef} />
       {shouldShowHeroImage || shouldShowHeroVideo ? (
         <Figure isStyleWide={style === 'wide'}>
           {heroJsx}
+          <div id="landing-bottom" ref={landingBottomRef} />
           {heroCaption ? <HeroCaption>{heroCaption}</HeroCaption> : null}
         </Figure>
       ) : (

@@ -33,6 +33,9 @@ export function useStickyNotesInLines(endRef) {
     (state) => state.stickyNote.emptyStickyNotes
   )
   const dispatch = useAppDispatch()
+  const showStickyNotesPanel = useAppSelector(
+    (state) => state.stickyNote.showStickyNotesPanel
+  )
   const device = useDevice()
   const endOfScroll = useInView(endRef)
 
@@ -57,11 +60,11 @@ export function useStickyNotesInLines(endRef) {
         console.error(error)
       }
     }
-    if (device) {
+    if (showStickyNotesPanel && device) {
       fetchStickyNotes()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [device, dispatch]) // avoid adding rawStickNotes to prevent update random position...
+  }, [showStickyNotesPanel, device, dispatch]) // avoid adding rawStickNotes to prevent update random position...
 
   useEffect(() => {
     const isLoading = isLoadingMoreRef.current
