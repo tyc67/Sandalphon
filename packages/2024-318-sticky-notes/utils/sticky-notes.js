@@ -129,8 +129,11 @@ export function initializeDisplayStickyNotes(rawStickyNotes, device) {
       continue
     }
 
-    // if the index is for the empty note
-    if (i % emptyNoteCountPerSection === randomEmptyNoteInsertIndex) {
+    // if the index is for the empty note or run out of randomStickyNotes
+    if (
+      i % emptyNoteCountPerSection === randomEmptyNoteInsertIndex ||
+      randomStickyNotes.length === 0
+    ) {
       /** @type {StickyNote} */
       const newEmptyStickyNote = {
         ...emptyStickyNote,
@@ -150,11 +153,13 @@ export function initializeDisplayStickyNotes(rawStickyNotes, device) {
 
     // hadnle random notes later
     const randomSticyNote = randomStickyNotes.pop()
-    randomSticyNote.position = {
-      line: nestedArrayIndex,
-      index: stickyNotesLines[nestedArrayIndex].length,
+    if (randomSticyNote) {
+      randomSticyNote.position = {
+        line: nestedArrayIndex,
+        index: stickyNotesLines[nestedArrayIndex].length,
+      }
+      stickyNotesLines[nestedArrayIndex].push(randomSticyNote)
     }
-    stickyNotesLines[nestedArrayIndex].push(randomSticyNote)
   }
 
   return { stickyNotesLines, emptyStickyNotes, randomEmptyNoteInsertIndex }
@@ -215,7 +220,7 @@ export function refillDisplayStickyNotes(
     // calculate which nested array to push
     const nestedArrayIndex = (nestedArrIndexToStart + i) % lines
 
-    // if the index is for the empty note
+    // if the index is for the empty note or run out of randomStickyNotes
     if (
       i % emptyNoteCountPerSection === randomEmptyNoteInsertIndex ||
       randomStickyNotes.length === 0

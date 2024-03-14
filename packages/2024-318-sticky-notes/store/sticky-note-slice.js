@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   initializeDisplayStickyNotes,
   refillDisplayStickyNotes,
-} from '~/utils/stikcy-notes'
+} from '~/utils/sticky-notes'
 
 /**
  * @typedef {import('~/data/mockData').RawStickyNote} RawStickyNote
