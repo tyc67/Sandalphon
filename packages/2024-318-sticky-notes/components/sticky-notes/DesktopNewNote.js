@@ -90,6 +90,17 @@ const NewNoteWrapper = styled.div`
       bottom: unset;
 
   `}
+  animation: rise-from-bottom2 1s ease-in-out;
+
+  @keyframes rise-from-bottom2 {
+    0% {
+      transform: translateY(100%);
+    }
+
+    100% {
+      transform: translateY(178px);
+    }
+  }
 `
 
 const TextArea = styled.textarea`

@@ -17,6 +17,17 @@ const TransformWrapper = styled.div`
   background: transparent;
   transition: transform 1s ease-in-out;
   pointer-events: none;
+  animation: rise-from-bottom 1s ease-in-out;
+
+  @keyframes rise-from-bottom {
+    0% {
+      transform: translateY(100%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
 
   ${
     /**
