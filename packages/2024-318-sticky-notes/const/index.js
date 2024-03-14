@@ -1,8 +1,8 @@
 /**
  * @type {'local' | 'dev' | 'prod'}
  */
-export const env = 'prod' // 'local' || 'dev' || 'prod'
-export const projectName = 'prod-318-xuan'
+export const env = 'dev' // 'local' || 'dev' || 'prod'
+export const projectName = 'dev-318-sticky-notes'
 
 const ga4Ids = {
   local: 'G-36HYH6NF6P',
