@@ -1,23 +1,24 @@
 import styled from 'styled-components'
-import { useStickyNotesInLines } from '../../hooks/useStickyNotes'
 import StickyNotesLine from './StickyNotesLine'
-import { mockStickyNotes } from '../../data/mockData'
 import { useAppSelector } from '../../hooks/useRedux'
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
-  // width: 320px;
+  width: 320px;
   pointer-events: ;
   justify-content: center;
+  margin-bottom: 30px;
 
   @media (min-width: 744px) {
     width: 480px;
     padding-left: 49px;
-    margin: unset;
+    margin-bottom: 50px;
   }
   @media (min-width: 1200px) {
     padding-left: 56px;
     width: 800px;
+    margin-bottom: 80px;
   }
   transition: padding-top 0.5s ease-in-out;
 
@@ -42,6 +43,7 @@ const Wrapper = styled.div`
         `
   }
 `
+
 /**
  * @returns {JSX.Element}
  */
@@ -50,13 +52,14 @@ export default function StickyNotes() {
   const stickyNotesInLines = useAppSelector(
     (state) => state.stickyNote.stickyNotesInLines
   )
-  useStickyNotesInLines(mockStickyNotes)
 
   return (
-    <Wrapper expandMode={expandMode}>
-      {stickyNotesInLines.map((stickeyNotesInLine, i) => (
-        <StickyNotesLine key={i} stickyNotes={stickeyNotesInLine} />
-      ))}
-    </Wrapper>
+    <>
+      <Wrapper expandMode={expandMode}>
+        {stickyNotesInLines.map((stickeyNotesInLine, i) => (
+          <StickyNotesLine key={i} stickyNotes={stickeyNotesInLine} />
+        ))}
+      </Wrapper>
+    </>
   )
 }

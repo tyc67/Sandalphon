@@ -2,6 +2,8 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 
+/** @typedef {import('./StickyNote').CardType} CardType */
+
 const GlobalStyle = createGlobalStyle`
   body {
     overflow: hidden;
@@ -38,12 +40,15 @@ const Note = styled.div`
     /**
      * @param {Object} props
      * @param {string} props.bgColor
+     * @param {CardType} props.cardType
      */
-    ({ bgColor }) =>
-      bgColor &&
-      `
-      background-color: ${bgColor};
-    `
+    ({ bgColor, cardType }) => {
+      if (cardType === 'image') {
+        return 'background: transparent;'
+      } else {
+        return `background-color: ${bgColor};`
+      }
+    }
   }
 `
 
@@ -92,6 +97,15 @@ const Button = styled.button`
   }
 `
 
+const ImageCard = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`
+
 /**
  * @returns {JSX.Element}
  */
@@ -105,6 +119,14 @@ export default function FixedNote() {
     return null
   }
   const stickyNoteColor = stickyNote.color.code
+  const cardType =
+    stickyNote.type === 'empty'
+      ? 'empty'
+      : stickyNote.imageUrl
+      ? 'image'
+      : 'text'
+
+  const btnColor = cardType === 'image' ? 'white' : stickyNoteColor
 
   const closeFixedNote = () => {
     dispatch(
@@ -113,6 +135,18 @@ export default function FixedNote() {
         note: null,
       })
     )
+  }
+
+  let cardJsx
+  switch (cardType) {
+    case 'text':
+      cardJsx = <TextCard>{stickyNote.description}</TextCard>
+      break
+    case 'image':
+      cardJsx = <ImageCard src={stickyNote.imageUrl} />
+      break
+    default:
+      break
   }
 
   return (
@@ -125,15 +159,16 @@ export default function FixedNote() {
       >
         <Note
           bgColor={stickyNoteColor}
+          cardType={cardType}
           onClick={(e) => {
             e.stopPropagation()
           }}
         >
-          <TextCard>{stickyNote.description}</TextCard>
+          {cardJsx}
           <ButtonWrapper>
             {!expandMode && (
               <Button
-                color={stickyNoteColor}
+                color={btnColor}
                 onClick={() => {
                   closeFixedNote()
                   dispatch(stickyNoteActions.changeExpandMode(true))
@@ -148,7 +183,7 @@ export default function FixedNote() {
               </Button>
             )}
             <Button
-              color={stickyNoteColor}
+              color={btnColor}
               onClick={() => {
                 closeFixedNote()
               }}
