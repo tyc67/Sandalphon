@@ -6,7 +6,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import NewNote from './NewNote'
 import FixedNote from './FixedNote'
-import useRecaptcha from '../../hooks/use-recaptcha'
+import useRecaptcha from '../../hooks/useRecaptcha'
+import { useStickyNotesInLines } from '~/hooks/useStickyNotes'
 
 const TransformWrapper = styled.div`
   position: fixed;
@@ -29,7 +30,6 @@ const TransformWrapper = styled.div`
     position: relative;
     top: -${fixedStickyHeight}px;
     transform: translateY(${fixedStickyHeight}px);
-    min-height: 90vh;
     height: auto;
     bottom: unset;
   `
@@ -63,12 +63,20 @@ const ContainWrapper = styled.div`
   }
 `
 
+const EndDiv = styled.div`
+  position: relative;
+  top: -100px;
+`
+
 export default function TransformContainer() {
-  const divRef = useRef()
+  const stickyNotesTop = useRef(null)
+  const endRef = useRef(null)
 
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
   const dispatch = useAppDispatch()
   const { verified } = useRecaptcha()
+
+  useStickyNotesInLines(endRef)
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -76,22 +84,17 @@ export default function TransformContainer() {
       const isIntersection = entry.isIntersecting
       const targetTop = entry.target.getBoundingClientRect().top
       const windowHeight = window.innerHeight
-      console.log({ isIntersection, windowHeight, targetTop })
 
       // target below the screen
       if (!isIntersection && targetTop > windowHeight) {
-        console.log(
-          'target below the screen, set position: fixed to the bottom'
-        )
         dispatch(stickyNoteActions.changeExpandMode(false))
       } // target shows on the bottom of the screen
       else if (isIntersection && targetTop > 0 && targetTop <= windowHeight) {
-        console.log('target top shows the screen, set position: relative')
         dispatch(stickyNoteActions.changeExpandMode(true))
       }
     })
-    if (divRef.current) {
-      observer.observe(divRef.current)
+    if (stickyNotesTop.current) {
+      observer.observe(stickyNotesTop.current)
     }
     return () => {
       observer.disconnect()
@@ -100,17 +103,18 @@ export default function TransformContainer() {
 
   useEffect(() => {
     dispatch(stickyNoteActions.changeIsRecaptchaVerified(verified))
-  }, [verified])
+  }, [dispatch, verified])
 
   return (
     <>
-      <div ref={divRef} id="sticky-notes-top" />
+      <div ref={stickyNotesTop} id="sticky-notes-top" />
       <StickyNotesPlaceHolder expandMode={expandMode} />
       <TransformWrapper expandMode={expandMode}>
         <ContainWrapper>
           <StickyNotes />
         </ContainWrapper>
       </TransformWrapper>
+      <EndDiv ref={endRef} id="end-of-sticky-notes" />
       <FixedNote />
       <NewNote />
     </>

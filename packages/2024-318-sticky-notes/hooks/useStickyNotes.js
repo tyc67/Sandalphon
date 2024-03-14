@@ -1,148 +1,101 @@
-import { useEffect } from 'react'
-import {
-  emptyStickyNote,
-  rwdEmptyNotePerSection,
-  rwdLines,
-} from '../const/sticky-notes'
-import {
-  genRandomCardColor,
-  genRandomCardRotateAngle,
-} from '../utils/stikcy-notes'
+import { useEffect, useRef, useState } from 'react'
 import useDevice from './useDevice'
-import { useAppDispatch } from './useRedux'
+import { useAppDispatch, useAppSelector } from './useRedux'
 import { stickyNoteActions } from '../store/sticky-note-slice'
+import useInView from './useInView'
+import { fetchStickyNotesAtPage } from '~/api/fetch-sticky-notes'
 
 /**
  * @typedef {import('../data/mockData').RawStickyNote} RawStickyNote
- * @typedef {import('../components/sticky-notes/StickyNote').StickyNote} StickyNote
+ * @typedef {import('~/data/mockData').RawDataMeta} RawDataMeta
+ * @typedef {import('../data/mockData').RawData} RawData
+ * @typedef {import('./useDevice').Device} Device
  */
 
-/**
- *
- * @param {RawStickyNote[]} rawStickyNotes
- * @returns {StickyNote[]}
- */
-function convertRawStickyNoteToDisplayStickyNote(rawStickyNotes) {
-  return rawStickyNotes.map((rawStickyNote) => ({
-    ...rawStickyNote,
-    id: rawStickyNote.type + '-' + crypto.randomUUID(),
-    color: genRandomCardColor(),
-    rotateAngle: genRandomCardRotateAngle(),
-    position: {
-      line: null,
-      index: null,
-    },
-  }))
-}
+/** @type {RawDataMeta} */
+const initialMeta = null
 
 /**
- *
- * @param {RawStickyNote[]} rawData
- * @returns
+ * Fetch rawStickyNotes json and generate stickyNotes to display
+ * @param {React.MutableRefObject} endRef
  */
-export function useStickyNotesInLines(rawData = []) {
+export function useStickyNotesInLines(endRef) {
+  const [meta, setMeta] = useState(initialMeta)
+  const [page, setPage] = useState(1)
+  const isLoadingMoreRef = useRef(false)
+  const rawStickyNotes = useAppSelector(
+    (state) => state.stickyNote.rawStickyNotes
+  )
+  const stickyNotesInLines = useAppSelector(
+    (state) => state.stickyNote.stickyNotesInLines
+  )
+  const emptyStickyNotes = useAppSelector(
+    (state) => state.stickyNote.emptyStickyNotes
+  )
   const dispatch = useAppDispatch()
   const device = useDevice()
+  const endOfScroll = useInView(endRef)
 
   useEffect(() => {
-    const lines = rwdLines[device]
-    const emptyNoteCountPerSection = rwdEmptyNotePerSection[device]
+    const fetchStickyNotes = async () => {
+      try {
+        let newRawStickyNotes = rawStickyNotes
+        if (!rawStickyNotes.length) {
+          const { sheet_data, meta } = await fetchStickyNotesAtPage(1)
+          newRawStickyNotes = sheet_data
 
-    const stickyNotesFromDB = convertRawStickyNoteToDisplayStickyNote(rawData)
+          setMeta({
+            total_pages: meta['total pages'],
+            next: meta.next,
+          })
+        }
 
-    // get lines of fixed sticky notes
-    // run {lines} times to get number of lines fixed array with fixed number
-    /** @type {StickyNote[]} */
-    const fixedStickyNotes = Array.from(Array(lines)).reduce(
-      (fixedNotes, _, i) => {
-        const noteIndex = stickyNotesFromDB.findIndex((e) => {
-          return e.fixed === String(i + 1)
+        dispatch(
+          stickyNoteActions.initialStickyNotes({
+            rawStickyNotes: newRawStickyNotes,
+            device,
+          })
+        )
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    if (device) {
+      fetchStickyNotes()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [device, dispatch]) // avoid adding rawStickNotes to prevent update random position...
+
+  useEffect(() => {
+    const isLoading = isLoadingMoreRef.current
+    if (endOfScroll && page < meta?.total_pages && !isLoading) {
+      isLoadingMoreRef.current = true
+      const newPage = page + 1
+
+      fetchStickyNotesAtPage(newPage)
+        .then((rawData) => {
+          const { sheet_data: newRawStickyNotes, meta } = rawData
+
+          dispatch(
+            stickyNoteActions.appendStickyNotes({ newRawStickyNotes, device })
+          )
+          setPage(newPage)
+          setMeta({
+            total_pages: meta['total pages'],
+            next: meta.next,
+          })
         })
-        fixedNotes.push(stickyNotesFromDB[noteIndex])
-        stickyNotesFromDB.splice(noteIndex, 1)
-        return fixedNotes
-      },
-      []
-    )
-
-    /** @type {StickyNote[]} */
-    const randomStickyNotes = []
-    while (stickyNotesFromDB.length !== 0) {
-      const randomIndex = Math.floor(Math.random() * stickyNotesFromDB.length)
-      randomStickyNotes.push(stickyNotesFromDB[randomIndex])
-      stickyNotesFromDB.splice(randomIndex, 1)
+        .finally(() => {
+          isLoadingMoreRef.current = false
+        })
     }
-
-    /** @type {StickyNote[][]} */
-    const stickyNotesLines = []
-    Array.from(Array(lines)).forEach(() => stickyNotesLines.push([]))
-
-    const stickyNoteLength = rawData.length
-
-    const copyFixedSticyNotes = [...fixedStickyNotes]
-    const copyRandomStickyNotes = [...randomStickyNotes]
-    /** @type {StickyNote[]} */
-    const emptyStickyNotes = []
-
-    /**
-     * Since empty note will be inserted into displayNotes per emptyNotePerSection,
-     * this random index will decide the position of empty notes in each section.
-     * Skip first ${lines} index to avoid insert the empty note in the firsct secrion
-     * cause conflict with the fixed notes.
-     */
-    const randomEmptyNoteInsertIndex =
-      lines + Math.floor(Math.random() * (emptyNoteCountPerSection - lines))
-    const emptyNotesCount = Math.ceil(
-      stickyNoteLength / emptyNoteCountPerSection
-    )
-
-    const totalStickyNotes = stickyNoteLength + emptyNotesCount
-
-    for (let i = 0; i < totalStickyNotes; i++) {
-      // calculate which nested array to push
-      const nestedArrayIndex = i % lines
-
-      // handle fixed notes first
-      if (copyFixedSticyNotes.length !== 0) {
-        const fixedStickyNote = copyFixedSticyNotes.shift()
-        fixedStickyNote.position = {
-          line: nestedArrayIndex,
-          index: stickyNotesLines[nestedArrayIndex].length,
-        }
-        stickyNotesLines[nestedArrayIndex].push(fixedStickyNote)
-        continue
-      }
-
-      // if the index is for the empty note
-      if (i % emptyNoteCountPerSection === randomEmptyNoteInsertIndex) {
-        /** @type {StickyNote} */
-        const newEmptyStickyNote = {
-          ...emptyStickyNote,
-          id: crypto.randomUUID(),
-          color: genRandomCardColor(),
-          rotateAngle: genRandomCardRotateAngle(),
-          position: {
-            line: nestedArrayIndex,
-            index: stickyNotesLines[nestedArrayIndex].length,
-          },
-        }
-
-        stickyNotesLines[nestedArrayIndex].push(newEmptyStickyNote)
-        emptyStickyNotes.push(newEmptyStickyNote)
-        continue
-      }
-
-      // hadnle random notes later
-      const randomSticyNote = copyRandomStickyNotes.pop()
-      randomSticyNote.position = {
-        line: nestedArrayIndex,
-        index: stickyNotesLines[nestedArrayIndex].length,
-      }
-      stickyNotesLines[nestedArrayIndex].push(randomSticyNote)
-    }
-
-    console.log('emptyStickyNotes', emptyStickyNotes)
-    dispatch(stickyNoteActions.changeStickyNotesInLines(stickyNotesLines))
-    dispatch(stickyNoteActions.changeEmptyNotes(emptyStickyNotes))
-  }, [rawData, device, dispatch])
+  }, [
+    device,
+    dispatch,
+    emptyStickyNotes,
+    endOfScroll,
+    meta?.total_pages,
+    page,
+    stickyNotesInLines,
+  ])
 }

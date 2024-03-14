@@ -1,6 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
+import {
+  initializeDisplayStickyNotes,
+  refillDisplayStickyNotes,
+} from '~/utils/stikcy-notes'
 
 /**
+ * @typedef {import('~/data/mockData').RawStickyNote} RawStickyNote
  * @typedef {import('../components/sticky-notes/StickyNote').StickyNote} StickyNote
  *
  * @typedef {Object} FixedNote
@@ -12,12 +17,14 @@ import { createSlice } from '@reduxjs/toolkit'
  * @property {StickyNote} note
  *
  * @typedef {Object} StickyNoteState
+ * @property {RawStickyNote[]} rawStickyNotes
  * @property {StickyNote[][]} stickyNotesInLines
  * @property {StickyNote[]} emptyStickyNotes
  * @property {FixedNote} fixedNote
  * @property {NewNote} newNote
  * @property {boolean} expandMode
  * @property {boolean} isRecaptchaVerified
+ * @property {number} randomEmptyNoteInsertIndex
  */
 
 /** @type {NewNote} */
@@ -28,6 +35,7 @@ const initialNewNote = {
 
 /** @type {StickyNoteState} */
 const initialState = {
+  rawStickyNotes: [],
   stickyNotesInLines: [],
   emptyStickyNotes: [],
   fixedNote: {
@@ -37,14 +45,36 @@ const initialState = {
   newNote: initialNewNote,
   expandMode: false,
   isRecaptchaVerified: false,
+  randomEmptyNoteInsertIndex: null,
 }
 
 const stickyNoteSlice = createSlice({
   name: 'stickyNote',
   initialState,
   reducers: {
-    changeStickyNotesInLines(state, action) {
-      state.stickyNotesInLines = action.payload
+    initialStickyNotes(state, action) {
+      const { rawStickyNotes, device } = action.payload
+
+      const { stickyNotesLines, emptyStickyNotes, randomEmptyNoteInsertIndex } =
+        initializeDisplayStickyNotes(rawStickyNotes, device)
+
+      state.rawStickyNotes = rawStickyNotes
+      state.stickyNotesInLines = stickyNotesLines
+      state.emptyStickyNotes = emptyStickyNotes
+      state.randomEmptyNoteInsertIndex = randomEmptyNoteInsertIndex
+    },
+    appendStickyNotes(state, action) {
+      const { newRawStickyNotes, device } = action.payload
+      const { stickyNotesLines, emptyStickyNotes } = refillDisplayStickyNotes(
+        state.stickyNotesInLines,
+        state.emptyStickyNotes,
+        newRawStickyNotes,
+        device,
+        state.randomEmptyNoteInsertIndex
+      )
+      state.stickyNotesInLines = stickyNotesLines
+      state.emptyStickyNotes = emptyStickyNotes
+      state.rawStickyNotes = state.rawStickyNotes.concat(newRawStickyNotes)
     },
     stickyNoteAdded(state, action) {
       const { stickyNote } = action.payload
