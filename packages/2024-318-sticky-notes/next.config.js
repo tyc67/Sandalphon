@@ -1,4 +1,5 @@
 const nextConfig = {
+  assetPrefix: '.',
   images: {
     unoptimized: true,
   },
@@ -8,11 +9,6 @@ const nextConfig = {
       displayName: true,
       ssr: true,
     },
-  },
-  exportPathMap: async function () {
-    return {
-      '/': { page: '/' },
-    }
   },
   webpack(config) {
     config.module.rules.push({
