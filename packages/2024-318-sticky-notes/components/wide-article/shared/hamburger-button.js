@@ -5,9 +5,14 @@ import styled from 'styled-components'
  */
 
 const Hamburger = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
   user-select: none;
   display: block;
-  margin-left: 22px;
+
   &:focus {
     border: none;
     outline: none;
@@ -16,7 +21,7 @@ const Hamburger = styled.button`
     display: block;
     width: 20px;
     height: 2px;
-    margin: 2px 0;
+    margin: 2px auto;
     border-radius: 12px;
     background-color: ${
       /**
