@@ -104,8 +104,22 @@ const navItemSideMenu = css`
 
 const NavItem = styled.li`
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 300;
+  color: #c7c7c7;
   cursor: pointer;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 6px;
+    height: 6px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: ${({ theme }) => theme.color.brandColor.white};
+  }
 
   ${
     /**
@@ -119,17 +133,17 @@ const NavItem = styled.li`
       switch (headerType) {
         case 'header-two':
           return `  
-        font-size: 18px;
+        font-size: 14px;
         line-height: 1.5;
         `
         case 'header-three':
           return `
-        font-size: 14px;
+        font-size: 12px;
         line-height: 2;
         `
         default:
           return `  
-        font-size: 18px;
+        font-size: 14px;
         line-height: 1.5;
         `
       }
@@ -158,7 +172,7 @@ const navSideIndex = css`
     top: 15%;
 
     margin: 20px auto;
-    width: 168px;
+    width: 208px;
     height: auto;
   }
 `
