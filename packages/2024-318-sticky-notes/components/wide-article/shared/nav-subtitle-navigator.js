@@ -70,7 +70,7 @@ const navItemSideIndex = css`
 `
 
 const navItemSideMenu = css`
-  color: ${({ theme }) => theme.color.brandColor.lightBlue};
+  color: ${({ theme }) => theme.color.brandColor.white};
   position: relative;
   margin-left: 28px;
   width: 168px;
@@ -83,19 +83,20 @@ const navItemSideMenu = css`
     height: 8px;
     transform: translateY(-50%);
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.color.brandColor.lightBlue};
+    background-color: ${({ theme }) => theme.color.brandColor.white};
   }
 
   ${
     /**
-     * @param {{isActive: boolean}} param
+     * @param {Object} param
+     * @param {boolean} param.isActive
      */
     ({ isActive }) =>
       isActive &&
       `
-        color: white;
+        color: #FF8C8C;
         &::before{
-          background-color: white;
+         background-color: #FF8C8C;
         }
       `
   }

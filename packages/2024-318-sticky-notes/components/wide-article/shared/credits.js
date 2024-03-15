@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { SITE_URL } from '~/const/wide-article'
+import { creditsFor318 } from '~/const/wide-article'
 
 /**
  * @typedef {import('~/type/theme').Theme} Theme
@@ -9,44 +10,38 @@ import { SITE_URL } from '~/const/wide-article'
 const CreditsWrapper = styled.section`
   font-size: 16px;
   font-weight: 400;
-
   margin-top: 24px;
-
-  text-align: left;
   width: 100%;
-  max-width: 300px;
   line-height: 1.5;
+  max-width: 500px;
+  text-align: center;
 `
 
 const CreditTitle = styled.figcaption`
   display: block;
   color: white;
-
   position: relative;
-
-  min-width: 38px;
-  max-width: 38px;
   text-align: left;
   margin-right: 14px;
+  min-width: 32px;
 
   &::after {
     position: absolute;
     content: ' | ';
-    right: -3px;
+    right: -7px;
     transform: translate(50%, 1px);
-    top: 0;
+    top: -2px;
     color: white;
   }
 `
 
 const CreditList = styled.figure`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   width: auto;
+  margin-bottom: 5px;
 
   ul {
-    width: 100%;
-
     gap: 0 16px;
     display: flex;
     flex-wrap: wrap;
@@ -162,5 +157,28 @@ export default function Credits({ credits = [], className = '' }) {
     </>
   ) : null
 
-  return <CreditsWrapper className={className}>{creditsJsx}</CreditsWrapper>
+  const credits318 = (
+    <>
+      {creditsFor318.map((item) => {
+        return (
+          <CreditList key={item.title}>
+            <CreditTitle>{item.title}</CreditTitle>
+
+            <ul className={'no-link-list'}>
+              <li className="no-link">
+                <span>{item.name}</span>
+              </li>
+            </ul>
+          </CreditList>
+        )
+      })}
+    </>
+  )
+
+  return (
+    <CreditsWrapper className={className}>
+      {creditsJsx}
+      {credits318}
+    </CreditsWrapper>
+  )
 }
