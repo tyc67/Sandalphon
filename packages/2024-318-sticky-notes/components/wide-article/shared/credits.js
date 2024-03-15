@@ -73,6 +73,15 @@ const CreditList = styled.figure`
   }
 `
 
+const Notion = styled.p`
+  color: white;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: auto;
+  margin-top: 20px;
+  max-width: 420px;
+`
+
 const CREDIT_TITLE_NAME_MAP = {
   writers: '文 ',
   photographers: '攝影',
@@ -179,6 +188,11 @@ export default function Credits({ credits = [], className = '' }) {
     <CreditsWrapper className={className}>
       {creditsJsx}
       {credits318}
+
+      <Notion>
+        歷史留言素材取自 318
+        公民運動文物紀錄典藏庫（public.318.io），若您為留言作者，歡迎至該網站指認作品。
+      </Notion>
     </CreditsWrapper>
   )
 }
