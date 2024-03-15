@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 
 /**
- * @typedef {import('~/data/mockData').RawNoteType | 'empty'} NoteType
+ * @typedef {import('~/data/mockData').RawNoteType } NoteType
  * @typedef {import('../../const/sticky-notes').StickyNoteColor} StickyNoteColor
  *
  * @typedef {Object} Position

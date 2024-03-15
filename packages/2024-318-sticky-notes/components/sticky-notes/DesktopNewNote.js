@@ -216,6 +216,7 @@ export default function DesktopNewNote() {
       type: 'user',
     }
 
+    /** @type {import('~/data/mockData').RawStickyNote} */
     const newRow = {
       id: noteToAdd.id,
       time: new Date().toLocaleString(),

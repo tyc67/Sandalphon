@@ -1,5 +1,5 @@
 /**
- * @typedef {'reporter' | 'user'} RawNoteType
+ * @typedef {'reporter' | 'user' | 'empty'} RawNoteType
  *
  * @typedef {Object} RawStickyNote
  * @property {string} time
