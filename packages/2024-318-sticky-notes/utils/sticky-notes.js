@@ -35,6 +35,7 @@ export const genRandomCardRotateAngle = () => {
  */
 function convertRawStickyNoteToDisplayStickyNote(rawStickyNotes) {
   return rawStickyNotes.map((rawStickyNote) => ({
+    rawId: rawStickyNote.id,
     id: rawStickyNote.id + '-' + crypto.randomUUID(),
     description: rawStickyNote.text,
     imageUrl: rawStickyNote.image,

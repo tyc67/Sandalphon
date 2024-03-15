@@ -2,6 +2,8 @@ import { useRef } from 'react'
 import styled from 'styled-components'
 import { useAppDispatch } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
+import gtag from '~/utils/gtag'
+import { convertPngUrlToWebP } from '~/utils/png-webp'
 
 /**
  * @typedef {import('~/data/mockData').RawNoteType } NoteType
@@ -16,6 +18,7 @@ import { stickyNoteActions } from '../../store/sticky-note-slice'
  * @property {string} code - css color syntax like '
  *
  * @typedef {Object} StickyNote
+ * @property {string} rawId
  * @property {string} id
  * @property {string} description
  * @property {string} imageUrl
@@ -150,6 +153,9 @@ export default function StickeyNote({ stickyNote }) {
 
   const onNoteClicked = () => {
     if (stickyNote.type !== 'empty') {
+      gtag.sendGAEvent('click', {
+        projects: `click-${stickyNote.rawId}`,
+      })
       dispatch(
         stickyNoteActions.changeFixedNote({
           show: true,

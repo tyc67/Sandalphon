@@ -41,6 +41,7 @@ export const emptyStickyNote = {
   fixed: '',
   type: 'empty',
   id: '',
+  rawId: '',
   color: {
     color: '',
     code: '',
