@@ -8,6 +8,7 @@ import NewNote from './NewNote'
 import FixedNote from './FixedNote'
 import useRecaptcha from '../../hooks/useRecaptcha'
 import { useStickyNotesInLines } from '~/hooks/useStickyNotes'
+import gtag from '~/utils/gtag'
 
 const TransformWrapper = styled.div`
   position: fixed;
@@ -15,24 +16,30 @@ const TransformWrapper = styled.div`
   height: ${fixedStickyHeight}px;
   bottom: 0;
   background: transparent;
-  transition: transform 1s ease-in-out;
+  transition: transform 0.8s ease-in-out;
   pointer-events: none;
+  transform: translateY(200%);
 
   ${
     /**
      *
      * @param {Object} props
      * @param {boolean} props.expandMode
+     * @param {boolean} props.showStickyNotesPanel
      */
-    ({ expandMode }) =>
-      expandMode &&
-      `
-    position: relative;
-    top: -${fixedStickyHeight}px;
-    transform: translateY(${fixedStickyHeight}px);
-    height: auto;
-    bottom: unset;
-  `
+    ({ expandMode, showStickyNotesPanel }) => {
+      if (showStickyNotesPanel) {
+        return expandMode
+          ? `
+              position: relative;
+              top: -${fixedStickyHeight}px;
+              transform: translateY(${fixedStickyHeight}px);
+              height: auto;
+              bottom: unset;
+            `
+          : `transform: translateY(0);`
+      }
+    }
   }
 `
 
@@ -75,6 +82,9 @@ export default function TransformContainer() {
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
   const dispatch = useAppDispatch()
   const { verified } = useRecaptcha()
+  const showStickyNotesPanel = useAppSelector(
+    (state) => state.stickyNote.showStickyNotesPanel
+  )
 
   useStickyNotesInLines(endRef)
 
@@ -91,6 +101,9 @@ export default function TransformContainer() {
       } // target shows on the bottom of the screen
       else if (isIntersection && targetTop > 0 && targetTop <= windowHeight) {
         dispatch(stickyNoteActions.changeExpandMode(true))
+        gtag.sendGAEvent('scroll', {
+          projects: `scroll to 便利貼`,
+        })
       }
     })
     if (stickyNotesTop.current) {
@@ -108,15 +121,18 @@ export default function TransformContainer() {
   return (
     <>
       <div ref={stickyNotesTop} id="sticky-notes-top" />
-      <StickyNotesPlaceHolder expandMode={expandMode} />
-      <TransformWrapper expandMode={expandMode}>
+      <TransformWrapper
+        expandMode={expandMode}
+        showStickyNotesPanel={showStickyNotesPanel}
+      >
         <ContainWrapper>
           <StickyNotes />
         </ContainWrapper>
       </TransformWrapper>
-      <EndDiv ref={endRef} id="end-of-sticky-notes" />
       <FixedNote />
       <NewNote />
+      <StickyNotesPlaceHolder expandMode={expandMode} />
+      <EndDiv ref={endRef} id="end-of-sticky-notes" />
     </>
   )
 }

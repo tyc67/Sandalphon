@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
+import gtag from '~/utils/gtag'
 
 /** @typedef {import('./StickyNote').CardType} CardType */
 
@@ -106,13 +107,24 @@ const ImageCard = styled.img`
   object-fit: contain;
 `
 
+const StatusHint = styled.div`
+  font-family: 'Noto Sans TC';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.8;
+  color: white;
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+`
+
 /**
  * @returns {JSX.Element}
  */
 export default function FixedNote() {
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
   const fixedNote = useAppSelector((state) => state.stickyNote.fixedNote)
-  const { note: stickyNote, show } = fixedNote
+  const { note: stickyNote, show, status } = fixedNote
   const dispatch = useAppDispatch()
 
   if (!show) {
@@ -129,12 +141,10 @@ export default function FixedNote() {
   const btnColor = cardType === 'image' ? 'white' : stickyNoteColor
 
   const closeFixedNote = () => {
-    dispatch(
-      stickyNoteActions.changeFixedNote({
-        show: false,
-        note: null,
-      })
-    )
+    dispatch(stickyNoteActions.resetFixedNote())
+    if (status === 'added') {
+      dispatch(stickyNoteActions.resetNewNote())
+    }
   }
 
   let cardJsx
@@ -147,6 +157,58 @@ export default function FixedNote() {
       break
     default:
       break
+  }
+
+  let actionBtnJsx = null
+  if (!expandMode) {
+    actionBtnJsx =
+      status === 'added' ? (
+        <Button
+          color={btnColor}
+          onClick={() => {
+            gtag.sendGAEvent('click', {
+              projects: `便利貼-前往新增便利貼`,
+            })
+            closeFixedNote()
+            dispatch(stickyNoteActions.changeExpandMode(true))
+            setTimeout(() => {
+              const noteDom = document.querySelector(`#id-${stickyNote.id}`)
+              noteDom?.scrollIntoView({
+                behavior: 'instant',
+                block: 'center',
+                inline: 'center',
+              })
+              setTimeout(() => {
+                noteDom?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'center',
+                  inline: 'center',
+                })
+              }, 700)
+            }, 100)
+          }}
+        >
+          前往新增留言
+        </Button>
+      ) : (
+        <Button
+          color={btnColor}
+          onClick={() => {
+            gtag.sendGAEvent('click', {
+              projects: `便利貼-前往留言板`,
+            })
+            closeFixedNote()
+            dispatch(stickyNoteActions.changeExpandMode(true))
+            setTimeout(() => {
+              document
+                .querySelector('#sticky-notes-top')
+                ?.scrollIntoView({ behavior: 'instant', block: 'start' })
+            }, 100)
+          }}
+        >
+          前往留言板
+        </Button>
+      )
   }
 
   return (
@@ -165,23 +227,9 @@ export default function FixedNote() {
           }}
         >
           {cardJsx}
+          {status && <StatusHint>送出成功！</StatusHint>}
           <ButtonWrapper>
-            {!expandMode && (
-              <Button
-                color={btnColor}
-                onClick={() => {
-                  closeFixedNote()
-                  dispatch(stickyNoteActions.changeExpandMode(true))
-                  setTimeout(() => {
-                    document
-                      .querySelector('#sticky-notes-top')
-                      ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  })
-                }}
-              >
-                前往留言板
-              </Button>
-            )}
+            {actionBtnJsx}
             <Button
               color={btnColor}
               onClick={() => {

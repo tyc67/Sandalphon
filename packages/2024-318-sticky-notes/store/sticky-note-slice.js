@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   initializeDisplayStickyNotes,
   refillDisplayStickyNotes,
-} from '~/utils/stikcy-notes'
+} from '~/utils/sticky-notes'
 
 /**
  * @typedef {import('~/data/mockData').RawStickyNote} RawStickyNote
@@ -11,12 +11,17 @@ import {
  * @typedef {Object} FixedNote
  * @property {boolean} show
  * @property {StickyNote} note
+ * @property {'added' | ''} status
  *
  * @typedef {Object} NewNote
  * @property {boolean} show
  * @property {StickyNote} note
+ * @property {string} content
+ * @property {'' | 'success' | 'error'} addingResult
+ * @property {boolean} isRequestInFlight
  *
  * @typedef {Object} StickyNoteState
+ * @property {boolean} showStickyNotesPanel
  * @property {RawStickyNote[]} rawStickyNotes
  * @property {StickyNote[][]} stickyNotesInLines
  * @property {StickyNote[]} emptyStickyNotes
@@ -31,16 +36,28 @@ import {
 const initialNewNote = {
   show: false,
   note: null,
+  content: '',
+  addingResult: '',
+  isRequestInFlight: false,
+}
+
+/** @type {FixedNote} */
+const initialFixedNote = {
+  show: false,
+  note: null,
+  status: '',
 }
 
 /** @type {StickyNoteState} */
 const initialState = {
+  showStickyNotesPanel: false,
   rawStickyNotes: [],
   stickyNotesInLines: [],
   emptyStickyNotes: [],
   fixedNote: {
     show: false,
     note: null,
+    status: '',
   },
   newNote: initialNewNote,
   expandMode: false,
@@ -52,6 +69,9 @@ const stickyNoteSlice = createSlice({
   name: 'stickyNote',
   initialState,
   reducers: {
+    changeShowStickyNotesPanel(state, action) {
+      state.showStickyNotesPanel = action.payload
+    },
     initialStickyNotes(state, action) {
       const { rawStickyNotes, device } = action.payload
 
@@ -90,8 +110,24 @@ const stickyNoteSlice = createSlice({
     changeFixedNote(state, action) {
       state.fixedNote = action.payload
     },
-    changeNewNote(state, action) {
-      state.newNote = action.payload
+    resetFixedNote(state) {
+      state.fixedNote = initialFixedNote
+    },
+    showFixedNewNote(state, action) {
+      state.newNote = {
+        ...state.newNote,
+        show: true,
+        note: action.payload,
+      }
+    },
+    changeNewNoteContent(state, action) {
+      state.newNote.content = action.payload
+    },
+    changeNewNoteAddingResult(state, action) {
+      state.newNote.addingResult = action.payload
+    },
+    changeNewNoteRequestInFlight(state, action) {
+      state.newNote.isRequestInFlight = action.payload
     },
     resetNewNote(state) {
       state.newNote = initialNewNote

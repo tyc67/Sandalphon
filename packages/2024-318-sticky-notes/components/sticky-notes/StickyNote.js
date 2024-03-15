@@ -2,9 +2,11 @@ import { useRef } from 'react'
 import styled from 'styled-components'
 import { useAppDispatch } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
+import gtag from '~/utils/gtag'
+import { convertPngUrlToWebP } from '~/utils/png-webp'
 
 /**
- * @typedef {import('~/data/mockData').RawNoteType | 'empty'} NoteType
+ * @typedef {import('~/data/mockData').RawNoteType } NoteType
  * @typedef {import('../../const/sticky-notes').StickyNoteColor} StickyNoteColor
  *
  * @typedef {Object} Position
@@ -16,6 +18,7 @@ import { stickyNoteActions } from '../../store/sticky-note-slice'
  * @property {string} code - css color syntax like '
  *
  * @typedef {Object} StickyNote
+ * @property {string} rawId
  * @property {string} id
  * @property {string} description
  * @property {string} imageUrl
@@ -150,6 +153,9 @@ export default function StickeyNote({ stickyNote }) {
 
   const onNoteClicked = () => {
     if (stickyNote.type !== 'empty') {
+      gtag.sendGAEvent('click', {
+        projects: `click-${stickyNote.rawId}`,
+      })
       dispatch(
         stickyNoteActions.changeFixedNote({
           show: true,
@@ -157,12 +163,7 @@ export default function StickeyNote({ stickyNote }) {
         })
       )
     } else {
-      dispatch(
-        stickyNoteActions.changeNewNote({
-          show: true,
-          note: stickyNote,
-        })
-      )
+      dispatch(stickyNoteActions.showFixedNewNote(stickyNote))
     }
   }
 
@@ -173,7 +174,7 @@ export default function StickeyNote({ stickyNote }) {
       cardJsx = <TextCard>{stickyNote.description}</TextCard>
       break
     case 'image':
-      cardJsx = <ImageCard src={stickyNote.imageUrl} />
+      cardJsx = <ImageCard src={convertPngUrlToWebP(stickyNote.imageUrl)} />
       break
     default:
       break
@@ -181,7 +182,7 @@ export default function StickeyNote({ stickyNote }) {
   return (
     <Wrapper
       ref={wrapperRef}
-      id={stickyNote.id}
+      id={'id-' + stickyNote.id}
       backgroundColor={stickyNote.color.code}
       rotateDegree={stickyNote.rotateAngle}
       cardType={cardType}

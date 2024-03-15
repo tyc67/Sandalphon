@@ -41,6 +41,7 @@ export const emptyStickyNote = {
   fixed: '',
   type: 'empty',
   id: '',
+  rawId: '',
   color: {
     color: '',
     code: '',
@@ -79,11 +80,11 @@ export const colorToAngle = {
 export const cardRotateDegreeRange = 5
 
 export const googleSheetApiUrl =
-  env === 'local'
-    ? 'http://localhost:3001/api/googlesheet'
-    : env === 'dev'
+  env !== 'prod'
     ? 'https://dev.mirrormedia.mg/api/googlesheet'
     : 'https://www.mirrormedia.mg/api/googlesheet'
 
 export const googleSheetId = '1YS35rZCU4AoyiPB9gH0hZ6_dtuvq_FbYVjk_bHFk2xA'
 export const googleSheetTitle = env !== 'prod' ? 'postin-dev' : 'postin-prod'
+
+export const noteKeyInLocalStorage = 'user-added-notes'

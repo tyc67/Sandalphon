@@ -4,6 +4,8 @@ import useClickOutside from '../../hooks/useClickOutside'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import { insertNewRowToSheet } from '../../api/googlesheet'
+import { saveNewRowToLocalStorage } from '~/utils/sticky-notes'
+import gtag from '~/utils/gtag'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -64,22 +66,27 @@ const NewNoteWrapper = styled.div`
   padding: 16px 24px 56px;
   border-radius: 4px;
   background: white;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.8s ease-in-out;
   cursor: pointer;
+  transform: translateY(200%);
   ${
     /**
      * @param {Object} props
      * @param {boolean} props.isFolded
      * @param {boolean} props.fixedMode
+     * @param {boolean} props.showStickyNotesPanel
      */
-    ({ isFolded }) =>
-      isFolded
-        ? `
-      transform: translateY(178px);
-    `
-        : `
-      transform: translateY(0);
-    `
+    ({ isFolded, showStickyNotesPanel }) => {
+      if (showStickyNotesPanel) {
+        return isFolded
+          ? `
+              transform: translateY(178px);
+            `
+          : `
+              transform: translateY(0);
+            `
+      }
+    }
   }
   ${({ fixedMode }) =>
     fixedMode &&
@@ -157,9 +164,7 @@ const Button = styled.button`
 
 export default function DesktopNewNote() {
   const [isFolded, setIsFolded] = useState(true)
-  const [noteContent, setNoteContent] = useState('')
-  const [addingResult, setAddingResult] = useState('')
-  const [isRequestInFlight, setIsRequestInFlight] = useState(false)
+
   const isStickyNotesExpanded = useAppSelector(
     (state) => state.stickyNote.expandMode
   )
@@ -170,8 +175,17 @@ export default function DesktopNewNote() {
   const isRecaptchaVerified = useAppSelector(
     (state) => state.stickyNote.isRecaptchaVerified
   )
+  const showStickyNotesPanel = useAppSelector(
+    (state) => state.stickyNote.showStickyNotesPanel
+  )
+  const {
+    show: fixedMode,
+    note,
+    content: noteContent,
+    addingResult,
+    isRequestInFlight,
+  } = newNote
 
-  const fixedMode = newNote.show
   const desktopNewNoteRef = useRef(null)
   const textAreaRef = useRef(null)
 
@@ -184,27 +198,29 @@ export default function DesktopNewNote() {
 
   const closeFixedNewNote = () => {
     dispatch(stickyNoteActions.resetNewNote())
-    setNoteContent('')
-    setAddingResult('')
   }
 
   const onSubmit = () => {
     if (!isRecaptchaVerified) {
-      setAddingResult('error')
       // show error hint
+      dispatch(stickyNoteActions.changeNewNoteAddingResult('error'))
       return
     }
     if (isRequestInFlight || !noteContent) {
       return
     }
+    gtag.sendGAEvent('click', {
+      projects: `便利貼-送出`,
+    })
 
-    let noteToAdd = newNote.note || emptyStickyNotes[0]
+    let noteToAdd = note || emptyStickyNotes[0]
     noteToAdd = {
       ...noteToAdd,
       description: noteContent,
       type: 'user',
     }
 
+    /** @type {import('~/data/mockData').RawStickyNote} */
     const newRow = {
       id: noteToAdd.id,
       time: new Date().toLocaleString(),
@@ -215,7 +231,7 @@ export default function DesktopNewNote() {
     }
     insertNewRowToSheet(newRow)
       .then(() => {
-        localStorage.addedNote = JSON.stringify([newRow])
+        saveNewRowToLocalStorage(newRow)
 
         dispatch(
           stickyNoteActions.stickyNoteAdded({
@@ -223,17 +239,35 @@ export default function DesktopNewNote() {
           })
         )
 
-        setAddingResult('success')
+        if (fixedMode) {
+          closeFixedNewNote()
+        }
+        dispatch(
+          stickyNoteActions.changeFixedNote({
+            show: true,
+            note: noteToAdd,
+            status: 'added',
+          })
+        )
+
+        dispatch(stickyNoteActions.changeNewNoteAddingResult('success'))
+
+        if (isStickyNotesExpanded) {
+          document.querySelector(`#id-${noteToAdd.id}`).scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center',
+          })
+        }
       })
       .catch((e) => {
-        setAddingResult('error')
+        dispatch(stickyNoteActions.changeNewNoteAddingResult('error'))
         console.error(e)
       })
       .finally(() => {
-        setIsRequestInFlight(false)
+        dispatch(stickyNoteActions.changeNewNoteRequestInFlight(false))
       })
-
-    setIsRequestInFlight(true)
+    dispatch(stickyNoteActions.changeNewNoteRequestInFlight(true))
   }
 
   useEffect(() => {
@@ -245,16 +279,23 @@ export default function DesktopNewNote() {
   }, [isStickyNotesExpanded])
 
   useEffect(() => {
-    if (fixedMode && textAreaRef.current) {
-      textAreaRef.current.focus()
+    if (fixedMode) {
+      textAreaRef.current?.focus()
     }
   }, [fixedMode])
 
   const buttonsJsx = (() => {
+    let leftButtonJsx = null
+    if (!addingResult) {
+      leftButtonJsx = <Button onClick={onSubmit}>送出</Button>
+    } else if (addingResult === 'error') {
+      leftButtonJsx = <Button disabled>送出</Button>
+    }
+
     if (fixedMode) {
       return (
         <ButtonWrapper>
-          {!addingResult && <Button onClick={onSubmit}>送出</Button>}
+          {leftButtonJsx}
           <Button
             onClick={() => {
               setTimeout(() => {
@@ -267,42 +308,12 @@ export default function DesktopNewNote() {
         </ButtonWrapper>
       )
     } else {
-      let leftButtonJsx
-      if (!addingResult) {
-        leftButtonJsx = <Button onClick={onSubmit}>送出</Button>
-      } else if (addingResult === 'success') {
-        leftButtonJsx = !isStickyNotesExpanded ? (
-          <Button
-            onClick={() => {
-              dispatch(stickyNoteActions.changeExpandMode(true))
-              setTimeout(() => {
-                // todo: 改成滑動到剛新增的 note 上
-                document
-                  .querySelector('#sticky-notes-top')
-                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              })
-              setAddingResult('')
-              setNoteContent('')
-            }}
-          >
-            前往留言板
-          </Button>
-        ) : (
-          <></>
-        )
-      } else if (addingResult === 'error') {
-        leftButtonJsx = <Button disabled>送出</Button>
-      }
       return (
         <ButtonWrapper>
           {leftButtonJsx}
           <Button
             onClick={() => {
               setIsFolded(true)
-              if (addingResult) {
-                setAddingResult('')
-                setNoteContent('')
-              }
             }}
           >
             收合
@@ -325,6 +336,7 @@ export default function DesktopNewNote() {
           <NewNoteWrapper
             isFolded={isFolded}
             fixedMode={fixedMode}
+            showStickyNotesPanel={showStickyNotesPanel}
             onClick={(e) => {
               e.stopPropagation()
               if (isFolded) {
@@ -337,7 +349,11 @@ export default function DesktopNewNote() {
               <TextArea
                 placeholder={`在這裡輸入你的便利貼:\n（若留言涉及惡意攻擊或廣告，管理者會逕行刪除。）`}
                 value={noteContent}
-                onChange={(e) => setNoteContent(e.target.value)}
+                onChange={(e) =>
+                  dispatch(
+                    stickyNoteActions.changeNewNoteContent(e.target.value)
+                  )
+                }
                 maxLength={100}
                 ref={textAreaRef}
               />
