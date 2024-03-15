@@ -8,6 +8,7 @@ import NewNote from './NewNote'
 import FixedNote from './FixedNote'
 import useRecaptcha from '../../hooks/useRecaptcha'
 import { useStickyNotesInLines } from '~/hooks/useStickyNotes'
+import gtag from '~/utils/gtag'
 
 const TransformWrapper = styled.div`
   position: fixed;
@@ -100,6 +101,9 @@ export default function TransformContainer() {
       } // target shows on the bottom of the screen
       else if (isIntersection && targetTop > 0 && targetTop <= windowHeight) {
         dispatch(stickyNoteActions.changeExpandMode(true))
+        gtag.sendGAEvent('scroll', {
+          projects: `scroll to 便利貼`,
+        })
       }
     })
     if (stickyNotesTop.current) {
