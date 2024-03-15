@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import gtag from '~/utils/gtag'
+import { extractWordingWithKey } from '~/utils/sticky-notes'
 
 /** @typedef {import('./StickyNote').CardType} CardType */
 
@@ -125,6 +126,7 @@ export default function FixedNote() {
   const expandMode = useAppSelector((state) => state.stickyNote.expandMode)
   const fixedNote = useAppSelector((state) => state.stickyNote.fixedNote)
   const { note: stickyNote, show, status } = fixedNote
+  const wordings = useAppSelector((state) => state.stickyNote.wordings)
   const dispatch = useAppDispatch()
 
   if (!show) {
@@ -188,7 +190,8 @@ export default function FixedNote() {
             }, 100)
           }}
         >
-          前往新增留言
+          {extractWordingWithKey('scroll-to-added-note', wordings) ||
+            '前往新增留言'}
         </Button>
       ) : (
         <Button
@@ -206,7 +209,8 @@ export default function FixedNote() {
             }, 100)
           }}
         >
-          前往留言板
+          {extractWordingWithKey('scroll-to-sticky-notes', wordings) ||
+            '前往留言板'}
         </Button>
       )
   }
@@ -227,7 +231,12 @@ export default function FixedNote() {
           }}
         >
           {cardJsx}
-          {status && <StatusHint>送出成功！</StatusHint>}
+          {status && (
+            <StatusHint>
+              {extractWordingWithKey('submit-success', wordings) ||
+                '送出成功！'}
+            </StatusHint>
+          )}
           <ButtonWrapper>
             {actionBtnJsx}
             <Button

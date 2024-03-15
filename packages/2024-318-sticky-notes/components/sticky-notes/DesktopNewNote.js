@@ -4,7 +4,10 @@ import useClickOutside from '../../hooks/useClickOutside'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import { insertNewRowToSheet } from '../../api/googlesheet'
-import { saveNewRowToLocalStorage } from '~/utils/sticky-notes'
+import {
+  extractWordingWithKey,
+  saveNewRowToLocalStorage,
+} from '~/utils/sticky-notes'
 import gtag from '~/utils/gtag'
 
 const GlobalStyle = createGlobalStyle`
@@ -178,6 +181,7 @@ export default function DesktopNewNote() {
   const showStickyNotesPanel = useAppSelector(
     (state) => state.stickyNote.showStickyNotesPanel
   )
+  const wordings = useAppSelector((state) => state.stickyNote.wordings)
   const {
     show: fixedMode,
     note,
@@ -287,9 +291,17 @@ export default function DesktopNewNote() {
   const buttonsJsx = (() => {
     let leftButtonJsx = null
     if (!addingResult) {
-      leftButtonJsx = <Button onClick={onSubmit}>送出</Button>
+      leftButtonJsx = (
+        <Button onClick={onSubmit}>
+          {extractWordingWithKey('submit', wordings) || '送出'}
+        </Button>
+      )
     } else if (addingResult === 'error') {
-      leftButtonJsx = <Button disabled>送出</Button>
+      leftButtonJsx = (
+        <Button disabled>
+          {extractWordingWithKey('submit', wordings) || '送出'}
+        </Button>
+      )
     }
 
     if (fixedMode) {
@@ -316,7 +328,7 @@ export default function DesktopNewNote() {
               setIsFolded(true)
             }}
           >
-            收合
+            {extractWordingWithKey('fold', wordings) || '收合'}
           </Button>
         </ButtonWrapper>
       )
@@ -347,7 +359,10 @@ export default function DesktopNewNote() {
           >
             {!addingResult ? (
               <TextArea
-                placeholder={`在這裡輸入你的便利貼:\n（若留言涉及惡意攻擊或廣告，管理者會逕行刪除。）`}
+                placeholder={
+                  extractWordingWithKey('placeholder', wordings) ||
+                  `在這裡輸入你的便利貼：\n（若留言涉及惡意攻擊或廣告，管理者會逕行刪除。）`
+                }
                 value={noteContent}
                 onChange={(e) =>
                   dispatch(
@@ -358,9 +373,15 @@ export default function DesktopNewNote() {
                 ref={textAreaRef}
               />
             ) : addingResult === 'success' ? (
-              <CompleteNote>送出成功！</CompleteNote>
+              <CompleteNote>
+                {extractWordingWithKey('submit-success', wordings) ||
+                  '送出成功！'}
+              </CompleteNote>
             ) : (
-              <ErrorNote>新增失敗，請稍後再試</ErrorNote>
+              <ErrorNote>
+                {extractWordingWithKey('submit-fail', wordings) ||
+                  '新增失敗，請稍後再試'}
+              </ErrorNote>
             )}
             {buttonsJsx}
           </NewNoteWrapper>

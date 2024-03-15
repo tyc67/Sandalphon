@@ -336,3 +336,13 @@ export function removeNotesInLSIfInRawStickyNotes(rawStickyNotes) {
   localStorage.setItem(noteKeyInLocalStorage, JSON.stringify(newNotesInLS))
   return rawStickyNotes
 }
+
+/**
+ * @param {string} key
+ * @param {import('~/data/mockData').StickyNotesWording[]} wordings
+ * @returns {string}
+ */
+export function extractWordingWithKey(key, wordings) {
+  const wording = wordings.find((wording) => wording.key === key)
+  return wording?.['文字'] || ''
+}
