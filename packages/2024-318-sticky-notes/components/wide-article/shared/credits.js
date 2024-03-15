@@ -15,6 +15,20 @@ const CreditsWrapper = styled.section`
   line-height: 1.5;
   max-width: 500px;
   text-align: center;
+
+  #author {
+    display: none;
+    ${({ theme }) => theme.breakpoint.md} {
+      display: flex;
+    }
+  }
+
+  #author_mobile {
+    display: flex;
+    ${({ theme }) => theme.breakpoint.md} {
+      display: none;
+    }
+  }
 `
 
 const CreditTitle = styled.figcaption`
@@ -67,9 +81,6 @@ const CreditList = styled.figure`
         color: white;
       }
     }
-  }
-
-  ${({ theme }) => theme.breakpoint.md} {
   }
 `
 
@@ -168,9 +179,20 @@ export default function Credits({ credits = [], className = '' }) {
 
   const credits318 = (
     <>
+      <CreditList id="author_mobile">
+        <CreditTitle>撰文</CreditTitle>
+
+        <ul className={'no-link-list'}>
+          <li className="no-link">
+            <p>陳虹瑾、李振豪、陳昌遠</p>
+            <p>曾芷筠、蔣宜婷、陳珮瑜</p>
+          </li>
+        </ul>
+      </CreditList>
+
       {creditsFor318.map((item) => {
         return (
-          <CreditList key={item.title}>
+          <CreditList key={item.title} id={item.id}>
             <CreditTitle>{item.title}</CreditTitle>
 
             <ul className={'no-link-list'}>
