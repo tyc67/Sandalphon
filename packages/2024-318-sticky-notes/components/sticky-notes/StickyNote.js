@@ -168,7 +168,7 @@ export default function StickeyNote({ stickyNote }) {
       cardJsx = <TextCard>{stickyNote.description}</TextCard>
       break
     case 'image':
-      cardJsx = <ImageCard src={stickyNote.imageUrl} />
+      cardJsx = <ImageCard src={convertPngUrlToWebP(stickyNote.imageUrl)} />
       break
     default:
       break
