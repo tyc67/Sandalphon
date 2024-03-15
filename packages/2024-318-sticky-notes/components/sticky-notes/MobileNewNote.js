@@ -149,6 +149,20 @@ const NewNoteButton = styled.button`
   background: white;
   border-radius: 50%;
   cursor: pointer;
+  opacity: 0;
+  event-pointer: nonte;
+  ${
+    /**
+     * @param {Object} props
+     * @param {boolean} props.showStickyNotesPanel
+     */
+    ({ showStickyNotesPanel }) =>
+      showStickyNotesPanel &&
+      `
+    opacity: 1;
+    event-pointer: auto;
+  `
+  }
   &:active {
     background: rgba(93, 93, 93, 1);
   }
@@ -190,6 +204,9 @@ export default function MobileNewNote() {
     (state) => state.stickyNote.isRecaptchaVerified
   )
   const wordings = useAppSelector((state) => state.stickyNote.wordings)
+  const showStickyNotesPanel = useAppSelector(
+    (state) => state.stickyNote.showStickyNotesPanel
+  )
   const {
     show: fixedMode,
     note,
@@ -323,6 +340,7 @@ export default function MobileNewNote() {
       >
         <Wrapper>
           <NewNoteButton
+            showStickyNotesPanel={showStickyNotesPanel}
             onClick={(e) => {
               e.stopPropagation()
               openFixedNewNote()
