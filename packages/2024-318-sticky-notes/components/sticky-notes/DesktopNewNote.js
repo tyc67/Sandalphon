@@ -4,6 +4,7 @@ import useClickOutside from '../../hooks/useClickOutside'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import { insertNewRowToSheet } from '../../api/googlesheet'
+import { saveNewRowToLocalStorage } from '~/utils/sticky-notes'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -225,7 +226,7 @@ export default function DesktopNewNote() {
     }
     insertNewRowToSheet(newRow)
       .then(() => {
-        localStorage.addedNote = JSON.stringify([newRow])
+        saveNewRowToLocalStorage(newRow)
 
         dispatch(
           stickyNoteActions.stickyNoteAdded({

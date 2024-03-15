@@ -4,6 +4,10 @@ import { useAppDispatch, useAppSelector } from './useRedux'
 import { stickyNoteActions } from '../store/sticky-note-slice'
 import useInView from './useInView'
 import { fetchStickyNotesAtPage } from '~/api/fetch-sticky-notes'
+import {
+  appendSavedNotesToRawNotes,
+  removeNotesInLSIfInRawStickyNotes,
+} from '../utils/sticky-notes'
 
 /**
  * @typedef {import('../data/mockData').RawStickyNote} RawStickyNote
@@ -47,6 +51,8 @@ export function useStickyNotesInLines(endRef) {
           const { sheet_data, meta } = await fetchStickyNotesAtPage(1)
           newRawStickyNotes = sheet_data
 
+          newRawStickyNotes = appendSavedNotesToRawNotes(sheet_data)
+
           setMeta(meta)
         }
 
@@ -69,12 +75,16 @@ export function useStickyNotesInLines(endRef) {
   useEffect(() => {
     const isLoading = isLoadingMoreRef.current
     if (endOfScroll && page < meta?.total_pages && !isLoading) {
+      console.log('laod more')
       isLoadingMoreRef.current = true
       const newPage = page + 1
 
       fetchStickyNotesAtPage(newPage)
         .then((rawData) => {
-          const { sheet_data: newRawStickyNotes, meta } = rawData
+          const { sheet_data, meta } = rawData
+
+          const newRawStickyNotes =
+            removeNotesInLSIfInRawStickyNotes(sheet_data)
 
           dispatch(
             stickyNoteActions.appendStickyNotes({ newRawStickyNotes, device })

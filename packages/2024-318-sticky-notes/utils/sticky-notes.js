@@ -1,6 +1,7 @@
 import {
   cardRotateDegreeRange,
   emptyStickyNote,
+  noteKeyInLocalStorage,
   rwdEmptyNotePerSection,
   rwdLines,
   stickyNoteColors,
@@ -257,4 +258,80 @@ export function refillDisplayStickyNotes(
     stickyNotesLines: stickyNotesLines,
     emptyStickyNotes: emptyStickyNotes,
   }
+}
+
+function getNotesInLS() {
+  let notesInLS = []
+  try {
+    const oldNotes = JSON.parse(localStorage.getItem(noteKeyInLocalStorage))
+    if (Array.isArray(oldNotes)) notesInLS = oldNotes
+  } catch (error) {
+    // ignore old notes if json parsing invalid json or stored notes are not array
+    console.log(error)
+  }
+  return notesInLS
+}
+
+/**
+ *
+ * @param {RawStickyNote} row
+ */
+export function saveNewRowToLocalStorage(row) {
+  const notesInLS = getNotesInLS()
+  notesInLS.push(row)
+
+  localStorage.setItem(noteKeyInLocalStorage, JSON.stringify(notesInLS))
+}
+
+/**
+ * @param {RawStickyNote[]} rawStickyNotes
+ */
+export function appendSavedNotesToRawNotes(rawStickyNotes) {
+  const notesInLS = getNotesInLS()
+  const newNotesInLS = []
+
+  for (const noteInLS of notesInLS) {
+    const foundNote = rawStickyNotes.find(
+      (rawStickyNote) => rawStickyNote.id === noteInLS.id
+    )
+    /**
+     * If the noteInLs shows in the first page rawStickyNotes, delete from the LS by not adding to newNotesInLS.
+     * If not, keep noteInLs in LS and add it to the rawStickyNotes.
+     */
+    if (!foundNote) {
+      newNotesInLS.push(noteInLS)
+      rawStickyNotes.push(noteInLS)
+    }
+  }
+
+  localStorage.setItem(noteKeyInLocalStorage, JSON.stringify(newNotesInLS))
+  return rawStickyNotes
+}
+
+/**
+ * @param {RawStickyNote[]} rawStickyNotes
+ */
+export function removeNotesInLSIfInRawStickyNotes(rawStickyNotes) {
+  const notesInLS = getNotesInLS()
+  const newNotesInLS = []
+  for (const noteInLS of notesInLS) {
+    const foundNoteIndex = rawStickyNotes.findIndex(
+      (rawStickyNote) => rawStickyNote.id === noteInLS.id
+    )
+    /**
+     * If the noteInLs shows in the (page > 2) rawStickyNotes:
+     * 1. delete from the LS by not adding to newNotesInLS.
+     * 2. remove the noteInLS in the rawStickyNotes cause it already displays
+     *  in the first page. Check appendSavedNotesToRawNotes for the logic.
+     * If not, keep noteInLs in LS and add it to the rawStickyNotes.
+     */
+    if (foundNoteIndex === -1) {
+      // remain the noteInLS
+      newNotesInLS.push(noteInLS)
+    } else {
+      rawStickyNotes.splice(foundNoteIndex, 1)
+    }
+  }
+  localStorage.setItem(noteKeyInLocalStorage, JSON.stringify(newNotesInLS))
+  return rawStickyNotes
 }

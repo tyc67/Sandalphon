@@ -85,3 +85,5 @@ export const googleSheetApiUrl =
 
 export const googleSheetId = '1YS35rZCU4AoyiPB9gH0hZ6_dtuvq_FbYVjk_bHFk2xA'
 export const googleSheetTitle = env !== 'prod' ? 'postin-dev' : 'postin-prod'
+
+export const noteKeyInLocalStorage = 'user-added-notes'
