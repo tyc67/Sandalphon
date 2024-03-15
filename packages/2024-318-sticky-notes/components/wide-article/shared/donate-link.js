@@ -36,7 +36,7 @@ const Link = styled.a`
     ({ theme }) => theme.color.brandColor.white
   };
 
-  outline: 1px solid
+  border: 1px solid
     ${
       /**
        * @param {Object} props
