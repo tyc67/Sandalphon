@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
+import gtag from '~/utils/gtag'
 
 /** @typedef {import('./StickyNote').CardType} CardType */
 
@@ -165,6 +166,9 @@ export default function FixedNote() {
         <Button
           color={btnColor}
           onClick={() => {
+            gtag.sendGAEvent('click', {
+              projects: `便利貼-前往新增便利貼`,
+            })
             closeFixedNote()
             dispatch(stickyNoteActions.changeExpandMode(true))
             setTimeout(() => {
@@ -190,6 +194,9 @@ export default function FixedNote() {
         <Button
           color={btnColor}
           onClick={() => {
+            gtag.sendGAEvent('click', {
+              projects: `便利貼-前往留言板`,
+            })
             closeFixedNote()
             dispatch(stickyNoteActions.changeExpandMode(true))
             setTimeout(() => {

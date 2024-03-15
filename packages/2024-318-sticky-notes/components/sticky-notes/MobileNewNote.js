@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import { insertNewRowToSheet } from '../../api/googlesheet'
+import gtag from '~/utils/gtag'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -214,6 +215,9 @@ export default function MobileNewNote() {
     if (isRequestInFlight || !noteContent) {
       return
     }
+    gtag.sendGAEvent('click', {
+      projects: `便利貼-送出`,
+    })
 
     let noteToAdd = note || emptyStickyNotes[0]
     noteToAdd = {
