@@ -291,8 +291,6 @@ export default function NavSubtitleNavigator({
           offsetKey.includes(item.key)
         )
 
-        console.log('執行 updateCurrentIndexIfVisible')
-
         if (item && item.isIntersecting !== isIntersecting) {
           item.isIntersecting = isIntersecting
 

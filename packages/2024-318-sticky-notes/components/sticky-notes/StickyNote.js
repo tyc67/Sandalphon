@@ -157,12 +157,7 @@ export default function StickeyNote({ stickyNote }) {
         })
       )
     } else {
-      dispatch(
-        stickyNoteActions.changeNewNote({
-          show: true,
-          note: stickyNote,
-        })
-      )
+      dispatch(stickyNoteActions.showFixedNewNote(stickyNote))
     }
   }
 
@@ -181,7 +176,7 @@ export default function StickeyNote({ stickyNote }) {
   return (
     <Wrapper
       ref={wrapperRef}
-      id={stickyNote.id}
+      id={'id-' + stickyNote.id}
       backgroundColor={stickyNote.color.code}
       rotateDegree={stickyNote.rotateAngle}
       cardType={cardType}

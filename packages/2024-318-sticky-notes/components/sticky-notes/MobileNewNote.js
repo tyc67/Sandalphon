@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
@@ -177,9 +177,6 @@ const EditSvg = (
 )
 
 export default function MobileNewNote() {
-  const [noteContent, setNoteContent] = useState('')
-  const [addingResult, setAddingResult] = useState('')
-  const [isRequestInFlight, setIsRequestInFlight] = useState(false)
   const isStickyNotesExpanded = useAppSelector(
     (state) => state.stickyNote.expandMode
   )
@@ -190,32 +187,35 @@ export default function MobileNewNote() {
   const isRecaptchaVerified = useAppSelector(
     (state) => state.stickyNote.isRecaptchaVerified
   )
-  const fixedMode = newNote.show
+  const {
+    show: fixedMode,
+    note,
+    content: noteContent,
+    addingResult,
+    isRequestInFlight,
+  } = newNote
+
   const textAreaRef = useRef(null)
   const dispatch = useAppDispatch()
 
   const openFixedNewNote = () => {
-    dispatch(
-      stickyNoteActions.changeNewNote({ show: true, note: emptyStickyNotes[0] })
-    )
+    dispatch(stickyNoteActions.showFixedNewNote(emptyStickyNotes[0]))
   }
 
   const closeFixedNewNote = () => {
     dispatch(stickyNoteActions.resetNewNote())
-    setNoteContent('')
-    setAddingResult('')
   }
 
   const onSubmit = () => {
     if (!isRecaptchaVerified) {
-      setAddingResult('error')
+      dispatch(stickyNoteActions.changeNewNoteAddingResult('error'))
       return
     }
     if (isRequestInFlight || !noteContent) {
       return
     }
 
-    let noteToAdd = newNote.note || emptyStickyNotes[0]
+    let noteToAdd = note || emptyStickyNotes[0]
     noteToAdd = {
       ...noteToAdd,
       description: noteContent,
@@ -240,76 +240,62 @@ export default function MobileNewNote() {
           })
         )
 
-        setAddingResult('success')
+        closeFixedNewNote()
+        dispatch(
+          stickyNoteActions.changeFixedNote({
+            show: true,
+            note: noteToAdd,
+            status: 'added',
+          })
+        )
+
+        if (isStickyNotesExpanded) {
+          document.querySelector(`#id-${noteToAdd.id}`).scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center',
+          })
+        }
       })
       .catch((e) => {
-        setAddingResult('error')
+        dispatch(stickyNoteActions.changeNewNoteAddingResult('error'))
         console.error(e)
       })
       .finally(() => {
-        setIsRequestInFlight(false)
+        dispatch(stickyNoteActions.changeNewNoteRequestInFlight(false))
       })
 
-    setIsRequestInFlight(true)
+    dispatch(stickyNoteActions.changeNewNoteRequestInFlight(true))
   }
 
   useEffect(() => {
-    if (fixedMode && textAreaRef.current) {
-      textAreaRef.current.focus()
+    if (fixedMode) {
+      textAreaRef.current?.focus()
     }
   }, [fixedMode])
 
   const buttonsJsx = (() => {
+    let leftButtonJsx = null
     if (!addingResult) {
-      return (
-        <ButtonWrapper>
-          <Button onClick={onSubmit}>送出</Button>
-          <Button
-            onClick={() => {
-              setTimeout(() => {
-                closeFixedNewNote()
-              }, 100)
-            }}
-          >
-            關閉
-          </Button>
-        </ButtonWrapper>
-      )
-    } else {
-      let leftButtonJsx
-      if (addingResult === 'success') {
-        leftButtonJsx = !isStickyNotesExpanded && (
-          <Button
-            onClick={() => {
-              closeFixedNewNote()
-              dispatch(stickyNoteActions.changeExpandMode(true))
-              setTimeout(() => {
-                // todo: 改成滑動到剛新增的 note 上
-                document
-                  .querySelector('#sticky-notes-top')
-                  ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-              })
-            }}
-          >
-            前往留言板
-          </Button>
-        )
-      } else if (addingResult === 'error') {
-        leftButtonJsx = <Button disabled>送出</Button>
-      }
-      return (
-        <ButtonWrapper>
-          {leftButtonJsx}
-          <Button
-            onClick={() => {
-              closeFixedNewNote()
-            }}
-          >
-            關閉
-          </Button>
-        </ButtonWrapper>
-      )
+      leftButtonJsx = <Button onClick={onSubmit}>送出</Button>
+    } else if (addingResult === 'error') {
+      leftButtonJsx = <Button disabled>送出</Button>
     }
+
+    return (
+      <ButtonWrapper>
+        {leftButtonJsx}
+        <Button
+          onClick={() => {
+            setTimeout(() => {
+              closeFixedNewNote()
+            }, 100)
+          }}
+        >
+          關閉
+        </Button>
+      </ButtonWrapper>
+    )
   })()
 
   return (
@@ -340,7 +326,11 @@ export default function MobileNewNote() {
                 <TextArea
                   placeholder={`在這裡輸入你的便利貼:\n（若留言涉及惡意攻擊或廣告，管理者會逕行刪除。）`}
                   value={noteContent}
-                  onChange={(e) => setNoteContent(e.target.value)}
+                  onChange={(e) =>
+                    dispatch(
+                      stickyNoteActions.changeNewNoteContent(e.target.value)
+                    )
+                  }
                   maxLength={100}
                   ref={textAreaRef}
                 />

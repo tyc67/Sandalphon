@@ -4,6 +4,10 @@ import { useAppDispatch, useAppSelector } from './useRedux'
 import { stickyNoteActions } from '../store/sticky-note-slice'
 import useInView from './useInView'
 import { fetchStickyNotesAtPage } from '~/api/fetch-sticky-notes'
+import {
+  appendSavedNotesToRawNotes,
+  removeNotesInLSIfInRawStickyNotes,
+} from '../utils/sticky-notes'
 
 /**
  * @typedef {import('../data/mockData').RawStickyNote} RawStickyNote
@@ -33,6 +37,9 @@ export function useStickyNotesInLines(endRef) {
     (state) => state.stickyNote.emptyStickyNotes
   )
   const dispatch = useAppDispatch()
+  const showStickyNotesPanel = useAppSelector(
+    (state) => state.stickyNote.showStickyNotesPanel
+  )
   const device = useDevice()
   const endOfScroll = useInView(endRef)
 
@@ -44,10 +51,9 @@ export function useStickyNotesInLines(endRef) {
           const { sheet_data, meta } = await fetchStickyNotesAtPage(1)
           newRawStickyNotes = sheet_data
 
-          setMeta({
-            total_pages: meta['total pages'],
-            next: meta.next,
-          })
+          newRawStickyNotes = appendSavedNotesToRawNotes(sheet_data)
+
+          setMeta(meta)
         }
 
         dispatch(
@@ -60,31 +66,33 @@ export function useStickyNotesInLines(endRef) {
         console.error(error)
       }
     }
-    if (device) {
+    if (showStickyNotesPanel && device) {
       fetchStickyNotes()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [device, dispatch]) // avoid adding rawStickNotes to prevent update random position...
+  }, [showStickyNotesPanel, device, dispatch]) // avoid adding rawStickNotes to prevent update random position...
 
   useEffect(() => {
     const isLoading = isLoadingMoreRef.current
     if (endOfScroll && page < meta?.total_pages && !isLoading) {
+      console.log('laod more')
       isLoadingMoreRef.current = true
       const newPage = page + 1
 
       fetchStickyNotesAtPage(newPage)
         .then((rawData) => {
-          const { sheet_data: newRawStickyNotes, meta } = rawData
+          const { sheet_data, meta } = rawData
+
+          const newRawStickyNotes =
+            removeNotesInLSIfInRawStickyNotes(sheet_data)
 
           dispatch(
             stickyNoteActions.appendStickyNotes({ newRawStickyNotes, device })
           )
           setPage(newPage)
-          setMeta({
-            total_pages: meta['total pages'],
-            next: meta.next,
-          })
+          setMeta(meta)
         })
+        .catch((error) => console.error(error))
         .finally(() => {
           isLoadingMoreRef.current = false
         })
