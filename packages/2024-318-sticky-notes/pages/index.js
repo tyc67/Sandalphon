@@ -1,20 +1,41 @@
 import { useEffect, useRef } from 'react'
-import axios from 'axios'
 import styled from 'styled-components'
 
+import axios from '~/axios'
 import TransformContainer from '../components/sticky-notes/TransformContainer'
 import WideStyleArticle from '~/components/wide-article/index'
 
 import { POST_JSON } from '~/const/wide-article'
 import { onGA4Event } from '~/utils/wide-article'
+import { stickyNoteMetaUrl } from '~/const/sticky-notes'
+import { useAppDispatch } from '~/hooks/useRedux'
+import { stickyNoteActions } from '~/store/sticky-note-slice'
+
+/**
+ * @typedef {import('~/data/mockData').StickyNotesWording} StickyNotesWording
+ */
 
 const BottomAnchor = styled.span`
   width: 0;
   height: 0;
 `
 
-export default function Home({ postData, postContent }) {
+/**
+ *
+ * @param {Object} props
+ * @param {Object} props.postData
+ * @param {Object} props.postContent
+ * @param {StickyNotesWording[]} props.stickyNotesWordings
+ * @returns
+ */
+export default function Home({ postData, postContent, stickyNotesWordings }) {
   const bottomRef = useRef(null)
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    if (stickyNotesWordings) {
+      dispatch(stickyNoteActions.chagneStickyNotesWordings(stickyNotesWordings))
+    }
+  }, [])
 
   useEffect(() => {
     const observerCallback = (entries) => {
@@ -54,6 +75,8 @@ export default function Home({ postData, postContent }) {
 export async function getStaticProps() {
   let postData = null
   let postContent = null
+  /** @type {StickyNotesWording[]} */
+  let stickyNotesWordings = []
 
   try {
     const response = await axios.get(`${POST_JSON}`)
@@ -68,10 +91,18 @@ export async function getStaticProps() {
     console.error('Error fetching post data:', error)
   }
 
+  try {
+    const response = await axios.get(stickyNoteMetaUrl)
+    stickyNotesWordings = response.data.placeholder || []
+  } catch (error) {
+    console.error('Error fetching sticky notes meta', error)
+  }
+
   return {
     props: {
       postData,
       postContent,
+      stickyNotesWordings,
     },
   }
 }

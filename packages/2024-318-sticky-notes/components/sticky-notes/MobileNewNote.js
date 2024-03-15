@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/useRedux'
 import { stickyNoteActions } from '../../store/sticky-note-slice'
 import { insertNewRowToSheet } from '../../api/googlesheet'
 import gtag from '~/utils/gtag'
+import { extractWordingWithKey } from '~/utils/sticky-notes'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -188,6 +189,7 @@ export default function MobileNewNote() {
   const isRecaptchaVerified = useAppSelector(
     (state) => state.stickyNote.isRecaptchaVerified
   )
+  const wordings = useAppSelector((state) => state.stickyNote.wordings)
   const {
     show: fixedMode,
     note,
@@ -281,9 +283,17 @@ export default function MobileNewNote() {
   const buttonsJsx = (() => {
     let leftButtonJsx = null
     if (!addingResult) {
-      leftButtonJsx = <Button onClick={onSubmit}>送出</Button>
+      leftButtonJsx = (
+        <Button onClick={onSubmit}>
+          {extractWordingWithKey('submit', wordings) || '送出'}
+        </Button>
+      )
     } else if (addingResult === 'error') {
-      leftButtonJsx = <Button disabled>送出</Button>
+      leftButtonJsx = (
+        <Button disabled>
+          {extractWordingWithKey('submit', wordings) || '送出'}
+        </Button>
+      )
     }
 
     return (
@@ -328,7 +338,10 @@ export default function MobileNewNote() {
             >
               {!addingResult ? (
                 <TextArea
-                  placeholder={`在這裡輸入你的便利貼:\n（若留言涉及惡意攻擊或廣告，管理者會逕行刪除。）`}
+                  placeholder={
+                    extractWordingWithKey('placeholder', wordings) ||
+                    `在這裡輸入你的便利貼：\n（若留言涉及惡意攻擊或廣告，管理者會逕行刪除。）`
+                  }
                   value={noteContent}
                   onChange={(e) =>
                     dispatch(
@@ -339,9 +352,15 @@ export default function MobileNewNote() {
                   ref={textAreaRef}
                 />
               ) : addingResult === 'success' ? (
-                <CompleteNote>送出成功！</CompleteNote>
+                <CompleteNote>
+                  {extractWordingWithKey('submit-success', wordings) ||
+                    '送出成功！'}
+                </CompleteNote>
               ) : (
-                <ErrorNote>新增失敗，請稍後再試</ErrorNote>
+                <ErrorNote>
+                  {extractWordingWithKey('submit-fail', wordings) ||
+                    '新增失敗，請稍後再試'}
+                </ErrorNote>
               )}
               {buttonsJsx}
             </NewNoteWrapper>
