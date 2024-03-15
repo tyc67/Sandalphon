@@ -46,7 +46,7 @@ const creditsFor318 = [
   },
   {
     title: '歷史照片攝影',
-    name: '杭大鵬、余志偉',
+    name: '杭大鵬、余志偉、高偉格',
   },
   {
     title: '影片 “Still Remember”',
