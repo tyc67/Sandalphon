@@ -25,6 +25,7 @@ const TitleWrapper = styled.section`
   margin: 20px 10px 0;
   max-width: 800px;
   width: auto;
+
   ${({ theme }) => theme.breakpoint.md} {
     position: absolute;
     left: 50%;
@@ -37,12 +38,13 @@ const TitleWrapper = styled.section`
   }
 `
 const ArticleTitle = styled.h1`
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   font-size: 24px;
   ${defaultPingFangFontFamily};
   font-weight: 700;
   text-align: center;
   display: block;
+
   ${({ theme }) => theme.breakpoint.md} {
     color: rgba(255, 255, 255, 0.87);
     font-size: 36px;
@@ -55,7 +57,7 @@ const ArticleTitle = styled.h1`
 `
 
 const ArticleSubtitle = styled.h2`
-  color: #717171;
+  color: white;
   font-feature-settings: 'clig' off, 'liga' off;
   font-size: 20px;
   font-weight: 500;
@@ -63,12 +65,14 @@ const ArticleSubtitle = styled.h2`
   ${defaultPingFangFontFamily};
   text-align: center;
   margin: 0.3rem;
+
   ${({ theme }) => theme.breakpoint.md} {
     ${defaultPingFangFontFamily};
-    color: #c1c1c1;
+    color: white;
     font-size: 28px;
     font-weight: 400;
   }
+
   ${({ theme }) => theme.breakpoint.xl} {
     ${defaultPingFangFontFamily};
     font-size: 32px;

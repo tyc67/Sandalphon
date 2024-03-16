@@ -118,6 +118,10 @@ const DraftWrapper = styled.div`
     color: white;
     ${defaultPingFangFontFamily};
   }
+
+  div[data-block='true'] {
+    font-weight: 300;
+  }
 `
 
 /**

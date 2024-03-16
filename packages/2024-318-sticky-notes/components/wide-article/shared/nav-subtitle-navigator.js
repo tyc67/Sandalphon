@@ -249,6 +249,35 @@ export default function NavSubtitleNavigator({
     }
   }, [h2AndH3Block, currentIndex, scrollTitles])
 
+  const smoothScrollTo = (targetY) => {
+    const startY = window.pageYOffset
+    const distance = targetY - startY
+    const startTime =
+      'now' in window.performance ? performance.now() : new Date().getTime()
+
+    const duration = 1000 // 滾動動畫持續時間，以毫秒為單位
+
+    const easeInOutQuad = (time, start, distance, duration) => {
+      time /= duration / 2
+      if (time < 1) return (distance / 2) * time * time + start
+      time--
+      return (-distance / 2) * (time * (time - 2) - 1) + start
+    }
+
+    const animateScroll = (currentTime) => {
+      const timeElapsed = currentTime - startTime
+      const nextY = easeInOutQuad(timeElapsed, startY, distance, duration)
+
+      window.scrollTo(0, nextY)
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animateScroll)
+      }
+    }
+
+    requestAnimationFrame(animateScroll)
+  }
+
   const handleOnClick = (key) => {
     const target = document.querySelector(`[data-offset-key*="${key}"]`)
     if (!target) {
@@ -259,10 +288,8 @@ export default function NavSubtitleNavigator({
 
     const y = top + height * 0.5 + scrollY - innerHeight * 0.5
 
-    scrollTo({
-      top: y,
-      behavior: 'smooth',
-    })
+    smoothScrollTo(y)
+
     if (componentStyle === 'side-bar') {
       handleCloseSideBar()
     }
