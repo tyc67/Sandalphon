@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { mockStickyNotesWordings } from '~/data/mockData'
 import {
   initializeDisplayStickyNotes,
   refillDisplayStickyNotes,
@@ -7,6 +8,7 @@ import {
 /**
  * @typedef {import('~/data/mockData').RawStickyNote} RawStickyNote
  * @typedef {import('../components/sticky-notes/StickyNote').StickyNote} StickyNote
+ * @typedef {import('~/data/mockData').StickyNotesWording} StickyNotesWording
  *
  * @typedef {Object} FixedNote
  * @property {boolean} show
@@ -30,6 +32,7 @@ import {
  * @property {boolean} expandMode
  * @property {boolean} isRecaptchaVerified
  * @property {number} randomEmptyNoteInsertIndex
+ * @property {StickyNotesWording[]} wordings
  */
 
 /** @type {NewNote} */
@@ -63,6 +66,7 @@ const initialState = {
   expandMode: false,
   isRecaptchaVerified: false,
   randomEmptyNoteInsertIndex: null,
+  wordings: mockStickyNotesWordings,
 }
 
 const stickyNoteSlice = createSlice({
@@ -137,6 +141,9 @@ const stickyNoteSlice = createSlice({
     },
     changeIsRecaptchaVerified(state, action) {
       state.isRecaptchaVerified = action.payload
+    },
+    chagneStickyNotesWordings(state, action) {
+      state.wordings = action.payload
     },
   },
 })

@@ -19,6 +19,13 @@
  */
 
 /**
+ * @typedef {Object} StickyNotesWording
+ * @property {string} key - key to accesss
+ * @property {string} 欄位說明 - key description, not used in code
+ * @property {string} 文字 - wording to show
+ */
+
+/**
  * @type {RawData}
  */
 export const mockStickyNotes = {
@@ -107,3 +114,42 @@ export const mockStickyNotes = {
     },
   ],
 }
+
+/** @type {StickyNotesWording[]} */
+export const mockStickyNotesWordings = [
+  {
+    key: 'placeholder',
+    欄位說明: '便利貼預設文字',
+    文字: '在這裡輸入你的便利貼：\n（若留言涉及惡意攻擊或廣告，管理者會逕行刪除。）',
+  },
+  {
+    key: 'submit-success',
+    欄位說明: '使用這便利貼送出成功後預設文字',
+    文字: '送出成功！',
+  },
+  {
+    key: 'submit-fail',
+    欄位說明: '使用這便利貼送出失敗後預設文字',
+    文字: '新增失敗，請稍後再試',
+  },
+  {
+    key: 'submit',
+    欄位說明: '送出留言按鈕',
+    文字: '送出',
+  },
+  {
+    key: 'fold',
+    欄位說明: '收合留言區塊',
+    文字: '收合',
+  },
+  {
+    key: 'scroll-to-sticky-notes',
+    欄位說明: '前往留言板按鈕',
+    文字: '前往留言板',
+  },
+  {
+    key: 'scroll-to-added-note',
+    欄位說明: '前往新增留言',
+    文字: '前往新增留言',
+  },
+]
