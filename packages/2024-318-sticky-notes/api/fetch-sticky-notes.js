@@ -1,4 +1,5 @@
 import axios from '~/axios'
+import { stickyNoteBaseUrl } from '~/const/sticky-notes'
 
 /**
  * @typedef {import('~/data/mockData').RawData} RawData
@@ -8,7 +9,7 @@ import axios from '~/axios'
  * @returns {Promise<RawData>}
  */
 export const fetchStickyNotesAtPage = async (page) => {
-  const url = `https://v3-statics-dev.mirrormedia.mg/json/project_318_${page}.json`
+  const url = stickyNoteBaseUrl + `/json/project_318_${page}.json`
   try {
     const response = await axios.get(url)
     /** @type {import('~/data/mockData').RawData} */
