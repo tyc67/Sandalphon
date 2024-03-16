@@ -87,6 +87,11 @@ export const googleSheetApiUrl =
 export const googleSheetId = '1YS35rZCU4AoyiPB9gH0hZ6_dtuvq_FbYVjk_bHFk2xA'
 export const googleSheetTitle = env !== 'prod' ? 'postin-dev' : 'postin-prod'
 
+export const stickyNoteBaseUrl =
+  env !== 'prod'
+    ? 'https://v3-statics-dev.mirrormedia.mg'
+    : 'https://v3-statics.mirrormedia.mg'
+
 export const stickyNoteMetaUrl =
   env != 'prod'
     ? 'https://v3-statics-dev.mirrormedia.mg/json/project_318_meta.json'
