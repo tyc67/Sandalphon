@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 
@@ -65,6 +66,9 @@ export default function Home({ postData, postContent, stickyNotesWordings }) {
 
   return (
     <>
+      <Head>
+        <title>318，我記得：十一個平凡人的太陽花運動</title>
+      </Head>
       <WideStyleArticle postData={postData} postContent={postContent} />
       <TransformContainer />
       <BottomAnchor ref={bottomRef} />

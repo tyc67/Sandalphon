@@ -19,6 +19,7 @@ export const GlobalStyles = createGlobalStyle`
    ${defaultSansSerifFontFamily};
   line-height: 1.5; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Sections
