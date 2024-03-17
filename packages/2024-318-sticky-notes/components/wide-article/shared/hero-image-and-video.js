@@ -4,6 +4,7 @@ import { defaultPingFangFontFamily } from '~/styles/shared-style'
 import { useEffect, useRef } from 'react'
 import { useAppDispatch } from '~/hooks/useRedux'
 import { stickyNoteActions } from '~/store/sticky-note-slice'
+import { staticFileDestination } from '~/const/wide-article'
 /**
  * @typedef {Pick<import('~/type/wide-article/post').HeroImage ,'id' | 'resized' | 'resizedWebp'>} HeroImage
  */
@@ -163,7 +164,7 @@ const Video = styled.video`
  * 3. In `wide`, height of hero-image and hero-video are `100vh`. In `premium`, height are `66.vw`, and max-width is `1200px`, max-height is `800px`.
  * @param {Object} props
  * @param {'wide' | 'premium'} [props.style] - The style of the component, it will change the components style by assigning different value.
- * @param {HeroImage | null} props.heroImage - The hero image data.
+//  * @param {HeroImage | null} props.heroImage - The hero image data.
  * @param {HeroVideo | null} props.heroVideo - The hero video data.
  * @param {string} props.heroCaption - The caption for the hero image or video.
  * @param {string} [props.title] - The title of the article. Optional, only render if `props.style` is wide
@@ -171,13 +172,35 @@ const Video = styled.video`
  * @returns {JSX.Element}
  */
 export default function HeroImageAndVideo({
-  heroImage = null,
+  // heroImage = null,
   heroVideo = null,
   heroCaption = '',
   title = '',
   style = 'wide',
   subtitle = '',
 }) {
+  //因專題特殊需求，希望不要載入太大照片，故先暫時改為寫死
+  const heroImage = {
+    imageFile: {
+      width: 2000,
+      height: 1333,
+    },
+    resized: {
+      w480: 'https://v3-statics.mirrormedia.mg/images/22ad989e-5ad3-41d7-95cc-4e0b1f2c91d4-w480.png',
+      w800: 'https://v3-statics.mirrormedia.mg/images/22ad989e-5ad3-41d7-95cc-4e0b1f2c91d4-w800.png',
+      w1200: '',
+      w1600:
+        'https://v3-statics.mirrormedia.mg/images/22ad989e-5ad3-41d7-95cc-4e0b1f2c91d4-w1600.png',
+    },
+    resizedWebp: {
+      w480: 'https://v3-statics.mirrormedia.mg/images/22ad989e-5ad3-41d7-95cc-4e0b1f2c91d4-w480.webP',
+      w800: 'https://v3-statics.mirrormedia.mg/images/22ad989e-5ad3-41d7-95cc-4e0b1f2c91d4-w800.webP',
+      w1200: '',
+      w1600:
+        'https://v3-statics.mirrormedia.mg/images/22ad989e-5ad3-41d7-95cc-4e0b1f2c91d4-w1600.webP',
+    },
+  }
+
   const dispatch = useAppDispatch()
   const landingTopRef = useRef(null)
   const landingBottomRef = useRef(null)
@@ -203,8 +226,8 @@ export default function HeroImageAndVideo({
         <CustomImage
           images={heroImage.resized}
           imagesWebP={heroImage.resizedWebp}
-          loadingImage={'/wide-article/loading@4x.gif'}
-          defaultImage={'/wide-article/default-og-img.png'}
+          loadingImage={`${staticFileDestination}/wide-article/loading@4x.gif`}
+          defaultImage={`${staticFileDestination}/wide-article/default-og-img.png`}
           alt={heroCaption ? heroCaption : title}
           objectFit={'cover'}
           width={'100%'}

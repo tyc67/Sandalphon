@@ -63,8 +63,9 @@ const navItemSideIndex = css`
     ({ isActive, theme }) =>
       isActive &&
       `
-   color: ${theme.color.brandColor.pink};
+    color: ${theme.color.brandColor.pink} !important;
     text-decoration: underline;
+    font-weight: 600;
     `
   }
 `
@@ -200,6 +201,21 @@ const Nav = styled.nav`
   }
 `
 
+const NavItemGroup = styled.ul`
+  li:nth-child(1),
+  li:nth-child(4),
+  li:nth-child(8),
+  li:nth-child(11),
+  li:nth-child(15),
+  li:nth-child(16) {
+    color: #c7c59e;
+
+    &::before {
+      background-color: #c7c59e;
+    }
+  }
+`
+
 /**
  * @callback HandleCloseSideBar
  * @return {void | import('react').SetStateAction<boolean> }
@@ -250,12 +266,12 @@ export default function NavSubtitleNavigator({
   }, [h2AndH3Block, currentIndex, scrollTitles])
 
   const smoothScrollTo = (targetY) => {
-    const startY = window.pageYOffset
+    const startY = window.scrollY
     const distance = targetY - startY
     const startTime =
       'now' in window.performance ? performance.now() : new Date().getTime()
 
-    const duration = 1000 // 滾動動畫持續時間，以毫秒為單位
+    const duration = 1000
 
     const easeInOutQuad = (time, start, distance, duration) => {
       time /= duration / 2
@@ -377,7 +393,7 @@ export default function NavSubtitleNavigator({
       <Nav componentStyle={componentStyle}>
         {children}
         {h2AndH3Block.length ? (
-          <ul>
+          <NavItemGroup>
             {h2AndH3Block.map((item) => (
               <NavItem
                 // @ts-ignore
@@ -395,7 +411,7 @@ export default function NavSubtitleNavigator({
                 <a href={`#header-${item.key}`}>{item.text}</a>
               </NavItem>
             ))}
-          </ul>
+          </NavItemGroup>
         ) : null}
       </Nav>
     </NavWrapper>
