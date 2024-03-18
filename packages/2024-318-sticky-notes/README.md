@@ -1,57 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 318 專題
 
-## Getting Started
+使用週刊 3.0 wide 版型 ＋ 便利貼互動功能
 
-First, run the development server:
+由於本次專案使用 next.js 的 getStaticProps 在 build time (yarn export, yarn dev 時)，就會先去拿文章的 json、便利貼的設定檔，因此若文章 json 有更動的情況下需要重新跑 yarn export + gsutil upload 等指令，這個做法的好處是 export 出來的靜態 html 本身就會有文章內容，對專題的 SEO 會有大大的加分，但專案上線前就會面臨文章不斷修改需要重複推版的狀況。
 
-```bash
-npm run dev
-# or
-yarn dev
+follow-up: 可能透過 terminal 的方式讓記者可以把 source code 抓下來跑 yarn export 和 gsutil upload，可能需要做成 script 方便使用。
+
+## 週刊 3.0 wide 版型
+
+### 已知問題
+
+週刊 wide 版型的漢堡側欄的 scrollTo 寫法搬到靜態專題後，在 iOS 會失效 (iPad / iPhone)，點了會完全不滑，
+測試過 scrollTo / window.scrollTo / scrollIntoView，在 iOS 也都會失效、點了完全不滑（其餘瀏覽器正常），
+目前是改用網路建議的 requestAnimationFrame 重新改寫，但也只能 debug 到 iPad OK、iphone 會滑動但對位失準。
+
+follow-up: 之後可以考慮改成幫 draft-renderer 的 H1, H2 加上 id，直接用 <link href="#header-${id}"/> 來進行跳轉，
+在有許多 lazy load 的 embed code 情況下確保可以滑動＋滑動到對的位置 (待驗證)
+
+## 便利貼
+
+目前便利貼採用 google sheet 作為資料管理：
+
+- 讀取：google sheet 產生的 json 檔， dev 透過 url 來 trigger json 更新 (見[專題文件](https://data-services-dev-ufaummkd5q-de.a.run.app/sheet_to_json?sheet_name=placeholder&bucket=v3-statics-dev.mirrormedia.mg&dest_file=json/project_318_meta.json&sheet_url=https://docs.google.com/spreadsheets/d/1YS35rZCU4AoyiPB9gH0hZ6_dtuvq_FbYVjk_bHFk2xA/edit#gid=0))，prod 一樣是拿 json，不過會有 cronjob 固定時間更新 json 檔。
+- 寫入：透過週刊 3.0 的 googlesheet api 來新增，需要提供對應的 googlesheet id, sheetTitle 和各欄位對應的 object，以上三者皆為必填，若各欄位對應的 key 名稱填錯則不會新增該欄位，新增成功的該 row 會把缺失的 key 值留空，不會報錯，近一步資訊參考週刊 3.0 api 文件。
+
+## 日後重複使用
+
+### 文章部分(週刊 3.0 wide 版型)
+
+待修改檔案：
+
+新專案設定
+
+- const/index.js 中的 `projectName` 修改成新專案的 slug 名稱
+- const/wide-article.js 中的 `POST_JSON` 需要依照對應的環境修填入新的 post json 檔名
+- pages/\_document.js 下修改新專案的 html meta
+
+若要修改文章 style
+
+- 修改文章底色： styles/global-styles
+
+```
+body {
+  background: black;
+  margin: 0;
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 修改其他 style: components/wide-article 下尋找對應的位置修改，ex: 修改字體顏色，在 components/wide-article/index.js `DraftWrapper` 的 styled-components 中
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```
+const DraftWrapper = styled.div`
+  *,
+  *::before,
+  *::after {
+    color: white;
+    ${defaultPingFangFontFamily};
+  }
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+  div[data-block='true'] {
+    font-weight: 300;
+  }
+`
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### 便利貼部分
 
-## Learn More
+待修改檔案：
 
-To learn more about Next.js, take a look at the following resources:
+新專案設定
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- (寫入) 便利貼 google sheet id: const/sticky-notes.js 中 `googleSheetId`
+- (寫入) 便利貼 google sheet 分頁名稱： const/sticky-notes.js 中 `googleSheetTitle` (不同環境有不同分頁)
+- (拿取) 便利貼設定檔 google sheet placehodler 頁面： const/sticky-notes.js 中 `stickyNoteMetaUrl`
+- (拿取) 便利貼 google sheet json: api/fetch-sticky-notes.js 中 `url` 中的檔名，目前為 `project_318_${page}.json`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Update Page Data
-
-- Generate page needed data
-
-The ccc Ukraine projects is a static page. Although all the page data comes from a google sheet (listed below) and then turn into a json file (check document for the link) We have to put json object into the script/raw-data.json and then run `node script/raw-data-converter.js` to generate all page-necessary data inside datas/pages.json.
-
-For the limit of the all types of page are using the same key inside google sheet (order, type, name, filename, text).
-Page type like 'L' and 'E' should be handled manually inside the file script/raw-data-converter.js. Simply ignore the object from the json and insert all texts one by one to fit the the `firstPage` and `lastPage` objects inside raw-data-converter.js. Remember to run `node script/raw-data-converter.js` agagin to generate new page-needed data.
-
-- Export static page and upload to GCS bucket by gsutil
-
-The project leverages the next.js framework to export the static html files which will be uploaded to GCS bucket for the mirrormedia routing to render as a project page.
-
-run `yarn export` to export static html files.
-
-for dev (no cache version):
-gsutil -h "Cache-Control:no-store" -m cp -r -a public-read ./out/\* gs://statics.mirrormedia.mg/projects/{project_name}
-
-for prod:
-gsutil -m cp -r -a public-read ./out/\* gs://statics.mirrormedia.mg/projects/{project_name}
-
-- Clean dev projects after prod release
-
-Remove the project uploaded for dev testing in the GCS bucket.
-
-### References
-
-- Google sheet example: (link)[https://docs.google.com/spreadsheets/d/1JXyySvrM-aJhUMvzUsL7ifyjvw6VJCKGdY9yVWBHfXE/edit#gid=0]
+p.s. 若要透過便利貼設定檔來修改便利貼預設的五種顏色，需要另外開發在透過 stikcyNoteMetaUrl 拿到的資料(build time 就會拿到) 來設定顏色，目前是寫死在 const/stikcy-notes.js 中的 `stickyNoteColors` 中，不過資料結構可以能會改變，需要同步修改對應的地方。
