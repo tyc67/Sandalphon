@@ -17,6 +17,7 @@ import RelatedPost from '~/components/related-post'
 import Partners from '~/components/partners'
 import { staticFileDestination } from '~/config'
 import { NavListsProvider } from '~/contexts/nav-list'
+import { YoutubePlayerProvider } from '~/hook/use-youtube-player'
 
 const Main = styled.main`
   background-image: ${bgImageURL ? `url(${bgImageURL})` : 'none'};
@@ -125,7 +126,9 @@ export default function Home(): JSX.Element {
         <Main>
           <HeroImage heroImageSrc={heroImageSrc} />
           <Introduction introText={introText} qrCodeSrc={introQrCodeSrc} />
-          <ForumVideo videoSrc={videoSrc} />
+          <YoutubePlayerProvider>
+            <ForumVideo videoSrc={videoSrc} />
+          </YoutubePlayerProvider>
           <Speakers speakers={speakersData} />
           <Schedule content={schedule} />
           <RelatedPost relatedPosts={relatedPost} />
