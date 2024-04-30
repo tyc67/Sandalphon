@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "type": "tsc --noEmit"
+    "type": "tsc --noEmit",
+    "export": "NEXT_PUBLIC_ENV=prod next build && next export",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@readr-media/react-image": "^2.1.3",

@@ -57,6 +57,24 @@
 
 註：OG 圖片設定方式：目前設計上不透過環境變數指定，要請需求方提供： (1) 尺寸：1200x630 (2) 檔案格式：jpg / jpeg 的圖片，並上傳到 GCS 上該次論壇專題的資料夾內的 images 資料夾內。（ code 寫法設定統一吃 /images/og.jpg 檔案當作 OG Image）
 
+```dotenv
+NEXT_PUBLIC_ENV=
+NEXT_PUBLIC_PROJECT_NAME=
+NEXT_PUBLIC_DATA_JSON=
+NEXT_PUBLIC_OG_TITLE=
+NEXT_PUBLIC_OG_DESC=
+NEXT_PUBLIC_OG_IMAGE_URL=
+NEXT_PUBLIC_PRIMARY_COLOR=
+NEXT_PUBLIC_SECONDARY_COLOR=
+NEXT_PUBLIC_TITLE_COLOR=
+NEXT_PUBLIC_BG_COLOR=
+NEXT_PUBLIC_TEXT_COLOR=
+NEXT_PUBLIC_BORDER_COLOR=
+NEXT_PUBLIC_SIDEBAR_TEXT_COLOR=
+NEXT_PUBLIC_SIDEBAR_BG_COLOR=
+GCS_BUCKET_NAME=
+```
+
 <img width="816" alt="截圖 2023-09-26 下午8 05 14" src="https://github.com/ChangRongXuan/Sandalphon/assets/104489150/e23339cf-dffa-4bc8-8d6a-f18387d0fce1">
 <img width="535" alt="截圖 2023-09-26 下午8 10 08" src="https://github.com/ChangRongXuan/Sandalphon/assets/104489150/a85fae7b-c229-450a-838b-cfb166cd1b17">
 
@@ -70,6 +88,11 @@
 注意：放論壇專題的 GCS 與一般週刊靜態專題路徑不相同，因為需求方指定希望網址呈現為 `https://events.mirrormedia.mg/events/[forumName]` 格式，因此做出此項調整。
 
 另外，由於 GCS 並無區分 dev、staging、prod 版本，僅透過創立資料夾的名稱來區分是否為 dev/prod 版本。因此要特別注意：在執行 `yarn export` 時， `NEXT_PUBLIC_ENV` 都需要設定為 'prod' 才對（可以理解成因為 GCS 沒有區分 dev/prod 版本，因此目前的 GCS 統一視為 prod 環境。）
+
+OR
+1. 安裝 [gsutil](https://cloud.google.com/storage/docs/gsutil_install)
+2. 在`.env.local` 設定 `GCS_BUCKET_NAME`
+3. 執行 `yarn deploy`
 
 ---
 
