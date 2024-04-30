@@ -127,8 +127,8 @@ export default function RelatedPost({
     postLength < 8
       ? // 當 relatedPosts 少於等於 8 篇時，多複製新增報導數量，以避免 swiper bug
         [...relatedPosts, ...relatedPosts?.slice(0, 4)].map(
-          (item: GenericRelatedPost) => (
-            <SwiperSlide key={item.id}>
+          (item: GenericRelatedPost, idx) => (
+            <SwiperSlide key={idx}>
               <SlideItem post={item} />
             </SwiperSlide>
           )
