@@ -43,9 +43,10 @@ const HeadPhoto = styled.div`
 `
 
 const Title = styled.h2`
-  font-family: 'Noto Serif TC', serif;
-  font-weight: 600;
+  font-family: Noto Sans TC;
   font-size: 24px;
+  font-weight: 700;
+  line-height: 43.2px;
   text-align: center;
   margin: 40px auto;
   line-height: 1.6;

@@ -59,7 +59,7 @@ const MenuList = styled.li`
   list-style: none;
 
   &:hover {
-    color: ${color.white};
+    color: ${color.secondary};
     text-decoration-line: underline;
     text-underline-offset: 8px;
     text-decoration-thickness: 1px;

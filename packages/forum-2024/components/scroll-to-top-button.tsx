@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import ScrollTop from '~/public/icon/scroll-top-arrow.svg'
-import { breakpoint, zIndex } from '~/styles/theme'
+import { breakpoint, zIndex, color } from '~/styles/theme'
 
 const Button = styled.button`
   border-radius: 50%;
   box-shadow: 1px 1px 3px 0px hsla(0, 0%, 0%, 0.15);
   width: 36px;
   height: 36px;
-  background: rgba(3, 3, 3, 0.7);
+  background: ${color.secondary};
   position: fixed;
   top: calc(100vh - 100px);
   right: 28px;

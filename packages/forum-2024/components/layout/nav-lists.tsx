@@ -23,21 +23,23 @@ const Wrapper = styled.div`
 `
 
 const Item = styled.li<{ show: boolean }>`
-  font-family: 'Noto Serif TC', serif;
-  font-size: 14px;
+  font-family: Noto Sans TC;
+  font-size: 16px;
   font-weight: 700;
+  line-height: 29px;
   text-align: center;
   list-style: none;
   color: ${color.white};
-  background: ${color.black};
-  padding: 5px 8px;
+  background: ${color.secondary};
+  padding: 3.5px 8px;
   border-radius: 4px;
   cursor: pointer;
   display: ${({ show }) => (show ? 'block' : 'none')};
 
   ${breakpoint.xl} {
     font-size: 20px;
-    padding: 10px;
+    line-height: 36px;
+    padding: 0px 10px;
   }
 `
 

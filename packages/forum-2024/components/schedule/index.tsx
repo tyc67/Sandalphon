@@ -32,7 +32,7 @@ const RowContainer = styled.div`
   }
 
   .row-motion:nth-child(odd) {
-    background: ${color.secondary};
+    background: ${color.white};
     border-radius: 0px 20px 20px 0px;
     margin-right: auto;
     border: 2px solid ${color.border};

@@ -19,10 +19,10 @@ const LogosWrapper = styled.div`
 `
 
 const LogoType = styled.h2`
-  font-family: 'Noto Serif TC', serif;
+  font-family: Noto Sans TC;
   font-size: 20px;
-  font-weight: 900;
-  line-height: 1.8;
+  font-weight: 500;
+  line-height: 36px;
   text-align: center;
   margin: 25px auto 15px;
 `

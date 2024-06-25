@@ -17,17 +17,17 @@ export const defaultBlockStyle = css`
   }
 
   h1 {
+    font-family: Noto Sans TC;
     font-size: 32px;
-    line-height: 1.8;
     font-weight: 900;
+    line-height: 57.6px;
     text-align: center;
     margin: 20px auto 30px auto;
-    font-family: 'Noto Serif TC', serif;
-    font-weight: 900;
     color: ${color.text.title};
 
     ${breakpoint.md} {
-      font-size: 30px;
+      font-size: 40px;
+      line-height: 72px;
     }
 
     ${breakpoint.xl} {
