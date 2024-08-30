@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-// import { getVideoSrc } from '~/utils'
 import { useState } from 'react'
 import { useEffect, useId, useRef } from 'react'
 import { useYoutubePlayer } from '~/hook/use-youtube-player'
@@ -89,28 +88,27 @@ const YouTubeVideo = ({
   return <PlayerWrapper id={playerId} />
 }
 
+function extractVideoId(url: string) {
+  try {
+    const urlParams = new URLSearchParams(new URL(url).search)
+    return urlParams.get('v')
+  } catch {
+    return null
+  }
+}
+
 export default function ForumVideo({
   videoSrc = '',
 }: VideoProps): JSX.Element | null {
   //Error Handle
-  const shouldShowJsx = Boolean(videoSrc && videoSrc.trim() !== '')
-  const mockVideoData = [
-    '5lFw-8OQCb8',
-    'mJA11pzlxTE',
-    'LaK3zcTG7eU',
-    'rbXEJqx3iSU',
-    '8F6vAi3TOtg',
-    'RUdUMkB1zSQ',
-    'QPKalSZJTwY',
-    'CEF4a4OKQkc',
-  ]
-  const [activeVideoId, setActiveVideoId] = useState(mockVideoData[0])
+  const videoUrls = videoSrc.split(',').filter((url) => url.trim() !== '')
+  const videoIds = videoUrls.map(extractVideoId).filter((id) => id !== null)
 
-  if (!shouldShowJsx) {
+  const [activeVideoId, setActiveVideoId] = useState(videoIds[0])
+
+  if (!videoIds.length) {
     return null
   }
-
-  // const src = getVideoSrc(videoSrc)
 
   return (
     <Wrapper id="video">
@@ -127,13 +125,13 @@ export default function ForumVideo({
           keyboard={{
             enabled: true,
           }}
-          onSlideChange={(e) => setActiveVideoId(mockVideoData[e.realIndex])}
+          onSlideChange={(e) => setActiveVideoId(videoIds[e.realIndex])}
         >
-          {mockVideoData.map((videoId) => (
+          {videoIds.map((videoId) => (
             <SwiperSlide key={videoId}>
               <YouTubeVideo
                 key={videoId}
-                videoId={videoId}
+                videoId={videoId as string}
                 isActive={videoId === activeVideoId}
               />
             </SwiperSlide>

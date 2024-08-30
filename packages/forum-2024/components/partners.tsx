@@ -37,9 +37,9 @@ const LogosImage = styled.div`
   gap: 20px;
 
   .readr-media-react-image {
-    max-width: 128px;
-    max-height: 40px;
-    height: 40px;
+    max-width: 192px;
+    max-height: 60px;
+    height: 60px;
     width: auto;
   }
 `
