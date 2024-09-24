@@ -4,6 +4,10 @@
 
 @layer base {}
 
-@layer components {}
+@layer components {
+  .nav-list {
+    @apply flex flex-row flex-nowrap whitespace-nowrap text-base font-medium leading-[1.8] mx-auto md:font-bold md:mt-[14px] lg:mt-0 lg:text-xl ;
+  }
+}
 
 @layer utilities {}

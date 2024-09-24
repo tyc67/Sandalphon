@@ -3,9 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    unoptimized: true
+    unoptimized: true,
   },
-  output: 'export'
+  output: 'export',
 }
 
 module.exports = nextConfig

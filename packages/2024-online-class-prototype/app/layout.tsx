@@ -1,5 +1,6 @@
-import { Noto_Sans_TC } from 'next/font/google'
 import './globals.css'
+import { Noto_Sans_TC } from 'next/font/google'
+import Header from '@/components/header'
 
 const font = Noto_Sans_TC({ subsets: ['latin'] })
 
@@ -10,7 +11,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-Hant">
-      <body className={font.className}>{children}</body>
+      <body className={`${font.className} flex flex-col items-center`}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }
