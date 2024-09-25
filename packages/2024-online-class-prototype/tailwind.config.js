@@ -16,8 +16,12 @@ module.exports = {
         'gap-lg': '0px 4x 4px 0px rgba(0, 0, 0, 0.15)',
       },
       colors: {
-        main: '#0435ab'
-      }
+        main: '#0435ab',
+        orange: '#ff8c00',
+      },
+      height: {
+        screen: ['100vh', '100dvh'],
+      },
     },
   },
   plugins: [],

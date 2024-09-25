@@ -11,9 +11,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-Hant">
-      <body className={`${font.className} flex flex-col items-center`}>
+      <body
+        className={`${font.className} flex min-h-screen flex-col items-center`}
+      >
         <Header />
-        {children}
+        <main className="flex w-screen max-w-screen-lg grow flex-col items-center">
+          {children}
+        </main>
       </body>
     </html>
   )

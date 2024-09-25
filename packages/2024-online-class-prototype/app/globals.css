@@ -8,6 +8,10 @@
   .nav-list {
     @apply flex flex-row flex-nowrap whitespace-nowrap text-base font-medium leading-[1.8] mx-auto md:font-bold md:mt-[14px] lg:mt-0 lg:text-xl ;
   }
+
+  .section-title {
+    @apply text-center text-xl font-bold leading-[1.8] mb-5 md:text-[26px] md:mb-10 lg:text-[32px];
+  }
 }
 
 @layer utilities {}
