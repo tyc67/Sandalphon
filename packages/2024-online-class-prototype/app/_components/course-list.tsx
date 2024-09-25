@@ -8,7 +8,7 @@ type Props = {
 
 export default function CourseList({ courses }: Props) {
   return (
-    <div className="flex w-full flex-col items-center px-6">
+    <div className="flex w-full flex-col items-center px-6 md:px-0">
       <h2 id="course-list" className="section-title text-black">
         課程總覽
       </h2>

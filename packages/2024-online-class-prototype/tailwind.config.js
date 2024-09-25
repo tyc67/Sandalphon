@@ -22,6 +22,9 @@ module.exports = {
       height: {
         screen: ['100vh', '100dvh'],
       },
+      maxWidth: {
+        homepage: '904px',
+      },
     },
   },
   plugins: [],

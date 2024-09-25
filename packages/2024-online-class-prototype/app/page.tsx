@@ -6,6 +6,7 @@ import { z } from 'zod'
 import Loading from '@/components/loading'
 import CourseList from './_components/course-list'
 import Divider from './_components/divider'
+import PaymentFlow from './_components/payment-flow'
 
 const MAX_RETRY_TIMES = 3
 
@@ -22,7 +23,6 @@ export const courseObject = z.object({
   CourseName: z.string(),
   heroImage: imageObject,
   StartDate: optionalDate,
-
   SpecialPrice: z.string(),
   Lecturer: z.string(),
 })
@@ -74,8 +74,10 @@ export default function Home() {
         </div>
       ) : (
         data && (
-          <div className="mt-10 w-full lg:mt-[60px]">
+          <div className="lg:max-w-homepage mt-10 w-full lg:mt-[60px]">
             <CourseList courses={data.CourseList} />
+            <Divider />
+            <PaymentFlow images={data.flowImage} />
             <Divider />
           </div>
         )
