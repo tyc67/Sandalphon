@@ -8,6 +8,7 @@ import CourseList from './_components/course-list'
 import Divider from './_components/divider'
 import PaymentFlow from './_components/payment-flow'
 import QAList from './_components/qa-list'
+import OrderReminder from './_components/order-reminder'
 
 const MAX_RETRY_TIMES = 3
 
@@ -75,13 +76,14 @@ export default function Home() {
         </div>
       ) : (
         data && (
-          <div className="lg:max-w-homepage mt-10 w-full lg:mt-[60px]">
+          <div className="lg:max-w-homepage mb-20 mt-10 w-full md:mb-[140px] lg:mb-[120px] lg:mt-[60px]">
             <CourseList courses={data.CourseList} />
             <Divider />
             <PaymentFlow images={data.flowImage} />
             <Divider />
             <QAList list={data.qaList} />
             <Divider />
+            <OrderReminder list={data.OrderReminder} />
           </div>
         )
       )}
