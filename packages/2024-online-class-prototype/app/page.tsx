@@ -7,6 +7,7 @@ import Loading from '@/components/loading'
 import CourseList from './_components/course-list'
 import Divider from './_components/divider'
 import PaymentFlow from './_components/payment-flow'
+import QAList from './_components/qa-list'
 
 const MAX_RETRY_TIMES = 3
 
@@ -78,6 +79,8 @@ export default function Home() {
             <CourseList courses={data.CourseList} />
             <Divider />
             <PaymentFlow images={data.flowImage} />
+            <Divider />
+            <QAList list={data.qaList} />
             <Divider />
           </div>
         )
