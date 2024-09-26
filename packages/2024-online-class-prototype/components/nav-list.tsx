@@ -5,6 +5,10 @@ import type { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import IconProfileBlue from '@/public/images/profile-blue.png'
 import IconProfileBlack from '@/public/images/profile-black.png'
+import { useAppSelector } from '@/redux/hooks'
+import { selectIsLogined } from '@/redux/features/user/selector'
+import { getAuth, signOut } from 'firebase/auth'
+import { firebaseApp } from '@/utils/firebase'
 
 type HashTag = `#${string}`
 
@@ -58,7 +62,7 @@ const CourseNavItems: NavItem[] = [
 export default function NavList() {
   const pathname = usePathname()
   const [hash, setHash] = useState<HashTag>('#')
-  const [isLogined] = useState(false)
+  const isLogined = useAppSelector(selectIsLogined)
 
   const onHashChange = (e: HashChangeEvent) => {
     const newUrl = e.newURL
@@ -82,14 +86,16 @@ export default function NavList() {
     case /\/course\//.test(pathname):
       listJsx = (
         <ul className="nav-list gap-x-[10px] md:gap-x-5 lg:gap-x-2">
-          <li className="inline-block bg-main md:hidden">
-            <a
-              href="/login"
-              className="inline-block px-[26px] py-px text-white"
-            >
-              登入
-            </a>
-          </li>
+          {!isLogined && (
+            <li className="inline-block bg-main md:hidden">
+              <a
+                href="/login"
+                className="inline-block px-[26px] py-px text-white"
+              >
+                登入
+              </a>
+            </li>
+          )}
           {CourseNavItems.map((item) => (
             <li
               key={item.target}
@@ -104,7 +110,12 @@ export default function NavList() {
           ))}
           <li className="hidden md:inline-block">
             {isLogined ? (
-              <>
+              <span
+                className="cursor-pointer"
+                onClick={() => {
+                  signOut(getAuth(firebaseApp))
+                }}
+              >
                 <NextImage
                   className="hidden md:flex lg:hidden"
                   src={IconProfileBlue}
@@ -119,7 +130,7 @@ export default function NavList() {
                   height={32}
                   alt="profile"
                 />
-              </>
+              </span>
             ) : (
               <a
                 href="/login"
