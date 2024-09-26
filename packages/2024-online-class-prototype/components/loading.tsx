@@ -4,7 +4,7 @@ export default function Loading() {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      className="size-12 animate-spin"
+      className="animate-spin"
     >
       <circle
         className="opacity-25"
@@ -12,7 +12,7 @@ export default function Loading() {
         cy="12"
         r="10"
         stroke="currentColor"
-        stroke-width="4"
+        strokeWidth="4"
       ></circle>
       <path
         className="opacity-75"
