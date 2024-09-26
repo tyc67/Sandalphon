@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { dataSchema } from '../page'
+import { dataSchema } from './schema'
 
 type Props = {
   list: z.infer<typeof dataSchema>['qaList']

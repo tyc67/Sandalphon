@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 import CustomImage from '@/components/custom-image'
 import { z } from 'zod'
-import { courseObject } from '../page'
+import { courseObject } from './schema'
 import { moneyStringToNumber } from '@/utils'
 
 type Props = z.infer<typeof courseObject>

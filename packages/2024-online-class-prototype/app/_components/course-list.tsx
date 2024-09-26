@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { courseObject } from '../page'
+import { courseObject } from './schema'
 import CourseItem from './course-item'
 
 type Props = {

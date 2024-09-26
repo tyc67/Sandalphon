@@ -1,8 +1,8 @@
 'use client'
-
 import { useEffect, useRef, useState } from 'react'
 import { BASE_JSON_URL } from '@/constants/config'
 import { z } from 'zod'
+import { dataSchema } from './_components/schema'
 import Loading from '@/components/loading'
 import CourseList from './_components/course-list'
 import Divider from './_components/divider'
@@ -11,35 +11,6 @@ import QAList from './_components/qa-list'
 import OrderReminder from './_components/order-reminder'
 
 const MAX_RETRY_TIMES = 3
-
-const optionalUrl = z.union([z.string().url(), z.literal('')])
-const optionalDate = z.union([z.string().date(), z.literal('')])
-const imageObject = z.object({
-  mobile: optionalUrl,
-  tablet: optionalUrl,
-  desktop: optionalUrl,
-})
-
-export const courseObject = z.object({
-  ID: z.string(),
-  CourseName: z.string(),
-  heroImage: imageObject,
-  StartDate: optionalDate,
-  SpecialPrice: z.string(),
-  Lecturer: z.string(),
-})
-
-export const dataSchema = z.object({
-  flowImage: z.array(imageObject),
-  qaList: z.array(
-    z.object({
-      Question: z.string(),
-      Answer: z.string(),
-    })
-  ),
-  OrderReminder: z.array(z.string()),
-  CourseList: z.array(courseObject),
-})
 
 export default function Home() {
   const fetchTimes = useRef(0)
@@ -71,12 +42,12 @@ export default function Home() {
   return (
     <>
       {isLoading ? (
-        <div className="my-auto *:text-main">
+        <div className="my-auto *:size-12 *:text-main">
           <Loading />
         </div>
       ) : (
         data && (
-          <div className="lg:max-w-homepage mb-20 mt-10 w-full md:mb-[140px] lg:mb-[120px] lg:mt-[60px]">
+          <div className="mb-20 mt-10 w-full md:mb-[140px] lg:mb-[120px] lg:mt-[60px] lg:max-w-homepage">
             <CourseList courses={data.CourseList} />
             <Divider />
             <PaymentFlow images={data.flowImage} />

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { dataSchema } from '../page'
+import { dataSchema } from './schema'
 import CustomImage from '@/components/custom-image'
 
 type Props = {
