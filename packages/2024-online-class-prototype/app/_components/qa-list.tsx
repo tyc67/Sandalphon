@@ -8,7 +8,7 @@ type Props = {
 export default function QAList({ list }: Props) {
   return (
     <div className="flex w-full flex-col items-center px-6 md:px-5 lg:px-0">
-      <h2 id="course-list" className="section-title text-black">
+      <h2 id="qa-list" className="section-title text-black">
         常見問題
       </h2>
       <div className="flex w-full flex-col gap-y-[28.8px]">
