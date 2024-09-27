@@ -1,12 +1,5 @@
 import { z } from 'zod'
-
-const optionalUrl = z.union([z.string().url(), z.literal('')])
-const optionalDate = z.union([z.string().date(), z.literal('')])
-const imageObject = z.object({
-  mobile: optionalUrl,
-  tablet: optionalUrl,
-  desktop: optionalUrl,
-})
+import { optionalDate, imageObject } from '@/utils/schema'
 
 export const courseObject = z.object({
   ID: z.string(),

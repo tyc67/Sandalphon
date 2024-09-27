@@ -2,6 +2,7 @@ import type { FirebaseOptions } from 'firebase/app'
 
 const ENV = process.env.NEXT_PUBLIC_ENV ?? 'dev'
 const BASE_JSON_URL = process.env.NEXT_PUBLIC_BASE_JSON_URL ?? ''
+const COURSE_JSON_URL = process.env.NEXT_PUBLIC_COURSE_JSON_URL ?? ''
 const COLLECTION_NAME = process.env.NEXT_PUBLIC_COLLECTION_NAME ?? 'students'
 
 let FIREBASE_CONFIG: FirebaseOptions = {}
@@ -28,6 +29,7 @@ const ORIGIN_STORAGE_KEY = 'origin-pathname'
 export {
   ENV,
   BASE_JSON_URL,
+  COURSE_JSON_URL,
   COLLECTION_NAME,
   FIREBASE_CONFIG,
   ORIGIN_STORAGE_KEY,
