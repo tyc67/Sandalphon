@@ -3,9 +3,13 @@
 import { usePathname } from 'next/navigation'
 import { useRef, useState, useEffect } from 'react'
 import { z } from 'zod'
+import { isEqual } from 'lodash-es'
 import { courseObject } from './schema'
 import { fetchCourseData } from './util'
 import LoadingLayout from '@/components/loading-layout'
+import Information from './information'
+import { useAppSelector } from '@/redux/hooks'
+import { selectPurchasedClassIDs } from '@/redux/features/user/selector'
 
 const MAX_RETRY_TIMES = 3
 
@@ -15,6 +19,8 @@ export default function ClientBody() {
   const fetchTimes = useRef(0)
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState<z.infer<typeof courseObject> | null>(null)
+  const purchasedClasses = useAppSelector(selectPurchasedClassIDs, isEqual)
+  const isPurchased = purchasedClasses.includes(courseId)
 
   useEffect(() => {
     const initialize = async () => {
@@ -43,5 +49,13 @@ export default function ClientBody() {
     initialize()
   }, [courseId])
 
-  return <LoadingLayout isLoading={isLoading}>{data && <></>}</LoadingLayout>
+  return (
+    <LoadingLayout isLoading={isLoading}>
+      {data && (
+        <div className="mb-20 mt-0 w-full md:mb-[140px] md:mt-[30px] lg:mb-[120px] lg:mt-[60px] lg:max-w-course">
+          <Information {...data} isPurchased={isPurchased} />
+        </div>
+      )}
+    </LoadingLayout>
+  )
 }

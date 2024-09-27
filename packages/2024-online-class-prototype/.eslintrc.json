@@ -20,5 +20,10 @@
     "tailwindcss/classnames-order": "off",
     "tailwindcss/enforces-shorthand": "error",
     "tailwindcss/no-unnecessary-arbitrary-value": "error"
+  },
+  "settings": {
+    "tailwindcss": {
+      "config": "./tailwind.config.js"
+    }
   }
 }

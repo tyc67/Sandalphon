@@ -24,6 +24,7 @@ module.exports = {
       },
       maxWidth: {
         homepage: '904px',
+        course: '1092px',
       },
     },
   },
