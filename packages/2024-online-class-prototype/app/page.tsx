@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from 'react'
 import { BASE_JSON_URL } from '@/constants/config'
 import { z } from 'zod'
 import { dataSchema } from './_components/schema'
-import Loading from '@/components/loading'
 import CourseList from './_components/course-list'
 import Divider from './_components/divider'
 import PaymentFlow from './_components/payment-flow'
 import QAList from './_components/qa-list'
 import OrderReminder from './_components/order-reminder'
+import LoadingLayout from '@/components/loading-layout'
 
 const MAX_RETRY_TIMES = 3
 
@@ -40,24 +40,18 @@ export default function Home() {
   }, [])
 
   return (
-    <>
-      {isLoading ? (
-        <div className="my-auto *:size-12 *:text-main">
-          <Loading />
+    <LoadingLayout isLoading={isLoading}>
+      {data && (
+        <div className="mb-20 mt-10 w-full md:mb-[140px] lg:mb-[120px] lg:mt-[60px] lg:max-w-homepage">
+          <CourseList courses={data.CourseList} />
+          <Divider />
+          <PaymentFlow images={data.flowImage} />
+          <Divider />
+          <QAList list={data.qaList} />
+          <Divider />
+          <OrderReminder list={data.OrderReminder} />
         </div>
-      ) : (
-        data && (
-          <div className="mb-20 mt-10 w-full md:mb-[140px] lg:mb-[120px] lg:mt-[60px] lg:max-w-homepage">
-            <CourseList courses={data.CourseList} />
-            <Divider />
-            <PaymentFlow images={data.flowImage} />
-            <Divider />
-            <QAList list={data.qaList} />
-            <Divider />
-            <OrderReminder list={data.OrderReminder} />
-          </div>
-        )
       )}
-    </>
+    </LoadingLayout>
   )
 }
