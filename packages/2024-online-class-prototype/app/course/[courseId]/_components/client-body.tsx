@@ -10,6 +10,8 @@ import LoadingLayout from '@/components/loading-layout'
 import Information from './information'
 import { useAppSelector } from '@/redux/hooks'
 import { selectPurchasedClassIDs } from '@/redux/features/user/selector'
+import Introduction from './introduction'
+import Divider from './divider'
 
 const MAX_RETRY_TIMES = 3
 
@@ -54,6 +56,8 @@ export default function ClientBody() {
       {data && (
         <div className="mb-20 mt-0 w-full md:mb-[140px] md:mt-[30px] lg:mb-[120px] lg:mt-[60px] lg:max-w-course">
           <Information {...data} isPurchased={isPurchased} />
+          <Introduction />
+          <Divider />
         </div>
       )}
     </LoadingLayout>
