@@ -4,6 +4,7 @@
 - 此專案使用 Next13 搭配 styled-component。
 - 歷屆論壇專題：
   - [2023 風力發電論壇](https://events.mirrormedia.mg/events/windpowerforum2023/index.html)
+  - 活動影音如需使用輪播圖套件可以參考yc大大的([packages/forum-2024](https://github.com/tyc67/Sandalphon/tree/forum-2024/packages/forum-2024))
 
 ## 使用教學
 
