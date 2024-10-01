@@ -150,13 +150,11 @@ export default function Page() {
   }, [])
 
   useEffect(() => {
-    console.log(isLogined, originPath)
     if (isLogined) {
-      console.log(isLogined)
-      removeOriginPath()
       router.push(originPath || '/')
+      removeOriginPath()
     }
-  }, [router, isLogined, originPath, removeOriginPath])
+  }, [router, isLogined, removeOriginPath])
 
   return (
     <div className="my-auto flex flex-col items-center gap-y-7 lg:gap-y-10">

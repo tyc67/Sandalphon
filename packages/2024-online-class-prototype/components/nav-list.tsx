@@ -1,7 +1,7 @@
 'use client'
 import NextImage from 'next/image'
 import { usePathname } from 'next/navigation'
-import type { ReactNode } from 'react'
+import type { PropsWithChildren, ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import IconProfileBlue from '@/public/images/profile-blue.png'
 import IconProfileBlack from '@/public/images/profile-black.png'
@@ -9,6 +9,8 @@ import { useAppSelector } from '@/redux/hooks'
 import { selectIsLogined } from '@/redux/features/user/selector'
 import { getAuth, signOut } from 'firebase/auth'
 import { firebaseApp } from '@/utils/firebase'
+import { useLocalStorage } from 'usehooks-ts'
+import { ORIGIN_STORAGE_KEY } from '@/constants/config'
 
 type HashTag = `#${string}`
 
@@ -59,10 +61,80 @@ const CourseNavItems: NavItem[] = [
   },
 ]
 
+const WithLogin = ({ children }: PropsWithChildren) => {
+  const isLogined = useAppSelector(selectIsLogined)
+  const [, setOrignPath, removeOriginPath] = useLocalStorage(
+    ORIGIN_STORAGE_KEY,
+    ''
+  )
+
+  const signInHandler = () => {
+    setOrignPath(window.location.pathname)
+  }
+
+  const signOutHandler = () => {
+    removeOriginPath()
+    signOut(getAuth(firebaseApp))
+  }
+
+  return (
+    <>
+      <li className="inline-block shrink-0 bg-main md:hidden">
+        {isLogined ? (
+          <span className="cursor-pointer" onClick={signOutHandler}>
+            <NextImage
+              src={IconProfileBlue}
+              width={32}
+              height={32}
+              alt="profile"
+            />
+          </span>
+        ) : (
+          <a
+            href="/login"
+            className="inline-block px-[26px] py-px text-white"
+            onClick={signInHandler}
+          >
+            登入
+          </a>
+        )}
+      </li>
+      {children}
+      <li className="hidden md:inline-block">
+        {isLogined ? (
+          <span className="cursor-pointer" onClick={signOutHandler}>
+            <NextImage
+              className="lg:hidden"
+              src={IconProfileBlue}
+              width={32}
+              height={32}
+              alt="profile"
+            />
+            <NextImage
+              className="hidden lg:block"
+              src={IconProfileBlack}
+              width={32}
+              height={32}
+              alt="profile"
+            />
+          </span>
+        ) : (
+          <a
+            href="/login"
+            className="inline-block rounded-[4px] border border-solid border-black px-[15px] text-black lg:px-3"
+            onClick={signInHandler}
+          >
+            登入
+          </a>
+        )}
+      </li>
+    </>
+  )
+}
+
 export default function NavList() {
   const pathname = usePathname()
   const [hash, setHash] = useState<HashTag>('#')
-  const isLogined = useAppSelector(selectIsLogined)
 
   const onHashChange = (e: HashChangeEvent) => {
     const newUrl = e.newURL
@@ -86,60 +158,20 @@ export default function NavList() {
     case /\/course\//.test(pathname):
       listJsx = (
         <ul className="nav-list gap-x-[10px] md:gap-x-5 lg:gap-x-2">
-          {!isLogined && (
-            <li className="inline-block bg-main md:hidden">
-              <a
-                href="/login"
-                className="inline-block px-[26px] py-px text-white"
+          <WithLogin>
+            {CourseNavItems.map((item) => (
+              <li
+                key={item.target}
+                className={`inline-block px-1 ${
+                  hash === item.target
+                    ? 'border-b-2 border-solid border-main font-bold text-main'
+                    : 'text-[#727272]'
+                } md:rounded-[4px] md:border-none md:bg-main md:px-[16.5px] md:py-[0.5px] md:text-white lg:px-[10px]`}
               >
-                登入
-              </a>
-            </li>
-          )}
-          {CourseNavItems.map((item) => (
-            <li
-              key={item.target}
-              className={`inline-block px-1 ${
-                hash === item.target
-                  ? 'border-b-2 border-solid border-main font-bold text-main'
-                  : 'text-[#727272]'
-              } md:rounded-[4px] md:border-none md:bg-main md:px-[16.5px] md:py-[0.5px] md:text-white lg:px-[10px]`}
-            >
-              <a href={item.target}>{item.title}</a>
-            </li>
-          ))}
-          <li className="hidden md:inline-block">
-            {isLogined ? (
-              <span
-                className="cursor-pointer"
-                onClick={() => {
-                  signOut(getAuth(firebaseApp))
-                }}
-              >
-                <NextImage
-                  className="hidden md:flex lg:hidden"
-                  src={IconProfileBlue}
-                  width={32}
-                  height={32}
-                  alt="profile"
-                />
-                <NextImage
-                  className="hidden lg:flex"
-                  src={IconProfileBlack}
-                  width={32}
-                  height={32}
-                  alt="profile"
-                />
-              </span>
-            ) : (
-              <a
-                href="/login"
-                className="inline-block rounded-[4px] border border-solid border-black px-[15px] text-black lg:px-3"
-              >
-                登入
-              </a>
-            )}
-          </li>
+                <a href={item.target}>{item.title}</a>
+              </li>
+            ))}
+          </WithLogin>
         </ul>
       )
       break
@@ -149,18 +181,20 @@ export default function NavList() {
     case /\//.test(pathname):
       listJsx = (
         <ul className="nav-list gap-x-[10px] md:gap-x-[34px] lg:gap-x-2">
-          {HomeNavItems.map((item) => (
-            <li
-              key={item.target}
-              className={`inline-block px-1 ${
-                hash === item.target
-                  ? 'border-b-2 border-solid border-main font-bold text-main'
-                  : 'text-[#727272]'
-              } md:rounded-[4px] md:border-none md:bg-main md:px-[16.5px] md:py-[0.5px] md:text-white lg:px-[10px]`}
-            >
-              <a href={item.target}>{item.title}</a>
-            </li>
-          ))}
+          <WithLogin>
+            {HomeNavItems.map((item) => (
+              <li
+                key={item.target}
+                className={`inline-block px-1 ${
+                  hash === item.target
+                    ? 'border-b-2 border-solid border-main font-bold text-main'
+                    : 'text-[#727272]'
+                } md:rounded-[4px] md:border-none md:bg-main md:px-[16.5px] md:py-[0.5px] md:text-white lg:px-[10px]`}
+              >
+                <a href={item.target}>{item.title}</a>
+              </li>
+            ))}
+          </WithLogin>
         </ul>
       )
       break
@@ -170,7 +204,7 @@ export default function NavList() {
   }
 
   return (
-    <nav className="order-3 flex w-screen overflow-x-auto py-1 md:py-0 lg:order-2 lg:ml-auto lg:w-auto">
+    <nav className="order-3 flex w-screen overflow-x-auto overflow-y-hidden py-1 md:py-0 lg:order-2 lg:ml-auto lg:w-auto">
       {listJsx}
     </nav>
   )
