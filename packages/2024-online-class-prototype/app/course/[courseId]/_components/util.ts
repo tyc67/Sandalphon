@@ -15,3 +15,5 @@ export const fetchCourseData = async () => {
     return []
   }
 }
+
+export const joinText = (...str: string[]) => str.join(' ')

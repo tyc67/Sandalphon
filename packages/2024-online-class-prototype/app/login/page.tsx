@@ -164,6 +164,7 @@ export default function Page() {
         </p>
         <PhoneInput
           className="login-input *:bg-inherit"
+          international={true}
           defaultCountry="TW"
           value={phoneNumber}
           onChange={setPhoneNumber}

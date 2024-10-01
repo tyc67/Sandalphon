@@ -11,6 +11,10 @@ module.exports = {
       lg: '1200px',
     },
     extend: {
+      backgroundImage: {
+        'login-mask':
+          'linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.89) 15%, #FFF 32%, #FFF 100%)',
+      },
       boxShadow: {
         gap: '0px 2px 2px 0px rgba(0, 0, 0, 0.05)',
         'gap-lg': '0px 4x 4px 0px rgba(0, 0, 0, 0.15)',

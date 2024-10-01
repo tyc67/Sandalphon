@@ -14,6 +14,7 @@ import Introduction from './introduction'
 import Divider from './divider'
 import PreviewVideo from './preview-video'
 import OutlineSection from './outline-section'
+import VideoSection from './video-section'
 
 const MAX_RETRY_TIMES = 3
 
@@ -66,6 +67,7 @@ export default function ClientBody() {
             outline={data.outline}
           />
           <Divider />
+          <VideoSection {...data} isPurchased={isPurchased} />
         </div>
       )}
     </LoadingLayout>

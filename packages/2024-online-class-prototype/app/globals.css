@@ -16,6 +16,10 @@
   .login-input {
     @apply p-1 bg-[#F7F7F7] rounded shadow-[0px_2px_2px_0px_rgba(0,0,0,0.05)_inset] w-[208px];
   }
+
+  .mask-button {
+    @apply bg-black text-white rounded px-4 font-bold;
+  }
 }
 
 @layer utilities {}

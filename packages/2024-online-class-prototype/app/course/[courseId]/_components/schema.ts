@@ -33,6 +33,7 @@ export const courseObject = z.object({
   SpecialPrice: z.string(),
   Lecturer: z.string(),
   PreviewVideoURL: optionalUrl,
+  IntroductionVideoURL: optionalUrl,
   PaymentURL: optionalUrl,
   relateds: z.array(relatedImage),
   outline: z.array(outlineObject),

@@ -3,10 +3,9 @@
 import { z } from 'zod'
 import { courseObject } from './schema'
 import { Fragment } from 'react'
+import { joinText } from './util'
 
 type Props = Pick<z.infer<typeof courseObject>, 'outline'>
-
-const joinText = (...str: string[]) => str.join(' ')
 
 const Item = ({ Title, Description, children }: Props['outline'][0]) => {
   if (Array.isArray(children) && children.length > 0) {
