@@ -13,6 +13,7 @@ import { selectPurchasedClassIDs } from '@/redux/features/user/selector'
 import Introduction from './introduction'
 import Divider from './divider'
 import PreviewVideo from './preview-video'
+import OutlineSection from './outline-section'
 
 const MAX_RETRY_TIMES = 3
 
@@ -60,6 +61,11 @@ export default function ClientBody() {
           <Introduction relateds={data.relateds} />
           <Divider />
           <PreviewVideo src={data.PreviewVideoURL} />
+          <OutlineSection
+            Description={data.Description}
+            outline={data.outline}
+          />
+          <Divider />
         </div>
       )}
     </LoadingLayout>

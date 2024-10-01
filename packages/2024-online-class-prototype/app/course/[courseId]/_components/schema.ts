@@ -10,22 +10,23 @@ const baseOutlineObject = z.object({
   ID: z.string(),
   Type: z.union([z.literal('Chapter'), z.literal('Section')]),
   Title: z.string(),
+  Description: z.string(),
   VideoURL: optionalUrl,
   MaterialURL: optionalUrl,
 })
 
 type Outline = z.infer<typeof baseOutlineObject> & {
-  children: Outline[]
+  children?: Outline[]
 }
 
 const outlineObject: z.ZodType<Outline> = baseOutlineObject.extend({
-  children: z.lazy(() => outlineObject.array()),
+  children: z.lazy(() => outlineObject.array().optional()),
 })
 
-// TODO: add CourseIntro and LecturerIntro field
 export const courseObject = z.object({
   ID: z.string(),
   CourseName: z.string(),
+  Description: z.string(),
   heroImage: imageObject,
   StartDate: optionalDate,
   BasePrice: z.string(),
@@ -34,6 +35,7 @@ export const courseObject = z.object({
   PreviewVideoURL: optionalUrl,
   PaymentURL: optionalUrl,
   relateds: z.array(relatedImage),
+  outline: z.array(outlineObject),
 })
 
 export const dataSchema = z.object({
