@@ -1,6 +1,14 @@
 import { z } from 'zod'
 import { optionalUrl, optionalDate, imageObject } from '@/utils/schema'
 
+const relatedImage = z.object({
+  ID: z.string(),
+  Type: z.union([z.literal('Course'), z.literal('Lecturer')]),
+  MobileURL: optionalUrl,
+  TabletURL: optionalUrl,
+  DesktopURL: optionalUrl,
+})
+
 const baseOutlineObject = z.object({
   ID: z.string(),
   Type: z.union([z.literal('Chapter'), z.literal('Section')]),
@@ -28,6 +36,7 @@ export const courseObject = z.object({
   Lecturer: z.string(),
   PreviewVideoURL: optionalUrl,
   PaymentURL: optionalUrl,
+  relateds: z.array(relatedImage),
 })
 
 export const dataSchema = z.object({

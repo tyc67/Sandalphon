@@ -56,7 +56,7 @@ export default function ClientBody() {
       {data && (
         <div className="mb-20 mt-0 w-full md:mb-[140px] md:mt-[30px] lg:mb-[120px] lg:mt-[60px] lg:max-w-course">
           <Information {...data} isPurchased={isPurchased} />
-          <Introduction />
+          <Introduction relateds={data.relateds} />
           <Divider />
         </div>
       )}

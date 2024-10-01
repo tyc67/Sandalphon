@@ -1,58 +1,73 @@
 'use client'
 
 import { z } from 'zod'
-import { imageObject } from '@/utils/schema'
-import { useState } from 'react'
+import { courseObject } from './schema'
+import { useEffect, useState } from 'react'
 import Selector from './selector'
 import ImageList from './image-list'
+import { imageObject } from '@/utils/schema'
 
-type Image = z.infer<typeof imageObject>
 enum TAB {
-  Course = 'course',
-  Lecturer = 'lecturer',
+  Course = 'course-intro',
+  Lecturer = 'lecturer-intro',
 }
 
-// TODO: get lectuere image from data source
-const lecturer: Image[] = [
-  {
-    mobile: 'https://picsum.photos/id/1/600/400',
-    tablet: 'https://picsum.photos/id/1/960/640',
-    desktop: 'https://picsum.photos/id/1/1200/800',
-  },
-  {
-    mobile: 'https://picsum.photos/id/2/600/400',
-    tablet: 'https://picsum.photos/id/2/960/640',
-    desktop: 'https://picsum.photos/id/2/1200/800',
-  },
-]
+type Props = Pick<z.infer<typeof courseObject>, 'relateds'>
 
-// TODO: get lectuere image from data source
-const course: Image[] = [
-  {
-    mobile: 'https://picsum.photos/id/3/600/400',
-    tablet: 'https://picsum.photos/id/3/960/640',
-    desktop: 'https://picsum.photos/id/3/1200/800',
-  },
-  {
-    mobile: 'https://picsum.photos/id/4/600/400',
-    tablet: 'https://picsum.photos/id/4/960/640',
-    desktop: 'https://picsum.photos/id/4/1200/800',
-  },
-]
+const transformToImageObject = ({
+  MobileURL,
+  TabletURL,
+  DesktopURL,
+}: Props['relateds'][0]): z.infer<typeof imageObject> => ({
+  mobile: MobileURL,
+  tablet: TabletURL,
+  desktop: DesktopURL,
+})
 
-export default function Introduction() {
+export default function Introduction({ relateds }: Props) {
+  const course = relateds
+    .filter((image) => image.Type === 'Course')
+    .map(transformToImageObject)
+  const lecturer = relateds
+    .filter((image) => image.Type === 'Lecturer')
+    .map(transformToImageObject)
   const [activeTab, setActiveTab] = useState<TAB>(TAB.Course)
+
+  const updateTab = (url: string) => {
+    const hash = url.split('#')[1]
+
+    if (hash === TAB.Course || hash === TAB.Lecturer) {
+      setActiveTab(hash)
+    }
+  }
+
+  useEffect(() => {
+    const onHashChange = (e: HashChangeEvent) => {
+      const newUrl = e.newURL
+      updateTab(newUrl)
+    }
+
+    updateTab(window.location.href)
+
+    window.addEventListener('hashchange', onHashChange)
+
+    return () => {
+      window.removeEventListener('hashchange', onHashChange)
+    }
+  }, [])
 
   return (
     <div className="mt-[60px] flex w-full flex-col gap-y-8 md:gap-y-10 lg:mt-[120px]">
       <div className="mx-auto flex gap-x-[18px]">
         <Selector
+          id="course-intro"
           isActive={activeTab === TAB.Course}
           onClick={() => setActiveTab(TAB.Course)}
         >
           課程介紹
         </Selector>
         <Selector
+          id="lecturer-intro"
           isActive={activeTab === TAB.Lecturer}
           onClick={() => setActiveTab(TAB.Lecturer)}
         >

@@ -43,7 +43,7 @@ const CourseNavItems: NavItem[] = [
   },
   {
     title: '講師介紹',
-    target: '#lecture-intro',
+    target: '#lecturer-intro',
   },
   {
     title: '課前導讀',
