@@ -12,6 +12,7 @@ import { useAppSelector } from '@/redux/hooks'
 import { selectPurchasedClassIDs } from '@/redux/features/user/selector'
 import Introduction from './introduction'
 import Divider from './divider'
+import PreviewVideo from './preview-video'
 
 const MAX_RETRY_TIMES = 3
 
@@ -58,6 +59,7 @@ export default function ClientBody() {
           <Information {...data} isPurchased={isPurchased} />
           <Introduction relateds={data.relateds} />
           <Divider />
+          <PreviewVideo src={data.PreviewVideoURL} />
         </div>
       )}
     </LoadingLayout>
