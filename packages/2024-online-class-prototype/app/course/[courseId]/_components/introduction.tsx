@@ -15,13 +15,9 @@ enum TAB {
 type Props = Pick<z.infer<typeof courseObject>, 'relateds'>
 
 const transformToImageObject = ({
-  MobileURL,
-  TabletURL,
-  DesktopURL,
+  image,
 }: Props['relateds'][0]): z.infer<typeof imageObject> => ({
-  mobile: MobileURL,
-  tablet: TabletURL,
-  desktop: DesktopURL,
+  ...image,
 })
 
 export default function Introduction({ relateds }: Props) {
