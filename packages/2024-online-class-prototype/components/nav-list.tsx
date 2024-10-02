@@ -162,7 +162,7 @@ export default function NavList() {
             {CourseNavItems.map((item) => (
               <li
                 key={item.target}
-                className={`inline-block px-1 ${
+                className={`inline-block px-1 [&:nth-last-child(2)]:hidden md:[&:nth-last-child(2)]:inline-block ${
                   hash === item.target
                     ? 'border-b-2 border-solid border-main font-bold text-main'
                     : 'text-[#727272]'

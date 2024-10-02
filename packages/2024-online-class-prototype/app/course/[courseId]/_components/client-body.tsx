@@ -68,6 +68,14 @@ export default function ClientBody() {
           />
           <Divider />
           <VideoSection {...data} isPurchased={isPurchased} />
+          <a
+            href="#video-list"
+            className="fixed bottom-5 right-5 inline-block rounded-xl bg-main px-3 py-2 text-xl font-bold leading-[1.2] text-white md:hidden"
+          >
+            開始
+            <br />
+            上課
+          </a>
         </div>
       )}
     </LoadingLayout>
