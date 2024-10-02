@@ -40,9 +40,10 @@ export default function CourseVideo({
           </div>
         ) : (
           <ReactPlayer
+            className="*:max-h-screen"
             url={VideoURL}
             width="100%"
-            height="100%"
+            height="auto"
             controls={true}
             onError={() => setShouldShowError(true)}
           />

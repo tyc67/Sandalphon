@@ -15,11 +15,12 @@ export default function PreviewVideo({ src }: Props) {
         課前導讀
       </h2>
       <ReactPlayer
+        className="*:max-h-screen"
         url={src}
         controls={true}
         width="100%"
-        height="100%"
-      ></ReactPlayer>
+        height="auto"
+      />
     </div>
   )
 }
