@@ -87,7 +87,7 @@ export default function VideoSection({
           }
         })}
         {shouldShowMask && (
-          <div className="bg-login-mask absolute inset-0 flex flex-col items-center">
+          <div className="absolute inset-0 flex flex-col items-center bg-login-mask">
             <div className="my-auto flex flex-col items-center gap-y-5 text-xl leading-[1.8]">
               {!isLogined && (
                 <>

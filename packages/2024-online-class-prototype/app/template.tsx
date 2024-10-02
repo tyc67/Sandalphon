@@ -33,6 +33,9 @@ export default function Template({ children }: PropsWithChildren) {
         await fetch('/auth/verify_token', {
           method: 'POST',
           body: JSON.stringify(jsonBody),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         })
       } catch (error) {
         console.error('// Encountered error while retrieving signed cookie //')
