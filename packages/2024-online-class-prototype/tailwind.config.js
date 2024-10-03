@@ -17,7 +17,7 @@ module.exports = {
       },
       boxShadow: {
         gap: '0px 2px 2px 0px rgba(0, 0, 0, 0.05)',
-        'gap-lg': '0px 4x 4px 0px rgba(0, 0, 0, 0.15)',
+        'gap-lg': '0px 4px 4px 0px rgba(0, 0, 0, 0.15)',
       },
       colors: {
         main: '#0435ab',

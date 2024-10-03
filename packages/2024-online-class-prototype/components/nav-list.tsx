@@ -204,7 +204,7 @@ export default function NavList() {
   }
 
   return (
-    <nav className="order-3 flex w-screen overflow-x-auto overflow-y-hidden py-1 md:py-0 lg:order-2 lg:ml-auto lg:w-auto">
+    <nav className="order-3 flex w-screen overflow-x-auto overflow-y-hidden py-1 md:py-2 lg:order-2 lg:ml-auto lg:w-auto lg:py-0">
       {listJsx}
     </nav>
   )
