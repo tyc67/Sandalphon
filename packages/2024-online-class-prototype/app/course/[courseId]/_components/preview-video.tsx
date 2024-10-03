@@ -15,7 +15,7 @@ export default function PreviewVideo({ src }: Props) {
         課前導讀
       </h2>
       <ReactPlayer
-        className="*:max-h-screen"
+        className="custom-video"
         url={src}
         controls={true}
         width="100%"

@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --header-height: 90px;
+
+  @media screen(md) {
+    --header-height: 110px;
+  }
+
+  @media screen(lg) {
+    --header-height: 120px;
+  }
+}
+
 @layer base {}
 
 @layer components {
@@ -19,6 +31,13 @@
 
   .mask-button {
     @apply bg-black text-white rounded px-4 font-bold;
+  }
+
+  .custom-video {
+    & > * {
+      @apply max-h-[calc(100vh-var(--header-height))];
+      @apply max-h-[calc(100dvh-var(--header-height))];
+    }
   }
 }
 

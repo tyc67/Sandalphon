@@ -7,7 +7,7 @@ import SocialShare from './social-share'
 
 export default function Header() {
   return (
-    <header className="flex max-w-screen-lg flex-col items-center md:w-screen md:flex-row md:flex-wrap md:shadow-gap lg:shadow-gap-lg">
+    <header className="z-header fixed top-0 flex max-w-screen-lg flex-col items-center bg-white md:w-screen md:flex-row md:flex-wrap md:shadow-gap lg:shadow-gap-lg">
       <NextLink
         href="/"
         className="flex w-screen justify-center shadow-gap md:ml-6 md:mt-2 md:w-auto md:shadow-none lg:my-5 lg:ml-3"

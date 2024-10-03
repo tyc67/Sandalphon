@@ -17,7 +17,7 @@ export default function RootLayout({
       >
         <StoreProvider>
           <Header />
-          <main className="flex w-screen max-w-screen-lg grow flex-col items-center">
+          <main className="mt-[var(--header-height)] flex w-screen max-w-screen-lg grow flex-col items-center">
             {children}
           </main>
         </StoreProvider>

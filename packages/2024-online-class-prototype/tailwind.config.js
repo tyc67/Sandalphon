@@ -30,6 +30,9 @@ module.exports = {
         homepage: '904px',
         course: '1092px',
       },
+      zIndex: {
+        header: '1000000',
+      },
     },
   },
   plugins: [],

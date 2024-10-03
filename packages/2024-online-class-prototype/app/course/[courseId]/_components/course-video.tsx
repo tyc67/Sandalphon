@@ -40,7 +40,7 @@ export default function CourseVideo({
           </div>
         ) : (
           <ReactPlayer
-            className="*:max-h-screen"
+            className="custom-video"
             url={VideoURL}
             width="100%"
             height="auto"
