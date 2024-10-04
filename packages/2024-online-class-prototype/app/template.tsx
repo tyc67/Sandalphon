@@ -18,32 +18,32 @@ import {
   onSnapshot,
   type Unsubscribe,
 } from 'firebase/firestore'
-import { PropsWithChildren, useCallback, useEffect } from 'react'
+import { PropsWithChildren, useEffect } from 'react'
+import { useDebounceCallback } from 'usehooks-ts'
+
+const fetchSignedCookie = async (token: string) => {
+  try {
+    const jsonBody = { id_token: token }
+
+    await fetch('/auth/verify_token', {
+      method: 'POST',
+      body: JSON.stringify(jsonBody),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  } catch (error) {
+    console.error('// Encountered error while retrieving signed cookie //')
+    console.error(error)
+  }
+}
 
 export default function Template({ children }: PropsWithChildren) {
   const dispatch = useAppDispatch()
   const uid = useAppSelector(selectUid)
   const token = useAppSelector(selectToken)
 
-  const fetchSignedCookie = useCallback(
-    async (givenToken?: string) => {
-      try {
-        const jsonBody = { id_token: givenToken ?? token }
-
-        await fetch('/auth/verify_token', {
-          method: 'POST',
-          body: JSON.stringify(jsonBody),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-      } catch (error) {
-        console.error('// Encountered error while retrieving signed cookie //')
-        console.error(error)
-      }
-    },
-    [token]
-  )
+  const debouncedFetchSignedCookie = useDebounceCallback(fetchSignedCookie, 500)
 
   useEffect(() => {
     const auth = getAuth(firebaseApp)
@@ -55,14 +55,14 @@ export default function Template({ children }: PropsWithChildren) {
         dispatch(setUid(user.uid))
         dispatch(setToken(idToken))
         dispatch(setPurchasedClassIDs(classIDs))
-        fetchSignedCookie(idToken)
+        debouncedFetchSignedCookie(idToken)
       } else {
         dispatch(resetAll())
       }
     })
 
     return () => unsubscribe()
-  }, [dispatch, fetchSignedCookie])
+  }, [dispatch, debouncedFetchSignedCookie])
 
   useEffect(() => {
     const auth = getAuth(firebaseApp)
@@ -70,14 +70,14 @@ export default function Template({ children }: PropsWithChildren) {
       if (user) {
         const idToken = await user.getIdToken()
         dispatch(setToken(idToken))
-        fetchSignedCookie(idToken)
+        debouncedFetchSignedCookie(idToken)
       } else {
         dispatch(resetAll())
       }
     })
 
     return () => unsubscribe()
-  }, [dispatch, fetchSignedCookie])
+  }, [dispatch, debouncedFetchSignedCookie])
 
   useEffect(() => {
     const store = getFirestore(firebaseApp)
@@ -88,7 +88,7 @@ export default function Template({ children }: PropsWithChildren) {
         async (doc) => {
           const classIDs = (await doc.data()?.courses) ?? []
           dispatch(setPurchasedClassIDs(classIDs))
-          fetchSignedCookie()
+          debouncedFetchSignedCookie(token)
         }
       )
     }
@@ -96,7 +96,7 @@ export default function Template({ children }: PropsWithChildren) {
     return () => {
       if (typeof unsubscribe === 'function') unsubscribe()
     }
-  }, [dispatch, uid, fetchSignedCookie])
+  }, [dispatch, uid, token, debouncedFetchSignedCookie])
 
   return children
 }
