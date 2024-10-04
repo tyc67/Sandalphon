@@ -1,10 +1,8 @@
 'use client'
-import NextImage from 'next/image'
+
 import { usePathname } from 'next/navigation'
 import type { PropsWithChildren, ReactNode } from 'react'
 import { useEffect, useState } from 'react'
-import IconProfileBlue from '@/public/images/profile-blue.png'
-import IconProfileBlack from '@/public/images/profile-black.png'
 import { useAppSelector } from '@/redux/hooks'
 import { selectIsLogined } from '@/redux/features/user/selector'
 import { getAuth, signOut } from 'firebase/auth'
@@ -79,20 +77,18 @@ const WithLogin = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <li className="inline-block shrink-0 bg-main md:hidden">
+      <li className="inline-block shrink-0 md:hidden">
         {isLogined ? (
-          <span className="cursor-pointer" onClick={signOutHandler}>
-            <NextImage
-              src={IconProfileBlue}
-              width={32}
-              height={32}
-              alt="profile"
-            />
-          </span>
+          <button
+            className="px-[26px] font-normal text-[#727272] underline underline-offset-4"
+            onClick={signOutHandler}
+          >
+            登出
+          </button>
         ) : (
           <a
             href="/login"
-            className="inline-block px-[26px] py-px text-white"
+            className="inline-block bg-main px-[26px] py-px text-white"
             onClick={signInHandler}
           >
             登入
@@ -100,28 +96,18 @@ const WithLogin = ({ children }: PropsWithChildren) => {
         )}
       </li>
       {children}
-      <li className="hidden md:inline-block">
+      <li className="hidden text-black md:inline-block">
         {isLogined ? (
-          <span className="cursor-pointer" onClick={signOutHandler}>
-            <NextImage
-              className="lg:hidden"
-              src={IconProfileBlue}
-              width={32}
-              height={32}
-              alt="profile"
-            />
-            <NextImage
-              className="hidden lg:block"
-              src={IconProfileBlack}
-              width={32}
-              height={32}
-              alt="profile"
-            />
-          </span>
+          <button
+            className="rounded bg-[#E7E7E7] px-[15px] lg:px-3"
+            onClick={signOutHandler}
+          >
+            登出
+          </button>
         ) : (
           <a
             href="/login"
-            className="inline-block rounded-[4px] border border-solid border-black px-[15px] text-black lg:px-3"
+            className="inline-block rounded border border-solid border-black px-[15px] lg:px-3"
             onClick={signInHandler}
           >
             登入
