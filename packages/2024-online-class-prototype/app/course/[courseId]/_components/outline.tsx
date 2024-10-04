@@ -12,7 +12,7 @@ const Item = ({ Title, Description, children }: Props['outline'][0]) => {
     return (
       <div className="flex w-full flex-col items-center md:items-start">
         <div className="peer flex items-center gap-x-4 break-all">
-          <p className="rounded-xl bg-main px-3 py-1 text-lg font-bold leading-[1.8] text-white md:rounded-[20px] md:text-xl">
+          <p className="whitespace-nowrap rounded-xl bg-main px-3 py-1 text-lg font-bold leading-[1.8] text-white md:rounded-[20px] md:text-xl">
             {Title}
           </p>
           <p className="my-2 ml-5 hidden break-all text-base font-bold leading-[1.8] text-main md:inline-block md:text-xl">
