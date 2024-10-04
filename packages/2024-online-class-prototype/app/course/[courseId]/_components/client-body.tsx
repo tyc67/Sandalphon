@@ -70,7 +70,7 @@ export default function ClientBody() {
           <VideoSection {...data} isPurchased={isPurchased} />
           <a
             href="#video-list"
-            className="fixed bottom-5 right-5 inline-block rounded-xl bg-main px-3 py-2 text-xl font-bold leading-[1.2] text-white md:hidden"
+            className="fixed right-5 top-[clamp(20px,calc(424/530*100%),424px)] inline-block rounded-xl bg-main px-3 py-2 text-xl font-bold leading-[1.2] text-white md:hidden"
           >
             開始
             <br />
