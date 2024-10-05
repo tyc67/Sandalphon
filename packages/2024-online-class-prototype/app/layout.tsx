@@ -11,7 +11,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh-Hant">
+    <html
+      lang="zh-Hant"
+      className="scroll-pt-[var(--header-height)] overflow-y-auto"
+    >
       <body
         className={`${font.className} flex min-h-screen flex-col items-center`}
       >
