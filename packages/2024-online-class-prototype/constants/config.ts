@@ -10,6 +10,15 @@ let FIREBASE_CONFIG: FirebaseOptions = {}
 
 switch (ENV) {
   case 'prod':
+    FIREBASE_CONFIG = {
+      apiKey: 'AIzaSyC3t05OUKenHGX7_wbrsAVwjwQV40zhyQc',
+      authDomain: 'mm-online-course-prod.firebaseapp.com',
+      projectId: 'mm-online-course-prod',
+      storageBucket: 'mm-online-course-prod.appspot.com',
+      messagingSenderId: '528463066935',
+      appId: '1:528463066935:web:0a46bd5f399b04ccb6ccb2',
+      measurementId: 'G-PJXJM88JHG',
+    }
     break
   case 'dev':
   default:
