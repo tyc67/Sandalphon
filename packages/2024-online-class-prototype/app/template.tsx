@@ -1,6 +1,6 @@
 'use client'
 
-import { COLLECTION_NAME } from '@/constants/config'
+import { AUTH_API_URL, COLLECTION_NAME } from '@/constants/config'
 import { selectToken, selectUid } from '@/redux/features/user/selector'
 import {
   resetAll,
@@ -25,7 +25,7 @@ const fetchSignedCookie = async (token: string) => {
   try {
     const jsonBody = { id_token: token }
 
-    await fetch('/auth/verify_token', {
+    await fetch(`${AUTH_API_URL}/auth/verify_token`, {
       method: 'POST',
       body: JSON.stringify(jsonBody),
       headers: {

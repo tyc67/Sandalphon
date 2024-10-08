@@ -8,6 +8,7 @@
 | NEXT_PUBLIC_BASE_JSON_URL | 字串 | `''` | 首頁資料的來源 |
 | NEXT_PUBLIC_COURSE_JSON_URL | 字串 | `''` | 單一課程頁資料的來源 |
 | NEXT_PUBLIC_COLLECTION_NAME | 字串 | `'students'` | 使用者訂購課程資料儲存的集合名稱 |
+| NEXT_PUBLIC_AUTH_API_URL | 字串 | `''` | 驗證使用者資訊的後端 API URL |
 
 
 ## 其他說明

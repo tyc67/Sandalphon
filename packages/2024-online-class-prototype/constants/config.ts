@@ -4,6 +4,7 @@ const ENV = process.env.NEXT_PUBLIC_ENV ?? 'dev'
 const BASE_JSON_URL = process.env.NEXT_PUBLIC_BASE_JSON_URL ?? ''
 const COURSE_JSON_URL = process.env.NEXT_PUBLIC_COURSE_JSON_URL ?? ''
 const COLLECTION_NAME = process.env.NEXT_PUBLIC_COLLECTION_NAME ?? 'students'
+const AUTH_API_URL = process.env.NEXT_PUBLIC_AUTH_API_URL ?? ''
 
 let FIREBASE_CONFIG: FirebaseOptions = {}
 
@@ -33,4 +34,5 @@ export {
   COLLECTION_NAME,
   FIREBASE_CONFIG,
   ORIGIN_STORAGE_KEY,
+  AUTH_API_URL,
 }
