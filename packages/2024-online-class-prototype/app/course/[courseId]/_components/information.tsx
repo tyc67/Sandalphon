@@ -38,8 +38,8 @@ export default function Information({
           w1200: heroImage.desktop,
         }}
         alt={CourseName}
-        objectFit="cover"
-        className="aspect-[320/214] shrink-0 bg-[#FFF85B] md:aspect-[720/479] lg:aspect-[520/346] lg:!w-[520px]"
+        objectFit="contain"
+        className="aspect-[720/479] shrink-0 bg-course-image lg:max-w-[520px]"
       />
       <div className="mt-3 flex w-full flex-col px-4 md:px-0 lg:ml-10 lg:mt-0">
         <div className="flex w-full flex-col lg:grow">

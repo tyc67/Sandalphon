@@ -25,8 +25,8 @@ export default function CourseItem({
               w1200: heroImage.desktop,
             }}
             alt={CourseName}
-            objectFit="cover"
-            className="aspect-[420/236] bg-[#FFF85B]"
+            objectFit="contain"
+            className="aspect-[720/479] bg-course-image"
           />
           <figcaption className="overflow-x-hidden text-ellipsis whitespace-nowrap bg-main py-1 text-center text-base font-bold leading-[1.8] text-white md:text-[26px]">
             {CourseName}

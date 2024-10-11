@@ -22,6 +22,7 @@ module.exports = {
       colors: {
         main: '#0435ab',
         orange: '#ff8c00',
+        'course-image': '#CBE8BD',
       },
       height: {
         screen: ['100vh', '100dvh'],
