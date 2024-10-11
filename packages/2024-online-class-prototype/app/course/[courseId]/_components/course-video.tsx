@@ -29,11 +29,11 @@ export default function CourseVideo({
         </p>
         <input
           type="checkbox"
-          className="size-6 shrink-0 origin-center cursor-pointer appearance-none bg-[url('/images/video-toggle.svg')] bg-center bg-no-repeat checked:rotate-180"
+          className="h-6 w-5 shrink-0 origin-center cursor-pointer appearance-none bg-[url('/images/video-toggle.svg')] bg-center bg-no-repeat checked:rotate-180"
           defaultChecked={initalShowed}
         />
       </div>
-      <div className="hidden peer-has-[input:checked]:block">
+      <div className="hidden flex-col peer-has-[input:checked]:flex">
         {shouldShowError ? (
           <div className="flex aspect-[16/9] flex-col items-center bg-black text-white">
             <p className="my-auto">影片載入失敗</p>
@@ -48,16 +48,16 @@ export default function CourseVideo({
             onError={() => setShouldShowError(true)}
           />
         )}
+        {Boolean(MaterialURL) && (
+          <a
+            href={MaterialURL}
+            target="_blank"
+            className="my-4 inline-block self-center rounded-[3px] bg-orange px-[25px] text-base font-medium leading-[1.8] text-white md:self-end lg:px-11 lg:py-[3.5px]"
+          >
+            課程講義
+          </a>
+        )}
       </div>
-      {Boolean(MaterialURL) && (
-        <a
-          href={MaterialURL}
-          target="_blank"
-          className="mt-4 self-center rounded-[3px] bg-orange px-[25px] text-base font-medium leading-[1.8] text-white md:mt-3 md:self-end lg:px-11 lg:py-[3.5px]"
-        >
-          課程講義
-        </a>
-      )}
     </div>
   )
 }

@@ -28,7 +28,7 @@ export default function CourseItem({
             objectFit="contain"
             className="aspect-[720/479] bg-course-image"
           />
-          <figcaption className="overflow-x-hidden text-ellipsis whitespace-nowrap bg-main py-1 text-center text-base font-bold leading-[1.8] text-white md:text-[26px]">
+          <figcaption className="break-all bg-main py-1 text-center text-base font-bold leading-[1.8] text-white md:text-[26px]">
             {CourseName}
           </figcaption>
         </figure>

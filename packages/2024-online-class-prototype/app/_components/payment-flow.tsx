@@ -8,7 +8,7 @@ type Props = {
 
 export default function PaymentFlow({ images }: Props) {
   return (
-    <div className="flex w-full flex-col items-center md:px-5 lg:px-0">
+    <div className="flex w-full flex-col items-center px-6 md:px-5 lg:px-0">
       <h2 id="payment-flow" className="section-title text-black">
         訂購流程
       </h2>

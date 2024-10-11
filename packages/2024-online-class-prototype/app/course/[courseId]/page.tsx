@@ -7,9 +7,6 @@ export async function generateStaticParams() {
   return courses.map((course) => ({ courseId: course.ID }))
 }
 
-export default function Page({ params }: { params: { courseId: string } }) {
-  // DEBUG: for build time only
-  console.log('// params //', params)
-
+export default function Page() {
   return <ClientBody />
 }
