@@ -72,7 +72,7 @@ export default function VideoSection({
         <CourseVideo
           ID=""
           Title="0-0"
-          Description="導讀"
+          Description="課前導讀"
           VideoURL={IntroductionVideoURL}
           MaterialURL=""
           initalShowed={true}

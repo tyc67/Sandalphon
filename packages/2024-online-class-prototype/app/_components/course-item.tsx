@@ -34,7 +34,9 @@ export default function CourseItem({
         </figure>
         <div className="my-[10px] flex flex-col items-center gap-y-[10px] leading-none">
           <p className="text-base font-bold md:text-2xl">{Lecturer}</p>
-          <p className="text-sm font-medium md:text-base">日期 {StartDate}</p>
+          <p className="text-sm font-medium md:text-base">
+            開課日期 {StartDate}
+          </p>
           <p className="text-xl font-black text-orange md:text-4xl">
             ${moneyStringToNumber(SpecialPrice)}
           </p>

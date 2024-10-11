@@ -12,7 +12,7 @@ export default function PreviewVideo({ src }: Props) {
         id="preview"
         className="mb-5 text-center text-[26px] font-bold leading-[1.8] md:mb-10"
       >
-        課前導讀
+        課程預告
       </h2>
       <ReactPlayer
         className="custom-video"
