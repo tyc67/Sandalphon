@@ -7,6 +7,7 @@ export const courseObject = z.object({
   heroImage: imageObject,
   StartDate: optionalDate,
   SpecialPrice: z.string(),
+  SpecialPriceDescriptionInHomepage: z.string(),
   Lecturer: z.string(),
 })
 

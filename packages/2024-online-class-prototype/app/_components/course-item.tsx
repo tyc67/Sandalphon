@@ -12,6 +12,7 @@ export default function CourseItem({
   heroImage,
   StartDate,
   SpecialPrice,
+  SpecialPriceDescriptionInHomepage,
   Lecturer,
 }: Props) {
   return (
@@ -37,8 +38,10 @@ export default function CourseItem({
           <p className="text-sm font-medium md:text-base">
             開課日期 {StartDate}
           </p>
-          <p className="text-xl font-black text-orange md:text-4xl">
-            ${moneyStringToNumber(SpecialPrice)}
+          <p className="text-xl font-black text-orange md:text-4xl break-all text-center">
+            {SpecialPriceDescriptionInHomepage
+              ? SpecialPriceDescriptionInHomepage
+              : `${moneyStringToNumber(SpecialPrice)}`}
           </p>
         </div>
       </div>
