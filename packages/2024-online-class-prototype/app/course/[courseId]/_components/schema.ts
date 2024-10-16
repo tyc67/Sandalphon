@@ -2,7 +2,11 @@ import { z } from 'zod'
 import { optionalUrl, optionalDate, imageObject } from '@/utils/schema'
 
 const relatedImage = z.object({
-  Type: z.union([z.literal('Course'), z.literal('Lecturer')]),
+  Type: z.union([
+    z.literal('Course'),
+    z.literal('Lecturer'),
+    z.literal('Book'),
+  ]),
   image: imageObject,
 })
 

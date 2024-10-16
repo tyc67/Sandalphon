@@ -38,7 +38,7 @@ export default function CourseItem({
           <p className="text-sm font-medium md:text-base">
             開課日期 {StartDate}
           </p>
-          <p className="text-xl font-black text-orange md:text-4xl break-all text-center">
+          <p className="break-all text-center text-xl font-black text-orange md:text-4xl">
             {SpecialPriceDescriptionInHomepage
               ? SpecialPriceDescriptionInHomepage
               : `${moneyStringToNumber(SpecialPrice)}`}

@@ -61,7 +61,10 @@ export default function ClientBody() {
           <Information {...data} isPurchased={isPurchased} />
           <Introduction relateds={data.relateds} />
           <Divider />
-          <PreviewVideo src={data.PreviewVideoURL} poster={data.PreviewVideoImage} />
+          <PreviewVideo
+            src={data.PreviewVideoURL}
+            poster={data.PreviewVideoImage}
+          />
           <OutlineSection
             Description={data.Description}
             outline={data.outline}

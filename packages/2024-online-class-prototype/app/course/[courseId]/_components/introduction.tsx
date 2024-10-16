@@ -10,6 +10,7 @@ import { imageObject } from '@/utils/schema'
 enum TAB {
   Course = 'course-intro',
   Lecturer = 'lecturer-intro',
+  Book = 'book-intro',
 }
 
 type Props = Pick<z.infer<typeof courseObject>, 'relateds'>
@@ -26,6 +27,9 @@ export default function Introduction({ relateds }: Props) {
     .map(transformToImageObject)
   const lecturer = relateds
     .filter((image) => image.Type === 'Lecturer')
+    .map(transformToImageObject)
+  const book = relateds
+    .filter((image) => image.Type === 'Book')
     .map(transformToImageObject)
   const [activeTab, setActiveTab] = useState<TAB>(TAB.Course)
 
@@ -69,6 +73,13 @@ export default function Introduction({ relateds }: Props) {
         >
           講師介紹
         </Selector>
+        <Selector
+          id="lecturer-intro"
+          isActive={activeTab === TAB.Book}
+          onClick={() => setActiveTab(TAB.Book)}
+        >
+          書籍介紹
+        </Selector>
       </div>
       <ImageList
         isActive={activeTab === TAB.Course}
@@ -79,6 +90,11 @@ export default function Introduction({ relateds }: Props) {
         isActive={activeTab === TAB.Lecturer}
         images={lecturer}
         altText="講師介紹"
+      />
+      <ImageList
+        isActive={activeTab === TAB.Book}
+        images={book}
+        altText="書籍介紹"
       />
     </div>
   )
