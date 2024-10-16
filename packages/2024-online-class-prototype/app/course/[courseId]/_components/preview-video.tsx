@@ -4,8 +4,9 @@ import ReactPlayer from 'react-player/lazy'
 
 type Props = {
   src: string
+  poster?: string
 }
-export default function PreviewVideo({ src }: Props) {
+export default function PreviewVideo({ src, poster }: Props) {
   return (
     <div className="mx-auto w-full max-w-[960px]">
       <h2
@@ -20,6 +21,13 @@ export default function PreviewVideo({ src }: Props) {
         controls={true}
         width="100%"
         height="auto"
+        config={{
+          file: {
+            attributes: {
+              poster,
+            },
+          },
+        }}
       />
     </div>
   )
