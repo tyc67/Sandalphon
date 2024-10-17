@@ -1,4 +1,5 @@
 import type { FirebaseOptions } from 'firebase/app'
+import type { Metadata } from 'next'
 
 const ENV = process.env.NEXT_PUBLIC_ENV ?? 'dev'
 const BASE_JSON_URL = process.env.NEXT_PUBLIC_BASE_JSON_URL ?? ''
@@ -7,6 +8,9 @@ const COLLECTION_NAME = process.env.NEXT_PUBLIC_COLLECTION_NAME ?? 'students'
 const AUTH_API_URL = process.env.NEXT_PUBLIC_AUTH_API_URL ?? ''
 
 let FIREBASE_CONFIG: FirebaseOptions = {}
+let SITE_NAME: string = ''
+let SITE_URL: string = ''
+let DEFAULT_METADATA: Metadata = {}
 
 switch (ENV) {
   case 'prod':
@@ -19,6 +23,15 @@ switch (ENV) {
       appId: '1:528463066935:web:0a46bd5f399b04ccb6ccb2',
       measurementId: 'G-PJXJM88JHG',
     }
+    SITE_NAME = '鏡發財—理財課程'
+    SITE_URL = 'https://course.mirrormedia.mg'
+    DEFAULT_METADATA = {
+      title: SITE_NAME,
+      openGraph: {
+        title: SITE_NAME,
+        url: SITE_URL,
+      },
+    }
     break
   case 'dev':
   default:
@@ -30,6 +43,15 @@ switch (ENV) {
       storageBucket: 'mm-online-course-dev.appspot.com',
       messagingSenderId: '954752678363',
       appId: '1:954752678363:web:62bb8419e4b12912d3cffe',
+    }
+    SITE_NAME = '[DEV] 鏡發財—理財課程'
+    SITE_URL = 'https://dev-course.mirrormedia.mg'
+    DEFAULT_METADATA = {
+      title: SITE_NAME,
+      openGraph: {
+        title: SITE_NAME,
+        url: SITE_URL,
+      },
     }
     break
 }
@@ -44,4 +66,7 @@ export {
   FIREBASE_CONFIG,
   ORIGIN_STORAGE_KEY,
   AUTH_API_URL,
+  SITE_NAME,
+  SITE_URL,
+  DEFAULT_METADATA,
 }

@@ -2,8 +2,11 @@ import './globals.css'
 import { Noto_Sans_TC } from 'next/font/google'
 import Header from '@/components/header'
 import StoreProvider from '@/redux/store-provider'
+import { DEFAULT_METADATA } from '@/constants/config'
 
 const font = Noto_Sans_TC({ subsets: ['latin'] })
+
+export const metadata = DEFAULT_METADATA
 
 export default function RootLayout({
   children,
