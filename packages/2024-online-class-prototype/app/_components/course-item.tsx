@@ -14,6 +14,7 @@ export default function CourseItem({
   SpecialPrice,
   SpecialPriceDescriptionInHomepage,
   Lecturer,
+  AllowPublicAccess,
 }: Props) {
   return (
     <div className="mx-auto w-full max-w-[420px] lg:mx-0">
@@ -45,12 +46,14 @@ export default function CourseItem({
           </p>
         </div>
       </div>
-      <NextLink
-        href={`/course/${ID}`}
-        className="mt-4 block w-full rounded bg-orange py-[2px] text-center text-lg font-bold leading-[1.8] text-white md:mt-6 md:py-[6px] md:text-xl"
-      >
-        查看詳情
-      </NextLink>
+      {AllowPublicAccess === 'TRUE' && (
+        <NextLink
+          href={`/course/${ID}`}
+          className="mt-4 block w-full rounded bg-orange py-[2px] text-center text-lg font-bold leading-[1.8] text-white md:mt-6 md:py-[6px] md:text-xl"
+        >
+          查看詳情
+        </NextLink>
+      )}
     </div>
   )
 }

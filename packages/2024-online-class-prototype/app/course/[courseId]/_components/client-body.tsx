@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useRef, useState, useEffect } from 'react'
 import { z } from 'zod'
 import { isEqual } from 'lodash-es'
@@ -19,6 +19,7 @@ import VideoSection from './video-section'
 const MAX_RETRY_TIMES = 3
 
 export default function ClientBody() {
+  const router = useRouter()
   const pathname = usePathname()
   const courseId = pathname.split('/')[2]
   const fetchTimes = useRef(0)
@@ -34,6 +35,11 @@ export default function ClientBody() {
 
         const result = await fetchCourseData()
         const matchedData = result.find((course) => course.ID === courseId)
+
+        if (matchedData?.AllowPublicAccess === 'FALSE') {
+          router.replace('/')
+          return
+        }
 
         if (matchedData) {
           setData(matchedData)

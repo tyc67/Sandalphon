@@ -7,3 +7,4 @@ export const imageObject = z.object({
   tablet: optionalUrl,
   desktop: optionalUrl,
 })
+export const publicAccess = z.union([z.literal('TRUE'), z.literal('FALSE')])

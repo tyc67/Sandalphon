@@ -1,5 +1,10 @@
 import { z } from 'zod'
-import { optionalUrl, optionalDate, imageObject } from '@/utils/schema'
+import {
+  optionalUrl,
+  optionalDate,
+  imageObject,
+  publicAccess,
+} from '@/utils/schema'
 
 const relatedImage = z.object({
   Type: z.union([
@@ -45,6 +50,7 @@ export const courseObject = z.object({
   PaymentURL: optionalUrl,
   relateds: z.array(relatedImage),
   outline: z.array(outlineObject),
+  AllowPublicAccess: publicAccess,
 })
 
 export const dataSchema = z.object({

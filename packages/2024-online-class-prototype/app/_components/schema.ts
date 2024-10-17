@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { optionalDate, imageObject } from '@/utils/schema'
+import { optionalDate, imageObject, publicAccess } from '@/utils/schema'
 
 export const courseObject = z.object({
   ID: z.string(),
@@ -9,6 +9,7 @@ export const courseObject = z.object({
   SpecialPrice: z.string(),
   SpecialPriceDescriptionInHomepage: z.string(),
   Lecturer: z.string(),
+  AllowPublicAccess: publicAccess,
 })
 
 export const dataSchema = z.object({
