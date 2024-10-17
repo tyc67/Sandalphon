@@ -1,7 +1,6 @@
 import NextLink from 'next/link'
 import NextImage from 'next/image'
-import LogoMobile from '@/public/images/logo-mobile.png'
-import LogoDesktop from '@/public/images/logo-desktop.png'
+import Logo from '@/public/images/logo.png'
 import NavList from './nav-list'
 import SocialShare from './social-share'
 
@@ -14,14 +13,14 @@ export default function Header() {
           className="flex w-screen justify-center shadow-gap md:ml-6 md:mt-2 md:w-auto md:shadow-none lg:my-5 lg:ml-3"
         >
           <NextImage
-            src={LogoMobile}
+            src={Logo}
             width={200}
             height={50}
             alt="logo"
             className="lg:hidden"
           />
           <NextImage
-            src={LogoDesktop}
+            src={Logo}
             width={320}
             height={80}
             alt="logo"
