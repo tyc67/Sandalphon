@@ -75,18 +75,18 @@ export default function Information({
             </>
           ) : (
             <>
-              <span className="mt-1 grow text-base font-medium leading-[1.8] md:mt-3 md:w-full md:text-xl lg:mt-0 lg:text-xl">
-                <p className="text-[#F04545] line-through md:hidden">
+              <span className="mt-1 grow font-medium md:mt-3 md:w-full md:text-xl lg:mt-0 lg:text-xl">
+                <p className="text-2xl leading-[1.8] text-[#F04545] line-through md:hidden">
                   原價 ${moneyStringToNumber(BasePrice)}
                 </p>
-                <p className="break-words leading-normal tracking-[-0.45px] text-orange">
+                <p className="break-words text-base leading-normal tracking-[-0.45px] text-orange">
                   {SpecialPriceDescription || '超值優惠價'}
                 </p>
               </span>
               <span className="mb-1 mr-1 shrink-0 text-[38px] font-bold leading-[1.8] text-orange md:m-0 md:text-[40px] lg:m-0">
                 ${moneyStringToNumber(SpecialPrice)}
               </span>
-              <span className="hidden text-base font-medium leading-[1.8] text-[#F04545] line-through md:ml-[30px] md:mt-[30px] md:inline lg:absolute lg:bottom-1 lg:left-[152px]">
+              <span className="hidden text-[32px] font-medium leading-[1.8] text-[#F04545] line-through md:ml-[30px] md:mt-[30px] md:inline lg:absolute lg:bottom-1 lg:left-[152px]">
                 原價 ${moneyStringToNumber(BasePrice)}
               </span>
             </>

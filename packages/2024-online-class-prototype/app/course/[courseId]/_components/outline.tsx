@@ -35,7 +35,7 @@ const Item = ({ Title, Description, children }: Props['outline'][0]) => {
     )
   } else {
     return (
-      <p className="break-all text-center text-base font-medium leading-[1.8] text-[#4D4D4D] md:text-start md:text-xl">
+      <p className="whitespace-pre-wrap break-all text-center text-base font-medium leading-[1.8] text-[#4D4D4D] md:text-start md:text-xl">
         {joinText(Title, Description)}
       </p>
     )
