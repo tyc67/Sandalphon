@@ -5,8 +5,6 @@ import type { PropsWithChildren, ReactNode } from 'react'
 import { useEffect, useState } from 'react'
 import { useAppSelector } from '@/redux/hooks'
 import { selectIsLogined } from '@/redux/features/user/selector'
-import { getAuth, signOut } from 'firebase/auth'
-import { firebaseApp } from '@/utils/firebase'
 import { useLocalStorage } from 'usehooks-ts'
 import { ORIGIN_STORAGE_KEY } from '@/constants/config'
 
@@ -70,9 +68,10 @@ const WithLogin = ({ children }: PropsWithChildren) => {
     setOrignPath(window.location.pathname)
   }
 
-  const signOutHandler = () => {
+  const signOutHandler = async () => {
     removeOriginPath()
-    signOut(getAuth(firebaseApp))
+    const { auth, signOut } = await import('@/utils/firebase/auth')
+    signOut(auth)
   }
 
   return (

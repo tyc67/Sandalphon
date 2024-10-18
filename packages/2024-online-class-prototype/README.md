@@ -32,6 +32,11 @@ yarn build:dev
 yarn build:prod
 ```
 
+* 分析靜態網站的 bundle size
+```
+yarn analyze
+```
+
 * 部屬專案到 GCS Bucket
 ```
 // 測試環境

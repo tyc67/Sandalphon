@@ -9,9 +9,11 @@
     "dev:prod": "cp .env.prod .env.local && next dev",
     "build:prod": "cp .env.prod .env.local && next build",
     "deploy:prod": "cd out && pwd && gcloud storage cp --recursive . gs://course.mirrormedia.mg",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^14.2.15",
     "@readr-media/react-image": "^2.2.3",
     "@reduxjs/toolkit": "^2.2.7",
     "firebase": "^10.13.2",
@@ -32,6 +34,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^5.4.2 || ^6.0.0",
     "autoprefixer": "^10",
+    "cross-env": "^7.0.3",
     "cssnano": "^7.0.6",
     "eslint": "^8",
     "eslint-config-next": "13.5.7",
