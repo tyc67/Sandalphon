@@ -1,14 +1,5 @@
-import { initializeApp } from 'firebase/app'
-import { doc, getDoc, getFirestore } from 'firebase/firestore'
-import {
-  getAuth,
-  RecaptchaVerifier,
-  signInWithPhoneNumber,
-} from 'firebase/auth'
-import { COLLECTION_NAME, FIREBASE_CONFIG } from '@/constants/config'
-import { useCallback, useEffect, useRef } from 'react'
-
-const firebaseApp = initializeApp(FIREBASE_CONFIG)
+import { useRef, useEffect, useCallback } from 'react'
+import { RecaptchaVerifier } from 'firebase/auth'
 
 declare global {
   interface Window {
@@ -20,15 +11,12 @@ declare global {
   }
 }
 
-const captchaContainerId = 'recaptcha-container'
-const captchaContainer = `<div id="${captchaContainerId}"></div>`
+export const useInitFirebasePhoneCaptcha = () => {
+  const captchaContainerId = 'recaptcha-container'
+  const captchaContainer = `<div id="${captchaContainerId}"></div>`
+  const containerRef = useRef<Element | null>(null)
 
-const useInitFirebasePhoneCaptcha = () => {
-  const auth = getAuth(firebaseApp)
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const registerContainerRef = useCallback((node: HTMLDivElement) => {
-    // @ts-expect-error current is read-only
+  const registerContainerRef = useCallback((node: Element | null) => {
     containerRef.current = node
 
     if (node) {
@@ -46,20 +34,22 @@ const useInitFirebasePhoneCaptcha = () => {
       }
     }
 
-    window._recaptchaVerifier = new RecaptchaVerifier(
-      auth,
-      captchaContainerId,
-      {
-        size: 'invisible',
-      }
-    )
+    import('./auth').then(({ auth }) => {
+      window._recaptchaVerifier = new RecaptchaVerifier(
+        auth,
+        captchaContainerId,
+        {
+          size: 'invisible',
+        }
+      )
+    })
   }, [])
 
   return registerContainerRef
 }
 
-const sendSmsCode = async (phoneNumber: string) => {
-  const auth = getAuth(firebaseApp)
+export const sendSmsCode = async (phoneNumber: string) => {
+  const { auth, signInWithPhoneNumber } = await import('./auth')
   const appVerifier = window._recaptchaVerifier
 
   if (!appVerifier) {
@@ -97,16 +87,10 @@ const sendSmsCode = async (phoneNumber: string) => {
   }
 }
 
-const getPurchasedClassIDs = async (uid: string): Promise<string[]> => {
-  const store = getFirestore(firebaseApp)
-  const docRef = doc(store, COLLECTION_NAME, uid)
+export const getPurchasedClassIDs = async (uid: string): Promise<string[]> => {
+  const { COLLECTION_NAME } = await import('@/constants/config')
+  const { db, doc, getDoc } = await import('./firestore')
+  const docRef = doc(db, COLLECTION_NAME, uid)
 
   return (await getDoc(docRef)).data()?.courses ?? []
-}
-
-export {
-  firebaseApp,
-  useInitFirebasePhoneCaptcha,
-  sendSmsCode,
-  getPurchasedClassIDs,
 }

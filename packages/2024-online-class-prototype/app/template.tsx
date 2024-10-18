@@ -10,14 +10,8 @@ import {
   setUid,
 } from '@/redux/features/user/slice'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks'
-import { firebaseApp, getPurchasedClassIDs } from '@/utils/firebase'
-import { getAuth, onAuthStateChanged, onIdTokenChanged } from 'firebase/auth'
-import {
-  doc,
-  getFirestore,
-  onSnapshot,
-  type Unsubscribe,
-} from 'firebase/firestore'
+import type { Unsubscribe as AuthUnsubscribe } from 'firebase/auth'
+import type { Unsubscribe as StoreUnsubscribe } from 'firebase/firestore'
 import { PropsWithChildren, useEffect } from 'react'
 import { useDebounceCallback } from 'usehooks-ts'
 
@@ -46,51 +40,62 @@ export default function Template({ children }: PropsWithChildren) {
   const debouncedFetchSignedCookie = useDebounceCallback(fetchSignedCookie, 500)
 
   useEffect(() => {
-    const auth = getAuth(firebaseApp)
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const idToken = await user.getIdToken()
-        const classIDs = await getPurchasedClassIDs(user.uid)
-        dispatch(setIsLogined(true))
-        dispatch(setUid(user.uid))
-        dispatch(setToken(idToken))
-        dispatch(setPurchasedClassIDs(classIDs))
-        debouncedFetchSignedCookie(idToken)
-      } else {
-        dispatch(resetAll())
-      }
+    let unsubscribeAuthStateChange: AuthUnsubscribe
+
+    import('@/utils/firebase/auth').then(({ auth, onAuthStateChanged }) => {
+      unsubscribeAuthStateChange = onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          const { getPurchasedClassIDs } = await import('@/utils/firebase/misc')
+          const idToken = await user.getIdToken()
+          const classIDs = await getPurchasedClassIDs(user.uid)
+          dispatch(setIsLogined(true))
+          dispatch(setUid(user.uid))
+          dispatch(setToken(idToken))
+          dispatch(setPurchasedClassIDs(classIDs))
+          debouncedFetchSignedCookie(idToken)
+        } else {
+          dispatch(resetAll())
+        }
+      })
     })
 
-    return () => unsubscribe()
+    return () => {
+      if (typeof unsubscribeAuthStateChange === 'function')
+        unsubscribeAuthStateChange()
+    }
   }, [dispatch, debouncedFetchSignedCookie])
 
   useEffect(() => {
-    const auth = getAuth(firebaseApp)
-    const unsubscribe = onIdTokenChanged(auth, async (user) => {
-      if (user) {
-        const idToken = await user.getIdToken()
-        dispatch(setToken(idToken))
-        debouncedFetchSignedCookie(idToken)
-      } else {
-        dispatch(resetAll())
-      }
+    let unsubscribeIdTokenChange: AuthUnsubscribe
+
+    import('@/utils/firebase/auth').then(({ auth, onIdTokenChanged }) => {
+      unsubscribeIdTokenChange = onIdTokenChanged(auth, async (user) => {
+        if (user) {
+          const idToken = await user.getIdToken()
+          dispatch(setToken(idToken))
+          debouncedFetchSignedCookie(idToken)
+        } else {
+          dispatch(resetAll())
+        }
+      })
     })
 
-    return () => unsubscribe()
+    return () => {
+      if (typeof unsubscribeIdTokenChange === 'function')
+        unsubscribeIdTokenChange()
+    }
   }, [dispatch, debouncedFetchSignedCookie])
 
   useEffect(() => {
-    const store = getFirestore(firebaseApp)
-    let unsubscribe: Unsubscribe
+    let unsubscribe: StoreUnsubscribe
     if (uid) {
-      unsubscribe = onSnapshot(
-        doc(store, COLLECTION_NAME, uid),
-        async (doc) => {
+      import('@/utils/firebase/firestore').then(({ db, doc, onSnapshot }) => {
+        unsubscribe = onSnapshot(doc(db, COLLECTION_NAME, uid), async (doc) => {
           const classIDs = (await doc.data()?.courses) ?? []
           dispatch(setPurchasedClassIDs(classIDs))
           debouncedFetchSignedCookie(token)
-        }
-      )
+        })
+      })
     }
 
     return () => {

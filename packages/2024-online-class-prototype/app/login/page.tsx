@@ -1,14 +1,13 @@
 'use client'
 
-import { useInitFirebasePhoneCaptcha, sendSmsCode } from '@/utils/firebase'
+import { useInitFirebasePhoneCaptcha, sendSmsCode } from '@/utils/firebase/misc'
 import { useEffect, useState } from 'react'
 import 'react-phone-number-input/style.css'
 import type { E164Number } from 'libphonenumber-js'
 import PhoneInput, { isPossiblePhoneNumber } from 'react-phone-number-input'
-import { ConfirmationResult } from 'firebase/auth'
+import type { ConfirmationResult } from 'firebase/auth'
 import Button from './_components/button'
 import Hint from './_components/hint'
-import { FirebaseError } from 'firebase/app'
 import { useLocalStorage } from 'usehooks-ts'
 import { ORIGIN_STORAGE_KEY } from '@/constants/config'
 import { useRouter } from 'next/navigation'
@@ -94,6 +93,8 @@ export default function Page() {
     setIsLoading(true)
     setLastActionTime(now)
 
+    const { FirebaseError } = await import('@/utils/firebase/app')
+
     try {
       const result = await sendSmsCode(phoneNumber!)
       setConfirmationResult(result)
@@ -121,6 +122,8 @@ export default function Page() {
     if (!confirmationResult) return
 
     setIsLoading(true)
+    const { FirebaseError } = await import('@/utils/firebase/app')
+
     try {
       await confirmationResult.confirm(smsCode)
     } catch (error) {
