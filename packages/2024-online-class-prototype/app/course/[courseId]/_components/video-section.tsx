@@ -45,7 +45,9 @@ export default function VideoSection({
   const videoList: CourseVideoProps[] = getVideoList(outline)
   const isLogined = useAppSelector(selectIsLogined)
   const [now, setNow] = useState(Date.now())
-  const hasStarted = Date.parse(StartDate) <= now
+  // Date.parse 使用 UTC-0 的時區來處理，需要調整為 UTC+8 的數值
+  const utcOffset = 1000 * 60 * 60 * 8
+  const hasStarted = Date.parse(StartDate) - utcOffset <= now
   const shouldShowMask = useMemo(
     () => !isLogined || !isPurchased || !hasStarted,
     [isLogined, isPurchased, hasStarted]
