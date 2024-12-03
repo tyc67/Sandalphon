@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { useAppSelector } from '@/redux/hooks'
 import { selectIsLogined } from '@/redux/features/user/selector'
 import SMSLoginForm from './_components/sms-login-form'
+import EmailLoginForm from './_components/emaill-login-form'
 
 const RETRY_PERIOD = 1000 * 30 // 30 seconds
 
@@ -38,8 +39,9 @@ export default function Page() {
   }, [router, isLogined, removeOriginPath])
 
   return (
-    <div className="my-auto flex flex-col items-center gap-y-7 lg:gap-y-10">
+    <div className="my-auto flex flex-col items-center gap-y-10">
       <SMSLoginForm now={now} retryPeriod={RETRY_PERIOD} />
+      <EmailLoginForm now={now} retryPeriod={RETRY_PERIOD} />
       <div className="hidden" ref={captchaContainerRef}></div>
     </div>
   )
