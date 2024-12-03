@@ -5,7 +5,7 @@ import Button from './button'
 import Hint from './hint'
 import type { ActionCodeSettings } from 'firebase/auth'
 import { useLocalStorage } from 'usehooks-ts'
-import { ACTION_TIME_STORAGE_KEY } from '@/constants/config'
+import { ACTION_TIME_STORAGE_KEY, EMAIL_STORAGE_KEY } from '@/constants/config'
 
 const EMAIL_STATE = {
   default: {
@@ -38,6 +38,7 @@ export default function EmailLoginForm({ now, retryPeriod }: Props) {
     ACTION_TIME_STORAGE_KEY,
     0
   )
+  const [, setEmailInStorage] = useLocalStorage(EMAIL_STORAGE_KEY, '')
 
   const allowToSubmit =
     emailRegex.test(email) && !isLoading && now - lastActionTime > retryPeriod
@@ -59,6 +60,7 @@ export default function EmailLoginForm({ now, retryPeriod }: Props) {
 
       await sendSignInLinkToEmail(auth, email, actionCodeSettings)
 
+      setEmailInStorage(email)
       setEmailState(EMAIL_STATE.success)
     } catch (error) {
       console.error('Encountered error while sending login email')

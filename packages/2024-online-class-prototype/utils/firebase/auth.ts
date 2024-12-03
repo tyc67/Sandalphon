@@ -11,4 +11,6 @@ export {
   onAuthStateChanged,
   onIdTokenChanged,
   sendSignInLinkToEmail,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
 } from 'firebase/auth'
