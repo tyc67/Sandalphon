@@ -5,6 +5,7 @@ import Button from './button'
 import Hint from './hint'
 import type { ActionCodeSettings } from 'firebase/auth'
 import { useLocalStorage } from 'usehooks-ts'
+import { ACTION_TIME_STORAGE_KEY } from '@/constants/config'
 
 const EMAIL_STATE = {
   default: {
@@ -34,7 +35,7 @@ export default function EmailLoginForm({ now, retryPeriod }: Props) {
   const [email, setEmail] = useState('')
   const [emailState, setEmailState] = useState(EMAIL_STATE.default)
   const [lastActionTime, setLastActionTime] = useLocalStorage(
-    'last-action-time',
+    ACTION_TIME_STORAGE_KEY,
     0
   )
 

@@ -57,6 +57,7 @@ switch (ENV) {
 }
 
 const ORIGIN_STORAGE_KEY = 'origin-pathname'
+const ACTION_TIME_STORAGE_KEY = 'last-action-time'
 
 export {
   ENV,
@@ -65,6 +66,7 @@ export {
   COLLECTION_NAME,
   FIREBASE_CONFIG,
   ORIGIN_STORAGE_KEY,
+  ACTION_TIME_STORAGE_KEY,
   AUTH_API_URL,
   SITE_NAME,
   SITE_URL,

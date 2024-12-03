@@ -9,6 +9,7 @@ import type { ConfirmationResult } from 'firebase/auth'
 import Button from './button'
 import Hint from './hint'
 import { useLocalStorage } from 'usehooks-ts'
+import { ACTION_TIME_STORAGE_KEY } from '@/constants/config'
 
 const PHONE_STATE = {
   default: {
@@ -70,7 +71,7 @@ export default function SMSLoginForm({ now, retryPeriod }: Props) {
   const [confirmationResult, setConfirmationResult] =
     useState<ConfirmationResult>()
   const [lastActionTime, setLastActionTime] = useLocalStorage(
-    'last-action-time',
+    ACTION_TIME_STORAGE_KEY,
     0
   )
 
