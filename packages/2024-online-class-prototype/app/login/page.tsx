@@ -2,12 +2,8 @@
 
 import { useInitFirebasePhoneCaptcha } from '@/utils/firebase/misc'
 import { useEffect, useState } from 'react'
+import { useRedirectOnLogined } from '@/hooks/use-redirect-on-logined'
 import 'react-phone-number-input/style.css'
-import { useLocalStorage } from 'usehooks-ts'
-import { ORIGIN_STORAGE_KEY } from '@/constants/config'
-import { useRouter } from 'next/navigation'
-import { useAppSelector } from '@/redux/hooks'
-import { selectIsLogined } from '@/redux/features/user/selector'
 import SMSLoginForm from './_components/sms-login-form'
 import EmailLoginForm from './_components/emaill-login-form'
 import LoginMethodSelector from './_components/login-method-selector'
@@ -26,14 +22,9 @@ const LoginMethod = {
 }
 
 export default function Page() {
+  useRedirectOnLogined()
   const captchaContainerRef = useInitFirebasePhoneCaptcha()
-  const router = useRouter()
-  const isLogined = useAppSelector(selectIsLogined)
   const [now, setNow] = useState(Date.now())
-  const [originPath, , removeOriginPath] = useLocalStorage(
-    ORIGIN_STORAGE_KEY,
-    ''
-  )
   const [loginMethod, setLoginMethod] = useState(LoginMethod.SMS.value)
 
   useEffect(() => {
@@ -43,13 +34,6 @@ export default function Page() {
 
     return () => clearInterval(timer)
   }, [])
-
-  useEffect(() => {
-    if (isLogined) {
-      router.push(originPath || '/')
-      removeOriginPath()
-    }
-  }, [router, isLogined, removeOriginPath])
 
   const onSelectorClicked = (method: string) => {
     setLoginMethod(method)
