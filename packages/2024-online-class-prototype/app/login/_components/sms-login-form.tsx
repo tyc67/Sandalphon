@@ -76,10 +76,12 @@ export default function SMSLoginForm({ now, retryPeriod }: Props) {
   )
 
   const showSMSCodeDialog = !!confirmationResult
+  const waitTime = Math.max(
+    Math.ceil((retryPeriod - (now - lastActionTime)) / 1000),
+    0
+  )
   const allowToSubmit =
-    isPossiblePhoneNumber(phoneNumber ?? '') &&
-    !isLoading &&
-    now - lastActionTime > retryPeriod
+    isPossiblePhoneNumber(phoneNumber ?? '') && !isLoading && waitTime === 0
 
   const onSubmitClicked = async () => {
     setIsLoading(true)
@@ -155,7 +157,7 @@ export default function SMSLoginForm({ now, retryPeriod }: Props) {
           disabled={!allowToSubmit}
           isLoading={isLoading}
         >
-          送出
+          {waitTime > 0 ? `請稍後 ${waitTime} 秒` : '送出'}
         </Button>
         <Hint success={phoneState.success} message={phoneState.message} />
       </div>

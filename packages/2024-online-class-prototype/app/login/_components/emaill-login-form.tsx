@@ -40,8 +40,11 @@ export default function EmailLoginForm({ now, retryPeriod }: Props) {
   )
   const [, setEmailInStorage] = useLocalStorage(EMAIL_STORAGE_KEY, '')
 
-  const allowToSubmit =
-    emailRegex.test(email) && !isLoading && now - lastActionTime > retryPeriod
+  const waitTime = Math.max(
+    Math.ceil((retryPeriod - (now - lastActionTime)) / 1000),
+    0
+  )
+  const allowToSubmit = emailRegex.test(email) && !isLoading && waitTime === 0
 
   const onLoginClicked = async () => {
     setIsLoading(true)
@@ -98,7 +101,7 @@ export default function EmailLoginForm({ now, retryPeriod }: Props) {
         disabled={!allowToSubmit}
         isLoading={isLoading}
       >
-        送出
+        {waitTime > 0 ? `請稍後 ${waitTime} 秒` : '送出'}
       </Button>
       <Hint success={emailState.success} message={emailState.message} />
     </div>
