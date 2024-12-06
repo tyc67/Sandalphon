@@ -161,6 +161,7 @@ export default function NavList() {
       )
       break
     case /\/login/.test(pathname):
+    case /\/email-login/.test(pathname):
       listJsx = null
       break
     case /\//.test(pathname):

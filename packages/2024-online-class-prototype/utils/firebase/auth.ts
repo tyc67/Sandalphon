@@ -10,4 +10,7 @@ export {
   signOut,
   onAuthStateChanged,
   onIdTokenChanged,
+  sendSignInLinkToEmail,
+  isSignInWithEmailLink,
+  signInWithEmailLink,
 } from 'firebase/auth'
